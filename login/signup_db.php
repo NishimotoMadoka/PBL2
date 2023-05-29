@@ -4,11 +4,16 @@ require_once __DIR__ . '/../classes/user.php';
 $name = $_POST['name'];
 $mail = $_POST['mail'];
 $profile_comment=$_POST['profile_comment'];
-$icon=$_FILES['icon']['name'];
 $password = $_POST['password'];
+$icon = $_FILES['icon']['name'];
+
+$mail_num=strstr($mail,'@',true);
+$icon_name=$mail_num.$icon;
 
 //画像を保存
-move_uploaded_file($_FILES['up_icon']['tmp_name'], '../icon_image/' . $icon);
+// $icon_image_path="C:\xampp\htdocs\pbl2\icon_image";
+move_uploaded_file($_FILES['icon']['tmp_name'], '../icon_image/' . $icon);
+
 
 session_start();
 
@@ -34,7 +39,7 @@ if(mb_strlen($password)>=41 || mb_strlen($password)<=4){
 
 $user = new User();
 // $hash=password_hash($_POST[$password],PASSWORD_DEFAULT);　にしもとのメモ　いったん無視しといてください
-$result = $user->signup($name, $mail, $profile_comment, $icon, $password);
+$result = $user->signup($name, $mail, $profile_comment, $password);
 
 if ($result !== '') {
     $_SESSION['signup_error'] = $result;
@@ -45,11 +50,14 @@ if ($result !== '') {
 $user = new User();
 $result = $user->authUser($mail, $password);
 
-$_SESSION['user_id'] =  $result['user_id'];
+$_SESSION['user_id']=$result['user_id'];
 $_SESSION['name'] = $name;
 $_SESSION['mail'] = $mail;
 $_SESSION['profile_comment']=$profile_comment;
-$_SESSION['password']=$password;
+// sessionにパスワードいれる？？
+// $_SESSION['password']=$password;
+
+
 
 // cookieの設定　後で変更したい
 setcookie("user_id", $result['user_id'],time()+60*60*24*14,'/');
@@ -61,7 +69,7 @@ setcookie("name", $name, time() + 60 * 60 * 24 * 14, '/');
 
 <?php
 // headerlocationの先を変更する
-header('Location:' . $saisyonopeage_php);
+// header('Location:' . $saisyonopeage_php);
 // footer.php作ったら下のコメントアウト外して
 // require_once __DIR__ . '/../footer.php';
 ?>

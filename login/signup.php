@@ -20,14 +20,17 @@
 
     ?>
     <div class="signup-form">
-
-        <form method="POST" action="./signup_db.php">
+        <form method="POST" action="./signup_db.php" enctype="multipart/form-data">
+            <h3>アイコン変更</h3>
+            <div>
+                <dl class="inline">
+                <dd>アイコン：<input type="file" name="icon" accept="image/*"></dd>
+                </dl>
+                <br>
+            </div>
             <table>
+                <form method="POST" action="./signup_db.php">
                 <tr>
-                    <!-- アイコン要修正 -->
-                    <dl class="inline">
-                        <dd>アイコン：<input type="file" name="icon" accept="image/*"></dd>
-                    </dl>
                     <td>名前</td>
                     <td><input type="text" name="name" value="<?= $name ?>" required></td>
                 </tr>
@@ -37,7 +40,7 @@
                 </tr>
                 <tr>
                     <td>自己紹介</td>
-                    <td><input type="text" name="profile_comment" value="<?= $profile_comment ?>" required></td>
+                    <td><input type="text" name="profile_comment" value="<?= $profile_comment ?>"></td>
                 </tr>
                 <tr>
                     <td>パスワード</td>
