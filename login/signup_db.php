@@ -6,7 +6,7 @@ $mail = $_POST['mail'];
 $profile_comment=$_POST['profile_comment'];
 $password = $_POST['password'];
 $icon = $_FILES['icon']['name'];
-
+// メアドの@以前を切り出してアイコン名の前につけて保存
 $mail_num=strstr($mail,'@',true);
 $icon_name=$mail_num.$icon;
 
@@ -39,7 +39,7 @@ if(mb_strlen($password)>=41 || mb_strlen($password)<=4){
 
 $user = new User();
 // $hash=password_hash($_POST[$password],PASSWORD_DEFAULT);　にしもとのメモ　いったん無視しといてください
-$result = $user->signup($name, $mail, $profile_comment, $password);
+$result = $user->signup($name, $mail, $profile_comment,$icon_name, $password);
 
 if ($result !== '') {
     $_SESSION['signup_error'] = $result;

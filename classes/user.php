@@ -12,7 +12,7 @@ class User extends DbData
     }
 
     #新規登録処理
-    public function signup($name, $mail, $profile_comment, $password)
+    public function signup($name, $mail, $profile_comment,$icon_name, $password)
     {
         $sql = "select * from users where mail=?";
         $stmt = $this->query($sql, [$mail]);
@@ -21,8 +21,8 @@ class User extends DbData
         if ($result) {
             return 'この' . $mail . 'は既に登録されています。';
         }
-        $sql = "insert into users(name,mail,profile_comment,password)values(?,?,?,?)";
-        $result = $this->exec($sql, [$name, $mail, $profile_comment, $password]);
+        $sql = "insert into users(name,mail,profile_comment,icon,password)values(?,?,?,?,?)";
+        $result = $this->exec($sql, [$name, $mail, $profile_comment,$icon_name, $password]);
 
         if ($result) {
             return '';
