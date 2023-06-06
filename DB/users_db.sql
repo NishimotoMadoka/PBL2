@@ -7,7 +7,7 @@ CREATE TABLE users(
     friend_code VARCHAR(10),
     icon VARCHAR(70),
     password VARCHAR(40) NOT NULL,
-    INDEX current_users_index(
+    INDEX users_index(
         user_id,
         name,
         mail,
