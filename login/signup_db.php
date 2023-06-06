@@ -12,7 +12,7 @@ $icon_name=$mail_num.$icon;
 
 //画像を保存
 // $icon_image_path="C:\xampp\htdocs\pbl2\icon_image";
-move_uploaded_file($_FILES['icon']['tmp_name'], '../icon_image/' . $icon);
+move_uploaded_file($_FILES['icon']['tmp_name'], '../icon_image/' . $icon_name);
 
 
 session_start();
@@ -37,9 +37,13 @@ if(mb_strlen($password)>=41 || mb_strlen($password)<=4){
     exit();
 }
 
+// ふれんどこーどてきなやつ(9けた)
+$str = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPUQRSTUVWXYZ';
+$friend_code = substr(str_shuffle($str), 0, 9);
+
 $user = new User();
 // $hash=password_hash($_POST[$password],PASSWORD_DEFAULT);　にしもとのメモ　いったん無視しといてください
-$result = $user->signup($name, $mail, $profile_comment,$icon_name, $password);
+$result = $user->signup($name, $mail, $profile_comment,$friend_code,$icon_name, $password);
 
 if ($result !== '') {
     $_SESSION['signup_error'] = $result;
@@ -54,6 +58,7 @@ $_SESSION['user_id']=$result['user_id'];
 $_SESSION['name'] = $name;
 $_SESSION['mail'] = $mail;
 $_SESSION['profile_comment']=$profile_comment;
+$_SESSION['friend_code']=$friend_code;
 // sessionにパスワードいれる？？
 // $_SESSION['password']=$password;
 
@@ -63,13 +68,10 @@ $_SESSION['profile_comment']=$profile_comment;
 setcookie("user_id", $result['user_id'],time()+60*60*24*14,'/');
 setcookie("name", $name, time() + 60 * 60 * 24 * 14, '/');
 
-// header.php作ったら下のコメントアウト外して
 // require_once __DIR__ . '/../header.php';
 ?>
 
 <?php
-// headerlocationの先を変更する
-// header('Location:' . $saisyonopeage_php);
-// footer.php作ったら下のコメントアウト外して
+// header('Location:' . $home_php);
 // require_once __DIR__ . '/../footer.php';
 ?>
