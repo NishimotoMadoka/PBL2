@@ -72,6 +72,6 @@ setcookie("name", $name, time() + 60 * 60 * 24 * 14, '/');
 ?>
 
 <?php
-// header('Location:' . $home_php);
+header('Location:' . $toppage_php);
 // require_once __DIR__ . '/../footer.php';
 ?>

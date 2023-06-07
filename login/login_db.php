@@ -34,7 +34,7 @@ setcookie("user_id", $user_id, time() + 60 * 60 * 24 * 14, '/');
 ?>
 
 <?php
-header('Location:' . $loginnoatoniikousurupage);
+header('Location:' . $toppage_php);
 // ふったー
 // require_once __DIR__ . '/../footer.php';
 ?>

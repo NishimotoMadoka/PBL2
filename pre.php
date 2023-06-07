@@ -12,8 +12,8 @@ if (empty($name)) {
     $name = $_COOKIE['name'];
     $user_id = $_COOKIE['user_id'];
   } else {
-    $name = 'no_login';
-    $user_id = 'no_login';
+    $name = null;
+    $user_id = null;
     setcookie("name", $name, time() + 60 * 60 * 24 * 14, '/');
     setcookie("user_id", $user_id, time() + 60 * 60 * 24 * 14, '/');
   }
@@ -26,8 +26,9 @@ if (empty($name)) {
 $http_host = '//' . $_SERVER['SERVER_NAME'];
 $id = "pbl2"; #フォルダ名に変更する
 
-$home_php = $http_host . '/' . $id . '/home/home.php';
+$toppage_php = $http_host . '/' . $id . '/home/toppage.php';
 $logout_php = $http_host . '/' . $id . '/login/logout.php';
 $signup_php = $http_host . '/' . $id . '/login/signup.php';
 $mypage_php = $http_host . '/' . $id . '/user/mypage.php';
+$post_php = $http_host . '/' . $id . '/article/post.php';
 
