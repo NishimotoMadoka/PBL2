@@ -7,7 +7,9 @@ $password = $_POST['password'];
 $user = new User();
 $result = $user->authUser($mail, $password);
 
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 
 // 入力せずにログインボタンを押したらエラーメッセージ
 if (empty($result['mail'])) {
