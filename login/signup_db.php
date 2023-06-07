@@ -20,20 +20,20 @@ session_start();
 // 名前2文字制限設ける？？
 if (mb_strlen($name) >= 21) {
     $_SESSION['signup_error'] = '名前は20文字以下で入力してください。';
-    header('Location: register.php');
+    header('Location: signup.php');
     exit();
 }
 // メールアドレスチェック　文字制限設ける？？
  if (!filter_var($mail, FILTER_VALIDATE_EMAIL) || mb_strlen($mail) >= 51 ) {
     $_SESSION['signup_error'] = '正しいメールアドレスを入力してください。';
-    header('Location: register.php');
+    header('Location: signup.php');
     exit();
 }
 
 // パスワード文字制限設ける？？
 if(mb_strlen($password)>=41 || mb_strlen($password)<=4){
     $_SESSION['signup_error']='パスワードは5文字以上40文字以下で入力してください。';
-    header('Location: register.php');
+    header('Location: signup.php');
     exit();
 }
 
