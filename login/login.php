@@ -30,7 +30,7 @@ require_once __DIR__ . '/../pre.php';
         </form>
 
         <!-- 新規ユーザー登録ボタン -->
-        <p><a href="/signup.php">新規ユーザー登録</a></p>
+        <p><a href="./signup.php">新規ユーザー登録</a></p>
     </div>
 </main>
 <?php

@@ -18,10 +18,10 @@ class Article extends DbData
     }
 
     //  toppagenoyatu  tabunnerrorderu youhennkou!!
-    public  function  friendsArticles($friend_users)
+    public  function  friendsArticles($friend_user_id)
     {
         $sql  =  "select * from article_list join users on article_list.user_id = users.user_id where article_list.article_public=false and user_id=? order by article_list.article_id desc";
-        $stmt = $this->pdo->prepare($sql[$friend_users]);
+        $stmt = $this->pdo->prepare($sql[$friend_user_id]);
         $stmt->execute();
         $articles = $stmt->fetchAll();
         return  $articles;

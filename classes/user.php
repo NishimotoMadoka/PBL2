@@ -74,4 +74,30 @@ class User extends DbData
         $userdetail = $this->query($sql, [$i]);
         return $userdetail->fetch();
     }
+
+    #フレンドのユーザーID取得
+    public function getFriend_id($friend_code){
+        $sql = "select * from users where friend_code=?";
+        $stmt = $this->query($sql,[$friend_code]);
+        return $stmt->fetch();
+    }
+    #フレンド登録
+    public function insertFriend($user_id,$friend_user_id){
+
+        $sql = "insert into friends_list(login_user_id,friend_user_id)values(?,?)";
+        $result = $this->exec($sql, [$user_id,$friend_user_id]);
+
+        if ($result) {
+             return '';
+         } else {
+            return 'フレンド登録できませんでした。管理者にお問い合わせください。';
+        }
+    }
+
+    #フレンドのユーザーIDを取得
+    public function getFriends($user_id){
+        $sql = "select friend_user_id from friends_list where login_user_id=?";
+        $friend_list = $this->query($sql,[$user_id]);
+        return $friend_list->fetchAll();
+    }
 }
