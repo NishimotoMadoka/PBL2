@@ -1,3 +1,25 @@
 <?php
-    require_once __DIR__.'pre.php';
+    require_once __DIR__.'/pre.php';
 ?>
+<!DOCTYPE html>
+<html lang="ja">
+    <body>
+        <footer>
+            <button id="btn">ページトップへ</button>
+        </footer>
+
+        <script>
+            const btn = document.getElementById('btn');
+
+            btn.addEventListener('click', () => {
+
+                let scrollToOptions = {
+                    top : 0,
+                    behavior : 'smooth'
+                };
+
+                window.scrollTo(scrollToOptions);
+            });
+        </script>
+    </body>
+</html>
