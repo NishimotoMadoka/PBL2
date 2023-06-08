@@ -9,17 +9,17 @@ $mail_num=$_SESSION['mail_num'];
 $title = $_POST['title']; //タイトル
 $diary = $_POST['diary']; //本文
 $date_time = date('Y-m-d ') . date('H:i:s');
-$article_image = $_FILES['up_image']['name'];
+// $article_image = $_FILES['up_image']['name'];
 
-if ($article_image!=""){
-    $article_image=$mail_num.$article_image;
-}
-  //画像を保存
-move_uploaded_file($_FILES['up_image']['tmp_name'], '../article_image/' . $article_image);
+// if ($article_image!=""){
+//     $article_image=$mail_num.$article_image;
+// }
+//   //画像を保存
+// move_uploaded_file($_FILES['up_image']['tmp_name'], '../article_image/' . $article_image);
 
 
 if (mb_strlen($title) > 50) {
-    $_SESSION['post_error'] = '50文字以下でタイトルをつけてください'; // エラーメッセージをセット
+    $_SESSION['post_error'] = '50文字以下でタイトルをつけてください';
     header('Location: post.php');
     exit();
 }
@@ -29,13 +29,13 @@ if (preg_match('/[&"\'<>]/', $title)) {
     exit();
 }
 if (preg_match('/[&"\'<>]/', $diary)) {
-    $_SESSION['post_error'] = '使用できない文字が含まれています'; // エラーメッセージをセット
+    $_SESSION['post_error'] = '使用できない文字が含まれています';
     header('Location: post.php');
     exit();
 }
 
 if (mb_strlen($diary) > 3500) {
-    $_SESSION['post_error'] = '3500文字以下で夢日記を入力してください'; // エラーメッセージをセット
+    $_SESSION['post_error'] = '3500文字以下で夢日記を入力してください';
     header('Location: post.php');
     exit();
 }
@@ -44,7 +44,7 @@ if (mb_strlen($diary) > 3500) {
 require_once __DIR__ . '/../classes/article_list.php';
 
 $article = new Article();
-$result = $article->insertArticle($user_id, $title, $diary, $date_time,$article_image);
+$result = $article->insertArticle($user_id, $title, $diary, $date_time);
 
 
 if ($result !== '') {

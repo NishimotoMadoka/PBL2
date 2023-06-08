@@ -1,6 +1,8 @@
 <?php
 // へっだー
-// require_once __DIR__ . '/../header.php'; ?>
+// require_once __DIR__ . '/../header.php';
+require_once __DIR__ . '/../pre.php';
+?>
 <main>
     <?php
     if (isset($_SESSION['login_error'])) {

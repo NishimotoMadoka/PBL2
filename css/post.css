@@ -1,0 +1,277 @@
+.outer {
+  height: 6rem;
+  text-align: center;
+  display: table;
+  width: 100%;
+}
+
+.inner {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 25px;
+}
+
+.a-post {
+  display: inline-block;
+  border-bottom: solid #458eaf 5px;
+}
+
+.q-post {
+  display: inline-block;
+  border-bottom: solid #5eaf45 5px;
+}
+
+.form {
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid #9c9c9c;
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+.item {
+  margin-bottom: 20px;
+}
+
+.label_left {
+  display: inline-block;
+  width: 10%;
+  border-left: solid 5px #458eaf;
+  padding-left: 15px;
+  vertical-align: top;
+  font-size: 20px;
+}
+
+.form-text {
+  margin-top: 15px;
+  height: 3em;
+  width: 100%;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 0 0 1px #458eaf inset;
+}
+
+.form-text1 {
+  margin-top: 15px;
+  height: 500px;
+  width: 100%;
+  padding: 5px;
+  font-size: 15px;
+  resize: none;
+  border-radius: 4px;
+  line-height: 1;
+  border: none;
+  box-shadow: 0 0 0 1px #458eaf inset;
+}
+
+.label_left-q {
+  display: inline-block;
+  width: 10%;
+  border-left: solid 5px #5eaf45;
+  padding-left: 15px;
+  vertical-align: top;
+  font-size: 20px;
+}
+
+.form-text-q {
+  margin-top: 15px;
+  height: 3em;
+  width: 100%;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 0 0 1px #5eaf45 inset;
+}
+
+.form-text1-q {
+  margin-top: 15px;
+  height: 500px;
+  width: 100%;
+  padding: 5px;
+  font-size: 15px;
+  resize: none;
+  border-radius: 4px;
+  line-height: 1;
+  border: none;
+  box-shadow: 0 0 0 1px #5eaf45 inset;
+}
+
+.button {
+  display: inline-block;
+  border-radius: 5%;
+  font-size: 10pt;
+  text-align: center;
+  cursor: pointer;
+  padding: 20px 45px;
+  margin-left: 90px;
+  background: #ffffff;
+  color: #458eaf;
+  line-height: 1em;
+  transition: .3s;
+  border: 2px solid #6c6b6b;
+}
+
+.button:hover {
+  color: #ffffff;
+  background: #458eaf;
+}
+
+.comment_left {
+  margin-left: 14%;
+  display: inline-block;
+  width: 20%;
+  border-left: solid 5px #458eaf;
+  padding-left: 15px;
+  vertical-align: top;
+  font-size: 30px;
+}
+
+.comment_left-q {
+  margin-left: 14%;
+  display: inline-block;
+  width: 20%;
+  border-left: solid 5px #5eaf45;
+  padding-left: 15px;
+  vertical-align: top;
+  font-size: 30px;
+}
+
+.comment-text {
+  box-sizing: border-box;
+  margin-top: 1em;
+  margin-left: 12.5%;
+  height: 9em;
+  width: 75%;
+  padding: 5px;
+  font-size: 15px;
+  resize: none;
+  border-radius: 4px;
+  line-height: 1;
+  border: none;
+  box-shadow: 0 0 0 2px #458eaf inset;
+}
+
+.comment-text-q {
+  box-sizing: border-box;
+  margin-top: 1em;
+  margin-left: 12.5%;
+  height: 9em;
+  width: 75%;
+  padding: 5px;
+  font-size: 15px;
+  resize: none;
+  border-radius: 4px;
+  line-height: 1;
+  border: none;
+  box-shadow: 0 0 0 1px #5eaf45 inset;
+}
+
+.comment_button {
+  display: inline-block;
+  border-radius: 5%;
+  font-size: 10pt;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px 10px;
+  margin-left: 1%;
+  background: #ffffff;
+  color: #458eaf;
+  line-height: 1em;
+  transition: .3s;
+  border: 2px solid #6c6b6b;
+}
+
+.comment_button:hover {
+  color: #ffffff;
+  background: #458eaf;
+}
+
+.input_item ul {
+  display: inline-block;
+}
+
+.input_item ul li {
+  list-style-type: none;
+}
+
+.input_item ul li input[type="checkbox"] {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.checkbox {
+  padding: 2px 8px;
+  margin: 0px 5px 5px 5px;
+  background-color: #eef5f8;
+  border-radius: 5px;
+}
+
+.input_item ul li label {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 20px;
+}
+
+.input_item ul li.locked {
+  opacity: 0.75;
+  color: #aaa;
+}
+
+.image_select {
+  margin: 20px auto;
+}
+
+.pu {
+  background-color: #efefef;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, .8);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 0.5px;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+/* チェックボックスの初期設定 */
+#pu-on {
+  display: none;
+}
+
+/* チェックされたらポップアップウインドウを開く */
+#pu-on:checked+.pu {
+  display: block;
+}
+
+/* 閉じるアイコン（右上） */
+.icon-close {
+  background: #000;
+  color: #fff;
+  font-size: 30px;
+  padding: 0 10px;
+  position: absolute;
+  right: 0;
+}
+
+/* 開くボタン */
+.btn-open {
+  background: #fff;
+  border-radius: 10px;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+  margin: 10px auto;
+  width: 95%;
+  text-align: center;
+}
+
+/* ポップアップの内容 */
+.pu-content {
+  margin: 40px auto;
+  width: 100%;
+  height: 900%;
+}
