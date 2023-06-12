@@ -4,10 +4,10 @@ require_once __DIR__ . '/dbdata.php';
 class Article extends DbData
 {
     // 投稿登録
-    public function insertArticle($user_id, $title, $diary, $date_time)
+    public function insertArticle($user_id, $title, $diary, $date_time,$article_image)
     {
-        $sql = "insert into article_list(user_id,title,diary,date_time) values(?,?,?,?,)";
-        $result = $this->exec($sql, [$user_id, $title, $diary, $date_time]);
+        $sql = "insert into article_list(user_id,title,diary,date_time,article_image) values(?,?,?,?,?)";
+        $result = $this->exec($sql, [$user_id, $title, $diary, $date_time,$article_image]);
 
         if ($result) {
             return '';
@@ -20,11 +20,11 @@ class Article extends DbData
     //  toppagenoyatu  tabunnerrorderu youhennkou!!
     public  function  friendsArticles($friend_user_id)
     {
-        $sql  =  "select * from article_list join users on article_list.user_id = users.user_id where article_list.article_public=false and user_id=? order by article_list.article_id desc";
-        $stmt = $this->pdo->prepare($sql[$friend_user_id]);
-        $stmt->execute();
-        $articles = $stmt->fetchAll();
-        return  $articles;
+        $sql = "select * from article_list join users on article_list.user_id = users.user_id where article_list.user_id = ? order by article_list.article_id desc";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$friend_user_id]);
+        $friends_articles = $stmt->fetchAll();
+        return $friends_articles;
     }
     // 投稿を取ってくるやつ　変更するかも
     public function selectArticle($user_id,$title, $diary,$date_time){

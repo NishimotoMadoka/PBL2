@@ -96,7 +96,7 @@ class User extends DbData
 
     #フレンドのユーザーIDを取得
     public function getFriends($user_id){
-        $sql = "select friend_user_id from friends_list where login_user_id=?";
+        $sql = "select * from friends_list where login_user_id=?";
         $friend_list = $this->query($sql,[$user_id]);
         return $friend_list->fetchAll();
     }

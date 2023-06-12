@@ -9,13 +9,13 @@ $mail_num=$_SESSION['mail_num'];
 $title = $_POST['title']; //タイトル
 $diary = $_POST['diary']; //本文
 $date_time = date('Y-m-d ') . date('H:i:s');
-// $article_image = $_FILES['up_image']['name'];
+$article_image = $_FILES['up_image']['name'];
 
-// if ($article_image!=""){
-//     $article_image=$mail_num.$article_image;
-// }
-//   //画像を保存
-// move_uploaded_file($_FILES['up_image']['tmp_name'], '../article_image/' . $article_image);
+if ($article_image!=""){
+    $article_image=$mail_num.$article_image;
+}
+//画像を保存
+move_uploaded_file($_FILES['up_image']['tmp_name'], '../article_image/' . $article_image);
 
 
 if (mb_strlen($title) > 50) {
@@ -44,7 +44,7 @@ if (mb_strlen($diary) > 3500) {
 require_once __DIR__ . '/../classes/article_list.php';
 
 $article = new Article();
-$result = $article->insertArticle($user_id, $title, $diary, $date_time);
+$result = $article->insertArticle($user_id, $title, $diary, $date_time,$article_image);
 
 
 if ($result !== '') {

@@ -25,6 +25,8 @@ $_SESSION['user_id'] = $user_id;
 $_SESSION['name'] = $name;
 $_SESSION['password'] = $result['password'];
 $_SESSION['mail'] = $mail;
+$mail_num=strstr($mail,'@',true);
+$_SESSION['mail_num']=$mail_num;
 // $_SESSION['profile_comment']=$profile_comment;
 
 // クッキー設定後で変更したい

@@ -60,6 +60,6 @@ CREATE TABLE friends_list(
     INDEX users_index(
         login_user_id,
         friend_user_id
-    ),
-    FOREIGN KEY (friend_user_id) REFERENCES users(user_id)
+    )
+    -- FOREIGN KEY (friend_user_id) REFERENCES users(user_id)
 );
