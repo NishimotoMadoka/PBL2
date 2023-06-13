@@ -34,6 +34,9 @@ drop table if exists article_list; # 既にテーブルarticle_listがあれば�
 CREATE TABLE article_list(
     article_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
+    start_time VARCHAR(500),
+    end_time VARCHAR(500),
+    itemname VARCHAR(850),
     title VARCHAR(50),
     diary VARCHAR(3500),
     good int NOT NULL DEFAULT 0,

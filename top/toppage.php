@@ -26,24 +26,22 @@ require_once __DIR__ . '/../pre.php';
             $friend_user_id=$friend_user_id['friend_user_id'];
             $friends_articles = $article->friendsArticles($friend_user_id);
             foreach ($friends_articles as $friend_article) {
-                if(!empty($friends_articles)){
+                // if(!empty($friends_articles)){
       ?>
         <a href="article/article_show.php?article_id=<?= $friend_article['article_id'] ?>">
         <article class="article-one">
         <p class="article-user"><object><a href=<?= $user_php ?>?user_id=<?= $friend_article['user_id'] ?>><?= $friend_article['name'] ?></a></object></p>
         <h2 class="article-title"><object><a href="article/article_show.php?article_id=<?= $friend_article['article_id'] ?>"><?= $friend_article['title'] ?></a></object></h2>
         <h2 class="diary"><object><?=$friend_article['diary']?></object></h2>
+        <p class="article-date"><?= date('Y年m月d日', strtotime($friend_article['date_time'])) ?></p>
+        <span class="heart">♥</span>
+        <span class="article-like"><?= $friend_article['good'] ?></span>
       <?php
                 }
             }
         }
-      }
+    //   }
       ?>
-            <br>
-            
-            <p class="article-date"><?= date('Y年m月d日', strtotime($friend_article['date_time'])) ?></p>
-            <span class="heart">♥</span>
-            <span class="article-like"><?= $friend_article['good'] ?></span>
             
           </article>
         </a>
