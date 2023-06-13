@@ -1,0 +1,87 @@
+# データベースtextの作成
+set names utf8;
+drop database if exists test;
+create database test character set utf8 collate utf8_general_ci;
+
+# ユーザー'test'に、パスワード'takuchan'を設定し、データベースPBL_1に対するすべての権限を付与
+grant all privileges on test.* to test@localhost identified by 'takuchan';
+
+# データベースLoingoutを使用する
+use test;
+
+# テーブルusersの作成
+drop table if exists users;
+create table users(
+    userId	      varchar(7) primary key, #学籍番号7桁
+    userName	    varchar(50) not null, #氏名
+    password      varchar(20) #パスワード
+);
+
+#　テーブルfilesの作成 (アップロードするファイルを保管)
+drop table if exists files;
+create table files(
+    id  int(11) not null,
+    userId	      varchar(7) primary key, #学籍番号7桁
+    handleName      varchar(50) not null, #ハンドルネーム
+    file_name    varchar(50) collate utf8_general_ci not null, #元のファイル名
+    upload_title       varchar(50) collate utf8_general_ci not null, #タイトル
+    upload_comment      varchar(50) collate utf8_general_ci not null, #コメント
+    error   varchar(50) not null, #エラー内容
+    uploaded_on datetime not null, # アップロードした日時
+    type    varchar(64), #ファイルタイプ
+    size    int #ファイルサイズ
+);
+
+# テーブルboardの作成 (掲示板)
+drop table if exists board;
+create table board(
+    ident	int auto_increment primary key,
+    userId  varchar(7) , #学籍番号7桁
+    userName    varchar(50) not null, #氏名
+    comment     varchar(50) not null, #コメント
+    datetime    datetime not null # 投稿日時
+);
+
+# テーブルanswerの作成(質問に対する回答)
+drop table if exists answer;
+create table answer(
+    ident int auto_increment primary key,
+    userId varchar(7),#学籍番号7桁
+    userName varchar(50) not null, #氏名
+    answer varchar(50) not null, #回答
+    datetime datetime not null #投稿日時
+);
+
+drop table if exists answer1;
+create table answer1(
+    ident int auto_increment primary key,
+    userId varchar(7),#学籍番号7桁
+    userName varchar(50) not null, #氏名
+    answer varchar(50) not null, #回答
+    datetime datetime not null #投稿日時
+);
+
+drop table if exists answer2;
+create table answer2(
+    ident int auto_increment primary key,
+    userId varchar(7),#学籍番号7桁
+    userName varchar(50) not null, #氏名
+    answer varchar(50) not null, #回答
+    datetime datetime not null #投稿日時
+);
+
+drop table if exists test;
+create table test(
+    ident int auto_increment primary key,
+    page_title varchar(50) not null,
+    article_title varchar(50) not null,
+    article_content varchar(50) not null
+);
+
+# テーブルusersへデータを入力
+insert into users(userId, userName, password)
+ values('1001001', '神戸　電子', 'kobedenshi');
+
+# テーブルboardへデータを入力
+insert into board(userId, userName, comment, datetime)
+ values('1001001', '神戸　電子', 'とても良かったです。','2022-12-07 11:08:22');
