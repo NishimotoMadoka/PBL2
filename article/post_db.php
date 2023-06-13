@@ -7,7 +7,9 @@ if(!isset($_SESSION)){
 
 $user_id = $_SESSION['user_id'];
 $mail_num=$_SESSION['mail_num'];
+// 日付
 $date=$_POST['date'];
+// 時間と項目名の受け取り、連結
 $item_name="";
 $start_time="";
 $end_time="";
@@ -15,6 +17,18 @@ for($i=1;$i<11;$i++){
     $item=$_POST['item_name'.$i];
     $time_start=$_POST['start_time'.$i];
     $time_end=$_POST['end_time'.$i];
+
+    if (mb_strlen($item) > 8) {
+        $_SESSION['post_error'] = '8文字以下で項目名を入力してください';
+        header('Location: post.php');
+        exit();
+    }
+    if (preg_match('/[&"\'<>]/', $item)) {
+        $_SESSION['post_error'] = '使用できない文字が含まれています';
+        header('Location: post.php');
+        exit();
+    }
+
     if($item==""){
         $item_name.=",";
     }else{
@@ -33,40 +47,16 @@ for($i=1;$i<11;$i++){
         $end_time.=$time_end.",";
     }
 }
-echo $item_name;
-echo $start_time;
-echo $end_time;
 
-// $article_image = $_FILES['up_image']['name'];
+// 画像の受け取り、加工
+$article_image = $_FILES['up_image']['name'];
 
-// if ($article_image!=""){
-//     $article_image=$mail_num.$article_image;
-// }
-// //画像を保存
-// move_uploaded_file($_FILES['up_image']['tmp_name'], '../article_image/' . $article_image);
+if ($article_image!=""){
+    $article_image=$mail_num.$article_image;
+}
+//画像を保存
+move_uploaded_file($_FILES['up_image']['tmp_name'], '../article_image/' . $article_image);
 
-
-// if (mb_strlen($title) > 50) {
-//     $_SESSION['diary_error'] = '50文字以下でタイトルをつけてください';
-//     header('Location: diary.php');
-//     exit();
-// }
-// if (preg_match('/[&"\'<>]/', $title)) {
-//     $_SESSION['diary_error'] = '使用できない文字が含まれています';
-//     header('Location: diary.php');
-//     exit();
-// }
-// if (preg_match('/[&"\'<>]/', $diary)) {
-//     $_SESSION['diary_error'] = '使用できない文字が含まれています';
-//     header('Location: diary.php');
-//     exit();
-// }
-
-// if (mb_strlen($diary) > 3500) {
-//     $_SESSION['diary_error'] = '3500文字以下で夢日記を入力してください';
-//     header('Location: diary.php');
-//     exit();
-// }
 
 
 // require_once __DIR__ . '/../classes/article_list.php';
