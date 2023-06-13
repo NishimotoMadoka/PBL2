@@ -32,7 +32,14 @@ $logout_php = $http_host . '/' . $id . '/login/logout.php';
 $signup_php = $http_host . '/' . $id . '/login/signup.php';
 $mypage_php = $http_host . '/' . $id . '/user/mypage.php';
 $post_php = $http_host . '/' . $id . '/article/post.php';
+
 $user_php = $http_host . '/' . $id . '/classes/user.php';
+
+$frame_css = $http_host . '/' . $id . '/css/frame.css';
+
+
+$logo_img = $http_host . '/' . $id . '/img/logo.png';
+
 
 
 

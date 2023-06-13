@@ -1,29 +1,42 @@
 <?php
-    require_once __DIR__.'/pre.php';
+require_once __DIR__ . '/pre.php';
+$url = $_SERVER['REQUEST_URI'];
+if (($name == "no_login" && !strstr($url, 'login.php')) && ($name == "no_login" && !strstr($url, 'signup.php'))) {
+  header("Location:$login_php");
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="<?=$home_css?>">
-        <title>FACT(仮)</title>
-    </head>
 
-    <body>
-        <header>
-                <h1><a href="<?= $toppage_php?>">FACT(仮)</a></h1>
-                <nav>
-                    <ul>
-                        <li><a href="<?= $logout_php?>">ログアウト</a></li>
-                        <li><a href="<?= $post_php?>">夢日記</a></li>
-                        <?php
-                //セッションuser_idの有無で表示を変える
-                    if(isset($_SESSION['user_id'])){echo"<li><a class='a_header' href=".$logout_php.">ログアウト</a></li><li><a class='a_header' href=".$plof_php.">プロフィール</a></li>";}
-                        else{echo"<li><a class='a_header' href=".$login_php.">ログイン</a></li>";}
-                ?> 
-                    </ul>
-                </nav>
-        </header>
-    
-    </body>
-</html> 
+<head>
+  <meta charset="UTF-8">
+  <title>FACT</title>
+  <link rel="stylesheet" href="<?= $frame_css ?>">
+</head>
+
+<body>
+  <!-- header部分 -->
+  <header>
+    <div class="top-info">
+      <a href="<?= $index_php ?>">
+        <div class="logo_img"><img src=<?php echo $logo_img ?> alt="FACT"></div>
+      </a>
+    </div>
+    <nav>
+      <ul class="nav-list">
+        <li class="nav-list-item">
+          <?php
+          if ($name == "no_login") {
+            echo '<li class="nav-list-item"><a class="fa-solid fa-user-plus" href="' . $sign_php . '"> 新規登録</a></li>';
+            echo '<li class="nav-list-item"><a class="fa-solid fa-right-to-bracket" href="' . $login_php . '"> ログイン</a></li>';
+          } else {
+            echo '<li class="nav-list-item"><a class="fa-solid fa-address-card" href="' . $mypage_php . '"> マイページ</a></li>';
+            echo '<li class="nav-list-item"><a class="fa-solid fa-pen" href="' . $post_php . '"> 投稿</a></li>';
+            echo '<li class="nav-list-item"><a class="fa-solid fa-right-from-bracket" href="' . $logout_php . '"> ログアウト</a></li>';
+          }
+          ?>
+        </li>
+      </ul>
+    </nav>
+  </header>
