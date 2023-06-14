@@ -23,10 +23,6 @@ if (isset($_SESSION['diary_error'])) {
         <label class="label_left" for="num1">夢日記</label>
         <textarea class="form-text1" id="" name="diary" placeholder="本夢日記本文" maxlength="3500" required></textarea>
     </div>
-    <!-- 時間とか投稿する方に移植する -->
-    <div class="image_select">
-        今日の画像：<input type="file" name="up_image" accept="image/*">
-    </div>
     <div class="item">
         <input type="submit" value="送信" class="button"><input type="reset" value="リセット" class="button">
     </div>

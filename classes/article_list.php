@@ -3,11 +3,24 @@ require_once __DIR__ . '/dbdata.php';
 
 class Article extends DbData
 {
-    // 投稿登録
-    public function insertArticle($user_id, $title, $diary, $date_time,$article_image)
+    // 日記投稿
+    public function insertDiary($user_id, $title, $diary, $diary_date)
     {
-        $sql = "insert into article_list(user_id,title,diary,date_time,article_image) values(?,?,?,?,?)";
-        $result = $this->exec($sql, [$user_id, $title, $diary, $date_time,$article_image]);
+        $sql = "insert into diary_list(user_id,title,diary,diary_date) values(?,?,?,?)";
+        $result = $this->exec($sql, [$user_id, $title, $diary, $diary_date]);
+
+        if ($result) {
+            return '';
+        } else {
+            // 何らかの原因で失敗した場合 
+            return '投稿できませんでした。管理者にお問い合わせください。';
+        }
+    }
+    // 生活時間投稿
+    public function insertArticle($user_id, $start_time, $end_time, $item_name,$post_date,$article_image)
+    {
+        $sql = "insert into article_list(user_id,start_time,end_time,item_name,post_date,article_image) values(?,?,?,?,?,?)";
+        $result = $this->exec($sql, [$user_id, $start_time, $end_time, $item_name,$post_date,$article_image]);
 
         if ($result) {
             return '';
@@ -17,7 +30,15 @@ class Article extends DbData
         }
     }
 
-    //  toppagenoyatu  tabunnerrorderu youhennkou!!
+    public function getArticle($get_user_id,$post_date){
+        $sql = "select * from article_list join users on article_list.user_id = users.user_id where article_list.user_id = ? and article_list.post_date = ?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$get_user_id,$post_date]);
+        $life_article = $stmt->fetchAll();
+        return $life_article;
+    }
+
+    //  友達の投稿を取ってくるやつ
     public  function  friendsArticles($friend_user_id)
     {
         $sql = "select * from article_list join users on article_list.user_id = users.user_id where article_list.user_id = ? order by article_list.article_id desc";

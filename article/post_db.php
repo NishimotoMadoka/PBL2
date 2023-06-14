@@ -8,7 +8,7 @@ if(!isset($_SESSION)){
 $user_id = $_SESSION['user_id'];
 $mail_num=$_SESSION['mail_num'];
 // 日付
-$date=$_POST['date'];
+$post_date=$_POST['date'];
 // 時間と項目名の受け取り、連結
 $item_name="";
 $start_time="";
@@ -59,21 +59,21 @@ move_uploaded_file($_FILES['up_image']['tmp_name'], '../article_image/' . $artic
 
 
 
-// require_once __DIR__ . '/../classes/article_list.php';
+require_once __DIR__ . '/../classes/article_list.php';
 
-// $article = new Article();
-// $result = $article->insertArticle($user_id, $title, $diary, $date_time,$article_image);
+$article = new Article();
+$result = $article->insertArticle($user_id, $start_time, $end_time, $item_name,$post_date,$article_image);
 
 
-// if ($result !== '') {
-//     $_SESSION['diary_error'] = $result;
-//     header('Location: diary.php');
-//     exit();
-// }
+if ($result !== '') {
+    $_SESSION['post_error'] = $result;
+    header('Location: post.php');
+    exit();
+}
 
 
 // $_SESSION['title'] = $title;
 // $_SESSION['diary'] = $diary;
 
-// header('Location:' . $toppage_php);
-// // require_once __DIR__ . '/../footer.php';
+header('Location:' . $toppage_php);
+require_once __DIR__ . '/../footer.php';

@@ -9,10 +9,10 @@ header h1 {
     padding: 10px 0;
     margin: 0 auto;
     position: relative;
-    background-color: rgb(7, 102, 102);
+    background-color: rgb(128, 203, 28);
   }
   
-  .top-info {
+  .heater-top {
     width: fit-content
   }
   
@@ -20,18 +20,8 @@ header h1 {
     width: 250px;
     height: 45px;
   }
-  
-  .icon {
-    width: 60px;
-    height: 60px;
-    margin: 0px 25px 0px 0px;
-    object-fit: cover;
-    background-color: white;
-    border-radius: 100%;
-    vertical-align: middle;
-  }
-  
-  .top-info a {
+
+  .heater-top a {
     background-size: cover;
     background-position: center;
   }
@@ -40,7 +30,7 @@ header h1 {
     margin-left: 15px;
   }
   
-  .nav-list {
+  .heater-link {
     text-align: center;
     padding: 10px 0;
     margin: 0 auto;
@@ -49,32 +39,15 @@ header h1 {
     right: 22px;
   }
   
-  .nav-list-item {
+  .heater-link-item {
     list-style: none;
     display: inline-block;
     margin: 0 10px;
   }
   
-  .nav-list-item a {
+  .heater-link-item a {
     color: #ffffff;
     text-decoration: none;
-  }
-  
-  .search {
-    width: 100%;
-    display: flex;
-  }
-  
-  .search_text {
-    width: 400px;
-    height: 40px;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  .search_submit {
-    width: 40px;
-    border-radius: 5px;
   }
   
   footer {
