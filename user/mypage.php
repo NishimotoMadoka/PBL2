@@ -2,3 +2,109 @@
 require_once __DIR__ . '/../pre.php';
 require_once __DIR__ . '/../header.php';
 require_once __DIR__ . '/../footer.php';
+
+// Postクラス、Userクラス
+require_once __DIR__ . '/../classes/article_list.php';
+require_once __DIR__ . '/../classes/user.php';
+if (isset($_GET['user_id'])) {
+  $user_show_id = $_GET['user_id'];
+} else {
+  $user_show_id = $_SESSION['user_id'];
+}
+
+$article = new Article();
+$user = new User();
+
+
+// ユーザー情報、投稿の抽出
+$user_plofile = $user->detailsUser($user_show_id);
+$user_articles = $article->userArticles($user_show_id);
+
+?>
+
+<head>
+  <link rel="stylesheet" href="<?= $userpage_css ?>">
+
+</head>
+<main>
+  <div class="icon">
+    <?php
+    if ($user_plofile['icon'] != "") {
+    ?>
+      <img class="user-icon" src="../icon_image/<?= $user_plofile['icon'] ?>" alt="">
+    <?php
+    } else {
+    ?>
+      <img class="user-icon" src="../icon_image/default.png" alt="">
+    <?php
+    }
+    ?>
+    <div class="icon-update">
+      <a href="../login/icon_update.php">
+        <input type="submit" value="アイコン変更" class="icon_button">
+      </a>
+    </div>
+  </div>
+  <!-- ユーザー情報 -->
+  <div class="profile" align="center">
+
+    <h3>プロフィール</h3>
+    <div>
+      <dl class="inline">
+        <dt>名前</dt>
+        <dd><?= $user_plofile['name'] ?></dd>
+        <dt>メールアドレス</dt>
+        <dd>
+          <td><?= $user_plofile['mail'] ?>
+        </dd>
+        <dt>ひとこと</dt>
+        <dd><?= $user_plofile['profile_comment'] ?></dd>
+        <dt>フレンドコード</dt>
+        <dd><?= $user_plofile['friend_code'] ?></dd>
+
+      </dl>
+    </div>
+  </div>
+  <?php
+  if (!isset($_GET['user_id'])) {
+  ?>
+    <div class="update">
+      <a href="../login/update.php">
+        <input type="submit" value="パスワード変更" class="user_button">
+      </a>
+    </div>
+
+  <?php
+  }
+  ?>
+
+
+
+  <!-- 投稿記事 -->
+
+  <!-- <div class="index-style"> -->
+    <!-- <article class="article-style"> -->
+      <!-- <h1>投稿</h1> -->
+      <?php
+    //   foreach ($user_articles as $user_article) {
+      ?>
+        <!-- <a href=<?= $article_show_php ?>?article_id=<?= $userarticle['article_id'] ?>> -->
+          <!-- <article class="article-one"> -->
+            <!-- <p class="article-user"><object><a href=<?= $user_php ?>?user_id=<?= $user_article['user_id'] ?>><?= $user_article['name'] ?></a></object></p> -->
+            <!-- <h2 class="article-title"><object><a href=<?= $article_show_php ?>?article_id=<?= $user_article['article_id'] ?>><?= $user_article['title'] ?></a></object></h2> -->
+            <!-- <br> -->
+            <!-- <p class="article-date"><?= date('Y年m月d日', strtotime($userarticle['creation_date'])) ?></p> -->
+            <!-- <span class="heart">♥</span> -->
+            <!-- <span class="article-like"><?= $userarticle['like_count'] ?></span> -->
+          <!-- </article> -->
+        <!-- </a> -->
+      <?php
+    //   }
+      ?>
+    <!-- </article> -->
+  <!-- </div> -->
+<!-- </main> -->
+
+<?php
+require_once __DIR__ . '/../footer.php';
+?>

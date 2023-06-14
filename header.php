@@ -18,22 +18,22 @@ if (($name == "no_login" && !strstr($url, 'login.php')) && ($name == "no_login" 
 <body>
   <!-- header部分 -->
   <header>
-    <div class="header-top">
-      <a href="<?= $toppage_php ?>">
+  <div class="top-info">
+      <a href="<?= $index_php ?>">
         <div class="logo_img"><img src=<?php echo $logo_img ?> alt="FACT"></div>
       </a>
     </div>
     <nav>
-      <ul class="header-link">
-        <li class="header-link-item">
+      <ul class="nav-list">
+        <li class="nav-list-item">
           <?php
           if ($name == "no_login") {
-            echo '<li class="header-link-item"><a class="fa-solid fa-user-plus" href="' . $sign_php . '"> 新規登録</a></li>';
-            echo '<li class="header-link-item"><a class="fa-solid fa-right-to-bracket" href="' . $login_php . '"> ログイン</a></li>';
+            echo '<li class="nav-list-item"><a class="fa-solid fa-user-plus" href="' . $signup_php . '"> 新規登録</a></li>';
+            echo '<li class="nav-list-item"><a class="fa-solid fa-right-to-bracket" href="' . $login_php . '"> ログイン</a></li>';
           } else {
-            echo '<li class="header-link-item"><a class="fa-solid fa-address-card" href="' . $mypage_php . '"> マイページ</a></li>';
-            echo '<li class="header-link-item"><a class="fa-solid fa-pen" href="' . $post_php . '"> 投稿</a></li>';
-            echo '<li class="header-link-item"><a class="fa-solid fa-right-from-bracket" href="' . $logout_php . '"> ログアウト</a></li>';
+            echo '<li class="nav-list-item"><a class="fa-solid fa-address-card" href="' . $mypage_php . '"> マイページ</a></li>';
+            echo '<li class="nav-list-item"><a class="fa-solid fa-pen" href="' . $post_php . '"> 記事・作品</a></li>';
+            echo '<li class="nav-list-item"><a class="fa-solid fa-right-from-bracket" href="' . $logout_php . '"> ログアウト</a></li>';
           }
           ?>
         </li>

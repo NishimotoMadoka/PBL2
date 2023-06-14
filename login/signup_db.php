@@ -71,11 +71,11 @@ $_SESSION['mail_num']=$mail_num;
 setcookie("user_id", $result['user_id'],time()+60*60*24*14,'/');
 setcookie("name", $name, time() + 60 * 60 * 24 * 14, '/');
 
-// require_once __DIR__ . '/../header.php';
+require_once __DIR__ . '/../header.php';
 ?>
 
 <?php
 require_once __DIR__.'/../pre.php';
-header('Location:'.$post_php);
-// require_once __DIR__ . '/../footer.php';
+header('Location:'.$toppage_php);
+require_once __DIR__ . '/../footer.php';
 ?>

@@ -68,10 +68,10 @@ class User extends DbData
     }
 
     #他ユーザーの情報取得($i→取得したいユーザーのユーザーIDが入ってる変数に変えてね)
-    public function detailsUser($i)
+    public function detailsUser($user_show_id)
     {
         $sql = "select * from users where user_id=?";
-        $userdetail = $this->query($sql, [$i]);
+        $userdetail = $this->query($sql, [$user_show_id]);
         return $userdetail->fetch();
     }
 

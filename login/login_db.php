@@ -33,13 +33,12 @@ $_SESSION['mail_num']=$mail_num;
 setcookie("name", $name, time() + 60 * 60 * 24 * 14, '/');
 setcookie("user_id", $user_id, time() + 60 * 60 * 24 * 14, '/');
 
-// へっだー
-// require_once __DIR__ . '/../header.php';
+require_once __DIR__ . '/../header.php';
 
 ?>
 
 <?php
 header('Location:' . $toppage_php);
-// ふったー
-// require_once __DIR__ . '/../footer.php';
+
+require_once __DIR__ . '/../footer.php';
 ?>
