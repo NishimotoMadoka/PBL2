@@ -4,9 +4,9 @@ window.onload = function () {
     new Chart(context, {
       type: 'doughnut',
       data: {
-        labels: ["サーモン", "ハマチ", "マグロ", "サバ", "エンガワ"],
+        labels: Label[0],
         datasets: [{
-          data: [60, 20, 15, 10, 5]
+          data: Time[0]
         }]
       },
       options: {
@@ -15,10 +15,11 @@ window.onload = function () {
     });
   }
 
+//データ受け取り
 function post_LabelAndTime(){
   let Time = [];//グラフに反映する
   let Label = [];//
 
   Time.push(document.getElementById("input_time").value);
-  document.getElementById("outoput_test").innerHTML = Time;
+  Label.push(document.getElementById("input_label").value);
 }
