@@ -1,0 +1,4 @@
+DB:pbl2
+ユーザー名：PBL2
+ホスト名：localhost
+パスワード：kobepbl2-f
