@@ -11,7 +11,7 @@ setcookie('name', '', time() -  60 * 60 * 24 * 14, '/');
 setcookie('user_id', '', time() -  60 * 60 * 24 * 14, '/');
 
 header("Location:" . $login_php);
-<?php
+// <?php
 require_once __DIR__ . '/../header.php';
 require_once __DIR__ . '/../pre.php';
 
@@ -25,3 +25,4 @@ setcookie('name', '', time() -  60 * 60 * 24 * 14, '/');
 setcookie('user_id', '', time() -  60 * 60 * 24 * 14, '/');
 
 header("Location:" . $login_php);
+?>
