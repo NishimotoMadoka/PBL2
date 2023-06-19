@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>doughnut and pie chart</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
+    <script src="js/circle.js"></script>
+  </head>
+  <body>
+    
+  </div>
+
+    <section>
+        <form id="form1" action="#">
+          <input type="text" id="input_label"><br>
+          <input type="text" id="input_time"><br>
+          <input type="submit" onclick="post_LabelAndTime()" value="ここをクリック（変更予定">
+        </form>
+
+        <label id="output_test"></label>
+    </section>
+
+    <section>
+        <div style="width:100%">
+            <canvas id="canvas"></canvas>
+          </div>
+          
+          <!-- グラフ更新ボタン -->
+          <button type="button" id="btn">グラフを更新</button>
+    </section>
+
+  </body>
+</html>
