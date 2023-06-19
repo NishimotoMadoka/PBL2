@@ -32,10 +32,10 @@ class User extends DbData
     }
 
     #ユーザー情報更新処理($a→新しいパスワードの変数名に変更してね)
-    public function updateUser($a,$mail)
+    public function updateUser($name,$mail,$profile_comment,$password,$user_id)
     {
-        $sql = "update users set password=? where mail=?";
-        $result = $this->exec($sql, [ $a,$mail]);
+        $sql = "update users set name=?,mail=?,profile_comment=?,password=? where user_id=?";
+        $result = $this->exec($sql, [$name,$mail,$profile_comment,$password,$user_id]);
         if($result){
             return'';
         }else{
@@ -53,11 +53,18 @@ class User extends DbData
         }
     }
 
+    public function getUserinfo($user_show_id, $password)
+    {
+        $sql = "select * from users where user_id=? and password=?";
+        $stmt = $this->query($sql, [$user_show_id, $password]);
+        return $stmt->fetch();
+    }
+
     #パスワード認証(ユーザー情報変更のページで使えるかな？？)
-    public function authPassword($password,$userid)
+    public function authPassword($password,$user_id)
     {
         $sql = "select password from users where password=? and user_id=?";
-        $stmt = $this->query($sql, [$password,$userid]);
+        $stmt = $this->query($sql, [$password,$user_id]);
         $result=$stmt->fetch();
 
         if($result){

@@ -27,7 +27,7 @@ $_SESSION['password'] = $result['password'];
 $_SESSION['mail'] = $mail;
 $mail_num=strstr($mail,'@',true);
 $_SESSION['mail_num']=$mail_num;
-// $_SESSION['profile_comment']=$profile_comment;
+$_SESSION['profile_comment']=$profile_comment;
 
 // クッキー設定後で変更したい
 setcookie("name", $name, time() + 60 * 60 * 24 * 14, '/');

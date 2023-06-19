@@ -49,7 +49,7 @@ class Article extends DbData
     }
     // 投稿を取ってくるやつ　変更するかも
     public function selectArticle($user_id,$title, $diary,$date_time){
-        $sql = "select * from article_list where userid=? and title=? and diary=? and date_time=?";
+        $sql = "select * from article_list where user_id=? and title=? and diary=? and date_time=?";
         $stmt = $this->query($sql, [$user_id,$title, $diary,$date_time]);
         return $stmt->fetch();
     }

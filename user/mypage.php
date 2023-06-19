@@ -40,7 +40,7 @@ $user_articles = $article->userArticles($user_show_id);
     }
     ?>
     <div class="icon-update">
-      <a href="../login/icon_update.php">
+      <a href="./icon_update.php">
         <input type="submit" value="アイコン変更" class="icon_button">
       </a>
     </div>
@@ -69,8 +69,8 @@ $user_articles = $article->userArticles($user_show_id);
   if (!isset($_GET['user_id'])) {
   ?>
     <div class="update">
-      <a href="../login/update.php">
-        <input type="submit" value="パスワード変更" class="user_button">
+      <a href="update.php">
+        <input type="submit" value="プロフィール編集" class="user_button">
       </a>
     </div>
 
