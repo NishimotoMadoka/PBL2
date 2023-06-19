@@ -14,26 +14,28 @@ $icon_name=$mail_num.$icon;
 // $icon_image_path="C:\xampp\htdocs\pbl2\icon_image";
 move_uploaded_file($_FILES['icon']['tmp_name'], '../icon_image/' . $icon_name);
 
+if(!isset($_SESSION)){
+    session_start();
+}
 
-session_start();
 
 // 名前2文字制限設ける？？
 if (mb_strlen($name) >= 21) {
     $_SESSION['signup_error'] = '名前は20文字以下で入力してください。';
-    header('Location: register.php');
+    header('Location: signup.php');
     exit();
 }
 // メールアドレスチェック　文字制限設ける？？
  if (!filter_var($mail, FILTER_VALIDATE_EMAIL) || mb_strlen($mail) >= 51 ) {
     $_SESSION['signup_error'] = '正しいメールアドレスを入力してください。';
-    header('Location: register.php');
+    header('Location: signup.php');
     exit();
 }
 
 // パスワード文字制限設ける？？
 if(mb_strlen($password)>=41 || mb_strlen($password)<=4){
     $_SESSION['signup_error']='パスワードは5文字以上40文字以下で入力してください。';
-    header('Location: register.php');
+    header('Location: signup.php');
     exit();
 }
 
@@ -59,6 +61,7 @@ $_SESSION['name'] = $name;
 $_SESSION['mail'] = $mail;
 $_SESSION['profile_comment']=$profile_comment;
 $_SESSION['friend_code']=$friend_code;
+$_SESSION['mail_num']=$mail_num;
 // sessionにパスワードいれる？？
 // $_SESSION['password']=$password;
 
@@ -68,12 +71,11 @@ $_SESSION['friend_code']=$friend_code;
 setcookie("user_id", $result['user_id'],time()+60*60*24*14,'/');
 setcookie("name", $name, time() + 60 * 60 * 24 * 14, '/');
 
-// require_once __DIR__ . '/../header.php';
+require_once __DIR__ . '/../header.php';
 ?>
 
 <?php
-require_once __DIR__ . '/../pre.php';
-header('Location:' . $toppage_php);
-// require_once __DIR__ . '/../footer.php';
+require_once __DIR__.'/../pre.php';
+header('Location:'.$toppage_php);
+require_once __DIR__ . '/../footer.php';
 ?>
-

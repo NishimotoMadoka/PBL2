@@ -3,11 +3,24 @@ require_once __DIR__ . '/dbdata.php';
 
 class Article extends DbData
 {
-    // 投稿登録
-    public function insertArticle($user_id, $title, $diary, $date_time,$article_image)
+    // 日記投稿
+    public function insertDiary($user_id, $title, $diary, $diary_date)
     {
-        $sql = "insert into article_list(user_id,title,diary,date_time,article_image) values(?,?,?,?,?)";
-        $result = $this->exec($sql, [$user_id, $title, $diary, $date_time,$article_image]);
+        $sql = "insert into diary_list(user_id,title,diary,diary_date) values(?,?,?,?)";
+        $result = $this->exec($sql, [$user_id, $title, $diary, $diary_date]);
+
+        if ($result) {
+            return '';
+        } else {
+            // 何らかの原因で失敗した場合 
+            return '投稿できませんでした。管理者にお問い合わせください。';
+        }
+    }
+    // 生活時間投稿
+    public function insertArticle($user_id, $start_time, $end_time, $item_name,$post_date,$article_image)
+    {
+        $sql = "insert into article_list(user_id,start_time,end_time,item_name,post_date,article_image) values(?,?,?,?,?,?)";
+        $result = $this->exec($sql, [$user_id, $start_time, $end_time, $item_name,$post_date,$article_image]);
 
         if ($result) {
             return '';
