@@ -1,6 +1,6 @@
 //ここからsample2
 
-var Time = [];//グラフの時刻
+var Time = [4, 15, 6, 3, 18, 19, 11, 9, 18, 7, 4, 8];//グラフの時刻
 let Label = [];//項目名
 
 //円グラフ表示
@@ -9,7 +9,7 @@ window.onload = function () {
     new Chart(context, {
       type: 'doughnut',
       data: {
-        labels: Label,
+        labels: ['January','February','March','April','May','June','July','August','September','October','November','December'],
         datasets: [{
           data: Time
         }]
@@ -34,9 +34,9 @@ function drawChart(){
     type: 'bar',
     data://ラベルと値
      {
-        labels: Label,//ここにラベル
+        labels: Label[1],//ここにラベル
         datasets: [{
-          Time
+          Time:[1]
         }],
     },
     options:{
@@ -45,4 +45,26 @@ function drawChart(){
       }
     }
   });
+}
+
+var chartVal = []; // グラフデータ（描画するデータ）
+
+function getRandom() {
+  chartVal = []; // グラフデータを初期化
+  var length = 12;
+  for (i = 0; i < length; i++) {
+    chartVal.push(Math.floor(Math.random() * 20));
+  }
+}
+
+
+// ボタンをクリックしたら、グラフを再描画
+document.getElementById('btn').onclick = function() {
+  // すでにグラフ（インスタンス）が生成されている場合は、グラフを破棄する
+  if (myChart) {
+    myChart.destroy();
+  }
+  getRandom();
+  // グラフデータに値を格納
+  drawChart(); // グラフを再描画
 }
