@@ -29,24 +29,7 @@ $user_plofile = $user->detailsUser($user_show_id);
     }
 ?>
 <body>
-    <div class="form-wrapper">
-     <h1>ログイン</h1>
-     <form method="post" action="./update_db.php">
-       <div class="form-item">
-         <label for="name"></label>
-         <input type="text" name="mail" required="required" placeholder="メールアドレス"></input>
-       </div>
-       <div class="form-item">
-         <label for="password"></label>
-         <input type="password" name="password" placeholder="パスワード"></input>
-       </div>
-       <div class="button-panel">
-         <input type="submit" class="button" title="Login" value="Login"></input>
-       </div>
-     </form>
-    </div>
-    </body>
-<!-- <div class="profile" align="center">
+<div class="profile" align="center">
 <form method="POST" action="<?=$update_db_php?>">
   <h3>プロフィール</h3>
   <div>
@@ -76,5 +59,6 @@ $user_plofile = $user->detailsUser($user_show_id);
     <a href="./plofile.php">ユーザー詳細へ戻る</a>
   </div>
 </form>
-</div> -->
+</div>
+</body>
 </html>

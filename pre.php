@@ -30,11 +30,12 @@ $toppage_php = $http_host . '/' . $id . '/top/toppage.php';
 $login_php = $http_host . '/' . $id . '/login/login.php';
 $logout_php = $http_host . '/' . $id . '/login/logout.php';
 $signup_php = $http_host . '/' . $id . '/login/signup.php';
-$mypage_php = $http_host . '/' . $id . '/user/plofile.php';
+$mypage_php = $http_host . '/' . $id . '/user/mypage.php';
 $post_php = $http_host . '/' . $id . '/article/post.php';
 $diary_php = $http_host . '/' . $id . '/article/diary.php';
 $update_db_php=$http_host . '/' . $id . '/user/update_db.php';
-
+$update_php=$http_host . '/' . $id . '/user/update.php';
+$friend_register_php=$http_host . '/' . $id . '/friend/friend_register.php';
 $user_php = $http_host . '/' . $id . '/classes/user.php';
 
 $frame_css = $http_host . '/' . $id . '/css/frame.css';

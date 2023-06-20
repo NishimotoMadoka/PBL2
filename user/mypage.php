@@ -1,15 +1,14 @@
 <?php
 require_once __DIR__ . '/../pre.php';
 require_once __DIR__ . '/../header.php';
-require_once __DIR__ . '/../footer.php';
 
 // Postクラス、Userクラス
 require_once __DIR__ . '/../classes/article_list.php';
 require_once __DIR__ . '/../classes/user.php';
 if (isset($_GET['user_id'])) {
-  $user_show_id = $_GET['user_id'];
+  $user_id = $_GET['user_id'];
 } else {
-  $user_show_id = $_SESSION['user_id'];
+  $user_id = $_SESSION['user_id'];
 }
 
 $article = new Article();
@@ -17,8 +16,8 @@ $user = new User();
 
 
 // ユーザー情報、投稿の抽出
-$user_plofile = $user->detailsUser($user_show_id);
-$user_articles = $article->userArticles($user_show_id);
+$user_plofile = $user->detailsUser($user_id);
+$user_articles = $article->userArticles($user_id);
 
 ?>
 
@@ -69,8 +68,14 @@ $user_articles = $article->userArticles($user_show_id);
   if (!isset($_GET['user_id'])) {
   ?>
     <div class="update">
-      <a href="update.php">
+      <a href="<?=$update_php?>">
         <input type="submit" value="プロフィール編集" class="user_button">
+      </a>
+    </div>
+
+    <div class="friend">
+      <a href="<?=$friend_register_php?>">
+        <input type="submit" value="フレンド登録" class="user_button">
       </a>
     </div>
 
@@ -82,28 +87,28 @@ $user_articles = $article->userArticles($user_show_id);
 
   <!-- 投稿記事 -->
 
-  <!-- <div class="index-style"> -->
-    <!-- <article class="article-style"> -->
-      <!-- <h1>投稿</h1> -->
+  <div class="index-style">
+   <article class="article-style">
+   <h1>投稿</h1>
       <?php
-    //   foreach ($user_articles as $user_article) {
+      foreach ($user_articles as $user_article) {
       ?>
-        <!-- <a href=<?= $article_show_php ?>?article_id=<?= $userarticle['article_id'] ?>> -->
-          <!-- <article class="article-one"> -->
-            <!-- <p class="article-user"><object><a href=<?= $user_php ?>?user_id=<?= $user_article['user_id'] ?>><?= $user_article['name'] ?></a></object></p> -->
-            <!-- <h2 class="article-title"><object><a href=<?= $article_show_php ?>?article_id=<?= $user_article['article_id'] ?>><?= $user_article['title'] ?></a></object></h2> -->
-            <!-- <br> -->
-            <!-- <p class="article-date"><?= date('Y年m月d日', strtotime($userarticle['creation_date'])) ?></p> -->
-            <!-- <span class="heart">♥</span> -->
-            <!-- <span class="article-like"><?= $userarticle['like_count'] ?></span> -->
-          <!-- </article> -->
-        <!-- </a> -->
+        <a href=<?= $article_show_php ?>?article_id=<?= $userarticle['article_id'] ?>>
+          <article class="article-one">
+            <p class="article-user"><object><a href=<?= $user_php ?>?user_id=<?= $user_article['user_id'] ?>><?= $user_article['name'] ?></a></object></p>
+            <h2 class="article-title"><object><a href=<?= $article_show_php ?>?article_id=<?= $user_article['article_id'] ?>><?= $user_article['title'] ?></a></object></h2>
+            <br>
+            <p class="article-date"><?= date('Y年m月d日', strtotime($userarticle['diary_date'])) ?></p>
+            <span class="heart">♥</span>
+            <span class="article-like"><?= $userarticle['like_count'] ?></span>
+          </article>
+        </a>
       <?php
-    //   }
+      }
       ?>
-    <!-- </article> -->
-  <!-- </div> -->
-<!-- </main> -->
+    </article>
+  </div>
+</main>
 
 <?php
 require_once __DIR__ . '/../footer.php';

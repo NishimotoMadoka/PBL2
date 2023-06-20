@@ -37,15 +37,15 @@ class User extends DbData
         $sql = "update users set name=?,mail=?,profile_comment=?,password=? where user_id=?";
         $result = $this->exec($sql, [$name,$mail,$profile_comment,$password,$user_id]);
         if($result){
-            return'';
+            return'更新しました。';
         }else{
             return'更新できませんでした。管理者にお問い合わせください。';
         }
     }
-    public function Icon_update($icon,$mail)
+    public function Icon_update($icon_name,$user_id)
     {
-        $sql = "update users set icon=? where mail=?";
-        $result = $this->exec($sql, [ $icon,$mail]);
+        $sql = "update users set icon=? where user_id=?";
+        $result = $this->exec($sql, [ $icon_name,$user_id]);
         if($result){
             return'';
         }else{
@@ -53,10 +53,10 @@ class User extends DbData
         }
     }
 
-    public function getUserinfo($user_show_id, $password)
+    public function getUserinfo($user_id, $password)
     {
         $sql = "select * from users where user_id=? and password=?";
-        $stmt = $this->query($sql, [$user_show_id, $password]);
+        $stmt = $this->query($sql, [$user_id, $password]);
         return $stmt->fetch();
     }
 
@@ -75,10 +75,10 @@ class User extends DbData
     }
 
     #他ユーザーの情報取得($i→取得したいユーザーのユーザーIDが入ってる変数に変えてね)
-    public function detailsUser($user_show_id)
+    public function detailsUser($user_id)
     {
         $sql = "select * from users where user_id=?";
-        $userdetail = $this->query($sql, [$user_show_id]);
+        $userdetail = $this->query($sql, [$user_id]);
         return $userdetail->fetch();
     }
 
@@ -107,4 +107,6 @@ class User extends DbData
         $friend_list = $this->query($sql,[$user_id]);
         return $friend_list->fetchAll();
     }
+
+    
 }
