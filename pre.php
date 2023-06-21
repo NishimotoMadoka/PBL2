@@ -40,6 +40,7 @@ $user_php = $http_host . '/' . $id . '/classes/user.php';
 
 $frame_css = $http_host . '/' . $id . '/css/frame.css';
 $login_css = $http_host . '/' . $id . '/css/login.css';
+$anime_css = $http_host . '/' . $id . '/css/anime.css';
 
 
 $logo_img = $http_host . '/' . $id . '/img/logo2.png';

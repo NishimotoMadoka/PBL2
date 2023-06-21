@@ -4,13 +4,13 @@ header h1 {
   color: #333;
 }
 
-header {
+/* header {
   width: 100%;
   padding: 10px 0;
   margin: 0 auto;
   position: relative;
   background: linear-gradient(blue, pink);
-}
+} */
 
 .top-info {
   width: fit-content
