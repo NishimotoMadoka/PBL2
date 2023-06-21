@@ -38,24 +38,22 @@ require_once __DIR__ . '/../pre.php';
          <label for="name"></label>
          <input type="text" name="name" value="<?= $name ?>" required placeholder="名前"></input>
         </div>
-
         <div class="form-item">
          <label for="password"></label>
          <input type="email" name="mail" value="<?= $mail ?>" required placeholder="メールアドレス"></input>
         </div>
-
-
         <div class="form-item">
          <label for="password"></label>
          <input type="text" name="profile_comment"  value="<?= $profile_comment ?>" required placeholder="自己紹介"></input>
         </div>
-
-       
         <div class="form-item">
          <label for="password"></label>
          <input type="password" name="password" required="required" placeholder="パスワード"></input>
         </div>
-
+        <div class="form-item">
+         <label for="password_conf"></label>
+         <input type="password" name="password_conf" required="required" placeholder="もう一度入力してください"></input>
+        </div>
 
         <div class="button-panel">
          <input type="submit" class="button" title="Login" value="sign up"></input>

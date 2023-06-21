@@ -19,7 +19,7 @@ if (($name == "no_login" && !strstr($url, 'login.php')) && ($name == "no_login" 
   <!-- header部分 -->
   <header>
   <div class="top-info">
-      <a href="<?= $index_php ?>">
+      <a href="<?= $toppage_php ?>">
         <div class="logo_img"><img src=<?php echo $logo_img ?> alt="FACT"></div>
       </a>
     </div>

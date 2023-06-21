@@ -12,8 +12,8 @@ if (empty($name)) {
     $name = $_COOKIE['name'];
     $user_id = $_COOKIE['user_id'];
   } else {
-    $name = null;
-    $user_id = null;
+    $name = "no_login";
+    $user_id = "no_login";
     setcookie("name", $name, time() + 60 * 60 * 24 * 14, '/');
     setcookie("user_id", $user_id, time() + 60 * 60 * 24 * 14, '/');
   }
@@ -33,7 +33,9 @@ $signup_php = $http_host . '/' . $id . '/login/signup.php';
 $mypage_php = $http_host . '/' . $id . '/user/mypage.php';
 $post_php = $http_host . '/' . $id . '/article/post.php';
 $diary_php = $http_host . '/' . $id . '/article/diary.php';
-
+$update_db_php=$http_host . '/' . $id . '/user/update_db.php';
+$update_php=$http_host . '/' . $id . '/user/update.php';
+$friend_register_php=$http_host . '/' . $id . '/friend/friend_register.php';
 $user_php = $http_host . '/' . $id . '/classes/user.php';
 
 $frame_css = $http_host . '/' . $id . '/css/frame.css';

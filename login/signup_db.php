@@ -5,10 +5,17 @@ $name = $_POST['name'];
 $mail = $_POST['mail'];
 $profile_comment=$_POST['profile_comment'];
 $password = $_POST['password'];
+$password_conf=$_POST['password_conf'];
 $icon = $_FILES['icon']['name'];
 // メアドの@以前を切り出してアイコン名の前につけて保存
 $mail_num=strstr($mail,'@',true);
 $icon_name=$mail_num.$icon;
+
+if(strpos($password, $password_conf) !== 0){
+    $_SESSION['signup_error'] = 'パスワードが一致しません。';
+    header('Location: signup.php');
+    exit();
+}
 
 //画像を保存
 // $icon_image_path="C:\xampp\htdocs\pbl2\icon_image";

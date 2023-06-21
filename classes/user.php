@@ -32,20 +32,20 @@ class User extends DbData
     }
 
     #ユーザー情報更新処理($a→新しいパスワードの変数名に変更してね)
-    public function updateUser($a,$mail)
+    public function updateUser($name,$mail,$profile_comment,$password,$user_id)
     {
-        $sql = "update users set password=? where mail=?";
-        $result = $this->exec($sql, [ $a,$mail]);
+        $sql = "update users set name=?,mail=?,profile_comment=?,password=? where user_id=?";
+        $result = $this->exec($sql, [$name,$mail,$profile_comment,$password,$user_id]);
         if($result){
-            return'';
+            return'更新しました。';
         }else{
             return'更新できませんでした。管理者にお問い合わせください。';
         }
     }
-    public function Icon_update($icon,$mail)
+    public function Icon_update($icon_name,$user_id)
     {
-        $sql = "update users set icon=? where mail=?";
-        $result = $this->exec($sql, [ $icon,$mail]);
+        $sql = "update users set icon=? where user_id=?";
+        $result = $this->exec($sql, [ $icon_name,$user_id]);
         if($result){
             return'';
         }else{
@@ -53,11 +53,18 @@ class User extends DbData
         }
     }
 
+    public function getUserinfo($user_id, $password)
+    {
+        $sql = "select * from users where user_id=? and password=?";
+        $stmt = $this->query($sql, [$user_id, $password]);
+        return $stmt->fetch();
+    }
+
     #パスワード認証(ユーザー情報変更のページで使えるかな？？)
-    public function authPassword($password,$userid)
+    public function authPassword($password,$user_id)
     {
         $sql = "select password from users where password=? and user_id=?";
-        $stmt = $this->query($sql, [$password,$userid]);
+        $stmt = $this->query($sql, [$password,$user_id]);
         $result=$stmt->fetch();
 
         if($result){
@@ -68,10 +75,10 @@ class User extends DbData
     }
 
     #他ユーザーの情報取得($i→取得したいユーザーのユーザーIDが入ってる変数に変えてね)
-    public function detailsUser($user_show_id)
+    public function detailsUser($user_id)
     {
         $sql = "select * from users where user_id=?";
-        $userdetail = $this->query($sql, [$user_show_id]);
+        $userdetail = $this->query($sql, [$user_id]);
         return $userdetail->fetch();
     }
 
@@ -100,4 +107,6 @@ class User extends DbData
         $friend_list = $this->query($sql,[$user_id]);
         return $friend_list->fetchAll();
     }
+
+    
 }

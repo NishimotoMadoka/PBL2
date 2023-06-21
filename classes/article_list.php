@@ -49,7 +49,7 @@ class Article extends DbData
     }
     // 投稿を取ってくるやつ　変更するかも
     public function selectArticle($user_id,$title, $diary,$date_time){
-        $sql = "select * from article_list where userid=? and title=? and diary=? and date_time=?";
+        $sql = "select * from article_list where user_id=? and title=? and diary=? and date_time=?";
         $stmt = $this->query($sql, [$user_id,$title, $diary,$date_time]);
         return $stmt->fetch();
     }
@@ -57,10 +57,10 @@ class Article extends DbData
     // （例）$result['article_id']で投稿id
 
     // ユーザーの記事を取り出す(プロフィール画面でつかうかな？？)
-    public function userArticles($usersshow_id)
+    public function userArticles($user_id)
     {
         $sql = "select * from article_list join users on article_list.user_id = users.user_id where article_list.user_id = ? order by article_list.article_id desc";
-        $stmt = $this->query($sql, [$usersshow_id]);
+        $stmt = $this->query($sql, [$user_id]);
         $result = $stmt->fetchAll();
         return $result;
     }

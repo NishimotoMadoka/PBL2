@@ -12,7 +12,7 @@ require_once __DIR__ . '/../pre.php';
         echo '<p class="error_message">' . $_SESSION['login_error'] . '</p>';
         unset($_SESSION['login_error']);
     } else {
-        echo '<p class="user-form">ログインしてください。</p>';
+        // echo '<p class="user-form">ログインしてください。</p>';
     }
     ?>
     <body>
