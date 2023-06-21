@@ -17,7 +17,7 @@ if (isset($_SESSION['friend_register_error'])) {
                     <td><input type="text" name="friend_code" maxlength="9" required></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input type="submit" value="追加"></td>
+                    <td colspan="2"><input type="submit" value="追加" class="fbtn"></td>
                 </tr>
             </table>
         </form>
