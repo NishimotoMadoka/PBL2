@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../header.php';
 require_once __DIR__ . '/../pre.php';
 require_once __DIR__ . '/../classes/user.php';
 $user = new User();
@@ -19,6 +20,15 @@ function echo_friends(){
     foreach($friends as $item){
 
 ?>
-    <tr>
-        <td>
+    <tr> 
+        <td><img src="../icon_image/<?= $item['icon']?>"></td>
+        <td><?= $item['user_id']?></td>
+        <td><?= $item['name']?></td>
+        <td><?=$iteem['profile_comment']?></td>
+    </tr>
 
+
+
+<?php
+    }
+?>
