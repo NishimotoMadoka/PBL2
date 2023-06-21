@@ -43,6 +43,7 @@ $login_css = $http_host . '/' . $id . '/css/login.css';
 $post_css = $http_host . '/' . $id . '/css/post.css';
 $userpage_css = $http_host . '/' . $id . '/css/userpage.css';
 
+$anime_css = $http_host . '/' . $id . '/css/anime.css';
 
 
 $logo_img = $http_host . '/' . $id . '/img/logo2.png';
