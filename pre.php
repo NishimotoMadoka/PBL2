@@ -40,7 +40,7 @@ $frame_css = $http_host . '/' . $id . '/css/frame.css';
 $login_css = $http_host . '/' . $id . '/css/login.css';
 
 
-$logo_img = $http_host . '/' . $id . '/img/logo.png';
+$logo_img = $http_host . '/' . $id . '/img/logo2.png';
 
 
 
