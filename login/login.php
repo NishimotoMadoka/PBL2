@@ -1,4 +1,6 @@
 
+<link rel="stylesheet" href="<?=$login_css?>">
+
 <main>
     <?php
     if (isset($_SESSION['login_error'])) {
