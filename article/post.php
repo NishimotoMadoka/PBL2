@@ -29,11 +29,11 @@ if (isset($_SESSION['post_error'])) {
             </div>
             <div class="item">
                 <label class="label_left" for="number">開始時間</label>
-                <input class="form-text" type="time" step="300" name="start_time<?=$count?>" id="start_time" placeholder="開始時間"><br>
+                <input class="form-text" type="time" step="60" name="start_time<?=$count?>" id="start_time" placeholder="開始時間"><br>
             </div>
             <div class="item">
                 <label class="label_left" for="number">終了時間</label>
-                <input class="form-text" type="time" step="300" name="end_time<?=$count?>" id="end_time" placeholder="終了時間"><br>
+                <input class="form-text" type="time" step="60" name="end_time<?=$count?>" id="end_time" placeholder="終了時間"><br>
             </div>
     <?php
         }
