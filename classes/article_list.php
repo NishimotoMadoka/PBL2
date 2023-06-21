@@ -30,7 +30,15 @@ class Article extends DbData
         }
     }
 
-    //  toppagenoyatu  tabunnerrorderu youhennkou!!
+    public function getArticle($get_user_id,$post_date){
+        $sql = "select * from article_list join users on article_list.user_id = users.user_id where article_list.user_id = ? and article_list.post_date = ?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$get_user_id,$post_date]);
+        $life_article = $stmt->fetchAll();
+        return $life_article;
+    }
+
+    //  友達の投稿を取ってくるやつ
     public  function  friendsArticles($friend_user_id)
     {
         $sql = "select * from article_list join users on article_list.user_id = users.user_id where article_list.user_id = ? order by article_list.article_id desc";
