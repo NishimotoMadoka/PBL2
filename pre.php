@@ -36,12 +36,13 @@ $diary_php = $http_host . '/' . $id . '/article/diary.php';
 $update_db_php=$http_host . '/' . $id . '/user/update_db.php';
 $update_php=$http_host . '/' . $id . '/user/update.php';
 $friend_register_php=$http_host . '/' . $id . '/friend/friend_register.php';
+$friend_list_php=$http_host . '/' . $id . '/friend/friend_list.php';
 $user_php = $http_host . '/' . $id . '/classes/user.php';
 
 $frame_css = $http_host . '/' . $id . '/css/frame.css';
 $login_css = $http_host . '/' . $id . '/css/login.css';
 
-
+$default_icon=$http_host . '/' . $id . '/icon_image/default.jpg';
 $logo_img = $http_host . '/' . $id . '/img/logo2.png';
 
 

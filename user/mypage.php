@@ -34,7 +34,7 @@ $user_articles = $article->userArticles($user_id);
     <?php
     } else {
     ?>
-      <img class="user-icon" src="../icon_image/default.png" alt="">
+      <img class="user-icon" src="<?=$default_icon?>" alt="">
     <?php
     }
     ?>
@@ -76,6 +76,12 @@ $user_articles = $article->userArticles($user_id);
     <div class="friend">
       <a href="<?=$friend_register_php?>">
         <input type="submit" value="フレンド登録" class="user_button">
+      </a>
+    </div>
+
+    <div class="friend_list">
+      <a href="<?=$friend_list_php?>">
+        <input type="submit" value="フレンドリスト" class="user_button">
       </a>
     </div>
 
