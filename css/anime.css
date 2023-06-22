@@ -1,0 +1,21 @@
+header {
+    width: 100%;
+    padding: 10px 0;
+    margin: 0 auto;
+    position: relative;
+    background: linear-gradient(45deg,#fffb11, #e356ff);
+    background-size: 200% 200%;
+    animation: bggradient 15s ease infinite;
+  }
+
+  @keyframes bggradient{
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+  }

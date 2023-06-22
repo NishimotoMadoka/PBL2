@@ -26,6 +26,7 @@ $user_articles = $article->userArticles($user_id);
 
 </head>
 <main>
+ <div class="form-wrapper">
   <div class="icon">
     <?php
     if ($user_plofile['icon'] != "") {
@@ -50,32 +51,31 @@ $user_articles = $article->userArticles($user_id);
     <h3>プロフィール</h3>
     <div>
       <dl class="inline">
-        <dt>名前</dt>
-        <dd><?= $user_plofile['name'] ?></dd>
-        <dt>メールアドレス</dt>
-        <dd>
-          <td><?= $user_plofile['mail'] ?>
-        </dd>
-        <dt>ひとこと</dt>
-        <dd><?= $user_plofile['profile_comment'] ?></dd>
-        <dt>フレンドコード</dt>
-        <dd><?= $user_plofile['friend_code'] ?></dd>
-
+      <div class="form-item">
+        名前 ： <?= $user_plofile['name'] ?><br>
+        メールアドレス ： <?= $user_plofile['mail'] ?><br>
+        ひとこと : <?= $user_plofile['profile_comment'] ?></br>
+        フレンドコード : <?= $user_plofile['friend_code'] ?>
+        
       </dl>
     </div>
   </div>
+
+
   <?php
   if (!isset($_GET['user_id'])) {
   ?>
     <div class="update">
+    <div class="button-panel">
       <a href="<?=$update_php?>">
-        <input type="submit" value="プロフィール編集" class="user_button">
+        <input type="submit" value="プロフィール編集" class="button">
       </a>
     </div>
 
     <div class="friend">
+    <div class="button-panel">
       <a href="<?=$friend_register_php?>">
-        <input type="submit" value="フレンド登録" class="user_button">
+        <input type="submit" value="フレンド登録" class="button">
       </a>
     </div>
 
@@ -88,6 +88,10 @@ $user_articles = $article->userArticles($user_id);
   <?php
   }
   ?>
+
+</div>
+</div>
+</div><!--form-wrapper-->
 
 
 

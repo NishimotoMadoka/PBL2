@@ -4,13 +4,13 @@ header h1 {
   color: #333;
 }
 
-header {
+/* header {
   width: 100%;
   padding: 10px 0;
   margin: 0 auto;
   position: relative;
-  background-color: #f5abab;
-}
+  background: linear-gradient(blue, pink);
+} */
 
 .top-info {
   width: fit-content
@@ -82,7 +82,7 @@ footer {
   height: 60px;
   text-align: center;
   line-height: 60px;
-  background-color: #eeb9b9;
+  background: linear-gradient(pink, blue);
   margin-top: 40px;
 }
 
