@@ -56,7 +56,7 @@ $user_articles = $article->userArticles($user_id);
         メールアドレス ： <?= $user_plofile['mail'] ?><br>
         ひとこと : <?= $user_plofile['profile_comment'] ?></br>
         フレンドコード : <?= $user_plofile['friend_code'] ?>
-
+        
       </dl>
     </div>
   </div>
