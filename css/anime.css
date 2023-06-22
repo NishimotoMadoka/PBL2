@@ -3,7 +3,7 @@ header {
     padding: 10px 0;
     margin: 0 auto;
     position: relative;
-    background: linear-gradient(45deg,#009dff, #ff8000);
+    background: linear-gradient(45deg,#fffb11, #e356ff);
     background-size: 200% 200%;
     animation: bggradient 15s ease infinite;
   }

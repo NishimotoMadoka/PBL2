@@ -13,7 +13,7 @@ if (($name == "no_login" && !strstr($url, 'login.php')) && ($name == "no_login" 
   <meta charset="UTF-8">
   <title>FACT</title>
   <link rel="stylesheet" href="<?= $frame_css ?>">
-  <link rel="stylesheet" href="<?= $anime_css ?>"
+  <link rel="stylesheet" href="<?= $anime_css ?>">
 </head>
 
 <body>
