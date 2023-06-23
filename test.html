@@ -18,19 +18,19 @@
 <button type="button" id="btn">グラフを更新</button>
 
 <script>
-  
+
   // ページ読み込み時にグラフを描画
   //getRandom(); // グラフデータにランダムな値を格納
   drawChart(); // グラフ描画処理を呼び出す
 
   // ボタンをクリックしたら、グラフを再描画
-document.getElementById('btn').onclick = function() {
+ document.getElementById('btn').onclick = function() {
   // すでにグラフ（インスタンス）が生成されている場合は、グラフを破棄する
   if (myChart) {
     myChart.destroy();
   }
-
-  getRandom(); // グラフデータにランダムな値を格納
+  getdata();
+  //getRandom(); // グラフデータにランダムな値を格納
   drawChart(); // グラフを再描画
 }
 </script>
