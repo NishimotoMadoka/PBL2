@@ -18,6 +18,23 @@ for($i=1;$i<11;$i++){
     $time_start=$_POST['start_time'.$i];
     $time_end=$_POST['end_time'.$i];
 
+    if(strtotime($time_start)==strtotime($time_end)){
+        $_SESSION['post_error']='開始時間と終了時間は違うはずだよね？？？？';
+        header('Location: post.php');
+        exit();
+    }
+    if(strtotime($time_start)<strtotime($_POST['end_time'.$i-1])){
+        $_SESSION['post_error']='開始時間は前のタスクの終了時間以降で入力してください';
+        header('Location: post.php');
+        exit();
+    }
+    if(strtotime($time_start)>strtotime($time_end)){
+        $_SESSION['post_error']='終了時間は開始時間よりおそいはずだよね？？？？';
+        header('Location: post.php');
+        exit();
+    }
+    
+
     if (mb_strlen($item) > 8) {
         $_SESSION['post_error'] = '8文字以下で項目名を入力してください';
         header('Location: post.php');
@@ -30,19 +47,19 @@ for($i=1;$i<11;$i++){
     }
 
     if($item==""){
-        $item_name.=",";
+        $item_name.="#,";
     }else{
         $item_name.=$item.",";
     }
 
     if($time_start==""){
-        $start_time.=",";
+        $start_time.="#,";
     }else{
         $start_time.=$time_start.",";
     }
 
     if($time_end==""){
-        $end_time.=",";
+        $end_time.="#,";
     }else{
         $end_time.=$time_end.",";
     }

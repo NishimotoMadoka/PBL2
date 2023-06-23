@@ -43,7 +43,7 @@ if (isset($_SESSION['post_error'])) {
         今日の画像：<input type="file" name="up_image" accept="image/*">
     </div>
     <div class="item">
-        <input type="submit" value="送信" class="button"><input type="reset" value="リセット" class="button">
+        <input type="reset" value="リセット" class="button"><input type="submit" value="送信" class="button">
     </div>
 </form>
 </main>
