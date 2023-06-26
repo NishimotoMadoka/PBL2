@@ -52,11 +52,12 @@ $user_articles = $article->userArticles($user_id);
     <div>
       <dl class="inline">
       <div class="form-item">
-        名前 ： <?= $user_plofile['name'] ?><br>
-        メールアドレス ： <?= $user_plofile['mail'] ?><br>
-        ひとこと : <?= $user_plofile['profile_comment'] ?></br>
-        フレンドコード : <?= $user_plofile['friend_code'] ?>
-        
+        <table>
+        <tr>名前 ： <?= $user_plofile['name'] ?></tr><br>
+        <tr>メールアドレス ： <?= $user_plofile['mail'] ?><br>
+        <tr>ひとこと ： <?= $user_plofile['profile_comment'] ?><br>
+        <tr>フレンドコード ： <?= $user_plofile['friend_code'] ?><br>
+  </table>
       </dl>
     </div>
   </div>

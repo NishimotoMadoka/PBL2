@@ -8,16 +8,22 @@ if (isset($_SESSION['friend_register_error'])) {
 } 
 ?>
 
+<link rel="stylesheet" href="<?=$friend_register_css?>">
+
 <main>
-    <div class="friend-form">
+<div class="form-wrapper">
+<div class="form-item">
         <form method="POST" action="./friend_register_db.php">
-            <table>
-                <tr>
-                    <th>フレンドコード：</th>
-                    <td><input type="text" name="friend_code" maxlength="9" required></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><input type="submit" value="追加" class="fbtn"></td>
+        <input type="text" name="friend_code" required="required" placeholder="フレンドコードを入力">
+        </div>
+
+    
+
+
+
+                <div class="button-panel">
+                    <!-- <input type="submit" value="追加" class="fbtn" class="button"></td> -->
+                    <input type="submit" class="button" title="追加" value="追加"></input>
                 </tr>
             </table>
         </form>

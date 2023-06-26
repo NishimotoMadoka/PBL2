@@ -42,9 +42,8 @@ $frame_css = $http_host . '/' . $id . '/css/frame.css';
 $login_css = $http_host . '/' . $id . '/css/login.css';
 $post_css = $http_host . '/' . $id . '/css/post.css';
 $userpage_css = $http_host . '/' . $id . '/css/userpage.css';
-
+$friend_register_css= $http_host . '/' . $id . '/css/friend_register.css';
 $anime_css = $http_host . '/' . $id . '/css/anime.css';
-
 
 $logo_img = $http_host . '/' . $id . '/img/logo2.png';
 
