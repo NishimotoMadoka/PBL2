@@ -21,21 +21,35 @@ function getdata(){
   }
     
 
-    const sample1 = "2:00,4:40,#,#,23:00,23:15,23:37";//これをDBからとってきたのに変える
-    const sample2 = "朝,昼,晩";//こｋもＤＢから
+    const sample1 = '2:00,4:40,#,#,23:00,23:15,23:37,24:00';//これをDBからとってきたのに変える
+    const sample2 = '朝,昼,晩';//ここもＤＢから
 
     const s1 = sample1.split(":");//時間から：を抜いて配列に
     const s2 = sample2.split(",");//項目から、を抜いて配列に(項目の処理終わり)
-    let s3="";//時間から：を抜いた文字列
+    let s3='';//時間から：を抜いた文字列
     
-    for(let l = 0; l< s1.length; l++){
-      s3 = s3.concat(s1[l]);//s3に；抜きの時間をいれる
+    for(let i = 0; i< s1.length; i++){
+      s3 = s3.concat(s1[i]);//s3に；抜きの時間をいれる
     }
 
     const s4 = s3.split(",");//s3を配列に変更
 
-    for(let i = 0; i < s1.length; i++){
-       chartVal.push(s4[i]);
+   for(let i = 0; i < s4.length; i++){//#を前後の数字と置き換える
+      if(s4[i]=="#"){
+        s4[i] = s4[i-1];
+        s4[i+1] = s4[i+2];
+      }      
+   }
+
+var s5 =[];
+
+  for(let i = 0; i<s4.length; i++){
+    s5[i] = s4[i+1] - s4[i];
+
+  }   
+
+    for(let i = 0; i < s5.length; i++){
+       chartVal.push(s5[i]);
        Labels.push(s2[i]);
     }
 }
