@@ -26,7 +26,7 @@ if (($name == "no_login" && !strstr($url, 'login.php')) && ($name == "no_login" 
     </div>
     <nav>
       <ul class="nav-list">
-        <li class="nav-list-item">
+        
           <?php
           if ($name == "no_login") {
             echo '<li class="nav-list-item"><a class="fa-solid fa-user-plus" href="' . $signup_php . '"> 新規登録</a></li>';
@@ -37,7 +37,7 @@ if (($name == "no_login" && !strstr($url, 'login.php')) && ($name == "no_login" 
             echo '<li class="nav-list-item"><a class="fa-solid fa-right-from-bracket" href="' . $logout_php . '"> ログアウト</a></li>';
           }
           ?>
-        </li>
+        
       </ul>
     </nav>
   </header>
