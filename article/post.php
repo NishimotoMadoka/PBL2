@@ -42,6 +42,8 @@ if (isset($_SESSION['post_error'])) {
             </div>
             <div class="end"></div>
 
+            <hr class="hr">
+
     <?php
         }
     ?>
