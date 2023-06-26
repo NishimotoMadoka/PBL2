@@ -132,7 +132,7 @@ footer {
 #topbtn a {
   display: block;
   width: 100px;
-  height: 100px;
+  height: 130px;
   color: #333;
   text-align: center;
   text-transform: uppercase;
@@ -162,7 +162,7 @@ footer {
   position: absolute;
   bottom: -20px;
   right: 20px;
-  color: #666;
+  color: #15354b;
 }
 
 table{
