@@ -44,6 +44,7 @@ $post_css = $http_host . '/' . $id . '/css/post.css';
 $userpage_css = $http_host . '/' . $id . '/css/userpage.css';
 $friend_register_css= $http_host . '/' . $id . '/css/friend_register.css';
 $anime_css = $http_host . '/' . $id . '/css/anime.css';
+$up_css = $http_host . '/' . $id . '/css/up.css';
 
 $logo_img = $http_host . '/' . $id . '/img/logo2.png';
 

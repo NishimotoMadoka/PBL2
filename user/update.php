@@ -12,6 +12,7 @@ require_once __DIR__ . '/../classes/user.php';
     <meta charset="UTF-8">
     <title>ユーザー情報変更</title>
     <!-- <link rel="stylesheet" href="<?= $update_css ?>"> -->
+    <link rel="stylesheet" href="<?= $up_css?>">
 </head>
 <?php
 $user_show_id=$_SESSION['user_id'];
@@ -35,25 +36,38 @@ $user_plofile = $user->detailsUser($user_show_id);
   <div>
     <dl class="inline">
       <dt>名前</dt>
-      <dd><?= $name ?><br>
-      <input type="name" name="newname"></dd>
+    </dl>
+    <dl class="hyou">
+      <dt>現在の名前</dt><dd><?= $name ?></dd>
+      <dt>新しい名前</dt><dd><input type="name" name="newname"></dd>
+    </dl>
+    <dl class="inline">
       <dt>メールアドレス</dt>
-      <dd>
-        <td><?= $mail ?><br>
-        <input type="mail" name="newmail">
-      </dd>
+    </dl>
+    <dl class="hyou">
+      <dt>現在のメールアドレス</dt><dd><?= $mail ?></dd>
+      <dt>新しいメールアドレス</dt><dd><input type="mail" name="newmail"></dd>
+    </dl>
+    <dl class="inline">
       <dt>ひとこと</dt>
-      <dd><?= $profile_comment ?><br>
-      <input type="text" name="newprofile_comment">
-    </dd>
-      <dt>パスワード</dt>
-      <dd>現在のパスワード：<input type="password" name="password" required><br>
-      新しいパスワード：<input type="password" name="newpassword"></dd>
-      新しいパスワード：<input type="password" name="newpassword_conf"></dd>
+    </dl>
+    <dl class="hyou">
+      <dt>現在のひとこと</dt><dd><?= $profile_comment ?></dd>
+      <dt>新しいひとこと</dt><dd><input type="text" name="newprofile_comment"></dd>
+    </dl>
+    <dl class="inline">
+      <dt>パスワード</dt>  
+    </dl>
+    <dl class="hyou">
+      <dt>現在のパスワード</dt><dd><input type="password" name="password" required></dd>
+      <dt>新しいパスワード</dt><dd><input type="password" name="newpassword"></dd>
+      <dt>新しいパスワードの再入力</dt><dd><input type="password" name="newpassword_conf"></dd>
     </dl>
     <br>
     <div class="update">
+    <div class="button-panel">
         <input type="submit"  value="変更" class="button">
+    </div>
     </div>
     <br>
     <a href="./plofile.php">ユーザー詳細へ戻る</a>
