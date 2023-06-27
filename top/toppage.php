@@ -30,14 +30,11 @@ require_once __DIR__ . '/../pre.php';
               // var_dump($friend_article);
               // $friends_article_array="";
               // $friend_article.$i=$friend_article;
-              $friend_article_array=["user_id"=>$friend_article['user_id'],
-                                        "article_id"=>$friend_article['article_id'],
-                                        "post_date"=>$friend_article['post_date'],
-                                        "start_time"=>$friend_article['start_time'],
-                                        "end_time"=>$friend_article['end_time'],
-                                        "item_name"=>$friend_article['item_name'],
-                                        "title"=>$friend_article['title'],
-                                        "diary"=>$friend_article['diary']
+              $friend_article_array=[$friend_article['user_id'],$friend_article['article_id'],$friend_article['post_date'],$friend_article['start_time'],
+                                    $friend_article['end_time'],
+                                    $friend_article['item_name'],
+                                    $friend_article['title'],
+                                    $friend_article['diary']
                                       ];
                                       array_push($friends_articles_array,$friend_article_array);
               // $friends_articles_array=array($friends_articles_array,$friend_article);
