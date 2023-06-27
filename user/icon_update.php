@@ -19,8 +19,9 @@ require_once __DIR__ . '/../header.php';
     <dd>アイコン：<input type="file" name="up_icon" accept="image/*"></dd>
     </dl>
     <br>
-    <div class="update">
-        <input type="submit" value="変更" class="button">
+    <div class="form-wrapper">
+    <div class="button-panel">
+       <input type="submit" value="変更" class="button"></input>
     </div>
     <br>
     <a href="../user/user_show.php">ユーザー詳細へ戻る</a>

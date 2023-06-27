@@ -26,8 +26,8 @@ $user_articles = $article->userArticles($user_id);
 
 </head>
 <main>
- <div class="form-wrapper">
-  <div class="icon">
+ <div class="form-wrapper-icon">
+  <!-- <div class="icon">  -->
     <?php
     if ($user_plofile['icon'] != "") {
     ?>
@@ -39,13 +39,14 @@ $user_articles = $article->userArticles($user_id);
     <?php
     }
     ?>
-    <div class="icon-update">
+    <!-- <div class="icon-update">
       <a href="./icon_update.php">
         <input type="submit" value="アイコン変更" class="icon_button">
       </a>
-    </div>
+    </div> -->
   </div>
   <!-- ユーザー情報 -->
+  <div class="form-wrapper">
   <div class="profile" align="center">
 
     <h3>プロフィール</h3>
@@ -54,9 +55,9 @@ $user_articles = $article->userArticles($user_id);
       <div class="form-item">
         <table>
         <tr>名前 ： <?= $user_plofile['name'] ?></tr><br>
-        <tr>メールアドレス ： <?= $user_plofile['mail'] ?><br>
-        <tr>ひとこと ： <?= $user_plofile['profile_comment'] ?><br>
-        <tr>フレンドコード ： <?= $user_plofile['friend_code'] ?><br>
+        <tr>メールアドレス ： <?= $user_plofile['mail'] ?></tr><br>
+        <tr>ひとこと ： <?= $user_plofile['profile_comment'] ?></tr><br>
+        <tr>フレンドコード ： <?= $user_plofile['friend_code'] ?></tr><br>
   </table>
       </dl>
     </div>
@@ -70,6 +71,12 @@ $user_articles = $article->userArticles($user_id);
     <div class="button-panel">
       <a href="<?=$update_php?>">
         <input type="submit" value="プロフィール編集" class="button">
+      </a>
+    </div>
+
+    <div class="button-panel">
+      <a href="./icon_update.php">
+        <input type="submit" value="アイコン変更" class="button">
       </a>
     </div>
 
