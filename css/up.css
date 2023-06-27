@@ -1,0 +1,71 @@
+dt,dd {
+    margin: 0;
+    padding: 0;
+}
+
+.hyou {
+    width: 600px;
+    border-top: 1px solid #000000;
+    border-left: 1px solid #000000;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hyou dt,
+.hyou dd {
+    border-bottom: 1px solid #000000;
+    border-right: 1px solid #000000;
+    box-sizing: border-box;
+    padding: 15px 30px;
+}
+
+.hyou dt {
+    font-size: 16px;
+    width: 300px;
+}
+
+.hyou dd {
+    width: calc(100% - 300px);
+}
+
+.inline {
+    width: 600px;
+    border-top: 1px solid #000000;
+    border-left: 1px solid #000000;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    display: flex;
+    flex-wrap: wrap;
+    background: linear-gradient(#ffbe47,#ffffff);
+}
+
+.inline dt {
+    box-sizing: border-box;
+    padding: 15px 30px;
+    font-size: 20px;
+}
+
+.button-panel {
+    margin: 2em 0 0;
+    width: 50%;
+}
+   
+   
+.button-panel .button {
+    background: #f16262;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    height: 50px;
+    font-family: 'Open sans', sans-serif;
+    font-size: 1.2em;
+    letter-spacing: 0.05em;
+    text-align: center;
+    text-transform: uppercase;
+    transition: background 0.3s ease-in-out;
+    width: 100%;
+   }
+   
+.button:hover {
+    background: #ee3e52;
+}
