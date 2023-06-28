@@ -74,11 +74,11 @@ $user_articles = $article->userArticles($user_id);
       </a>
     </div>
 
-    <div class="button-panel">
+    <!-- <div class="button-panel">
       <a href="./icon_update.php">
         <input type="submit" value="アイコン変更" class="button">
       </a>
-    </div>
+    </div> -->
 
     <div class="friend">
     <div class="button-panel">
