@@ -18,17 +18,20 @@ for($i=1;$i<11;$i++){
     $time_start=$_POST['start_time'.$i];
     $time_end=$_POST['end_time'.$i];
 
-    if(strtotime($time_start)==strtotime($time_end)){
+    if(var_dump($time_start == $time_end)){
+    // if(strtotime($time_start)==strtotime($time_end)){
         $_SESSION['post_error']='開始時間と終了時間は違うはずだよね？？？？';
         header('Location: post.php');
         exit();
     }
-    if(strtotime($time_start)<strtotime($_POST['end_time'.$i-1])){
-        $_SESSION['post_error']='開始時間は前のタスクの終了時間以降で入力してください';
-        header('Location: post.php');
-        exit();
+    if($i>1){
+        if(strtotime($_POST['end_time'.$i-1]) > strtotime($time_start)){
+            $_SESSION['post_error']='開始時間は前のタスクの終了時間以降で入力してください';
+            header('Location: post.php');
+            exit();
+        }
     }
-    if(strtotime($time_start)>strtotime($time_end)){
+    if(strtotime($time_start) > strtotime($time_end)){
         $_SESSION['post_error']='終了時間は開始時間よりおそいはずだよね？？？？';
         header('Location: post.php');
         exit();

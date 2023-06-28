@@ -27,14 +27,14 @@ if(password_verify($password,$hash_password)==false){
     exit();
 }
 
-    $name=$result['name'];
+    $_SESSION['name'] = $result['name'];
+    $_SESSION['user_id'] = $result['user_id'];
+    // $_SESSION['name']=$result['name'];
     header('Location:'.$toppage_php);
-    // クッキー設定後で変更したい
-    // setcookie("name", $name, time() + 60 * 60 * 24 * 14, '/');
-    // setcookie("user_id", $user_id, time() + 60 * 60 * 24 * 14, '/');
-    
-    // header('Location:'.$toppage_php);
 
+    // クッキー設定後で変更したい
+    setcookie("name", $name, time() + 60 * 60 * 24 * 14, '/');
+    setcookie("user_id", $user_id, time() + 60 * 60 * 24 * 14, '/');
 require_once __DIR__ . '/../header.php';
 require_once __DIR__ . '/../footer.php';
 ?>

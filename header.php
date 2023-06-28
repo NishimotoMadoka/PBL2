@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/pre.php';
 $url = $_SERVER['REQUEST_URI'];
-if (($name == "no_login" && !strstr($url, 'login.php')) && ($name == "no_login" && !strstr($url, 'signup.php'))) {
-  header("Location:$login_php");
-}
+// if (($name == "no_login" && !strstr($url, 'login.php')) && ($name == "no_login" && !strstr($url, 'signup.php'))) {
+//   header("Location:$login_php");
+// }
 ?>
 
 <!DOCTYPE html>
