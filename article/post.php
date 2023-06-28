@@ -42,7 +42,7 @@ if (isset($_SESSION['post_error'])) {
             </div>
             <div class="end"></div>
 
-            <hr class="hr">
+            <hr size="3" color: #5e5e5e; noshade>
 
     <?php
         }
