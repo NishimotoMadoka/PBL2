@@ -31,7 +31,7 @@ $user_articles = $article->userArticles($user_id);
     <?php
     if ($user_plofile['icon'] != "") {
     ?>
-      <a href="./icon_update.php"><img class="user-icon" src="../icon_image/<?= $user_plofile['icon'] ?>" alt="">
+      <a href="./icon_update.php"><><img class="user-icon" src="../icon_image/<?= $user_plofile['icon'] ?>" alt="">
     <?php
     } else {
     ?>
@@ -74,11 +74,11 @@ $user_articles = $article->userArticles($user_id);
       </a>
     </div>
 
-    <div class="button-panel">
+    <!-- <div class="button-panel">
       <a href="./icon_update.php">
         <input type="submit" value="アイコン変更" class="button">
       </a>
-    </div>
+    </div> -->
 
     <div class="friend">
     <div class="button-panel">
