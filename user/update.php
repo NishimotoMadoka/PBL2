@@ -70,7 +70,7 @@ $user_plofile = $user->detailsUser($user_show_id);
     </div>
     </div>
     <br>
-    <a href="./plofile.php">ユーザー詳細へ戻る</a>
+    <a href="./plofile.php" class="back">ユーザー詳細へ戻る</a>
   </div>
 </form>
 </div>
