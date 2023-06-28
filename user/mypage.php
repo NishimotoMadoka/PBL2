@@ -54,10 +54,10 @@ $user_articles = $article->userArticles($user_id);
       <dl class="inline">
       <div class="form-item">
         <table>
-        <tr><th>名前</th><td><?= $user_plofile['name'] ?></td></tr><br>
-        <tr><th>メールアドレス</th><td><?= $user_plofile['mail'] ?></td></tr><br>
-        <tr><th>ひとこと</th><td><?= $user_plofile['profile_comment'] ?></td></tr><br>
-        <tr><th>フレンドコード</th><td><?= $user_plofile['friend_code'] ?></td></tr><br>
+        <tr><th>名前</th><td><?= $user_plofile['name'] ?></td></tr>
+        <tr><th>メールアドレス</th><td><?= $user_plofile['mail'] ?></td></tr>
+        <tr><th>ひとこと</th><td><?= $user_plofile['profile_comment'] ?></td></tr>
+        <tr><th>フレンドコード</th><td><?= $user_plofile['friend_code'] ?></td></tr>
   </table>
       </dl>
     </div>
