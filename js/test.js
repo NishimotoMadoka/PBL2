@@ -35,7 +35,7 @@ function getdata(){
     
     for(let i = 0; i< s1.length; i++){
       s3 = s3.concat(s1[i]);//s3に；抜きの時間をいれる
-      s33 = s33.concat(s22[i]);
+      s33 = s33.concat(s11[i]);
     }
 
     const s4 = s3.split(",");//s3を配列に変更
