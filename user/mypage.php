@@ -87,6 +87,12 @@ $user_articles = $article->userArticles($user_id);
       </a>
     </div>
 
+    <div class="friend_list">
+      <a href="<?=$friend_list_php?>">
+        <input type="submit" value="フレンドリスト" class="user_button">
+      </a>
+    </div>
+
   <?php
   }
   ?>

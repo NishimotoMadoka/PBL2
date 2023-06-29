@@ -33,12 +33,12 @@ if (isset($_SESSION['post_error'])) {
                 <input type="text" name="item_name<?=$count?>"  placeholder="項目" ></br>
             </div>
             <div class="item">
-            <div class="title">開始時間</div>
-                <input type="time" name="start_time<?=$count?>"  placeholder="開始時間"><br>
+                <label class="label_left" for="number">開始時間</label>
+                <input class="form-text" type="time" step="60" name="start_time<?=$count?>" id="start_time" placeholder="開始時間"><br>
             </div>
             <div class="item">
-            <div class="title">終了時間</div>
-                <input  type="time"  name="end_time<?=$count?>"  placeholder="終了時間"><br>
+                <label class="label_left" for="number">終了時間</label>
+                <input class="form-text" type="time" step="300" name="end_time<?=$count?>" id="end_time" placeholder="終了時間"><br>
             </div>
             <div class="end"></div>
 
@@ -51,8 +51,8 @@ if (isset($_SESSION['post_error'])) {
     <div class="image_select">
         今日の画像：<input type="file" name="up_image" accept="image/*">
     </div>
-    <div class="button-panel">
-        <input type="submit" class="button" value="送信"><input type="reset" value="リセット" class="button">
+    <div class="item">
+        <input type="submit" value="送信" class="button"><input type="reset" value="リセット" class="button">
     </div>
 </form>
 </main>

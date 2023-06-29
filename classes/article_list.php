@@ -41,7 +41,7 @@ class Article extends DbData
     //  友達の投稿を取ってくるやつ
     public  function  friendsArticles($friend_user_id)
     {
-        $sql = "select * from article_list join users on article_list.user_id = users.user_id where article_list.user_id = ? order by article_list.article_id desc";
+        $sql = "select * from article_list join users on article_list.user_id = users.user_id join diary_list on article_list.post_date = diary_list.diary_date and article_list.user_id = diary_list.user_id where article_list.user_id = ? order by article_list.article_id desc";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$friend_user_id]);
         $friends_articles = $stmt->fetchAll();
