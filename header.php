@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/pre.php';
 $url = $_SERVER['REQUEST_URI'];
-if (($name == "no_login" && !strstr($url, 'login.php')) && ($name == "no_login" && !strstr($url, 'signup.php'))) {
-  header("Location:$login_php");
-}
+// if (($name == "no_login" && !strstr($url, 'login.php')) && ($name == "no_login" && !strstr($url, 'signup.php'))) {
+//   header("Location:$login_php");
+// }
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +33,7 @@ if (($name == "no_login" && !strstr($url, 'login.php')) && ($name == "no_login" 
             echo '<li class="nav-list-item"><a class="fa-solid fa-right-to-bracket" href="' . $login_php . '"> ログイン</a></li>';
           } else {
             echo '<li class="nav-list-item"><a class="fa-solid fa-address-card" href="' . $mypage_php . '"> マイページ</a></li>';
-            echo '<li class="nav-list-item"><a class="fa-solid fa-pen" href="' . $post_php . '"> 記事・作品</a></li>';
+            echo '<li class="nav-list-item"><a class="fa-solid fa-pen" href="' . $post_php . '"> 投稿</a></li>';
             echo '<li class="nav-list-item"><a class="fa-solid fa-right-from-bracket" href="' . $logout_php . '"> ログアウト</a></li>';
           }
           ?>

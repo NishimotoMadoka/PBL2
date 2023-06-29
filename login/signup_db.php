@@ -7,9 +7,14 @@ $profile_comment=$_POST['profile_comment'];
 $password = $_POST['password'];
 $password_conf=$_POST['password_conf'];
 $icon = $_FILES['icon']['name'];
+if($icon!==""){
 // メアドの@以前を切り出してアイコン名の前につけて保存
 $mail_num=strstr($mail,'@',true);
 $icon_name=$mail_num.$icon;
+move_uploaded_file($_FILES['icon']['tmp_name'], '../icon_image/' . $icon_name);
+}else{
+    $icon_name="";
+}
 
 if(strpos($password, $password_conf) !== 0){
     $_SESSION['signup_error'] = 'パスワードが一致しません。';
@@ -19,7 +24,6 @@ if(strpos($password, $password_conf) !== 0){
 
 //画像を保存
 // $icon_image_path="C:\xampp\htdocs\pbl2\icon_image";
-move_uploaded_file($_FILES['icon']['tmp_name'], '../icon_image/' . $icon_name);
 
 if(!isset($_SESSION)){
     session_start();
@@ -49,9 +53,8 @@ if(mb_strlen($password)>=41 || mb_strlen($password)<=4){
 // ふれんどこーどてきなやつ(9けた)
 $str = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPUQRSTUVWXYZ';
 $friend_code = substr(str_shuffle($str), 0, 9);
-
 $user = new User();
-// $hash=password_hash($_POST[$password],PASSWORD_DEFAULT);　にしもとのメモ　いったん無視しといてください
+$password=password_hash($password,PASSWORD_DEFAULT);
 $result = $user->signup($name, $mail, $profile_comment,$friend_code,$icon_name, $password);
 
 if ($result !== '') {
@@ -60,29 +63,11 @@ if ($result !== '') {
     exit();
 }
 
-$user = new User();
-$result = $user->authUser($mail, $password);
-
-$_SESSION['user_id']=$result['user_id'];
-$_SESSION['name'] = $name;
-$_SESSION['mail'] = $mail;
-$_SESSION['profile_comment']=$profile_comment;
-$_SESSION['friend_code']=$friend_code;
-$_SESSION['mail_num']=$mail_num;
-// sessionにパスワードいれる？？
-// $_SESSION['password']=$password;
-
-
-
-// cookieの設定　後で変更したい
-setcookie("user_id", $result['user_id'],time()+60*60*24*14,'/');
-setcookie("name", $name, time() + 60 * 60 * 24 * 14, '/');
-
 require_once __DIR__ . '/../header.php';
 ?>
 
 <?php
 require_once __DIR__.'/../pre.php';
-header('Location:'.$toppage_php);
+header('Location:'.$login_php);
 require_once __DIR__ . '/../footer.php';
 ?>

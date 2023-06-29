@@ -4,10 +4,10 @@ require_once __DIR__ . '/dbdata.php';
 class User extends DbData
 {
     #ログイン認証処理
-    public function authUser($mail, $password)
+    public function authUser($mail)
     {
-        $sql = "select * from users where mail=? and password=?";
-        $stmt = $this->query($sql, [$mail, $password]);
+        $sql = "select * from users where mail=?";
+        $stmt = $this->query($sql, [$mail]);
         return $stmt->fetch();
     }
 

@@ -44,7 +44,7 @@ require_once __DIR__ . '/../pre.php';
         </div>
         <div class="form-item">
          <label for="password"></label>
-         <input type="text" name="profile_comment"  value="<?= $profile_comment ?>" required placeholder="自己紹介"></input>
+         <input type="text" name="profile_comment"  value="<?= $profile_comment ?>"  placeholder="自己紹介"></input>
         </div>
         <div class="form-item">
          <label for="password"></label>

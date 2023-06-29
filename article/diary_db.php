@@ -7,9 +7,10 @@ if(!isset($_SESSION)){
 
 $user_id = $_SESSION['user_id'];
 $mail_num=$_SESSION['mail_num'];
+$diary_date=$_POST['date']; //日付
 $title = $_POST['title']; //タイトル
 $diary = $_POST['diary']; //本文
-$diary_date = date('Y-m-d ') . date('H:i:s');
+// $diary_date = date('Y-m-d ') . date('H:i:s');
 
 
 if (mb_strlen($title) > 50) {
