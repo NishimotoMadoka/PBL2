@@ -29,15 +29,14 @@ if (isset($_SESSION['post_error'])) {
 
 <div class="form-item">
             <div class="item">
-                <!-- <div class="title">項目</div> -->
                 <input type="text" name="item_name<?=$count?>"  placeholder="項目" ></br>
             </div>
             <div class="item">
-                <label class="label_left" for="number">開始時間</label>
+            <div class="title">開始時間</div>
                 <input class="form-text" type="time" step="60" name="start_time<?=$count?>" id="start_time" placeholder="開始時間"><br>
             </div>
             <div class="item">
-                <label class="label_left" for="number">終了時間</label>
+            <div class="title">終了時間</div>
                 <input class="form-text" type="time" step="300" name="end_time<?=$count?>" id="end_time" placeholder="終了時間"><br>
             </div>
             <div class="end"></div>
