@@ -22,7 +22,9 @@ function getdata(){
     
 
     const sample1 = '2:00,4:40,#,#,23:00,23:15,23:37,24:00';//これをDBからとってきたのに変える
-    const sample2 = '朝,昼,晩';//ここもＤＢから
+    const sample2 = '朝,昼,晩'
+    
+    ;//ここもＤＢから
 
     const s1 = sample1.split(":");//時間から：を抜いて配列に
     const s2 = sample2.split(",");//項目から、を抜いて配列に(項目の処理終わり)
@@ -38,14 +40,23 @@ function getdata(){
       if(s4[i]=="#"){
         s4[i] = s4[i-1];
         s4[i+1] = s4[i+2];
-      }      
+      }
    }
 
-var s5 =[];
+var s5 =[];//最終的にcharvalに入れるデータ
 
   for(let i = 0; i<s4.length; i++){
     s5[i] = s4[i+1] - s4[i];
 
+    let count = 0;
+    let t1 = s5[i];
+    while(t1>=100){
+      t1=-100;
+      count=+100;
+    }
+
+    s5[i] = count /0.6+t1;
+    
   }   
 
     for(let i = 0; i < s5.length; i++){
