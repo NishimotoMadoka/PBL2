@@ -21,49 +21,51 @@ function getdata(){
   }
     
 
-    const sample1 = '2:00,4:40,#,#,23:00,23:15,23:37,24:00';//これをDBからとってきたのに変える
-    const sample2 = '朝,昼,晩'
+    const sample1 = '2:00,4:40,#,#,11:00,13:15,20:37,23:00';//開始時間
+    const sample2 = '3:00,5:40,#,#,12:00,14:15,22:37,24:00'//終了時間
+    const sample3 = '朝,昼,晩'
     
     ;//ここもＤＢから
 
     const s1 = sample1.split(":");//時間から：を抜いて配列に
-    const s2 = sample2.split(",");//項目から、を抜いて配列に(項目の処理終わり)
+    const s11 = sample2.split(":");//
+    const s2 = sample3.split(",");//項目から、を抜いて配列に(項目の処理終わり)
     let s3='';//時間から：を抜いた文字列
+    let s33='';
     
     for(let i = 0; i< s1.length; i++){
       s3 = s3.concat(s1[i]);//s3に；抜きの時間をいれる
+      s33 = s33.concat(s22[i]);
     }
 
     const s4 = s3.split(",");//s3を配列に変更
+    const s44 = s33.split(",");
 
    for(let i = 0; i < s4.length; i++){//#を前後の数字と置き換える
       if(s4[i]=="#"){
         s4[i] = s4[i-1];
         s4[i+1] = s4[i+2];
       }
+
+      if(s44[i]=="#"){
+        s44[i] = s44[i-1];
+        s44[i+1] = s44[i+2];
+      }
    }
 
-var s5 =[];//最終的にcharvalに入れるデータ
+ var s5 =[];//最終的にcharvalに入れるデータ
 
-  for(let i = 0; i<s4.length; i++){
-    s5[i] = s4[i+1] - s4[i];
-
-    let count = 0;
-    let t1 = s5[i];
-    while(t1>=100){
-      t1=-100;
-      count=+100;
-    }
-
-    s5[i] = count /0.6+t1;
-    
-  }   
+   for(let i = 0; i<s4.length; i++){
+    s5[i] = s44[i] -s4[i];
 
     for(let i = 0; i < s5.length; i++){
-       chartVal.push(s5[i]);
-       Labels.push(s2[i]);
-    }
-}
+      chartVal.push(s5[i]);
+      Labels.push(s2[i]);
+   }
+   }
+
+  
+   
 
   // グラフ描画処理
   function drawChart() {
@@ -86,3 +88,4 @@ var s5 =[];//最終的にcharvalに入れるデータ
       }
     });
   }
+}
