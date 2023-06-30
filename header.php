@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/pre.php';
 $url = $_SERVER['REQUEST_URI'];
-// if (($name == "no_login" && !strstr($url, 'login.php')) && ($name == "no_login" && !strstr($url, 'signup.php'))) {
-//   header("Location:$login_php");
-// }
+if (($name == "no_login" && !strstr($url, 'login.php')) && ($name == "no_login" && !strstr($url, 'signup.php'))) {
+  header("Location:$login_php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +18,8 @@ $url = $_SERVER['REQUEST_URI'];
 
 <body>
   <!-- header部分 -->
-  <header>
+  <header></header>
+  <header id="scrollArea">
   <div class="top-info">
       <a href="<?= $toppage_php ?>">
         <div class="logo_img"><img src=<?php echo $logo_img ?> alt="FACT"></div>
@@ -33,7 +34,7 @@ $url = $_SERVER['REQUEST_URI'];
             echo '<li class="nav-list-item"><a class="fa-solid fa-right-to-bracket" href="' . $login_php . '"> ログイン</a></li>';
           } else {
             echo '<li class="nav-list-item"><a class="fa-solid fa-address-card" href="' . $mypage_php . '"> マイページ</a></li>';
-            echo '<li class="nav-list-item"><a class="fa-solid fa-pen" href="' . $post_php . '"> 投稿</a></li>';
+            echo '<li class="nav-list-item"><a class="fa-solid fa-pen" href="' . $post_php . '"> 記事・作品</a></li>';
             echo '<li class="nav-list-item"><a class="fa-solid fa-right-from-bracket" href="' . $logout_php . '"> ログアウト</a></li>';
           }
           ?>
@@ -41,3 +42,22 @@ $url = $_SERVER['REQUEST_URI'];
       </ul>
     </nav>
   </header>
+  <script>
+    var startPos = 0, winScrollTop = 0;
+// scrollイベントを設定
+window.addEventListener('scroll', function () {
+    winScrollTop = this.scrollY;
+    if (winScrollTop >= startPos) {
+        // 下にスクロールされた時
+        if (winScrollTop >= 200) {
+            // 下に200pxスクロールされたら隠す
+            document.getElementById('scrollArea').classList.add('hide');
+        }
+    } else {
+        // 上にスクロールされた時
+        document.getElementById('scrollArea').classList.remove('hide');
+    }
+    startPos = winScrollTop;
+});
+  </script>
+</body>

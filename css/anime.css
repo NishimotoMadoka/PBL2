@@ -21,6 +21,17 @@ header {
     }
   }
 
+  .hide {
+    transform: translateY(-100%);
+  }
+
+  #scrollArea {
+    position: fixed;
+    top: 0;
+    transition: .5s;
+    z-index: 100;
+  }
+
   nav {
     margin: 50px auto;
     width: 290px;
