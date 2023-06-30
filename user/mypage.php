@@ -39,11 +39,6 @@ $user_articles = $article->userArticles($user_id);
     <?php
     }
     ?>
-    <!-- <div class="icon-update">
-      <a href="./icon_update.php">
-        <input type="submit" value="アイコン変更" class="icon_button">
-      </a>
-    </div> -->
   </div>
   <!-- ユーザー情報 -->
   <div class="form-wrapper">
@@ -89,7 +84,8 @@ $user_articles = $article->userArticles($user_id);
 
     <div class="friend_list">
       <a href="<?=$friend_list_php?>">
-        <input type="submit" value="フレンドリスト" class="user_button">
+      <div class="button-panel">
+        <input type="submit" value="フレンドリスト" class="button">
       </a>
     </div>
 
@@ -99,7 +95,7 @@ $user_articles = $article->userArticles($user_id);
 
 </div>
 </div>
-</div><!--form-wrapper-->
+ </div><!--form-wrapper -->
 
 
 
