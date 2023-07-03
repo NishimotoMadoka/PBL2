@@ -53,24 +53,40 @@ function getdata(){
      
   }
 
+  for(let i = 0; i<s44.length; i++){
+    let count =0;
+    let S = 0;
+      while(s44[i]>=100){
+        
+        s44[i]-=100;
+        count = count+100;
+      }
+      S = s44[i]+count;
+
+      
+     s44[i] += count*0.6;
+      
+   }
+
+   for(let i = 0; i<s4.length; i++){
+    let count =0;
+    let S = 0;
+      while(s4[i]>=100){
+        
+        s4[i]-=100;
+        count = count+100;
+      }
+      S = s4[i]+count;
+
+      
+     s4[i] += count*0.6;
+      
+   }
+
  var s5 =[];//最終的にcharvalに入れるデータ
 
    for(let i = 0; i<s2.length; i++){
     s5[i] = s44[i] -s4[i];
-   }
-
-   for(let i = 0; i<s5.length; i++){
-    let count =0;
-    let S = 0;
-      while(s5[i]>100){
-        
-        s5[i] =-100;
-        count =+100;
-      }
-
-      S = s5[i];
-      s5[i] = count;
-      
    }
 
    for(let i = 0; i < s2.length; i++){
