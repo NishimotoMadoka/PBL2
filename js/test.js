@@ -21,11 +21,9 @@ function getdata(){
   }
     
 
-    const sample1 = '2:00,4:40,#,#,11:00,13:15,20:37,23:00';//開始時間
-    const sample2 = '3:00,5:40,#,#,12:00,14:15,22:37,24:00'//終了時間
-    const sample3 = '朝,昼,晩'
-    
-    ;//ここもＤＢから
+    //const sample1 = '2:00,4:40,#,#,11:00,13:15,20:37,23:00';//開始時間
+    //const sample2 = '3:00,5:40,#,#,12:00,14:15,22:37,24:00';//終了時間
+    //const sample3 = '1,2,3,4,5,6,7,8';//項目
 
     const s1 = sample1.split(":");//時間から：を抜いて配列に
     const s11 = sample2.split(":");//
@@ -47,26 +45,39 @@ function getdata(){
         s4[i+1] = s4[i+2];
       }
 
-      
 
       if(s44[i]=="#"){
         s44[i] = s44[i-1];
         s44[i+1] = s44[i+2];
       }
-   }
-
-
+     
+  }
 
  var s5 =[];//最終的にcharvalに入れるデータ
 
-   for(let i = 0; i<s4.length; i++){
+   for(let i = 0; i<s2.length; i++){
     s5[i] = s44[i] -s4[i];
+   }
 
-    for(let i = 0; i < s5.length; i++){
-      chartVal.push(s5[i]);
-      Labels.push(s2[i]);
+   for(let i = 0; i<s5.length; i++){
+    let count =0;
+    let S = 0;
+      while(s5[i]>100){
+        
+        s5[i] =-100;
+        count =+100;
+      }
+
+      S = s5[i];
+      s5[i] = count;
+      
    }
-   }
+
+   for(let i = 0; i < s2.length; i++){
+    chartVal.push(s5[i]);
+    Labels.push(s2[i]);
+ }
+ 
   }
   
    
@@ -87,7 +98,7 @@ function getdata(){
       },
       options: {
         legend: {
-          display: false, // 凡例を非表示
+          display: true, // 凡例を非表示
         }
       }
     });
