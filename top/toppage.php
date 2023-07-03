@@ -62,7 +62,7 @@ require_once __DIR__ . '/../pre.php';
      //array_multisort(array_map("strtotime", array_column($friends_articles_array,"post_date")),SORT_DESC,$friends_articles_array);
      // $sampleOutput = "";
 
-     // ソートの基準となる「id」と「age」を配列に入れる
+
 
      $date_array = array();
 foreach( $friends_articles_array as $value) {
@@ -72,7 +72,7 @@ foreach( $friends_articles_array as $value) {
 var_dump($date_array);
 
 // ソート実行
-array_multisort( $date_array, SORT_DESC, $friends_articles_array);
+array_multisort( $date_array, SORT_ASC, $friends_articles_array);
 
 var_dump ($friends_articles_array);
 
