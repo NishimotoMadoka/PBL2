@@ -18,7 +18,7 @@ CREATE TABLE users(
     profile_comment VARCHAR(140),
     friend_code VARCHAR(10),
     icon VARCHAR(70),
-    password VARCHAR(40) NOT NULL,
+    password VARCHAR(80) NOT NULL,
     INDEX users_index(
         user_id,
         name,
