@@ -18,7 +18,7 @@ $url = $_SERVER['REQUEST_URI'];
 
 <body>
   <!-- header部分 -->
-  <header></header>
+  <header class="ng"></header>
   <header id="scrollArea">
   <div class="top-info">
       <a href="<?= $toppage_php ?>">
