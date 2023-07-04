@@ -100,6 +100,8 @@ $user_articles = $article->userArticles($user_id);
   <div class="index-style">
    <article class="article-style">
    <h1>投稿</h1>
+<!--円グラフ-->
+ <canvas></canvas>
       <?php
       foreach ($user_articles as $user_article) {
       ?>
