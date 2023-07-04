@@ -121,11 +121,11 @@ header.ng {
     box-sizing: inherit;
   }
 
-  html {
+  /* html {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     font-size: 62.5%;
-  }
+  } */
 
   ul.list,
   li.nav-list-item{
@@ -148,6 +148,9 @@ header.ng {
     letter-spacing: 0.1em;
     color: #212529;
     border-radius: 0.5rem;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 62.5%;
   }
 
   ul.list {
