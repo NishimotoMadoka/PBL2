@@ -8,6 +8,9 @@ $user_id=$_SESSION['user_id'];
 $friends_user_id = $user -> getFriends($user_id);
 
 ?>
+
+<link rel="stylesheet" href="<?=$friendlist_css?>">
+
 <center><h1>フレンドリスト</h1></center>
 <?php
 foreach($friends_user_id as $friend_user_id){
