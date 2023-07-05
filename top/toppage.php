@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../pre.php';
 require_once __DIR__ . '/../classes/article_list.php';
 require_once __DIR__ . '/../classes/user.php';
+
 $article = new Article();
 $user = new User();
 if(!isset($_SESSION)){
@@ -27,6 +28,7 @@ require_once __DIR__ . '/../pre.php';
         
         $friends_articles_array=array();
         foreach ($friends_users_id as $friend_user_id) {
+          
             $friend_user_id=$friend_user_id['friend_user_id'];
             $friends_articles = $article->friendsArticles($friend_user_id);
             
@@ -41,10 +43,16 @@ require_once __DIR__ . '/../pre.php';
                                         "end_time"=>$friend_article['end_time'],
                                         "item_name"=>$friend_article['item_name'],
                                         "title"=>$friend_article['title'],
-                                        "diary"=>$friend_article['diary']
+                                        "diary"=>$friend_article['diary'])
+?>
+              <form method="post" action="./test.php">
 
+
+
+
+<?php
               
-            );
+            
 
             
             $friends_articles_array= array_merge_recursive($friends_articles_array,$friend_article_array);
@@ -72,15 +80,35 @@ foreach( $friends_articles_array as $value) {
 var_dump($date_array);
 
 // ソート実行
-array_multisort( $date_array, SORT_ASC, $friends_articles_array);
+array_multisort( $date_array, SORT_DESC, $friends_articles_array);
 
 var_dump ($friends_articles_array);
+foreach($friends_articles_array as $array){
 
-      // foreach($friends_articles_array as  $key=>$vals){
-        //echo $key. '.' $vals[0].;
+      foreach($array as  $key=>$value){
+        echo "key:{$key} | value:{$value}<br/>\n";
 
-      //echo '<br>';
-       //}
+      echo '<br>';
+      }
+    }
+
+    $test_array = array();
+    $entry = $stmt->query('SELECT*FROM article_list ORDER BY datetime desc');
+    while($resister = $entry->fetch()):
+      //投稿のデザインを考える
+  ?>
+ 
+  
+  <p><?php print($resister['start_time']);?>　<?php print($resister['end_time']); ?></p>
+
+  <hr size='3' color="#a9a9a9" width="450" align="senter">
+  
+  <?php endwhile; 
+  
+
+
+
+
       //for ( $indexA = 0; $indexA < is_countable( $friends_articles_array ); $indexA++ ) {
        // for ( $indexB = 0; $indexB < is_countable( $friends_articles_array[$indexA] ); $indexB++ ) {
             //$sampleOutput .= "{$friends_articles_array[$indexA][$indexB]},";
