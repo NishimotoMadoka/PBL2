@@ -68,7 +68,7 @@ $user_articles = $article->userArticles($user_id);
   <?php
   if (!isset($_GET['user_id'])) {
   ?>
-    <div class="update">
+    <!-- <div class="update"> -->
     <div class="button-panel">
       <a href="<?=$update_php?>">
         <input type="submit" value="プロフィール編集" class="button">
@@ -81,16 +81,17 @@ $user_articles = $article->userArticles($user_id);
       </a>
     </div> -->
 
-    <div class="friend">
+    <!-- <div class="friend"> -->
     <div class="button-panel">
       <a href="<?=$friend_register_php?>">
         <input type="submit" value="フレンド登録" class="button">
       </a>
     </div>
 
-    <div class="friend_list">
+    <!-- <div class="friend_list"> -->
+    <div class="button-panel">
       <a href="<?=$friend_list_php?>">
-        <input type="submit" value="フレンドリスト" class="user_button">
+        <input type="submit" value="フレンドリスト" class="button">
       </a>
     </div>
 
