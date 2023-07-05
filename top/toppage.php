@@ -48,7 +48,25 @@ require_once __DIR__ . '/../pre.php';
                                         "diary"=>$friend_article['diary'])
 ?>
 
+<br>
 
+<?php
+
+   
+   $ds=$user->detailsUser($friend_article[1]);
+
+
+   echo $ds[1];
+?>
+
+<form action="info.php" method="POST">
+
+<input type="hidden" name="starttime" value="<?= $friend_article[2]?>"> 
+<input type="hidden" name="endtime" value="<?= $friend_article[3]?>"> 
+<input type="hidden" name="item" value="<?= $friend_article[4]?>"> 
+<input style="width:200px;height:200px;"type="image" name="submit" >
+</form>
+<br>
 
 
 <?php
