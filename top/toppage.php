@@ -13,6 +13,7 @@ if(!isset($_SESSION)){
 $user_id=$_SESSION['user_id'];
 
 $friends_users_id=$user->getFriends($user_id);
+
 require_once __DIR__ . '/../header.php';
 require_once __DIR__ . '/../pre.php';
 ?>
@@ -42,9 +43,30 @@ require_once __DIR__ . '/../pre.php';
                                         "item_name"=>$friend_article['item_name'],
                                         "title"=>$friend_article['title'],
                                         "diary"=>$friend_article['diary']
+                                      );
+                ?>
 
-              
-            );
+                <br>
+
+                <?php
+        
+                   
+                   $ds=$user->detailsUser($friend_article[1]);
+
+
+                   echo $ds[1];
+              ?>
+
+<form action="info.php" method="POST">
+
+<input type="hidden" name="starttime" value="<?= $friend_article[2]?>"> 
+<input type="hidden" name="endtime" value="<?= $friend_article[3]?>"> 
+<input type="hidden" name="item" value="<?= $friend_article[4]?>"> 
+<input style="width:200px;height:200px;"type="image" name="submit" >
+</form>
+              <br>
+
+              <?php
 
             
             $friends_articles_array= array_merge_recursive($friends_articles_array,$friend_article_array);
@@ -62,7 +84,7 @@ require_once __DIR__ . '/../pre.php';
      //array_multisort(array_map("strtotime", array_column($friends_articles_array,"post_date")),SORT_DESC,$friends_articles_array);
      // $sampleOutput = "";
 
-     // ソートの基準となる「id」と「age」を配列に入れる
+
 
      $date_array = array();
 foreach( $friends_articles_array as $value) {
@@ -72,7 +94,7 @@ foreach( $friends_articles_array as $value) {
 var_dump($date_array);
 
 // ソート実行
-array_multisort( $date_array, SORT_DESC, $friends_articles_array);
+array_multisort( $date_array, SORT_ASC, $friends_articles_array);
 
 var_dump ($friends_articles_array);
 
@@ -92,6 +114,7 @@ var_dump ($friends_articles_array);
       ?>
       
         <!-- <a href="article/article_show.php?article_id=<?= $friend_article['article_id'] ?>">
+        
         <article class="article-one">
         <p class="article-user"><object><a href=<?= $user_php ?>?user_id=<?= $friend_article['user_id'] ?>><?= $friend_article['name'] ?></a></object></p>
         <h2 class="article-title"><object><a href="article/article_show.php?article_id=<?= $friend_article['article_id'] ?>"><?= $friend_article['title'] ?></a></object></h2>
