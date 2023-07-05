@@ -9,10 +9,12 @@ require_once __DIR__ . '/../pre.php';
 <main>
     <?php
     if (isset($_SESSION['login_error'])) {
-        echo '<p class="error_message">' . $_SESSION['login_error'] . '</p>';
+        $login_error="<script type='text/javascript'>alert('". $_SESSION['login_error'] ."');</script>";
+        echo $login_error;
+        // echo '<p class="error_message">' . $_SESSION['login_error'] . '</p>';
         unset($_SESSION['login_error']);
     } else {
-        // echo '<p class="user-form">ログインしてください。</p>';
+        echo '<p class="user-form">利用するにはログインしてください。</p>';
     }
     ?>
     <body>

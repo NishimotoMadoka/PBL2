@@ -25,7 +25,9 @@ $user_plofile = $user->detailsUser($user_show_id);
     $password=$user_plofile['password'];
             
     if (isset($_SESSION['update_error'])) {
-        echo '<p class="error_message">' . $_SESSION['update_error'] . '</p>';
+        $update_error="<script type='text/javascript'>alert('". $_SESSION['update_error'] ."');</script>";
+        echo $update_error;
+        // echo '<p class="error_message">' . $_SESSION['update_error'] . '</p>';
         unset($_SESSION['update_error']);
     }
 ?>

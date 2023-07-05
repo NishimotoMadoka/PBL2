@@ -6,10 +6,13 @@ if(!isset($_SESSION)){
 }
 
 $user_id = $_SESSION['user_id'];
-$mail_num=$_SESSION['mail_num'];
+// $mail_num=$_SESSION['mail_num'];
+// $diary_date=$_POST['date']; //日付
 $title = $_POST['title']; //タイトル
 $diary = $_POST['diary']; //本文
-$diary_date = date('Y-m-d ') . date('H:i:s');
+$post_date=$_POST['date']; //日付
+$article_id=$_POST['article_id'];
+// $diary_date = date('Y-m-d ') . date('H:i:s');
 
 
 if (mb_strlen($title) > 50) {
@@ -36,9 +39,8 @@ if (mb_strlen($diary) > 3500) {
 
 
 require_once __DIR__ . '/../classes/article_list.php';
-
 $article = new Article();
-$result = $article->insertDiary($user_id, $title, $diary, $diary_date);
+$result = $article->insertDiary($title, $diary, $article_id);
 
 
 if ($result !== '') {
@@ -48,8 +50,8 @@ if ($result !== '') {
 }
 
 
-$_SESSION['title'] = $title;
-$_SESSION['diary'] = $diary;
+// $_SESSION['title'] = $title;
+// $_SESSION['diary'] = $diary;
 
 header('Location:' . $toppage_php);
 // require_once __DIR__ . '/../footer.php';

@@ -23,7 +23,8 @@ $user_articles = $article->userArticles($user_id);
 
 <head>
   <link rel="stylesheet" href="<?= $userpage_css ?>">
-
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+  <script src="../js/test.js"></script>
 </head>
 <main>
  <div class="form-wrapper-icon">
@@ -35,7 +36,7 @@ $user_articles = $article->userArticles($user_id);
     <?php
     } else {
     ?>
-      <a href="./icon_update.php"><img class="user-icon" src="../icon_image/default.png" alt=""></a>
+      <img class="user-icon" src="<?=$default_icon?>" alt="">
     <?php
     }
     ?>
@@ -87,6 +88,12 @@ $user_articles = $article->userArticles($user_id);
       </a>
     </div>
 
+    <div class="friend_list">
+      <a href="<?=$friend_list_php?>">
+        <input type="submit" value="フレンドリスト" class="user_button">
+      </a>
+    </div>
+
   <?php
   }
   ?>
@@ -102,6 +109,43 @@ $user_articles = $article->userArticles($user_id);
   <div class="index-style">
    <article class="article-style">
    <h1>投稿</h1>
+<!--円グラフ-->
+<div style="width:100%">
+  <canvas id="canvas"></canvas>
+</div>
+<!--<button type="button" id="btn">グラフを更新</button>-->
+<script>
+<?php 
+  $_start = '2:11,4:40,#,#,11:00,13:15,20:37,23:00';//$_POST で受け取る
+  $_end = '3:00,5:40,#,#,12:00,14:15,22:37,24:00';
+  $_label ='1,2,3,4,5,6,7,8';//DBから来た値
+
+  $_start = json_encode($_start);
+  $_end = json_encode($_end);
+  $_label = json_encode($_label);//phpからきた、値をjavascriptに変換
+?>
+
+const sample1 = <?php echo $_start;?>;
+const sample2 = <?php echo $_end;?>;
+const sample3 = <?php echo $_label;?>;
+
+  // ページ読み込み時にグラフを描画
+  //getRandom(); // グラフデータにランダムな値を格納
+  drawChart(); // グラフ描画処理を呼び出す
+
+  // ボタンをクリックしたら、グラフを再描画
+ //document.getElementById('btn').onclick 
+ window.addEventListener('DOMContentLoaded', function() {
+  // すでにグラフ（インスタンス）が生成されている場合は、グラフを破棄する
+  if (myChart) {
+    myChart.destroy();
+  }
+  getdata();
+  //getRandom(); // グラフデータにランダムな値を格納
+  drawChart(); // グラフを再描画
+});
+</script>
+<!--ここまで円グラフ-->
       <?php
       foreach ($user_articles as $user_article) {
       ?>

@@ -4,10 +4,10 @@ require_once __DIR__ . '/dbdata.php';
 class Article extends DbData
 {
     // 日記投稿
-    public function insertDiary($user_id, $title, $diary, $diary_date)
+    public function insertDiary($title, $diary, $article_id)
     {
-        $sql = "insert into diary_list(user_id,title,diary,diary_date) values(?,?,?,?)";
-        $result = $this->exec($sql, [$user_id, $title, $diary, $diary_date]);
+        $sql = "update article_list set title=?, diary=? WHERE article_id=?";
+        $result = $this->exec($sql, [$title, $diary, $article_id]);
 
         if ($result) {
             return '';
@@ -17,10 +17,10 @@ class Article extends DbData
         }
     }
     // 生活時間投稿
-    public function insertArticle($user_id, $start_time, $end_time, $item_name,$post_date,$article_image)
+    public function insertArticle($article_id, $user_id, $start_time, $end_time, $item_name, $title, $diary, $post_date,$article_image)
     {
-        $sql = "insert into article_list(user_id,start_time,end_time,item_name,post_date,article_image) values(?,?,?,?,?,?)";
-        $result = $this->exec($sql, [$user_id, $start_time, $end_time, $item_name,$post_date,$article_image]);
+        $sql = "insert into article_list(article_id,user_id,start_time,end_time,item_name,title,diary,post_date,article_image) values(?,?,?,?,?,?,?,?,?)";
+        $result = $this->exec($sql, [$article_id, $user_id, $start_time, $end_time, $item_name, $title, $diary, $post_date,$article_image]);
 
         if ($result) {
             return '';
@@ -41,7 +41,7 @@ class Article extends DbData
     //  友達の投稿を取ってくるやつ
     public  function  friendsArticles($friend_user_id)
     {
-        $sql = "select * from article_list join users on article_list.user_id = users.user_id where article_list.user_id = ? order by article_list.article_id desc";
+        $sql = "select * from article_list join users on article_list.user_id = users.user_id join diary_list on article_list.post_date = diary_list.diary_date and article_list.user_id = diary_list.user_id where article_list.user_id = ? order by article_list.article_id desc";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$friend_user_id]);
         $friends_articles = $stmt->fetchAll();

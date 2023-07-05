@@ -36,6 +36,7 @@ $diary_php = $http_host . '/' . $id . '/article/diary.php';
 $update_db_php=$http_host . '/' . $id . '/user/update_db.php';
 $update_php=$http_host . '/' . $id . '/user/update.php';
 $friend_register_php=$http_host . '/' . $id . '/friend/friend_register.php';
+$friend_list_php=$http_host . '/' . $id . '/friend/friend_list.php';
 $user_php = $http_host . '/' . $id . '/classes/user.php';
 
 $frame_css = $http_host . '/' . $id . '/css/frame.css';
@@ -47,6 +48,8 @@ $anime_css = $http_host . '/' . $id . '/css/anime.css';
 $update_css = $http_host . '/' . $id . '/css/update.css';
 $up_css = $http_host . '/' . $id . '/css/up.css';
 
+
+$default_icon=$http_host . '/' . $id . '/icon_image/default.jpg';
 $logo_img = $http_host . '/' . $id . '/img/logo2.png';
 
 
