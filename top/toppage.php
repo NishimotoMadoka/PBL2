@@ -5,6 +5,8 @@ require_once __DIR__ . '/../classes/user.php';
 
 $article = new Article();
 $user = new User();
+$dbdata = new DbData();
+
 if(!isset($_SESSION)){
     session_start();
 }
@@ -45,7 +47,6 @@ require_once __DIR__ . '/../pre.php';
                                         "title"=>$friend_article['title'],
                                         "diary"=>$friend_article['diary'])
 ?>
-              <form method="post" action="./test.php">
 
 
 
@@ -80,7 +81,8 @@ foreach( $friends_articles_array as $value) {
 var_dump($date_array);
 
 // ソート実行
-array_multisort( $date_array, SORT_DESC, $friends_articles_array);
+//array_multisort( $date_array, SORT_DESC, $friends_articles_array);
+//array_multisort(array_map("strtotime", array_column($dat,"date")),SORT_DESC,$dat);
 
 var_dump ($friends_articles_array);
 foreach($friends_articles_array as $array){
@@ -93,7 +95,7 @@ foreach($friends_articles_array as $array){
     }
 
     $test_array = array();
-    $entry = $stmt->query('SELECT*FROM article_list ORDER BY datetime desc');
+    $entry = $dbdata->query('SELECT*FROM article_list ORDER BY post_date desc');
     while($resister = $entry->fetch()):
       //投稿のデザインを考える
   ?>
