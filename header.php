@@ -30,27 +30,12 @@ $url = $_SERVER['REQUEST_URI'];
         
           <?php
           if ($name == "no_login") {
-            echo'<ul class="list">';
             echo '<li class="nav-list-item"><a class="fa-solid fa-user-plus" href="' . $signup_php . '"> 新規登録</a></li>';
-            // echo'<i class="fas fa-angle-right faposition-right"><i>';
-            echo'</ul>';
-            echo'<ul class="list">';
             echo '<li class="nav-list-item"><a class="fa-solid fa-right-to-bracket" href="' . $login_php . '"> ログイン</a></li>';
-            // echo'<i class="fas fa-angle-right faposition-right"><i>';
-            echo'</ul>';
           } else {
-            echo'<ul class="list">';
             echo '<li class="nav-list-item"><a class="fa-solid fa-address-card" href="' . $mypage_php . '"> マイページ</a></li>';
-            // echo'<i class="fas fa-angle-right faposition-right"><i>';
-            echo'</ul>';
-            echo'<ul class="list">';
             echo '<li class="nav-list-item"><a class="fa-solid fa-pen" href="' . $post_php . '"> 記事・作品</a></li>';
-            // echo'<i class="fas fa-angle-right faposition-right"><i>';
-            echo'</ul>';
-            echo'<ul class="list">';
             echo '<li class="nav-list-item"><a class="fa-solid fa-right-from-bracket" href="' . $logout_php . '"> ログアウト</a></li>';
-            // echo'<i class="fas fa-angle-right faposition-right"><i>';
-            echo'</ul>';
           }
           ?>
         
