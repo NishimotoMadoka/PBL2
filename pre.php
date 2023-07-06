@@ -47,7 +47,7 @@ $friend_register_css= $http_host . '/' . $id . '/css/friend_register.css';
 $anime_css = $http_host . '/' . $id . '/css/anime.css';
 $update_css = $http_host . '/' . $id . '/css/update.css';
 $up_css = $http_host . '/' . $id . '/css/up.css';
-$friendlist_css= $http_host.'/' . $id . '/css/friend_list.css';
+$friendlist_css = $http_host . '/' . $id . '/css/friendlist.css';
 
 $default_icon=$http_host . '/' . $id . '/icon_image/default.jpg';
 $logo_img = $http_host . '/' . $id . '/img/logo2.png';
