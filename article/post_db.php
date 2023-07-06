@@ -139,8 +139,8 @@ if ($result !== '') {
 // $_SESSION['diary'] = $diary;
 ?>
 <form method="post" action="./diary.php">
-    <input type="date" name="date" value="<?=$post_date?>" readonly>
-    <input type="text" name="article_id" value="<?=$article_id?>" readonly>
+    <input type="hidden" name="date" value="<?=$post_date?>" readonly>
+    <input type="hidden" name="article_id" value="<?=$article_id?>" readonly>
     <input type="submit" name="button" value="夢日記へ">
 </form>
 <?php

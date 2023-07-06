@@ -19,8 +19,7 @@ if (isset($_SESSION['diary_error'])) {
 <link rel="stylesheet" href="<?= $post_css ?>">
 <form class="form" method="POST" action="./diary_db.php"  enctype="multipart/form-data">
     <div class="item">
-        <label class="label_left" for="number">投稿ID</label>
-        <input class="form-text" type="text" name="article_id" value="<?=$article_id?>" readonly><br>
+        <input class="form-text" type="hidden" name="article_id" value="<?=$article_id?>" readonly><br>
     </div>
     <div class="item">
         <label class="label_left" for="number">日付</label>
