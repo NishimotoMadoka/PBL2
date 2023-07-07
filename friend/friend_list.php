@@ -8,18 +8,22 @@ $user_id=$_SESSION['user_id'];
 $friends_user_id = $user -> getFriends($user_id);
 
 ?>
-<center><h1>フレンドリスト</h1></center>
+
+<link rel="stylesheet" href="<?=$friendlist_css?>">
+
+<h1>フレンドリスト</h1>
 <?php
 foreach($friends_user_id as $friend_user_id){
     $friend_user_id=$friend_user_id['friend_user_id'];
     $friend_details=$user->detailsUser($friend_user_id);
     ?>
+    <hr while="70%">
     <main>
-    <div class="">
+    <div class="iti">
         <?php
         if ($friend_details['icon'] != "") {
         ?>
-        <img class="" src="../icon_image/<?= $friend_details['icon'] ?>" alt="">
+        <img class="user-icon" src="../icon_image/<?= $friend_details['icon'] ?>" alt="">
         <?php
         } else {
         ?>
@@ -27,21 +31,18 @@ foreach($friends_user_id as $friend_user_id){
         <?php
         }
         ?>
-        <div class="" align="center">
-            <div>
-            <dl class="">
-                <dt>名前</dt>
-                <dd><?= $friend_details['name'] ?></dd>
+            <dl>
+                <!-- <dt>名前　　</dt> -->
+                <h1><dd><?= $friend_details['name'] ?></dd></h1>
                 </dd>
-                <dt>ひとこと</dt>
+                <!-- <dt>ひとこと</dt> -->
                 <dd><?= $friend_details['profile_comment'] ?></dd>
             </dl>
-            </div>
-        </div>
+
     </div>
     </main>
 
-
+<hr>
 <?php
 }
 require_once __DIR__.'/../footer.php';

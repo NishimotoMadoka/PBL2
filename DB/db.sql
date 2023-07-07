@@ -30,37 +30,42 @@ CREATE TABLE users(
 );
 
 #テーブルdiary_listの作成
-drop table if exists diary_list; # 既にテーブルdiary_listがあれば削除する
-CREATE TABLE diary_list(
-    article_id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT NOT NULL,
-    title VARCHAR(50),
-    diary VARCHAR(3500),
-    diary_date DATE NOT NULL,
-    INDEX article_list_index(
-        article_id,
-        title,
-        diary_date
-    ),
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
-);
+-- drop table if exists diary_list; # 既にテーブルdiary_listがあれば削除する
+-- CREATE TABLE diary_list(
+--     article_id INT PRIMARY KEY AUTO_INCREMENT,
+--     user_id INT NOT NULL,
+--     title VARCHAR(50),
+--     diary VARCHAR(3500),
+--     diary_date DATE NOT NULL,
+--     INDEX article_list_index(
+--         article_id,
+--         title,
+--         diary_date
+--     ),
+--     FOREIGN KEY (user_id) REFERENCES users(user_id)
+-- );
 #テーブルarticle_listの作成
 drop table if exists article_list; # 既にテーブルarticle_listがあれば削除する
 CREATE TABLE article_list(
-    article_id INT PRIMARY KEY AUTO_INCREMENT,
+    article_id INT NOT NULL,
     user_id INT NOT NULL,
     start_time VARCHAR(500),
     end_time VARCHAR(500),
     item_name VARCHAR(850),
+    title VARCHAR(50),
+    diary VARCHAR(3500),
     good int NOT NULL DEFAULT 0,
     post_date DATE NOT NULL,
+    time_date DATETIME NOT NULL,
     article_image VARCHAR(70),
     #記事の公開・非公開　0が公開、1が非公開
     article_public BOOLEAN NOT NULL DEFAULT 0,
     INDEX article_list_index(
         article_id,
+        title,
         good,
         post_date,
+        time_date,
         article_image,
         article_public
     ),

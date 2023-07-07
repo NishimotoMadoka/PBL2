@@ -15,9 +15,9 @@ require_once __DIR__ . '/../classes/user.php';
     <link rel="stylesheet" href="<?= $up_css?>">
 </head>
 <?php
-$user_show_id=$_SESSION['user_id'];
+$user_id=$_SESSION['user_id'];
 $user = new User();
-$user_plofile = $user->detailsUser($user_show_id);
+$user_plofile = $user->detailsUser($user_id);
 
     $name=$user_plofile['name'];
     $mail=$user_plofile['mail'];

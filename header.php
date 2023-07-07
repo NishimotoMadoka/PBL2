@@ -10,6 +10,7 @@ $url = $_SERVER['REQUEST_URI'];
 <html lang="ja">
 
 <head>
+  <header class="ng"></header>
   <meta charset="UTF-8">
   <title>FACT</title>
   <link rel="stylesheet" href="<?= $frame_css ?>">
@@ -18,7 +19,8 @@ $url = $_SERVER['REQUEST_URI'];
 
 <body>
   <!-- header部分 -->
-  <header>
+  <header class="ng"></header>
+  <header id="scrollArea">
   <div class="top-info">
       <a href="<?= $toppage_php ?>">
         <div class="logo_img"><img src=<?php echo $logo_img ?> alt="FACT"></div>
@@ -41,3 +43,22 @@ $url = $_SERVER['REQUEST_URI'];
       </ul>
     </nav>
   </header>
+  <script>
+    var startPos = 0, winScrollTop = 0;
+// scrollイベントを設定
+window.addEventListener('scroll', function () {
+    winScrollTop = this.scrollY;
+    if (winScrollTop >= startPos) {
+        // 下にスクロールされた時
+        if (winScrollTop >= 200) {
+            // 下に200pxスクロールされたら隠す
+            document.getElementById('scrollArea').classList.add('hide');
+        }
+    } else {
+        // 上にスクロールされた時
+        document.getElementById('scrollArea').classList.remove('hide');
+    }
+    startPos = winScrollTop;
+});
+  </script>
+</body>

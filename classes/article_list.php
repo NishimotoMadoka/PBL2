@@ -17,10 +17,10 @@ class Article extends DbData
         }
     }
     // 生活時間投稿
-    public function insertArticle($article_id, $user_id, $start_time, $end_time, $item_name, $title, $diary, $post_date,$article_image)
+    public function insertArticle($article_id, $user_id, $start_time, $end_time, $item_name, $title, $diary, $post_date,$time_date,$article_image)
     {
-        $sql = "insert into article_list(article_id,user_id,start_time,end_time,item_name,title,diary,post_date,article_image) values(?,?,?,?,?,?,?,?,?)";
-        $result = $this->exec($sql, [$article_id, $user_id, $start_time, $end_time, $item_name, $title, $diary, $post_date,$article_image]);
+        $sql = "insert into article_list(article_id,user_id,start_time,end_time,item_name,title,diary,post_date,time_date,article_image) values(?,?,?,?,?,?,?,?,?,?)";
+        $result = $this->exec($sql, [$article_id, $user_id, $start_time, $end_time, $item_name, $title, $diary, $post_date,$time_date,$article_image]);
 
         if ($result) {
             return '';

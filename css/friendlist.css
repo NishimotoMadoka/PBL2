@@ -1,0 +1,53 @@
+h1{
+    text-align: center;
+}
+
+
+
+.user-icon{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+   
+  }
+  
+  .user-icon img{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-right: 20px;
+  }
+
+  .form-wrapper {
+    background: #fafafa;
+    margin: auto;
+    padding: 1em ; 
+    max-width: 390px;
+    
+}
+
+.form-wrapper-icon {
+    background: #fafafa;
+    margin: auto;
+    padding: 3em 1em 0em 1em; 
+    max-width: 390px;
+    margin-top: 30px;
+    
+}
+
+.iti{
+    text-align: center;
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+}
+
+.name{
+  
+}
