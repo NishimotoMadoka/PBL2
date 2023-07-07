@@ -40,11 +40,6 @@ $user_articles = $article->userArticles($user_id);
     <?php
     }
     ?>
-    <!-- <div class="icon-update">
-      <a href="./icon_update.php">
-        <input type="submit" value="アイコン変更" class="icon_button">
-      </a>
-    </div> -->
   </div>
   <!-- ユーザー情報 -->
   <div class="form-wrapper">
@@ -55,10 +50,10 @@ $user_articles = $article->userArticles($user_id);
       <dl class="inline">
       <div class="form-item">
         <table>
-        <tr>名前 ： <?= $user_plofile['name'] ?></tr><br>
-        <tr>メールアドレス ： <?= $user_plofile['mail'] ?></tr><br>
-        <tr>ひとこと ： <?= $user_plofile['profile_comment'] ?></tr><br>
-        <tr>フレンドコード ： <?= $user_plofile['friend_code'] ?></tr><br>
+        <tr><th>名前</th><td><?= $user_plofile['name'] ?></td></tr>
+        <tr><th>メールアドレス</th><td><?= $user_plofile['mail'] ?></td></tr>
+        <tr><th>ひとこと</th><td><?= $user_plofile['profile_comment'] ?></td></tr>
+        <tr><th>フレンドコード</th><td><?= $user_plofile['friend_code'] ?></td></tr>
   </table>
       </dl>
     </div>
@@ -91,6 +86,7 @@ $user_articles = $article->userArticles($user_id);
     <!-- <div class="friend_list"> -->
     <div class="button-panel">
       <a href="<?=$friend_list_php?>">
+      <div class="button-panel">
         <input type="submit" value="フレンドリスト" class="button">
       </a>
     </div>
@@ -101,7 +97,7 @@ $user_articles = $article->userArticles($user_id);
 
 </div>
 </div>
-</div><!--form-wrapper-->
+ </div><!--form-wrapper -->
 
 
 

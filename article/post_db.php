@@ -20,14 +20,15 @@
     $post_date=$_POST['date'];
     $str = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPUQRSTUVWXYZ';
     $article_id = substr(str_shuffle($str), 0, 9);
+    $time_date=$_SERVER['REQUEST_TIME']; //投稿した日時　表示とかに使うときはdate("Y/m/d",$time_date);でいけるはず！！！！
 
     for($i = 0; $i < $formCount; $i++){
         $item = $items[$i];
         $time_start = $start_times[$i];
         $time_end = $end_times[$i];
 
-        if(var_dump($time_start == $time_end)){
-        // if(strtotime($time_start)==strtotime($time_end)){
+        if($time_start == $time_end){
+        if(strtotime($time_start)==strtotime($time_end)){
             $_SESSION['post_error']='開始時間と終了時間は違うはずだよね？？？？';
             header('Location: post.php');
             exit();
@@ -125,7 +126,7 @@
     // DBに保存
     require_once __DIR__ . '/../classes/article_list.php';
     $article = new Article();
-    $result = $article->insertArticle($article_id,$user_id, $start_time, $end_time, $item_name,$title,$diary,$post_date,$article_image);
+    $result = $article->insertArticle($article_id,$user_id, $start_time, $end_time, $item_name,$title,$diary,$post_date,$time_date,$article_image);
 
 
 if ($result !== '') {
@@ -145,5 +146,6 @@ if ($result !== '') {
 </form>
 <?php
 require_once __DIR__ . '/../footer.php';
+}
 }
 ?>

@@ -10,9 +10,12 @@ if(!isset($_SESSION)){
 
 
 
+
+
 $user_id=$_SESSION['user_id'];
 
 $friends_users_id=$user->getFriends($user_id);
+
 
 require_once __DIR__ . '/../header.php';
 require_once __DIR__ . '/../pre.php';
@@ -32,6 +35,7 @@ require_once __DIR__ . '/../pre.php';
             $friends_articles = $article->friendsArticles($friend_user_id);
             
             foreach ($friends_articles as $friend_article) {
+              $friend_article_array = array();
               $friend_article_array = array();
               
               // $friend_article.$i=$friend_article;
@@ -81,6 +85,7 @@ require_once __DIR__ . '/../pre.php';
       // array_multisort( array_map( "strtotime", array_column( $friends_articles_array, "A" ) ), SORT_ASC, $friends_articles_array ) ;
      // array_multisort(array_column($friends_articles_array,'post_date'),SORT_DESC,$friends_articles_array);
      //array_multisort(array_map("strtotime", array_column($friends_articles_array,"post_date")),SORT_DESC,$friends_articles_array);
+     //array_multisort(array_map("strtotime", array_column($friends_articles_array,"post_date")),SORT_DESC,$friends_articles_array);
      // $sampleOutput = "";
 
 
@@ -113,6 +118,7 @@ foreach( $friends_articles_array as $value) {
       ?>
       
         <!-- <a href="article/article_show.php?article_id=<?= $friend_article['article_id'] ?>">
+        
         
         <article class="article-one">
         <p class="article-user"><object><a href=<?= $user_php ?>?user_id=<?= $friend_article['user_id'] ?>><?= $friend_article['name'] ?></a></object></p>
