@@ -16,7 +16,7 @@ if (isset($_SESSION['diary_error'])) {
 }
 ?>
 
-<link rel="stylesheet" href="<?= $post_css ?>">
+<link rel="stylesheet" href="<?= $diary_css ?>">
 <form class="form" method="POST" action="./diary_db.php"  enctype="multipart/form-data">
     <div class="item">
         <input class="form-text" type="hidden" name="article_id" value="<?=$article_id?>" readonly><br>
