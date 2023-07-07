@@ -20,14 +20,14 @@
     $post_date=$_POST['date'];
     $str = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPUQRSTUVWXYZ';
     $article_id = substr(str_shuffle($str), 0, 9);
-    $time_date=$_SERVER['REQUEST_TIME']; //投稿した日時　表示とかに使うときはdate("Y/m/d",$time_date);でいけるはず！！！！
+    $time_date=date("Y-m-d H:i:s"); //投稿した日時
 
     for($i = 0; $i < $formCount; $i++){
         $item = $items[$i];
         $time_start = $start_times[$i];
         $time_end = $end_times[$i];
 
-        if($time_start == $time_end){
+        // if($time_start == $time_end){
         if(strtotime($time_start)==strtotime($time_end)){
             $_SESSION['post_error']='開始時間と終了時間は違うはずだよね？？？？';
             header('Location: post.php');
@@ -61,12 +61,13 @@
             exit();
         }
         // 配列に追加
-        array_push($item_name,$item);
-        array_push($start_time,$time_start);
-        array_push($end_time,$time_end);
-        // $item_name[$i]=$item;
-        // $start_time[$i]=$time_start;
-        // $end_time[$i]=$time_end;
+        // array_push($item_name,$item);
+        // array_push($start_time,$time_start);
+        // array_push($end_time,$time_end);
+
+        $item_name[$i]=$item;
+        $start_time[$i]=$time_start;
+        $end_time[$i]=$time_end;
         // if($item==""){
         //     $item_name.="#,";
         // }else{
@@ -114,6 +115,10 @@
     $start_time = implode(',', $start_time);
     $end_time = implode(',', $end_time);
 
+    // echo $item_name;
+    // echo $start_time;
+    // echo $end_time;
+    // exit(0);
     // 画像の受け取り、加工
     $article_image = $_FILES['up_image']['name'];
 
@@ -147,5 +152,5 @@ if ($result !== '') {
 <?php
 require_once __DIR__ . '/../footer.php';
 }
-}
+
 ?>
