@@ -15,7 +15,9 @@ require_once __DIR__ . '/../pre.php';
     $password = isset($_SESSION['password']) ? $_SESSION['password'] : '';
 
     if (isset($_SESSION['signup_error'])) {
-        echo '<p class="error_message">' . $_SESSION['signup_error'] . '</p>';
+        $signup_error="<script type='text/javascript'>alert('". $_SESSION['signup_error'] ."');</script>";
+        echo $signup_error;
+        // echo '<p class="error_message">' . $_SESSION['signup_error'] . '</p>';
         unset($_SESSION['signup_error']);
     } else {
         // echo '<p class="user-form">' . "新規登録" . '</p>';

@@ -6,17 +6,24 @@ require_once __DIR__ . '/../pre.php';
 <main>
 
 <?php
+$post_date=$_POST['date'];
+$article_id=$_POST['article_id'];
 if (isset($_SESSION['diary_error'])) {
-    echo '<p class="error_class">' . $_SESSION['diary_error'] . '</p>';
+    $diary_error="<script type='text/javascript'>alert('". $_SESSION['diary_error'] ."');</script>";
+    echo $diary_error;
+    // echo '<p class="error_class">' . $_SESSION['diary_error'] . '</p>';
     unset($_SESSION['diary_error']);
 }
 ?>
 
 <link rel="stylesheet" href="<?= $post_css ?>">
 <form class="form" method="POST" action="./diary_db.php"  enctype="multipart/form-data">
-<div class="item">
+    <div class="item">
+        <input class="form-text" type="hidden" name="article_id" value="<?=$article_id?>" readonly><br>
+    </div>
+    <div class="item">
         <label class="label_left" for="number">日付</label>
-        <input class="form-text" type="date" name="date" id="item_name" placeholder="日付"><br>
+        <input class="form-text" type="date" name="date" value="<?=$post_date?>" readonly><br>
     </div>
     <div class="item">
         <label class="label_left" for="num">タイトル</label>

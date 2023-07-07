@@ -15,9 +15,9 @@ require_once __DIR__ . '/../classes/user.php';
     <link rel="stylesheet" href="<?= $up_css?>">
 </head>
 <?php
-$user_show_id=$_SESSION['user_id'];
+$user_id=$_SESSION['user_id'];
 $user = new User();
-$user_plofile = $user->detailsUser($user_show_id);
+$user_plofile = $user->detailsUser($user_id);
 
     $name=$user_plofile['name'];
     $mail=$user_plofile['mail'];
@@ -25,7 +25,9 @@ $user_plofile = $user->detailsUser($user_show_id);
     $password=$user_plofile['password'];
             
     if (isset($_SESSION['update_error'])) {
-        echo '<p class="error_message">' . $_SESSION['update_error'] . '</p>';
+        $update_error="<script type='text/javascript'>alert('". $_SESSION['update_error'] ."');</script>";
+        echo $update_error;
+        // echo '<p class="error_message">' . $_SESSION['update_error'] . '</p>';
         unset($_SESSION['update_error']);
     }
 ?>
