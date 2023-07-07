@@ -2,6 +2,7 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $formCount = isset($_POST['form_count']) ? $_POST['form_count'] : 1;
     require_once __DIR__ .'/../pre.php';
+    require_once __DIR__ . '/../header.php';
     if(!isset($_SESSION)){
         session_start();
     }
