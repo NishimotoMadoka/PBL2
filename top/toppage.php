@@ -91,14 +91,14 @@ require_once __DIR__ . '/../pre.php';
 
 
      $date_array = array();
-foreach( $friends_articles_array as $value) {
+foreach( $friend_article_array as $value) {
   $date_array[] = array_keys($value, 'post_date');
 }
 
 // var_dump($date_array);
 
 // ソート実行
-// array_multisort( $date_array, SORT_ASC, $friends_articles_array);
+array_multisort( $date_array, SORT_DESC, $friend_article_array);
 
 // var_dump ($friends_articles_array);
 
