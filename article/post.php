@@ -38,13 +38,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
   <?php } ?>
 
+
   <input type="hidden" name="form_count" value="<?php echo $formCount; ?>">
-  <input type="submit" name="add_form" value="プラスボタン">
-  <div class="image_select">
-        今日の画像：<input type="file" name="up_image" accept="image/*">
+    <div class="image_select">
+      今日の画像：<input type="file" name="up_image" accept="image/*">
+    </div>
+    <div class="button-panel-1">
+      <input type="submit" class="button-1" name="add_form" value="+ 項目を追加">
     </div>
     <div class="button-panel">
-        <input type="submit" class="button" value="送信"><input type="reset" value="リセット" class="button">
+      <input type="submit" class="button" value="送信"><input type="reset" value="リセット" class="button">
     </div>
 </form>
 </main>

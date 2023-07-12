@@ -139,6 +139,11 @@ if ($result !== '') {
 // $_SESSION['title'] = $title;
 // $_SESSION['diary'] = $diary;
 ?>
+
+<?php
+require_once __DIR__ . '/../header.php';
+?>
+
 <form method="post" action="./diary.php">
     <input type="hidden" name="date" value="<?=$post_date?>" readonly>
     <input type="hidden" name="article_id" value="<?=$article_id?>" readonly>

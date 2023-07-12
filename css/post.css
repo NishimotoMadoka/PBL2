@@ -76,6 +76,25 @@ form {
  }
  
 .button:hover {
+  background: #ee3e3e;
+}
+
+.button-panel-1 .button-1 {
+  background-color: #f16262;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  height: 50px;
+  font-family: 'Open sans', sans-serif;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background 0.3s ease-in-out;
+  width: 100%;
+ }
+ 
+.button-1:hover {
   background: #ee3e52;
 }
  
@@ -98,3 +117,6 @@ input{
   margin-bottom: 40px
 } 
 
+.image_select{
+  margin: 30px;
+}
