@@ -1,5 +1,8 @@
 var chartVal = []; // グラフデータ（描画するデータ）
 var Labels = [];//ここにデータベースから持ってくる
+var st = [];
+var en = [];
+var ti = [];
 
 // グラフデータをランダムに生成（消す予定
 function getRandom() {
@@ -24,6 +27,29 @@ function getdata(){
     //const sample1 = '2:00,4:40,#,#,11:00,13:15,20:37,23:00';//開始時間
     //const sample2 = '3:00,5:40,#,#,12:00,14:15,22:37,24:00';//終了時間
     //const sample3 = '1,2,3,4,5,6,7,8';//項目
+
+    const t1 = sample1.split(",");
+    const t2 = sample2.split(",");
+
+    for(let i = 0; i < t1.length; i++){//#を前後の数字と置き換える
+      if(t1[i]=="#"){
+        t1[i] = t2[i-1];
+      }
+
+      if(t2[i]=="#"){
+        t2[i] = t1[i+1];
+      }
+  }
+
+    for(let i = 0; i < t1.length; i++){
+      st.push(t1[i]);
+      en.push(t2[i]);
+   }
+   
+   for(let i = 0; i<st.length;i++){
+    ti[i] = st[i]+'～'+en[i];
+   }
+
 
     const s1 = sample1.split(":");//時間から：を抜いて配列に
     const s11 = sample2.split(":");//
@@ -96,6 +122,7 @@ function getdata(){
  
   }
   
+  
    
 
   // グラフ描画処理
@@ -105,14 +132,37 @@ function getdata(){
       type: 'pie',
       data: { // ラベルとデータセット
         labels: Labels,
+        labels:["睡眠","ごはん","運動","といれ","風呂","バスケ","野球","サッカー"],
+        afterLabel:["aaaa","bbbbb","cccc","dddd","eeee","ffff","gggg","hhhh"],
         datasets: [{
             data: chartVal, // グラフデータ
-            backgroundColor: 'rgb(0, 134, 197, 0.7)', // 棒の塗りつぶし色
-            borderColor: 'rgba(0, 134, 197, 1)', // 棒の枠線の色
+            backgroundColor: ["rgb(255,99,132)","rgb(255,159,64)","rgb(240,240,240)","rgb(54,162,235)","rgb(235,222,127)","rgb(128,119,234)","rgb(217,11,100)","rgb(80,200,120)"], // 棒の塗りつぶし色
+            borderColor: '#000', // 棒の枠線の色
             borderWidth: 1, // 枠線の太さ
         }],
       },
       options: {
+        responsive: false,
+        maintainAspectRatio: false,
+        plugins: {
+          outlabels: {
+            text: ti,
+            color: '#000',
+            backgroundColor: null,
+            lineWidth: 4,
+            stretch: 20,
+            font: {
+              resizable: false,
+              size: 20,
+            }
+          }
+        },
+        layout: {
+          padding: {
+            left: 150,
+            right: 150,
+          }
+        },
         legend: {
           display: true, // 凡例を非表示
         }
