@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Chart.jsでボタンをクリックしてグラフを更新するサンプル</title>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-piechart-outlabels"></script>
 </head>
 <body>
 

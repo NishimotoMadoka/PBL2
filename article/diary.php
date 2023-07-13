@@ -16,27 +16,29 @@ if (isset($_SESSION['diary_error'])) {
 }
 ?>
 
-<link rel="stylesheet" href="<?= $post_css ?>">
+<link rel="stylesheet" href="<?= $diary_css ?>">
+<div class="form-wrapper">
 <form class="form" method="POST" action="./diary_db.php"  enctype="multipart/form-data">
     <div class="item">
         <input class="form-text" type="hidden" name="article_id" value="<?=$article_id?>" readonly><br>
     </div>
-    <div class="item">
+    <div class="date-item">
         <label class="label_left" for="number">日付</label>
         <input class="form-text" type="date" name="date" value="<?=$post_date?>" readonly><br>
     </div>
     <div class="item">
-        <label class="label_left" for="num">タイトル</label>
+        <!-- <label class="label_left" for="num">タイトル</label> -->
         <input class="form-text" type="text" name="title" id="title" placeholder="夢日記タイトル" maxlength="50"><br>
     </div>
     
     <div class="item">
-        <label class="label_left" for="num1">夢日記</label>
-        <textarea class="form-text1" id="" name="diary" placeholder="夢日記本文" maxlength="3500" required></textarea>
+        <!-- <label class="label_left" for="num1">夢日記</label> -->
+        <textarea class="form-text1" id="" name="diary" placeholder="本夢日記本文" maxlength="5000" required></textarea>
     </div>
-    <div class="item">
+    <div class="button-panel">
         <input type="submit" value="送信" class="button"><input type="reset" value="リセット" class="button">
     </div>
+<div>
 </form>
 </main>
 <?php

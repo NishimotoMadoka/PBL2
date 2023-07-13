@@ -23,7 +23,7 @@ require_once __DIR__ . '/../header.php';
 //     exit(0);
 ?>
 <div style="width:100%">
-  <canvas id="canvas"></canvas>
+  <canvas id="canvas" style="display: block; height: 500px; width: 500px; margin:auto;" width="700px" height="700px"></canvas>
 </div>
 <script>
     // console.log(<?php echo $_start;?>);
