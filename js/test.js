@@ -136,7 +136,7 @@ function getdata(){
         afterLabel:["aaaa","bbbbb","cccc","dddd","eeee","ffff","gggg","hhhh"],
         datasets: [{
             data: chartVal, // グラフデータ
-            backgroundColor: ["rgb(255,99,132)","rgb(255,159,64)","rgb(240,240,240)","rgb(54,162,235)","rgb(235,222,127)","rgb(128,119,234)","rgb(217,11,100)","rgb(80,200,120)"], // 棒の塗りつぶし色
+            backgroundColor: ["rgb(255,99,132)","rgb(255,159,64)","rgb(240,240,240)","rgb(54,162,235)","rgb(235,222,127)","rgb(128,119,234)","rgb(217,11,100)","rgb(80,200,120)","rgb(217,11,100)","rgb(217,11,100)"], // 棒の塗りつぶし色
             borderColor: '#000', // 棒の枠線の色
             borderWidth: 1, // 枠線の太さ
         }],
