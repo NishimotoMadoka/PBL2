@@ -36,20 +36,22 @@ Chart.plugins.register({
             ctx.fillText(hour, x, y);
         }
 
-        // 円グラフのセクターを描画
-        // for (var j = 0; j < chart.data.datasets[0].data.length; j++) {
-        //     var data = chart.data.datasets[0].data;
-        //     var total = data.reduce((acc, val) => acc + val, 0);
-        //     var angle = Math.PI * 2 / total * data[j] - Math.PI / 2;
+    // メモリを描画
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'black';
+    ctx.beginPath();
+    for (var j = 0; j < 24; j++) {
+      var angle = Math.PI * 2 / 24 * j - Math.PI / 2;
+      var outerX = centerX + (radius - 30) * Math.cos(angle);
+      var outerY = centerY + (radius - 30) * Math.sin(angle);
+      var innerX = centerX + (radius - 50) * Math.cos(angle);
+      var innerY = centerY + (radius - 50) * Math.sin(angle);
 
-        //     ctx.beginPath();
-        //     ctx.moveTo(centerX, centerY);
-        //     ctx.arc(centerX, centerY, radius, angle, angle + Math.PI * 2 / total, false);
-        //     ctx.closePath();
-        //     ctx.fillStyle = chart.data.datasets[0].backgroundColor[j];
-        //     ctx.fill();
-        // }
+      ctx.moveTo(outerX, outerY);
+      ctx.lineTo(innerX, innerY);
+    }
+    ctx.stroke();
 
-        ctx.save();
+    ctx.restore();
     }
 });
