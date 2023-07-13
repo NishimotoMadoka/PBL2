@@ -24,7 +24,7 @@ require_once __DIR__ . '/../pre.php';
 <main class="">
   <div class="">
     <article class="">
-      <h1>友達の日常</h1>
+      <h1>岸さんかわいい</h1>
       <?php
       $i=0;
       if(!empty($friends_users_id)){
