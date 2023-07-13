@@ -2,10 +2,12 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $formCount = isset($_POST['form_count']) ? $_POST['form_count'] : 1;
     require_once __DIR__ .'/../pre.php';
-    require_once __DIR__ . '/../header.php';
+    // require_once __DIR__ . '/../header.php';
     if(!isset($_SESSION)){
         session_start();
     }
+    echo $formCount;
+    exit(0);
     $item_name=array();
     $start_time=array();
     $end_time=array();
@@ -95,7 +97,7 @@
         //     $end_time.=$time_end.",";
         // }
     }
-    exit(0);
+    // exit(0);
     // 配列の要素数カウント
     $item_count=count($item_name);
     $start_count=count($start_time);
