@@ -31,13 +31,23 @@ class User extends DbData
         }
     }
 
-    #ユーザー情報更新処理($a→新しいパスワードの変数名に変更してね)
-    public function updateUser($name,$mail,$profile_comment,$password,$user_id)
+    #ユーザー情報更新処理
+    public function updateUser($name,$mail,$profile_comment,$user_id)
     {
+        $sql = "update users set name=?,mail=?,profile_comment=? where user_id=?";
+        $result = $this->exec($sql, [$name,$mail,$profile_comment,$user_id]);
+        if($result){
+            return'';
+        }else{
+            return'更新できませんでした。管理者にお問い合わせください。';
+        }
+    }
+    #ユーザー情報更新処理(パスワードの変更がある場合)
+    public function updateUserdetails($name,$mail,$profile_comment,$password,$user_id){
         $sql = "update users set name=?,mail=?,profile_comment=?,password=? where user_id=?";
         $result = $this->exec($sql, [$name,$mail,$profile_comment,$password,$user_id]);
         if($result){
-            return'更新しました。';
+            return'';
         }else{
             return'更新できませんでした。管理者にお問い合わせください。';
         }

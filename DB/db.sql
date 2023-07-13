@@ -30,7 +30,7 @@ CREATE TABLE users(
 );
 
 #テーブルdiary_listの作成
--- drop table if exists diary_list; # 既にテーブルdiary_listがあれば削除する
+drop table if exists diary_list; # 既にテーブルdiary_listがあれば削除する
 -- CREATE TABLE diary_list(
 --     article_id INT PRIMARY KEY AUTO_INCREMENT,
 --     user_id INT NOT NULL,
