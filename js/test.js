@@ -1,6 +1,12 @@
 var chartVal = []; // グラフデータ（描画するデータ）
 var Labels = [];//ここにデータベースから持ってくる
-
+let chartcolor = [
+  'rgba(54, 162, 235, 0.2)',
+  'rgba(255, 206, 86, 0.2)',
+  'rgba(75, 192, 192, 0.2)',
+  'rgba(153, 102, 255, 0.2)',
+  'rgba(255, 159, 64, 0.2)'
+];//グラフの色
 // グラフデータをランダムに生成（消す予定
 function getRandom() {
     chartVal = []; // 配列を初期化
@@ -25,6 +31,11 @@ function getdata(){
     //const sample2 = '3:00,5:40,#,#,12:00,14:15,22:37,24:00';//終了時間
     //const sample3 = '1,2,3,4,5,6,7,8';//項目
 
+    //たくちゃんにプレゼント
+    //const t1 = sample1.split(",");
+    //const t2 = sample2.split(",");
+    //プレゼント終わり
+
     const s1 = sample1.split(":");//時間から：を抜いて配列に
     const s11 = sample2.split(":");//
     const s2 = sample3.split(",");//項目から、を抜いて配列に(項目の処理終わり)
@@ -41,12 +52,12 @@ function getdata(){
 
    for(let i = 0; i < s4.length; i++){//#を前後の数字と置き換える
       if(s4[i]=="#"){
-        s4[i] = s4[i-1] + 100;
+        s4[i] = s44[i-1];
       }
 
 
       if(s44[i]=="#"){
-        s44[i] = s44[i-1]+100;
+        s44[i] = s4[i-1];
       }
      
   }
@@ -105,7 +116,7 @@ function getdata(){
         labels: Labels,
         datasets: [{
             data: chartVal, // グラフデータ
-            backgroundColor: 'rgb(0, 134, 197, 0.7)', // 棒の塗りつぶし色
+            backgroundColor: chartcolor, // 棒の塗りつぶし色
             borderColor: 'rgba(0, 134, 197, 1)', // 棒の枠線の色
             borderWidth: 1, // 枠線の太さ
         }],

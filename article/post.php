@@ -66,7 +66,18 @@ function addform(){//form追加関数
 
   let clickBtn = document.getElementById('kbkb');
 
+   
+
   if(count<10){
+    
+    var formCountInput = document.querySelector('input[name="form_count"]');
+    var formCount = parseInt(formCountInput.value);
+    formCount++;
+    formCountInput.value = formCount;
+
+    var container = document.querySelector('form');
+    var div = document.createElement('div');
+
     clickBtn.insertAdjacentHTML('beforebegin',`
     <div class="form-item">
     <div class="item">

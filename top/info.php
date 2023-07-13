@@ -3,7 +3,7 @@ require_once __DIR__ . '/../header.php';
 ?>
 <head>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
-  <script src="./test.js"></script>
+  <script src="../js/test.js"></script>
 </head>
 <?php 
   $_start = $_POST['starttime'];//$_POST で受け取る

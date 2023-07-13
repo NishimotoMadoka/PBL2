@@ -1,6 +1,12 @@
 var chartVal = []; // グラフデータ（描画するデータ）
 var Labels = [];//ここにデータベースから持ってくる
-
+let chartcolor = [
+    'rgba(54, 162, 235, 0.2)',
+    'rgba(255, 206, 86, 0.2)',
+    'rgba(75, 192, 192, 0.2)',
+    'rgba(153, 102, 255, 0.2)',
+    'rgba(255, 159, 64, 0.2)'
+];//グラフの色
 // グラフデータをランダムに生成（消す予定
 function getRandom() {
     chartVal = []; // 配列を初期化
@@ -100,6 +106,29 @@ function getdata(){
 
   // グラフ描画処理
   function drawChart() {
+
+    //色変える処理
+      let str = "";
+      const color1 =document.form1.color1;
+  
+      for(let i = 0; i<color1.length; i++){
+        if (color1[i].checked){
+          str =color1[i].value;
+          break;
+        }
+      }
+      
+      if(str=='red'){
+        chartcolor.push('rgba(255, 99, 132, 1.0)');
+      }
+      else if(str=='blue'){
+        chartcolor.push('rgba(54, 162, 235, 1.0)');
+      }
+      else if(str=='yellow'){
+        chartcolor.push('rgba(255, 206, 86, 1.0)')
+      }
+    //色変えここまで
+
     var ctx = document.getElementById('canvas').getContext('2d');
     window.myChart = new Chart(ctx, { // インスタンスをグローバル変数で生成
       type: 'pie',
@@ -107,7 +136,7 @@ function getdata(){
         labels: Labels,
         datasets: [{
             data: chartVal, // グラフデータ
-            backgroundColor: 'rgb(0, 134, 197, 0.7)', // 棒の塗りつぶし色
+            backgroundColor:chartcolor, // 棒の塗りつぶし色
             borderColor: 'rgba(0, 134, 197, 1)', // 棒の枠線の色
             borderWidth: 1, // 枠線の太さ
         }],
@@ -119,3 +148,5 @@ function getdata(){
       }
     });
   }
+
+
