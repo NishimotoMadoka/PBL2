@@ -5,19 +5,23 @@ require_once __DIR__ . '/../header.php';
 // Postクラス、Userクラス
 require_once __DIR__ . '/../classes/article_list.php';
 require_once __DIR__ . '/../classes/user.php';
-if (isset($_GET['user_id'])) {
-  $user_id = $_GET['user_id'];
-} else {
-  $user_id = $_SESSION['user_id'];
+// if (isset($_GET['user_id'])) {
+//   $user_id = $_GET['user_id'];
+// } else {
+//   $user_id = $_SESSION['user_id'];
+// }
+$friend_user_id=$_POST['user_id'];
+if($friend_user_id==$_SESSION['user_id']){
+    header('Location: mypage.php');
+    exit();
 }
-
 $article = new Article();
 $user = new User();
 
 
 // ユーザー情報、投稿の抽出
-$user_plofile = $user->detailsUser($user_id);
-$user_articles = $article->userArticles($user_id);
+$user_plofile = $user->detailsUser($friend_user_id);
+$user_articles = $article->userArticles($friend_user_id);
 
 ?>
 
@@ -53,20 +57,22 @@ $user_articles = $article->userArticles($user_id);
         <tr><th>名前</th><td><?= $user_plofile['name'] ?></td></tr>
         <tr><th>メールアドレス</th><td><?= $user_plofile['mail'] ?></td></tr>
         <tr><th>ひとこと</th><td><?= $user_plofile['profile_comment'] ?></td></tr>
-        <tr><th>フレンドコード</th><td><?= $user_plofile['friend_code'] ?></td></tr>
+        <!-- <tr><th>フレンドコード</th><td><?= $user_plofile['friend_code'] ?></td></tr> -->
   </table>
       </dl>
     </div>
   </div>
+
+
   <?php
-  if (!isset($_GET['user_id'])) {
+//   if (!isset($_GET['user_id'])) {
   ?>
     <!-- <div class="update"> -->
-    <div class="button-panel">
+    <!-- <div class="button-panel">
       <a href="<?=$update_php?>">
         <input type="submit" value="プロフィール編集" class="button">
       </a>
-    </div>
+    </div> -->
 
     <!-- <div class="button-panel">
       <a href="./icon_update.php">
@@ -75,22 +81,22 @@ $user_articles = $article->userArticles($user_id);
     </div> -->
 
     <!-- <div class="friend"> -->
-    <div class="button-panel">
+    <!-- <div class="button-panel">
       <a href="<?=$friend_register_php?>">
         <input type="submit" value="フレンド登録" class="button">
       </a>
-    </div>
+    </div> -->
 
     <!-- <div class="friend_list"> -->
-    <div class="button-panel">
+    <!-- <div class="button-panel">
       <a href="<?=$friend_list_php?>">
       <div class="button-panel">
         <input type="submit" value="フレンドリスト" class="button">
       </a>
-    </div>
+    </div> -->
 
   <?php
-  }
+//   }
   ?>
 
 </div>

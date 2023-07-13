@@ -24,7 +24,7 @@ require_once __DIR__ . '/../pre.php';
 <main class="">
   <div class="">
     <article class="">
-      <h1>友達の日常</h1>
+      <h1>岸さんかわいい</h1>
       <?php
       $i=0;
       if(!empty($friends_users_id)){
@@ -40,6 +40,7 @@ require_once __DIR__ . '/../pre.php';
               
               // $friend_article.$i=$friend_article;
               $friend_article_array=array("user_id"=>$friend_article['user_id'] ,
+                                        "user_icon"=>$friend_article['icon'],
                                         "article_id"=>$friend_article['article_id'],
                                         "post_date"=>$friend_article['post_date'],
                                         "start_time"=>$friend_article['start_time'],
@@ -48,24 +49,29 @@ require_once __DIR__ . '/../pre.php';
                                         "title"=>$friend_article['title'],
                                         "diary"=>$friend_article['diary']
                                       );
+                            
+                if($friend_article['icon']==""){
+                    $friend_article['icon']="default.jpg";
+                }
                 ?>
 
                 <br>
-
+<form method="POST" action="./../user/userpage.php">
+    <input type="hidden" name="user_id" value="<?=$friend_article['user_id']?>">
+    <input type="image" src="../icon_image/<?= $friend_article['icon'] ?>">
+</form>
 <article class="">
-<table>
-    <tr><?= $friend_article['name'] ?></tr><br>
-    <tr><?= $friend_article['post_date'] ?></tr><br>
-    <tr><?= $friend_article['title'] ?></tr><br>
+    <tr><?=$friend_article['name']?></tr><br>
+    <tr><?=$friend_article['post_date']?></tr><br>
+    <tr><?=$friend_article['time_date']?></tr><br>
     <tr><?= $friend_article['diary'] ?></tr><br>
 </table>
 </article>
 <form action="info.php" method="POST">
-
-<input type="hidden" name="starttime" value="<?= $friend_article[2]?>"> 
-<input type="hidden" name="endtime" value="<?= $friend_article[3]?>"> 
-<input type="hidden" name="item" value="<?= $friend_article[4]?>"> 
-<input style="width:200px;height:200px;"type="image" name="submit" >
+<input type="hidden" name="starttime" value="<?= $friend_article['start_time']?>"> 
+<input type="hidden" name="endtime" value="<?= $friend_article['end_time']?>"> 
+<input type="hidden" name="item" value="<?= $friend_article['item_name']?>"> 
+<input type="submit" name="button" value="円グラフを表示" >
 </form>
               <br>
 

@@ -42,13 +42,11 @@ function getdata(){
    for(let i = 0; i < s4.length; i++){//#を前後の数字と置き換える
       if(s4[i]=="#"){
         s4[i] = s4[i-1];
-        s4[i+1] = s4[i+2];
       }
 
 
       if(s44[i]=="#"){
         s44[i] = s44[i-1];
-        s44[i+1] = s44[i+2];
       }
      
   }

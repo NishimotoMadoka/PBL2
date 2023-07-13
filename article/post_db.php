@@ -148,7 +148,7 @@ if ($result !== '') {
 <form method="post" action="./diary.php">
     <input type="hidden" name="date" value="<?=$post_date?>" readonly>
     <input type="hidden" name="article_id" value="<?=$article_id?>" readonly>
-    <input type="submit" name="button" value="夢日記へ">
+    <!-- <input type="submit" name="button" value="夢日記へ"> -->
 </form>
 <?php
 require_once __DIR__ . '/../footer.php';

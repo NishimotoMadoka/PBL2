@@ -1,5 +1,11 @@
 var chartVal = []; // グラフデータ（描画するデータ）
 var Labels = [];//ここにデータベースから持ってくる
+<<<<<<< HEAD
+=======
+var st = [];
+var en = [];
+var ti = [];
+>>>>>>> 5be97497f7e0fd016fdba92ecb6ab8c543ff0d0b
 
 // グラフデータをランダムに生成（消す予定
 function getRandom() {
@@ -25,6 +31,32 @@ function getdata(){
     //const sample2 = '3:00,5:40,#,#,12:00,14:15,22:37,24:00';//終了時間
     //const sample3 = '1,2,3,4,5,6,7,8';//項目
 
+<<<<<<< HEAD
+=======
+    const t1 = sample1.split(",");
+    const t2 = sample2.split(",");
+
+    for(let i = 0; i < t1.length; i++){//#を前後の数字と置き換える
+      if(t1[i]=="#"){
+        t1[i] = t2[i-1];
+      }
+
+      if(t2[i]=="#"){
+        t2[i] = t1[i+1];
+      }
+  }
+
+    for(let i = 0; i < t1.length; i++){
+      st.push(t1[i]);
+      en.push(t2[i]);
+   }
+   
+   for(let i = 0; i<st.length;i++){
+    ti[i] = st[i]+'～'+en[i];
+   }
+
+
+>>>>>>> 5be97497f7e0fd016fdba92ecb6ab8c543ff0d0b
     const s1 = sample1.split(":");//時間から：を抜いて配列に
     const s11 = sample2.split(":");//
     const s2 = sample3.split(",");//項目から、を抜いて配列に(項目の処理終わり)
@@ -41,12 +73,22 @@ function getdata(){
 
    for(let i = 0; i < s4.length; i++){//#を前後の数字と置き換える
       if(s4[i]=="#"){
+<<<<<<< HEAD
         s4[i] = s4[i-1] + 100;
+=======
+        s4[i] = s4[i-1];
+        s4[i+1] = s4[i+2];
+>>>>>>> 5be97497f7e0fd016fdba92ecb6ab8c543ff0d0b
       }
 
 
       if(s44[i]=="#"){
+<<<<<<< HEAD
         s44[i] = s44[i-1]+100;
+=======
+        s44[i] = s44[i-1];
+        s44[i+1] = s44[i+2];
+>>>>>>> 5be97497f7e0fd016fdba92ecb6ab8c543ff0d0b
       }
      
   }
@@ -94,6 +136,10 @@ function getdata(){
  
   }
   
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 5be97497f7e0fd016fdba92ecb6ab8c543ff0d0b
    
 
   // グラフ描画処理
@@ -103,14 +149,47 @@ function getdata(){
       type: 'pie',
       data: { // ラベルとデータセット
         labels: Labels,
+<<<<<<< HEAD
         datasets: [{
             data: chartVal, // グラフデータ
             backgroundColor: 'rgb(0, 134, 197, 0.7)', // 棒の塗りつぶし色
             borderColor: 'rgba(0, 134, 197, 1)', // 棒の枠線の色
+=======
+        labels:["睡眠","ごはん","運動","といれ","風呂","バスケ","野球","サッカー"],
+        afterLabel:["aaaa","bbbbb","cccc","dddd","eeee","ffff","gggg","hhhh"],
+        datasets: [{
+            data: chartVal, // グラフデータ
+            backgroundColor: ["rgb(255,99,132)","rgb(255,159,64)","rgb(240,240,240)","rgb(54,162,235)","rgb(235,222,127)","rgb(128,119,234)","rgb(217,11,100)","rgb(80,200,120)"], // 棒の塗りつぶし色
+            borderColor: '#000', // 棒の枠線の色
+>>>>>>> 5be97497f7e0fd016fdba92ecb6ab8c543ff0d0b
             borderWidth: 1, // 枠線の太さ
         }],
       },
       options: {
+<<<<<<< HEAD
+=======
+        responsive: false,
+        maintainAspectRatio: false,
+        plugins: {
+          outlabels: {
+            text: ti,
+            color: '#000',
+            backgroundColor: null,
+            lineWidth: 4,
+            stretch: 20,
+            font: {
+              resizable: false,
+              size: 20,
+            }
+          }
+        },
+        layout: {
+          padding: {
+            left: 150,
+            right: 150,
+          }
+        },
+>>>>>>> 5be97497f7e0fd016fdba92ecb6ab8c543ff0d0b
         legend: {
           display: true, // 凡例を非表示
         }

@@ -43,6 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         今日の画像：<input type="file" name="up_image" accept="image/*">
     </div>
     <div  class="button-panel">
+        <!-- <input type="hidden" name="date" value="<?=$post_date?>" readonly>
+        <input type="hidden" name="article_id" value="<?=$article_id?>" readonly> -->
         <input type="submit" class="button" value="送信"><input type="reset" value="リセット" class="button">
     </div>
 
