@@ -2,12 +2,16 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
     type: 'pie',
     data: {
-        labels: ['A', 'B', 'C', 'D', 'E'],
+        // labels: ['A', 'B', 'C', 'D', 'E'],
         datasets: [{
             data: [10, 20, 30, 15, 25],
             backgroundColor: ['red', 'blue', 'green', 'yellow', 'orange']
         }]
-    }
+    },
+option: {
+    responsive: true,
+    maintainAspectRation: false
+}
 });
 
 Chart.plugins.register({
@@ -22,9 +26,9 @@ Chart.plugins.register({
         ctx.textBaseline = 'middle';
         ctx.textAlign = 'center';
 
-        var radius = Math.min(width, height) /1.9;
+        var radius = Math.min(width, height) /2;
         var centerX = width / 2;
-        var centerY = height / 1.8;
+        var centerY = height / 1.98;
 
         for (var i = 0; i < 24; i++) {
             var angle = Math.PI * 2 / 24 * i - Math.PI / 2;
