@@ -2,15 +2,19 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
     type: 'pie',
     data: {
-        // labels: ['A', 'B', 'C', 'D', 'E'],
+        labels: ["朝", "トイレ", "昼", "おやつ", "遊び", "夜", "寝る"],
         datasets: [{
-            data: [10, 20, 30, 15, 25],
-            backgroundColor: ['red', 'blue', 'green', 'yellow', 'orange']
+            data: [1, 2, 3, 4, 5, 6, 3],
+            backgroundColor: ['red', 'blue', 'green', 'yellow', 'orange'],
+            borderWidth: 1,
         }]
     },
-option: {
+options: {
     responsive: true,
-    maintainAspectRation: false
+    maintainAspectRation: false,
+    legend: {
+        display: false
+    }
 }
 });
 
@@ -28,7 +32,7 @@ Chart.plugins.register({
 
         var radius = Math.min(width, height) /2;
         var centerX = width / 2;
-        var centerY = height / 1.98;
+        var centerY = height / 2;
 
         for (var i = 0; i < 24; i++) {
             var angle = Math.PI * 2 / 24 * i - Math.PI / 2;
