@@ -1,22 +1,34 @@
-var ctx = document.getElementById('myChart').getContext('2d');
-var chart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-        labels: ["朝", "トイレ", "昼", "おやつ", "遊び", "夜", "寝る"],
-        datasets: [{
-            data: [1, 2, 3, 4, 5, 6, 3],
-            backgroundColor: ['red', 'blue', 'green', 'yellow', 'orange'],
-            borderWidth: 1,
-        }]
-    },
-options: {
-    responsive: true,
-    maintainAspectRation: false,
-    legend: {
-        display: false
-    }
+// 初期のデータとラベルを設定します
+let currentData = [1, 2, 3, 4, 5, 6, 3];
+var labels = ["朝", "トイレ", "昼", "おやつ", "遊び", "夜", "寝る"];
+
+var canvas = document.getElementById("myChart");
+var updateButton = document.getElementById("updateButton");
+
+var ctx = canvas.getContext('2d');
+var myChart; // チャートオブジェクトをグローバルスコープで宣言
+
+// 初期の円グラフを描画します
+function createChart() {
+    myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                data: currentData,
+                backgroundColor: ['red', 'blue', 'green', 'yellow', 'orange'],
+                borderWidth: 1,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                display: false
+            }
+        }
+    });
 }
-});
 
 Chart.plugins.register({
     afterDraw: function(chart) {
@@ -30,7 +42,7 @@ Chart.plugins.register({
         ctx.textBaseline = 'middle';
         ctx.textAlign = 'center';
 
-        var radius = Math.min(width, height) /2;
+        var radius = Math.min(width, height) /1.9;
         var centerX = width / 2;
         var centerY = height / 2;
 
@@ -61,5 +73,28 @@ Chart.plugins.register({
     ctx.stroke();
 
     ctx.restore();
+    },
+});
+
+createChart(); // 初期のチャートを作成
+
+// 更新ボタンがクリックされたときの処理を追加します
+updateButton.addEventListener("click", () => {
+    // 新しいデータを生成します（ダミーデータを使用）
+    const newData = generateRandomData();
+
+    // チャートが存在するか確認してから更新します
+    if (myChart) {
+        myChart.data.datasets[0].data = newData;
+        myChart.update();
     }
 });
+
+// ダミーデータの生成関数
+function generateRandomData() {
+    const newData = [];
+    for (let i = 0; i < currentData.length; i++) {
+        newData.push(Math.floor(Math.random() * 100)); // 0から100のランダムな数値を生成
+    }
+    return newData;
+}
