@@ -1,20 +1,18 @@
 var chartVal = []; // グラフデータ（描画するデータ）
 var Labels = [];//ここにデータベースから持ってくる
-let chartcolor = [
-    'rgba(54, 162, 235, 0.2)',
-    'rgba(255, 206, 86, 0.2)',
-    'rgba(75, 192, 192, 0.2)',
-    'rgba(153, 102, 255, 0.2)',
-    'rgba(255, 159, 64, 0.2)'
-];//グラフの色
-// グラフデータをランダムに生成（消す予定
-function getRandom() {
-    chartVal = []; // 配列を初期化
-    var length = 3;
-    for (i = 0; i < length; i++) {
-      chartVal.push(Math.floor(Math.random() * 20));
-    }
-  }
+let chartcolor = [];//グラフの色
+
+var canvas = document.getElementById("canvas");
+var updateButton = document.getElementById("updateButton");
+
+ const sample1 = '2:00,4:40,#,#,11:00,13:15,20:37,23:00';//開始時間
+    const sample2 = '3:00,5:40,#,#,12:00,14:15,22:37,24:00';//終了時間
+    const sample3 = '1,2,3,4,5,6,7,8';//項目
+
+//ランダムな10色を決める
+for(let a=0; a<10;a++){
+  chartcolor.push(getRandomColor())
+}
 
 
 //DBから持ってきたデータをグラフデータに入れる＆時間の処理
@@ -26,10 +24,6 @@ function getdata(){
     myChart.destroy();//グラフがあったら消す
   }
     
-
-    //const sample1 = '2:00,4:40,#,#,11:00,13:15,20:37,23:00';//開始時間
-    //const sample2 = '3:00,5:40,#,#,12:00,14:15,22:37,24:00';//終了時間
-    //const sample3 = '1,2,3,4,5,6,7,8';//項目
 
     const s1 = sample1.split(":");//時間から：を抜いて配列に
     const s11 = sample2.split(":");//
@@ -129,6 +123,8 @@ function getdata(){
       }
     //色変えここまで
 
+
+
     var ctx = document.getElementById('canvas').getContext('2d');
     window.myChart = new Chart(ctx, { // インスタンスをグローバル変数で生成
       type: 'pie',
@@ -194,4 +190,12 @@ function getdata(){
     });
   }
 
-
+//色を生成して返す
+function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }

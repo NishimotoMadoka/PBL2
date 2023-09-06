@@ -1,21 +1,25 @@
 var chartVal = []; // グラフデータ（描画するデータ）
 var Labels = [];//ここにデータベースから持ってくる
 let chartcolor = [
-  'rgba(54, 162, 235, 0.2)',
-  'rgba(255, 206, 86, 0.2)',
-  'rgba(75, 192, 192, 0.2)',
-  'rgba(153, 102, 255, 0.2)',
-  'rgba(255, 159, 64, 0.2)'
+  //'rgba(54, 162, 235, 0.2)',
+  //'rgba(255, 206, 86, 0.2)',
+  //'rgba(75, 192, 192, 0.2)',
+  //'rgba(153, 102, 255, 0.2)',
+  //'rgba(255, 159, 64, 0.2)'
 ];//グラフの色
-// グラフデータをランダムに生成（消す予定
-function getRandom() {
-    chartVal = []; // 配列を初期化
-    var length = 3;
-    for (i = 0; i < length; i++) {
-      chartVal.push(Math.floor(Math.random() * 20));
-    }
-  }
 
+for(let a=0 ;a<10 ;a++){
+  chartcolor.push(getRandomColor());
+}
+
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
 
 //DBから持ってきたデータをグラフデータに入れる＆時間の処理
 function getdata(){
@@ -31,10 +35,6 @@ function getdata(){
     //const sample2 = '3:00,5:40,#,#,12:00,14:15,22:37,24:00';//終了時間
     //const sample3 = '1,2,3,4,5,6,7,8';//項目
 
-    //たくちゃんにプレゼント
-    //const t1 = sample1.split(",");
-    //const t2 = sample2.split(",");
-    //プレゼント終わり
 
     const s1 = sample1.split(":");//時間から：を抜いて配列に
     const s11 = sample2.split(":");//
@@ -107,6 +107,7 @@ function getdata(){
   
    
 
+  
   // グラフ描画処理
   function drawChart() {
     var ctx = document.getElementById('canvas').getContext('2d');
@@ -127,4 +128,51 @@ function getdata(){
         }
       }
     });
+
+    Chart.plugins.register({
+      afterDraw: function(chart) {
+          var ctx = chart.ctx;
+          var width = chart.width;
+          var height = chart.height;
+  
+          ctx.save();
+          ctx.font = '16px Arial';
+          ctx.fillStyle = 'black';
+          ctx.textBaseline = 'middle';
+          ctx.textAlign = 'center';
+  
+          var radius = Math.min(width, height) /2;
+          var centerX = width / 2;
+          var centerY = height / 2;
+  
+          for (var i = 0; i < 24; i++) {
+              var angle = Math.PI * 2 / 24 * i - Math.PI / 2;
+              var x = centerX + (radius - 20) * Math.cos(angle);
+              var y = centerY + (radius - 20) * Math.sin(angle);
+  
+              var hour = i.toString().padStart(2, '0'); // 0埋めされた2桁の時刻表記
+  
+              ctx.fillText(hour, x, y);
+          }
+  
+      // メモリを描画
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = 'black';
+      ctx.beginPath();
+      for (var j = 0; j < 24; j++) {
+        var angle = Math.PI * 2 / 24 * j - Math.PI / 2;
+        var outerX = centerX + (radius - 30) * Math.cos(angle);
+        var outerY = centerY + (radius - 30) * Math.sin(angle);
+        var innerX = centerX + (radius - 50) * Math.cos(angle);
+        var innerY = centerY + (radius - 50) * Math.sin(angle);
+  
+        ctx.moveTo(outerX, outerY);
+        ctx.lineTo(innerX, innerY);
+      }
+      ctx.stroke();
+  
+      ctx.restore();
+      },
+  });
+
   }
