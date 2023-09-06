@@ -42,7 +42,7 @@ Chart.plugins.register({
         ctx.textBaseline = 'middle';
         ctx.textAlign = 'center';
 
-        var radius = Math.min(width, height) /1.9;
+        var radius = Math.min(width, height) /1.8;
         var centerX = width / 2;
         var centerY = height / 2;
 
