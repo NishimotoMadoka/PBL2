@@ -127,3 +127,10 @@ table {
 th {
     background: linear-gradient(#ffbe47,#ffffff);
 }
+
+.iti{
+    /* text-align: center; */
+   display: flex;
+   padding: 20px;
+}
+

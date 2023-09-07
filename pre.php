@@ -12,7 +12,7 @@ if (empty($name)) {
     $name = $_COOKIE['name'];
     $user_id = $_COOKIE['user_id'];
   } else {
-    $name = "no_login";
+    $name = "";
     $user_id = "no_login";
     setcookie("name", $name, time() + 60 * 60 * 24 * 14, '/');
     setcookie("user_id", $user_id, time() + 60 * 60 * 24 * 14, '/');

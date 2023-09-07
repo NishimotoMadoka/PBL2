@@ -23,6 +23,7 @@ $user_articles = $article->userArticles($user_id);
 
 <head>
   <link rel="stylesheet" href="<?= $userpage_css ?>">
+  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
   <script src="../js/test.js"></script>
 </head>
@@ -144,16 +145,29 @@ const sample3 = <?php echo $_label;?>;
       <?php
       foreach ($user_articles as $user_article) {
       ?>
-        <a href=<?= $article_show_php ?>?article_id=<?= $userarticle['article_id'] ?>>
-          <article class="article-one">
-            <p class="article-user"><object><a href=<?= $user_php ?>?user_id=<?= $user_article['user_id'] ?>><?= $user_article['name'] ?></a></object></p>
-            <h2 class="article-title"><object><a href=<?= $article_show_php ?>?article_id=<?= $user_article['article_id'] ?>><?= $user_article['title'] ?></a></object></h2>
-            <br>
-            <p class="article-date"><?= date('Y年m月d日', strtotime($userarticle['diary_date'])) ?></p>
-            <span class="heart">♥</span>
-            <span class="article-like"><?= $userarticle['like_count'] ?></span>
-          </article>
-        </a>
+        <div class="madop">
+<form method="POST" action="./../user/userpage.php">
+    <input type="hidden" name="user_id" value="<?=$user_article['user_id']?>">
+    <input type="image" img class="user-icon" src="../icon_image/<?= $user_article['icon'] ?>">
+</form>
+<div class="iti">
+  <table>
+  <tr><?=$user_article['name']?></tr><br>
+  <tr><?=$user_article['time_date']?></tr><br><br>
+  <tr><?=$user_article['post_date']?></tr><br>
+  <tr><?=$user_article['title']?></tr><br>
+  <tr><?= $user_article['diary'] ?></tr><br>
+</table>
+</div>
+</div>
+<form action="./../top/info.php" method="POST">
+<input type="hidden" name="starttime" value="<?= $user_article['start_time']?>"> 
+<input type="hidden" name="endtime" value="<?= $user_article['end_time']?>"> 
+<input type="hidden" name="item" value="<?= $user_article['item_name']?>"> 
+<div class="button-panel">
+<input type="submit" name="button" value="円グラフを表示" class="button">
+</div>
+</form>
       <?php
       }
       ?>

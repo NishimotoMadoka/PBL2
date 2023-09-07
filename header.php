@@ -30,7 +30,7 @@ $url = $_SERVER['REQUEST_URI'];
       <ul class="nav-list">
         
           <?php
-          if ($name == "no_login") {
+          if ($name == "") {
             echo '<li class="nav-list-item"><a class="fa-solid fa-user-plus" href="' . $signup_php . '"> 新規登録</a></li>';
             echo '<li class="nav-list-item"><a class="fa-solid fa-right-to-bracket" href="' . $login_php . '"> ログイン</a></li>';
           } else {
