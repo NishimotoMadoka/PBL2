@@ -20,11 +20,11 @@ $friends_users_id=$user->getFriends($user_id);
 require_once __DIR__ . '/../header.php';
 require_once __DIR__ . '/../pre.php';
 ?>
-
+<link rel="stylesheet" href="<?= $toppage_css ?>">
 <main class="">
   <div class="">
     <article class="">
-      <h1>岸さんかわいい</h1>
+      <!-- <h1>トップページ</h1> -->
       <?php
       $i=0;
       if(!empty($friends_users_id)){
@@ -56,22 +56,28 @@ require_once __DIR__ . '/../pre.php';
                 ?>
 
                 <br>
+<div class="madop">
 <form method="POST" action="./../user/userpage.php">
     <input type="hidden" name="user_id" value="<?=$friend_article['user_id']?>">
-    <input type="image" src="../icon_image/<?= $friend_article['icon'] ?>">
+    <input type="image" img class="user-icon" src="../icon_image/<?= $friend_article['icon'] ?>">
 </form>
-<article class="">
-    <tr><?=$friend_article['name']?></tr><br>
-    <tr><?=$friend_article['post_date']?></tr><br>
-    <tr><?=$friend_article['time_date']?></tr><br>
-    <tr><?= $friend_article['diary'] ?></tr><br>
+<div class="iti">
+  <table>
+  <tr><?=$friend_article['name']?></tr><br>
+  <tr><?=$friend_article['time_date']?></tr><br><br>
+  <tr><?=$friend_article['post_date']?></tr><br>
+  <tr><?=$friend_article['title']?></tr><br>
+  <tr><?= $friend_article['diary'] ?></tr><br>
 </table>
-</article>
+</div>
+</div>
 <form action="info.php" method="POST">
 <input type="hidden" name="starttime" value="<?= $friend_article['start_time']?>"> 
 <input type="hidden" name="endtime" value="<?= $friend_article['end_time']?>"> 
 <input type="hidden" name="item" value="<?= $friend_article['item_name']?>"> 
-<input type="submit" name="button" value="円グラフを表示" >
+<div class="button-panel">
+<input type="submit" name="button" value="円グラフを表示" class="button">
+</div>
 </form>
               <br>
 

@@ -23,7 +23,7 @@ function getRandom() {
     var length = 3;
     for (i = 0; i < length; i++) {
       chartVal.push(Math.floor(Math.random() * 20));
-    }
+    } 
   }
 
 

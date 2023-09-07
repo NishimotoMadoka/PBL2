@@ -47,7 +47,7 @@ CREATE TABLE users(
 #テーブルarticle_listの作成
 drop table if exists article_list; # 既にテーブルarticle_listがあれば削除する
 CREATE TABLE article_list(
-    article_id INT NOT NULL,
+    article_id VARCHAR(20),
     user_id INT NOT NULL,
     start_time VARCHAR(500),
     end_time VARCHAR(500),

@@ -23,20 +23,32 @@ foreach($friends_user_id as $friend_user_id){
         <?php
         if ($friend_details['icon'] != "") {
         ?>
-        <img class="user-icon" src="../icon_image/<?= $friend_details['icon'] ?>" alt="">
+        <form method="POST" action="./../user/userpage.php">
+            <input type="hidden" img class="user-icon" name="user_id" value="<?=$friend_details['user_id']?>">
+            <input type="image" img class="user-icon" src="../icon_image/<?= $friend_details['icon'] ?>">
+        </form>
+        <!-- <img class="user-icon" src="../icon_image/<?= $friend_details['icon'] ?>" alt=""> -->
         <?php
         } else {
         ?>
-        <img class="" src="<?=$default_icon?>" alt="">
+        <form method="POST" action="./../user/userpage.php">
+            <input type="hidden" img class="user-icon" name="user_id" value="<?=$friend_details['user_id']?>">
+            <input type="image" img class="user-icon" src="<?= $default_icon ?>">
+        </form>
+        <!-- <img class="" src="<?=$default_icon?>" alt=""> -->
         <?php
         }
         ?>
             <dl>
                 <!-- <dt>名前　　</dt> -->
+                <!-- <form method="POST" action="./../user/userpage.php">
+                    <input type="hidden" name="user_id" value="<?=$friend_details['user_id']?>">
+                    <input type="text" >
+                </form> -->
                 <h1><dd><?= $friend_details['name'] ?></dd></h1>
                 </dd>
                 <!-- <dt>ひとこと</dt> -->
-                <dd><?= $friend_details['profile_comment'] ?></dd>
+                <!-- <dd><?= $friend_details['profile_comment'] ?></dd> -->
             </dl>
 
     </div>

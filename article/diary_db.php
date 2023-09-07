@@ -12,6 +12,8 @@ $title = $_POST['title']; //タイトル
 $diary = $_POST['diary']; //本文
 $post_date=$_POST['date']; //日付
 $article_id=$_POST['article_id'];
+// echo $article_id;
+// exit(0);
 // $diary_date = date('Y-m-d ') . date('H:i:s');
 
 

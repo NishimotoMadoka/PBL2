@@ -1,0 +1,71 @@
+.user-icon{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .user-icon img{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: left;
+  }
+
+  .iti{
+     /* text-align: center; */
+    display: flex;
+    padding: 20px;
+}
+
+tr{
+    display: block;
+}
+
+.madop{
+    display:flex;
+}
+
+.nisi{
+    margin-top: 20px;
+    margin-left: 60px;
+}
+
+.button-panel {
+    margin: 2em 0 0;
+    width: 100%;
+}
+   
+   
+.button-panel .button {
+    background: #f16262;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    height: 50px;
+    font-family: 'Open sans', sans-serif;
+    font-size: 1.2em;
+    letter-spacing: 0.05em;
+    text-align: center;
+    text-transform: uppercase;
+    transition: background 0.3s ease-in-out;
+    width: 55%;
+   }
+   
+.button:hover {
+    background: #ee3e52;
+}
+
+form{
+    margin-left: 350px;
+}
+
+.font{
+    font-size: 200%;
+}

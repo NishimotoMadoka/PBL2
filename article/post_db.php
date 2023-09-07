@@ -95,7 +95,7 @@
         //     $end_time.=$time_end.",";
         // }
     }
-    exit(0);
+    // exit(0);
     // 配列の要素数カウント
     $item_count=count($item_name);
     $start_count=count($start_time);
@@ -125,10 +125,10 @@
     $start_time = implode(',', $start_time);
     $end_time = implode(',', $end_time);
 
-    echo $item_name;
-    echo $start_time;
-    echo $end_time;
-    exit(0);
+    // echo $item_name;
+    // echo $start_time;
+    // echo $end_time;
+    // exit(0);
     // 画像の受け取り、加工
     $article_image = $_FILES['up_image']['name'];
 
