@@ -1,16 +1,12 @@
 var chartVal = []; // グラフデータ（描画するデータ）
 var Labels = [];//ここにデータベースから持ってくる
-<<<<<<< HEAD
-=======
 var st = [];
 var en = [];
 var ti = [];
->>>>>>> 5be97497f7e0fd016fdba92ecb6ab8c543ff0d0b
-
 for(let a=0 ;a<10 ;a++){
-  chartcolor.push(getRandomColor());
+  chartVal.push(getRandomColor());
+  // chartcolor.push(getRandomColor());
 }
-
 function getRandomColor() {
   const letters = '0123456789ABCDEF';
   let color = '#';
@@ -103,12 +99,6 @@ function getdata(){
  
   }
   
-<<<<<<< HEAD
-=======
-  
->>>>>>> 5be97497f7e0fd016fdba92ecb6ab8c543ff0d0b
-   
-  
   // グラフ描画処理
   function drawChart() {
     var ctx = document.getElementById('canvas').getContext('2d');
@@ -116,25 +106,15 @@ function getdata(){
       type: 'pie',
       data: { // ラベルとデータセット
         labels: Labels,
-<<<<<<< HEAD
-        datasets: [{
-            data: chartVal, // グラフデータ
-            backgroundColor: chartcolor, // 棒の塗りつぶし色
-            borderColor: 'rgba(0, 134, 197, 1)', // 棒の枠線の色
-=======
-        labels:["睡眠","ごはん","運動","といれ","風呂","バスケ","野球","サッカー"],
-        afterLabel:["aaaa","bbbbb","cccc","dddd","eeee","ffff","gggg","hhhh"],
+       
         datasets: [{
             data: chartVal, // グラフデータ
             backgroundColor: ["rgb(255,99,132)","rgb(255,159,64)","rgb(240,240,240)","rgb(54,162,235)","rgb(235,222,127)","rgb(128,119,234)","rgb(217,11,100)","rgb(80,200,120)"], // 棒の塗りつぶし色
             borderColor: '#000', // 棒の枠線の色
->>>>>>> 5be97497f7e0fd016fdba92ecb6ab8c543ff0d0b
             borderWidth: 1, // 枠線の太さ
         }],
       },
       options: {
-<<<<<<< HEAD
-=======
         responsive: false,
         maintainAspectRatio: false,
         plugins: {
@@ -156,7 +136,6 @@ function getdata(){
             right: 150,
           }
         },
->>>>>>> 5be97497f7e0fd016fdba92ecb6ab8c543ff0d0b
         legend: {
           display: true, // 凡例を非表示
         }
