@@ -1,20 +1,15 @@
 var chartVal = []; // グラフデータ（描画するデータ）
 var Labels = [];//ここにデータベースから持ってくる
-var st = [];
-var en = [];
-var ti = [];
-for(let a=0 ;a<10 ;a++){
-  chartVal.push(getRandomColor());
-  // chartcolor.push(getRandomColor());
-}
-function getRandomColor() {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
+
+// グラフデータをランダムに生成（消す予定
+function getRandom() {
+    chartVal = []; // 配列を初期化
+    var length = 3;
+    for (i = 0; i < length; i++) {
+      chartVal.push(Math.floor(Math.random() * 20));
+    }
   }
-  return color;
-}
+
 
 //DBから持ってきたデータをグラフデータに入れる＆時間の処理
 function getdata(){
@@ -46,12 +41,14 @@ function getdata(){
 
    for(let i = 0; i < s4.length; i++){//#を前後の数字と置き換える
       if(s4[i]=="#"){
-        s4[i] = s4[i-1] + 100;
+        s4[i] = s4[i-1];
+        s4[i+1] = s4[i+2];
       }
 
 
       if(s44[i]=="#"){
-        s44[i] = s44[i-1]+100;
+        s44[i] = s44[i-1];
+        s44[i+1] = s44[i+2];
       }
      
   }
@@ -99,6 +96,8 @@ function getdata(){
  
   }
   
+   
+
   // グラフ描画処理
   function drawChart() {
     var ctx = document.getElementById('canvas').getContext('2d');
@@ -106,86 +105,17 @@ function getdata(){
       type: 'pie',
       data: { // ラベルとデータセット
         labels: Labels,
-       
         datasets: [{
             data: chartVal, // グラフデータ
-            backgroundColor: ["rgb(255,99,132)","rgb(255,159,64)","rgb(240,240,240)","rgb(54,162,235)","rgb(235,222,127)","rgb(128,119,234)","rgb(217,11,100)","rgb(80,200,120)"], // 棒の塗りつぶし色
-            borderColor: '#000', // 棒の枠線の色
+            backgroundColor: 'rgb(0, 134, 197, 0.7)', // 棒の塗りつぶし色
+            borderColor: 'rgba(0, 134, 197, 1)', // 棒の枠線の色
             borderWidth: 1, // 枠線の太さ
         }],
       },
       options: {
-        responsive: false,
-        maintainAspectRatio: false,
-        plugins: {
-          outlabels: {
-            text: ti,
-            color: '#000',
-            backgroundColor: null,
-            lineWidth: 4,
-            stretch: 20,
-            font: {
-              resizable: false,
-              size: 20,
-            }
-          }
-        },
-        layout: {
-          padding: {
-            left: 150,
-            right: 150,
-          }
-        },
         legend: {
           display: true, // 凡例を非表示
         }
       }
     });
-
-    Chart.plugins.register({
-      afterDraw: function(chart) {
-          var ctx = chart.ctx;
-          var width = chart.width;
-          var height = chart.height;
-  
-          ctx.save();
-          ctx.font = '16px Arial';
-          ctx.fillStyle = 'black';
-          ctx.textBaseline = 'middle';
-          ctx.textAlign = 'center';
-  
-          var radius = Math.min(width, height) /2;
-          var centerX = width / 2;
-          var centerY = height / 2;
-  
-          for (var i = 0; i < 24; i++) {
-              var angle = Math.PI * 2 / 24 * i - Math.PI / 2;
-              var x = centerX + (radius - 20) * Math.cos(angle);
-              var y = centerY + (radius - 20) * Math.sin(angle);
-  
-              var hour = i.toString().padStart(2, '0'); // 0埋めされた2桁の時刻表記
-  
-              ctx.fillText(hour, x, y);
-          }
-  
-      // メモリを描画
-      ctx.lineWidth = 2;
-      ctx.strokeStyle = 'black';
-      ctx.beginPath();
-      for (var j = 0; j < 24; j++) {
-        var angle = Math.PI * 2 / 24 * j - Math.PI / 2;
-        var outerX = centerX + (radius - 30) * Math.cos(angle);
-        var outerY = centerY + (radius - 30) * Math.sin(angle);
-        var innerX = centerX + (radius - 50) * Math.cos(angle);
-        var innerY = centerY + (radius - 50) * Math.sin(angle);
-  
-        ctx.moveTo(outerX, outerY);
-        ctx.lineTo(innerX, innerY);
-      }
-      ctx.stroke();
-  
-      ctx.restore();
-      },
-  });
-
   }

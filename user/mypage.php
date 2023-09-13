@@ -148,7 +148,6 @@ const sample3 = <?php echo $_label;?>;
         <div class="madop">
 <form method="POST" action="./../user/userpage.php">
     <input type="hidden" name="user_id" value="<?=$user_article['user_id']?>">
-    <input type="image" img class="user-icon" src="../icon_image/<?= $user_article['icon'] ?>">
 </form>
 <div class="iti">
   <table>

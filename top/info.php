@@ -15,16 +15,15 @@ require_once __DIR__ . '/../header.php';
     // exit(0);
   $_start = json_encode($_start);
   $_end = json_encode($_end);
-  // ここへんかも？？後で確認します
   $_label = json_encode($_label);//phpからきた、値をjavascriptに変換
-  //  echo $_start;
-  //   echo $_end;
-  //   echo $_label;
+//    echo $_start;
+//     echo $_end;
+//     echo $_label;
 
-  //   exit(0);
+//     exit(0);
 ?>
 <div style="width:100%">
-  <canvas id="canvas" style="display: block; height: 500px; width: 500px; margin:auto;" width="700px" height="700px"></canvas>
+  <canvas id="canvas"></canvas>
 </div>
 <script>
     // console.log(<?php echo $_start;?>);
@@ -50,14 +49,12 @@ const sample3 = <?php echo $_label;?>;
   //getRandom(); // グラフデータにランダムな値を格納
   drawChart(); // グラフを再描画
 });
-
-
 </script>
 <!DOCTYPE html>
 <html lang="ja">
 
 <section>
-    <!-- <h2>詳細</h2> -->
+    <h2>詳細</h2>
     
 
 
