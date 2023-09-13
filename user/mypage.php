@@ -112,9 +112,9 @@ $user_articles = $article->userArticles($user_id);
 <!--<button type="button" id="btn">グラフを更新</button>-->
 <script>
 <?php 
-  $_start = '2:11,4:40,#,#,11:00,13:15,20:37,23:00';//$_POST で受け取る
-  $_end = '3:00,5:40,#,#,12:00,14:15,22:37,24:00';
-  $_label ='1,2,3,4,5,6,7,8';//DBから来た値
+  // $_start = '2:11,4:40,#,#,11:00,13:15,20:37,23:00';//$_POST で受け取る
+  // $_end = '3:00,5:40,#,#,12:00,14:15,22:37,24:00';
+  // $_label ='1,2,3,4,5,6,7,8';//DBから来た値
 
   $_start = json_encode($_start);
   $_end = json_encode($_end);
@@ -159,7 +159,7 @@ const sample3 = <?php echo $_label;?>;
 </table>
 </div>
 </div>
-<form action="./../top/info.php" method="POST">
+<form action="../top/info.php" method="POST">
 <input type="hidden" name="starttime" value="<?= $user_article['start_time']?>"> 
 <input type="hidden" name="endtime" value="<?= $user_article['end_time']?>"> 
 <input type="hidden" name="item" value="<?= $user_article['item_name']?>"> 

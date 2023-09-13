@@ -16,7 +16,7 @@ require_once __DIR__ . '/../header.php';
   <h3>アイコン変更</h3>
   <div>
     <dl class="inline">
-    <dd>アイコン：<input type="file" name="up_icon" accept="image/*"></dd>
+    <dd>アイコン：<input type="file" name="icon" accept="image/*"></dd>
     </dl>
     <br>
     <div class="form-wrapper">

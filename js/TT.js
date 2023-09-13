@@ -11,25 +11,18 @@ let chartcolor = [];
    const letters = '0123456789ABCDEF';
    let color = '#';
    for (let i = 0; i < 6; i++) {
-       color += letters[Math.floor(Math.random() * 16)];
+      //  color += letters[Math.floor(Math.random() * 16)];
+      const h = Math.random() * 360;
+      color = `hsl(${h}, 80%, 60%)`;
    }
    return color;
  }
-
- function getRandomColor2(){
-  
-    const r = Math.floor(Math.random() * 256); // 0から255までの乱数
-    const g = Math.floor(Math.random() * 256); // 0から255までの乱数
-    const b = Math.floor(Math.random() * 256); // 0から255までの乱数
-    return `rgb(${r},${g},${b},0.25)`;
-  }
- 
 
  function ColorReset(){//グラフにランダムで配色
   let chartcolor = [];
   var b = Labels.length;
   for(let a=0 ;a<b ;a++){
-    chartcolor.push(getRandomColor2());
+    chartcolor.push(getRandomColor());
   }
   console.log(chartcolor);
  }
@@ -72,9 +65,6 @@ function getdata(){
      
   }
 
-  console.log(s4);
-  console.log(s44);
-
   for(let i = 0; i<s44.length; i++){
     let count =0;
     let S = 0;
@@ -89,9 +79,6 @@ function getdata(){
      s44[i] += count*0.6;
       
    }
-
-   console.log(s4);
-   console.log(s44);
 
    for(let i = 0; i<s4.length; i++){
     let count =0;
@@ -108,17 +95,11 @@ function getdata(){
       
    }
 
-   console.log(s4);
-   console.log(s44);
-
  var s5 =[];//最終的にcharvalに入れるデータ
 
    for(let i = 0; i<s2.length; i++){
     s5[i] = s44[i] -s4[i];
-    console.log(s5);
    }
-
-  console.log(s5);
 
    var c1 =0;
    var c2 =0;
@@ -141,7 +122,7 @@ console.log(c1);
   
   
    
-
+  
   // グラフ描画処理
   function drawChart() {
     var ctx = document.getElementById('canvas').getContext('2d');
@@ -156,6 +137,7 @@ console.log(c1);
             backgroundColor: chartcolor, // 棒の塗りつぶし色
             borderColor: '#000', // 棒の枠線の色
             borderWidth: 1, // 枠線の太さ
+            // hoverBackgroundColor: chartcolor,
         }],
       },
       options: {
@@ -182,6 +164,9 @@ console.log(c1);
         },
         legend: {
           display: false, // 凡例を非表示
+        },
+        hover: {
+          mode: null,
         }
       }
     });
@@ -231,13 +216,5 @@ console.log(c1);
       ctx.restore();
       },
   });
-
-  }
-
-
-  function timechange(s,e){//00:00を分単位に
-    
-  }
-  function addtime(){//隙間時間を追加
 
   }

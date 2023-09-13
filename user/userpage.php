@@ -63,50 +63,7 @@ $user_articles = $article->userArticles($friend_user_id);
     </div>
   </div>
 
-
-  <?php
-//   if (!isset($_GET['user_id'])) {
-  ?>
-    <!-- <div class="update"> -->
-    <!-- <div class="button-panel">
-      <a href="<?=$update_php?>">
-        <input type="submit" value="プロフィール編集" class="button">
-      </a>
-    </div> -->
-
-    <!-- <div class="button-panel">
-      <a href="./icon_update.php">
-        <input type="submit" value="アイコン変更" class="button">
-      </a>
-    </div> -->
-
-    <!-- <div class="friend"> -->
-    <!-- <div class="button-panel">
-      <a href="<?=$friend_register_php?>">
-        <input type="submit" value="フレンド登録" class="button">
-      </a>
-    </div> -->
-
-    <!-- <div class="friend_list"> -->
-    <!-- <div class="button-panel">
-      <a href="<?=$friend_list_php?>">
-      <div class="button-panel">
-        <input type="submit" value="フレンドリスト" class="button">
-      </a>
-    </div> -->
-
-  <?php
-//   }
-  ?>
-
-</div>
-</div>
- </div><!--form-wrapper -->
-
-
-
   <!-- 投稿記事 -->
-
   <div class="index-style">
    <article class="article-style">
    <h1>投稿</h1>
@@ -117,9 +74,9 @@ $user_articles = $article->userArticles($friend_user_id);
 <!--<button type="button" id="btn">グラフを更新</button>-->
 <script>
 <?php 
-  $_start = '2:11,4:40,#,#,11:00,13:15,20:37,23:00';//$_POST で受け取る
-  $_end = '3:00,5:40,#,#,12:00,14:15,22:37,24:00';
-  $_label ='1,2,3,4,5,6,7,8';//DBから来た値
+  // $_start = '2:11,4:40,#,#,11:00,13:15,20:37,23:00';//$_POST で受け取る
+  // $_end = '3:00,5:40,#,#,12:00,14:15,22:37,24:00';
+  // $_label ='1,2,3,4,5,6,7,8';//DBから来た値
 
   $_start = json_encode($_start);
   $_end = json_encode($_end);
@@ -150,16 +107,28 @@ const sample3 = <?php echo $_label;?>;
       <?php
       foreach ($user_articles as $user_article) {
       ?>
-        <a href=<?= $article_show_php ?>?article_id=<?= $userarticle['article_id'] ?>>
-          <article class="article-one">
-            <p class="article-user"><object><a href=<?= $user_php ?>?user_id=<?= $user_article['user_id'] ?>><?= $user_article['name'] ?></a></object></p>
-            <h2 class="article-title"><object><a href=<?= $article_show_php ?>?article_id=<?= $user_article['article_id'] ?>><?= $user_article['title'] ?></a></object></h2>
-            <br>
-            <p class="article-date"><?= date('Y年m月d日', strtotime($userarticle['diary_date'])) ?></p>
-            <span class="heart">♥</span>
-            <span class="article-like"><?= $userarticle['like_count'] ?></span>
-          </article>
-        </a>
+        <div class="madop">
+<form method="POST" action="./../user/userpage.php">
+    <input type="hidden" name="user_id" value="<?=$user_article['user_id']?>">
+</form>
+<div class="iti">
+  <table>
+  <tr><?=$user_article['name']?></tr><br>
+  <tr><?=$user_article['time_date']?></tr><br><br>
+  <tr><?=$user_article['post_date']?></tr><br>
+  <tr><?=$user_article['title']?></tr><br>
+  <tr><?= $user_article['diary'] ?></tr><br>
+</table>
+</div>
+</div>
+<form action="../top/info.php" method="POST">
+<input type="hidden" name="starttime" value="<?= $user_article['start_time']?>"> 
+<input type="hidden" name="endtime" value="<?= $user_article['end_time']?>"> 
+<input type="hidden" name="item" value="<?= $user_article['item_name']?>"> 
+<div class="button-panel">
+<input type="submit" name="button" value="円グラフを表示" class="button">
+</div>
+</form>
       <?php
       }
       ?>
