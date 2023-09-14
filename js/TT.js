@@ -149,7 +149,7 @@ console.log(c1);
             color: '#000',
             backgroundColor: null,
             lineWidth: 4,
-            stretch: 20,
+            stretch: 50,
             font: {
               resizable: false,
               size: 20,
@@ -178,12 +178,12 @@ console.log(c1);
           var height = chart.height;
   
           ctx.save();
-          ctx.font = '16px Arial';
+          ctx.font = '25px Arial';
           ctx.fillStyle = 'black';
           ctx.textBaseline = 'middle';
           ctx.textAlign = 'center';
   
-          var radius = Math.min(width, height) /3.3;
+          var radius = Math.min(width, height) /3.05;
           var centerX = width / 2;
           var centerY = height / 2;
   
