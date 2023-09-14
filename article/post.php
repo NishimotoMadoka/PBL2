@@ -39,12 +39,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
   <?php } ?>
 
-    <div class="image_select">
+    <div id="kbkb" class="image_select">
         今日の画像：<input type="file" name="up_image" accept="image/*">
     </div>
     <div  class="button-panel">
     <input type="hidden" name="form_count" value="<?php echo $formCount; ?>">
-  <input type="submit" class="button" name="add_form" value="プラスボタン">
+  <input type="submit" id="delete" class="button" name="add_form" value="プラスボタン" onclick="addform()">
         <input type="submit" class="button" value="送信"><input type="reset" value="リセット" class="button">
     </div>
 </form>
@@ -95,30 +95,30 @@ function addform(){//form追加関数
 //ここまでkbkbが書きました。
 
   // プラスボタンが押されたらフォームを追加
-  document.querySelector('input[name="add_form"]').addEventListener('click', function (e) {
-    e.preventDefault();
-    var formCountInput = document.querySelector('input[name="form_count"]');
-    var formCount = parseInt(formCountInput.value);
-    formCount++;
-    formCountInput.value = formCount;
+//  document.querySelector('input[name="add_form"]').addEventListener('click', function (e) {
+ //   e.preventDefault();
+   // var formCountInput = document.querySelector('input[name="form_count"]');
+    //var formCount = parseInt(formCountInput.value);
+    //formCount++;
+    //formCountInput.value = formCount;
 
-    var container = document.querySelector('form');
-    var div = document.createElement('div');
+    //var container = document.querySelector('form');
+    //var div = document.createElement('div');
 
 
-    div.innerHTML = `
-    <div class="form-item">
-    <div class="item">
-      <input type="text" name="items[]" placeholder="項目" required>
-    </div>
-    <div class="title">開始時間</div>
-      <input type="time" name="start_times[]" required>
-      <div class="title">終了時間</div>
-      <input type="time" name="end_times[]" required>
-    </div>
-    `;
-    container.insertBefore(div, document.querySelector('.button-panel'));
-  });
+//    div.innerHTML = `
+//    <div class="form-item">
+//    <div class="item">
+ //     <input type="text" name="items[]" placeholder="項目" required>
+ //   </div>
+  //  <div class="title">開始時間</div>
+   //   <input type="time" name="start_times[]" required>
+   //   <div class="title">終了時間</div>
+   //   <input type="time" name="end_times[]" required>
+  //  </div>
+  //  `;
+  //  container.insertBefore(div, document.querySelector('.button-panel'));
+ // });
 </script>
 <?php
 require_once __DIR__ . '/../footer.php';
