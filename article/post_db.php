@@ -158,11 +158,13 @@ if ($result !== '') {
 <?php
 require_once __DIR__ . '/../header.php';
 ?>
-
+<link rel="stylesheet" href="<?= $post_db_css ?>">
 <form method="post" action="./diary.php">
     <input type="hidden" name="date" value="<?=$post_date?>" readonly>
     <input type="hidden" name="article_id" value="<?=$article_id?>" readonly>
-    <input type="submit" name="button" value="夢日記へ">
+    <div class="button-panel">
+    <input class="button" type="submit" name="button" value="夢日記へ">
+    </div>
 </form>
 <?php
 require_once __DIR__ . '/../footer.php';

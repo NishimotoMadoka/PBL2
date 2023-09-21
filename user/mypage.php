@@ -105,10 +105,11 @@ $user_articles = $article->userArticles($user_id);
   <div class="index-style">
    <article class="article-style">
    <h1>投稿</h1>
+   <hr>
 <!--円グラフ-->
-<div style="width:100%">
+<!-- <div style="width:100%">
   <canvas id="canvas"></canvas>
-</div>
+</div> -->
 <!--<button type="button" id="btn">グラフを更新</button>-->
 <script>
 <?php 
@@ -165,6 +166,7 @@ const sample3 = <?php echo $_label;?>;
 <input type="hidden" name="item" value="<?= $user_article['item_name']?>"> 
 <div class="button-panel">
 <input type="submit" name="button" value="円グラフを表示" class="button">
+<hr>
 </div>
 </form>
       <?php
