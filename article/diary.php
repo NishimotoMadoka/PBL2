@@ -36,7 +36,8 @@ if (isset($_SESSION['diary_error'])) {
         <textarea class="form-text1" id="" name="diary" placeholder="本夢日記本文" maxlength="5000" required></textarea>
     </div>
     <div class="button-panel">
-        <input type="submit" value="送信" class="button"><input type="reset" value="リセット" class="button">
+        <input type="submit" value="送信" class="button">
+        <input type="reset" value="リセット" class="button-r">
     </div>
 <div>
 </form>
