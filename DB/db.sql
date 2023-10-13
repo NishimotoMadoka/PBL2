@@ -52,6 +52,7 @@ CREATE TABLE article_list(
     start_time VARCHAR(500),
     end_time VARCHAR(500),
     item_name VARCHAR(850),
+    color VARCHAR(15),
     title VARCHAR(50),
     diary VARCHAR(3500),
     good int NOT NULL DEFAULT 0,
@@ -62,6 +63,7 @@ CREATE TABLE article_list(
     article_public BOOLEAN NOT NULL DEFAULT 0,
     INDEX article_list_index(
         article_id,
+        color,
         title,
         good,
         post_date,
