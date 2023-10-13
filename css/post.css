@@ -98,6 +98,24 @@ form {
   background: #ee3e52;
 }
  
+.button-panel .button-r {
+  background: #62b5f1;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  height: 50px;
+  font-family: 'Open sans', sans-serif;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background 0.3s ease-in-out;
+  width: 100%;
+}
+
+.button-r:hover {
+  background: #3e90ee;
+}
 
 input{
   margin-top: 5px;

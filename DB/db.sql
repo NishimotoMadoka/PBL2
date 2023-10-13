@@ -83,3 +83,15 @@ CREATE TABLE friends_list(
     )
     -- FOREIGN KEY (friend_user_id) REFERENCES users(user_id)
 );
+
+# テーブルchatの作成
+drop table if exists chat; # 既にテーブルchatがあれば削除する
+CREATE TABLE chat(
+    user_id INT NOT NULL,
+    friend_id INT NOT NULL, 
+    chat VARCHAR(65535),
+    INDEX chat_index(
+        user_id,
+        friend_id
+    )
+);

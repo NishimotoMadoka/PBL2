@@ -106,9 +106,9 @@ $user_articles = $article->userArticles($user_id);
    <article class="article-style">
    <h1>投稿</h1>
 <!--円グラフ-->
-<div style="width:100%">
+<!-- <div style="width:100%">
   <canvas id="canvas"></canvas>
-</div>
+</div> -->
 <!--<button type="button" id="btn">グラフを更新</button>-->
 <script>
 <?php 
