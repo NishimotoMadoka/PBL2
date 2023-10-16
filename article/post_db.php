@@ -14,6 +14,7 @@
     $start_times = $_POST['start_times'];
     $end_times = $_POST['end_times'];
     $user_id = $_SESSION['user_id'];
+    $color = $_POST['color'];
     // $mail_num=$_SESSION['mail_num'];
     $title="";
     $diary="";
@@ -141,7 +142,7 @@
     // DBに保存
     require_once __DIR__ . '/../classes/article_list.php';
     $article = new Article();
-    $result = $article->insertArticle($article_id,$user_id, $start_time, $end_time, $item_name,$title,$diary,$post_date,$time_date,$article_image);
+    $result = $article->insertArticle($article_id,$user_id, $start_time, $end_time, $item_name, $color,$title,$diary,$post_date,$time_date,$article_image);
 
 
 if ($result !== '') {
@@ -158,11 +159,13 @@ if ($result !== '') {
 <?php
 require_once __DIR__ . '/../header.php';
 ?>
-
+<link rel="stylesheet" href="<?= $post_db_css ?>">
 <form method="post" action="./diary.php">
     <input type="hidden" name="date" value="<?=$post_date?>" readonly>
     <input type="hidden" name="article_id" value="<?=$article_id?>" readonly>
-    <input type="submit" name="button" value="夢日記へ">
+    <div class="button-panel">
+    <input class="button" type="submit" name="button" value="夢日記へ">
+    </div>
 </form>
 <?php
 require_once __DIR__ . '/../footer.php';

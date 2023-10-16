@@ -67,6 +67,7 @@ $user_articles = $article->userArticles($friend_user_id);
   <div class="index-style">
    <article class="article-style">
    <h1>投稿</h1>
+   <hr>
 <!--円グラフ-->
 <!-- <div style="width:100%">
   <canvas id="canvas"></canvas>
@@ -128,6 +129,7 @@ const sample3 = <?php echo $_label;?>;
 <div class="button-panel">
 <input type="submit" name="button" value="円グラフを表示" class="button">
 </div>
+<hr>
 </form>
       <?php
       }
