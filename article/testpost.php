@@ -39,6 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <input type="time" name="start_times[]" required>
       <div class="title">終了時間</div>
       <input type="time" name="end_times[]" required>
+      <div class="title">色</div>
+      <input type="color" name="color[]" require>
     </div>
     <div class="image_select">
         今日の画像：<input type="file" name="up_image" accept="image/*">
@@ -53,6 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <input type="time" name="start_times[]" required>
       <div class="title">終了時間</div>
       <input type="time" name="end_times[]" required>
+      <div class="title">色</div>
+      <input type="color" name="color[]" require>
     </div>
   <?php } ?>
 
@@ -90,6 +94,8 @@ function addform(){//form追加関数
         <input type="time" name="start_times[]" required>
         <div class="title">終了時間</div>
         <input type="time" name="end_times[]" required>
+        <div class="title">色</div>
+        <input type="color" name="color[]" require>
       </div>
     `);
   } else {
@@ -122,6 +128,8 @@ document.querySelector('input[name="add_form"]').addEventListener('click', funct
       <input type="time" name="start_times[]" required>
       <div class="title">終了時間</div>
       <input type="time" name="end_times[]" required>
+      <div class="title">色</div>
+      <input type="color" name="color[]" require>
     </div>
   `;
   container.insertBefore(div, document.querySelector('.button-panel'));

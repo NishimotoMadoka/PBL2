@@ -1,6 +1,6 @@
 var chartVal = []; // グラフデータ（描画するデータ）
 var Labels = [];//ここにデータベースから持ってくる
-let chartcolor = [];
+var chartcolor = [];
 
 
  for(let a=0 ;a<10 ;a++){
@@ -32,6 +32,7 @@ function getdata(){
   
     chartVal = [];
     Labels = [];//グラフのデータを初期化
+    chartcolor = [];
 
     const s1 = sample1.split(":");//時間から：を抜いて配列に
     const s11 = sample2.split(":");//
@@ -110,6 +111,7 @@ function getdata(){
     }else{
       chartVal.push(s5[i]);
       Labels.push(s2[i]);
+      chartcolor.push(color);
     }
     //chartVal.push(s5[i]);
     //Labels.push(s2[i]);

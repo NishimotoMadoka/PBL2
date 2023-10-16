@@ -37,6 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="title">終了時間</div>
       <input type="time" name="end_times[]" required>
     </div>
+    <div class="title">色</div>
+    <input type="color" name="color" require>
   <?php } ?>
 
     <div class="image_select" id ="kbkb">
@@ -82,6 +84,8 @@ function addform(){//form追加関数
       <div class="title">終了時間</div>
       <input type="time" name="end_times[]" required>
     </div>
+    <div class="title">色</div>
+    <input type="color" name="color[]" require>
     `);
   }else{
     //>10のときボタン削除

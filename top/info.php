@@ -10,6 +10,7 @@ require_once __DIR__ . '/../header.php';
   $_start = $_POST['starttime'];//$_POST で受け取る
   $_end = $_POST['endtime'];
   $_label =$_POST['item'];//DBから来た値
+
     
   $_start = json_encode($_start);
   $_end = json_encode($_end);
@@ -19,6 +20,9 @@ require_once __DIR__ . '/../header.php';
 <div style="width:100%">
   <canvas id="canvas" style="display: block; height: 700px; width: 700px; margin:auto;" width="700px" height="700px"></canvas>
 </div>
+<button id="likeButton">いいね</button>
+ <p id="likeCount">0</p>
+ <script src="../js/script.js"></script>
 <script>
      console.log(<?php echo $_start;?>);
      console.log(<?php echo $_end;?>);
