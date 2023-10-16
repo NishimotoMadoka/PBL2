@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <input type="time" name="end_times[]" required>
     </div>
     <div class="title">色</div>
-    <input type="color" name="color" require>
+    <input type="color" name="color[]" require>
   <?php } ?>
 
     <div class="image_select" id ="kbkb">

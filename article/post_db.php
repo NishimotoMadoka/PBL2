@@ -13,8 +13,9 @@
     $items = $_POST['items'];
     $start_times = $_POST['start_times'];
     $end_times = $_POST['end_times'];
-    $user_id = $_SESSION['user_id'];
     $color = $_POST['color'];
+    $user_id = $_SESSION['user_id'];
+    
     // $mail_num=$_SESSION['mail_num'];
     $title="";
     $diary="";
@@ -24,20 +25,14 @@
     $article_id = substr(str_shuffle($str), 0, 9);
     $time_date=date("Y-m-d H:i:s"); //投稿した日時
 
-    // var_dump($items);
-    // var_dump($start_times);
-    // var_dump($end_times);
-    // exit(0);
 
+    // ループで一個ずつ取り出して、エラー処理してる気がする
     for($i = 0; $i < $formCount; $i++){
         $item = $items[$i];
         $time_start = $start_times[$i];
         $time_end = $end_times[$i];
 
-        // echo $item;
-        // echo $time_start;
-        // echo $time_end;
-        // if($time_start == $time_end){
+        // エラーメッセージ表示
         if(strtotime($time_start)==strtotime($time_end)){
             $_SESSION['post_error']='開始時間と終了時間は違うはずだよね？？？？';
             header('Location: post.php');
@@ -75,9 +70,11 @@
         // array_push($start_time,$time_start);
         // array_push($end_time,$time_end);
 
+        // 多分ここでまた配列に戻してる？？？？
         $item_name[$i]=$item;
         $start_time[$i]=$time_start;
         $end_time[$i]=$time_end;
+
         // if($item==""){
         //     $item_name.="#,";
         // }else{
@@ -96,11 +93,13 @@
         //     $end_time.=$time_end.",";
         // }
     }
-    // exit(0);
+
     // 配列の要素数カウント
     $item_count=count($item_name);
     $start_count=count($start_time);
     $end_count=count($end_time);
+    $color_count=count($color);
+
 
     // 要素数が10以下だったら#で埋める
     if($item_count<10){
@@ -121,10 +120,18 @@
             array_push($end_time,"#");
         }
     }
+    if($color_count<10){
+        for($i=10-$color_count;$i>=1;$i--){
+            $h=count($color);
+            array_push($color,"#");
+        }
+    }
 
+    // 要素を結合して「,」区切りの文字列に変換してるのかな？？？？
     $item_name = implode(',', $item_name);
     $start_time = implode(',', $start_time);
     $end_time = implode(',', $end_time);
+    $color=implode(',',$color);
 
     // echo $item_name;
     // echo $start_time;
