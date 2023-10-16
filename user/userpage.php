@@ -126,6 +126,7 @@ const sample3 = <?php echo $_label;?>;
 <input type="hidden" name="starttime" value="<?= $user_article['start_time']?>"> 
 <input type="hidden" name="endtime" value="<?= $user_article['end_time']?>"> 
 <input type="hidden" name="item" value="<?= $user_article['item_name']?>"> 
+<input type="hidden" name="color" value="<?= $friend_article['color']?>"> 
 <div class="button-panel">
 <input type="submit" name="button" value="円グラフを表示" class="button">
 </div>

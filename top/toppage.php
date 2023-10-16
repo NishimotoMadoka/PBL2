@@ -46,6 +46,7 @@ require_once __DIR__ . '/../pre.php';
                                         "start_time"=>$friend_article['start_time'],
                                         "end_time"=>$friend_article['end_time'],
                                         "item_name"=>$friend_article['item_name'],
+                                        "color"=>$friend_article['color'],
                                         "title"=>$friend_article['title'],
                                         "diary"=>$friend_article['diary']
                                       );
@@ -75,6 +76,7 @@ require_once __DIR__ . '/../pre.php';
 <input type="hidden" name="starttime" value="<?= $friend_article['start_time']?>"> 
 <input type="hidden" name="endtime" value="<?= $friend_article['end_time']?>"> 
 <input type="hidden" name="item" value="<?= $friend_article['item_name']?>"> 
+<input type="hidden" name="color" value="<?= $friend_article['color']?>"> 
 <div class="button-panel">
 <input type="submit" name="button" value="円グラフを表示" class="button">
 </div>
