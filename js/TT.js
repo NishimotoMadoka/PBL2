@@ -3,29 +3,44 @@ var Labels = [];//ここにデータベースから持ってくる
 var chartcolor = [];
 
 
- for(let a=0 ;a<10 ;a++){
-   chartcolor.push(getRandomColor());
- }
+//  for(let a=0 ;a<10 ;a++){
+//    chartcolor.push(getRandomColor());
+//  }
 
- function getRandomColor() {
-   const letters = '0123456789ABCDEF';
-   let color = '#';
-   for (let i = 0; i < 6; i++) {
-      //  color += letters[Math.floor(Math.random() * 16)];
-      const h = Math.random() * 360;
-      color = `hsl(${h}, 80%, 60%)`;
-   }
-   return color;
- }
-
- function ColorReset(){//グラフにランダムで配色
-  let chartcolor = [];
-  var b = Labels.length;
-  for(let a=0 ;a<b ;a++){
-    chartcolor.push(getRandomColor());
+ function getColor(){
+  let a=color;
+  let A = a.split(',');
+  
+  for(let count=0;count<=10;++count){
+    if( A[count]=='#'){
+      A[count] = '#0000';
+      chartcolor.push(A[count]);
+    }else{
+      chartcolor.push(A[count]);
+    }
   }
-  console.log(chartcolor);
+  
  }
+
+//  function getRandomColor() {
+//    const letters = '0123456789ABCDEF';
+//    let color = '#';
+//    for (let i = 0; i < 6; i++) {
+//       //  color += letters[Math.floor(Math.random() * 16)];
+//       const h = Math.random() * 360;
+//       color = `hsl(${h}, 80%, 60%)`;
+//    }
+//    return color;
+//  }
+
+//  function ColorReset(){//グラフにランダムで配色
+//   let chartcolor = [];
+//   var b = Labels.length;
+//   for(let a=0 ;a<b ;a++){
+//     chartcolor.push(color);
+//   }
+//   console.log(chartcolor);
+//  }
 
 //DBから持ってきたデータをグラフデータに入れる＆時間の処理
 function getdata(){
@@ -33,6 +48,8 @@ function getdata(){
     chartVal = [];
     Labels = [];//グラフのデータを初期化
     chartcolor = [];
+    
+    getColor();
 
     const s1 = sample1.split(":");//時間から：を抜いて配列に
     const s11 = sample2.split(":");//
@@ -111,15 +128,18 @@ function getdata(){
     }else{
       chartVal.push(s5[i]);
       Labels.push(s2[i]);
-      chartcolor.push(color);
+      //chartcolor.push(getColor());
     }
     //chartVal.push(s5[i]);
     //Labels.push(s2[i]);
  }
+ 
+  //chartcolor = A;
 
-console.log(c1);
+//console.log(c1);
  console.log(chartVal);
  console.log(Labels);
+ console.log(chartcolor);
   }
   
   
@@ -180,7 +200,7 @@ console.log(c1);
           var height = chart.height;
   
           ctx.save();
-          ctx.font = '25px Arial';
+          ctx.font = '25px Times';
           ctx.fillStyle = 'black';
           ctx.textBaseline = 'middle';
           ctx.textAlign = 'center';

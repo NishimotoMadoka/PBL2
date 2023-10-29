@@ -10,13 +10,16 @@ require_once __DIR__ . '/../header.php';
   $_start = $_POST['starttime'];//$_POST で受け取る
   $_end = $_POST['endtime'];
   $_label = $_POST['item'];//DBから来た値
-  $_color = $_POST['color'];
+  $_color = $_POST['color'];//色
+  $_label = $_POST['item'];//DBから来た値
+  // $_color = $_POST['color'];
 
     
   $_start = json_encode($_start);
   $_end = json_encode($_end);
   $_label = json_encode($_label);//phpからきた、値をjavascriptに変換
   $_color = json_encode($_color);
+  // $_color = json_encode($_color);
 
 ?>
 <div style="width:100%">
@@ -29,6 +32,7 @@ require_once __DIR__ . '/../header.php';
      console.log(<?php echo $_start;?>);
      console.log(<?php echo $_end;?>);
      console.log(<?php echo $_label;?>);
+     console.log(<?php echo$_color; ?>)
     // exit(0);
 
 const sample1 = <?php echo $_start;?>;
@@ -43,7 +47,7 @@ console.log(sample3);
  window.addEventListener('DOMContentLoaded', function() {
  
   getdata();
-  ColorReset();
+  // ColorReset();
   drawChart(); // グラフを再描画
   
 });

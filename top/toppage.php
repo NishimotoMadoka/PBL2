@@ -48,7 +48,8 @@ require_once __DIR__ . '/../pre.php';
                                         "item_name"=>$friend_article['item_name'],
                                         "color"=>$friend_article['color'],
                                         "title"=>$friend_article['title'],
-                                        "diary"=>$friend_article['diary']
+                                        "diary"=>$friend_article['diary'],
+                                        // "good"=>$friend_article['good']
                                       );
                             
                 if($friend_article['icon']==""){
@@ -57,6 +58,7 @@ require_once __DIR__ . '/../pre.php';
                 ?>
 
                 <br>
+  
 <div class="madop">
 <form method="POST" action="./../user/userpage.php">
     <input type="hidden" name="user_id" value="<?=$friend_article['user_id']?>">
@@ -70,6 +72,29 @@ require_once __DIR__ . '/../pre.php';
   <tr><?=$friend_article['title']?></tr><br>
   <tr><?= $friend_article['diary'] ?></tr><br>
 </table>
+<?php
+$article_id=$friend_article['article_id'];
+
+
+//ユーザーIDと投稿IDを元にいいね値の重複チェックを行っています
+$favorite=$article->checkGood_duplicate($user_id,$article_id);
+
+?>
+<form class="favorite_count" action="#" method="post">
+    <input type="hidden" name="article_id" value="<?php echo $article_id;?>">
+    <input type="hidden" name="user_id" value="<?php echo $user_id;?>">
+    <button type="button" name="favorite" class="favorite_btn" data-user_id="<?php echo $user_id;?>" data-article_id="<?php echo $article_id;?>">
+        <?php if (!$favorite): ?>
+            いいね
+        <?php else: ?>
+            いいね解除
+        <?php endif; ?>
+    </button>
+</form>
+
+
+        
+
 </div>
 </div>
 <form action="info.php" method="POST">
@@ -144,9 +169,17 @@ foreach( $friends_articles_array as $value) {
             
           </article>
         </a> -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./like.js?version=<?php echo time(); ?>"></script>
+  <!-- toppage.phpの適切な場所に以下のコードを追加してください -->
+<script>
+var user_id = <?php echo json_encode($_SESSION['user_id']); ?>;
+</script>
+
     </article>
   </div>
 </main>
+
 <?php
 require_once __DIR__ . '/../footer.php';
 ?>

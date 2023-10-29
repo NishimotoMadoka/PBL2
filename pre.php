@@ -54,6 +54,8 @@ $post_db_css = $http_host . '/' . $id . '/css/post_db.css';
 
 $default_icon=$http_host . '/' . $id . '/icon_image/default.jpg';
 $logo_img = $http_host . '/' . $id . '/img/logo2.png';
+$active_fas = $http_host . '/' . $id . '/img/active fas.svg';
+$fas = $http_host . '/' . $id . '/img/fas.svg';
 
 
 

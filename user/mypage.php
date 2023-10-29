@@ -28,7 +28,8 @@ $user_articles = $article->userArticles($user_id);
   <script src="../js/test.js"></script>
 </head>
 <main>
- <div class="form-wrapper-icon">
+<body>
+<div class="form-wrapper-icon">
   <!-- <div class="icon">  -->
     <?php
     if ($user_plofile['icon'] != "") {
@@ -76,19 +77,48 @@ $user_articles = $article->userArticles($user_id);
     </div> -->
 
     <!-- <div class="friend"> -->
-    <div class="button-panel">
+    <!-- <div class="button-panel">
       <a href="<?=$friend_register_php?>">
         <input type="submit" value="フレンド登録" class="button">
       </a>
-    </div>
+    </div> -->
 
-    <!-- <div class="friend_list"> -->
-    <div class="button-panel">
-      <a href="<?=$friend_list_php?>">
+<!-- フレンド登録 -->
+<link rel="stylesheet" href="<?=$friend_register_css?>">
+<div class="button-panel">
+<div class="form-item">
+  <form method="POST" action="../friend/friend_register_db.php">
+    <input type="text" name="friend_code" required="required" placeholder="フレンドコードを入力">
       <div class="button-panel">
-        <input type="submit" value="フレンドリスト" class="button">
-      </a>
-    </div>
+      <!-- <input type="submit" value="追加" class="fbtn" class="button"></td> -->
+    <input type="submit" class="button" title="追加" value="追加"></input>
+    </tr>
+  </form>
+</div>
+<?php
+    if (isset($_SESSION['friend_register_error'])) {
+    $friend_register_error="<script type='text/javascript'>alert('". $_SESSION['friend_register_error'] ."');</script>";
+    echo $friend_register_error;
+    // echo  $_SESSION['friend_register_error'] ;
+    unset($_SESSION['friend_register_error']);
+} 
+?>
+
+<!-- フレンドリスト -->
+<div class="button-panel">
+  <a href="<?=$friend_list_php?>">
+  <div class="button-panel">
+    <input type="submit" value="フレンドリスト" class="button">
+    </a>
+  </div>
+
+
+
+</body>
+</main>
+<?php
+require_once __DIR__ . '/../footer.php';
+?>
 
   <?php
   }
@@ -164,7 +194,7 @@ const sample3 = <?php echo $_label;?>;
 <input type="hidden" name="starttime" value="<?= $user_article['start_time']?>"> 
 <input type="hidden" name="endtime" value="<?= $user_article['end_time']?>"> 
 <input type="hidden" name="item" value="<?= $user_article['item_name']?>"> 
-<input type="hidden" name="color" value="<?= $friend_article['color']?>"> 
+<input type="hidden" name="color" value="<?= $user_article['color']?>"> 
 <div class="button-panel">
 <input type="submit" name="button" value="円グラフを表示" class="button">
 <hr>

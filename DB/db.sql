@@ -55,7 +55,6 @@ CREATE TABLE article_list(
     color VARCHAR(150),
     title VARCHAR(50),
     diary VARCHAR(3500),
-    good int NOT NULL DEFAULT 0,
     post_date DATE NOT NULL,
     time_date DATETIME NOT NULL,
     article_image VARCHAR(70),
@@ -65,11 +64,24 @@ CREATE TABLE article_list(
         article_id,
         color,
         title,
-        good,
         post_date,
         time_date,
         article_image,
         article_public
+    ),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+# テーブルgoodの作成
+drop table if exists good; # 既にテーブルgoodがあれば削除する
+CREATE TABLE good(
+    user_id INT NOT NULL,
+    article_id VARCHAR(20) NOT NULL, 
+    flg INT NOT NULL DEFAULT 0,
+    INDEX good_index(
+        user_id,
+        article_id,
+        flg
     ),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );

@@ -78,4 +78,93 @@ class Article extends DbData
         $sql = "update article_list set article_public=false where article_id=?";
         $result = $this->exec($sql, [$article_id]);
     }
+
+    // いいね機能　ボタン押したらカウントが1増える処理
+    public function updateGood($article_id)
+    {
+        $sql = "select good from article_list where article_id=?";
+        $stmt = $this->query($sql, [$article_id]);
+        $good = $stmt->fetch();
+
+        $sql = "update article_list set good=? where article_id=?";
+        $result = $this->exec($sql, [$good[0]+1,$article_id]);
+
+        if ($result) {
+            return ''; // ここも空文字を返すので「''」はシングルクォーテーションが２つ
+        } else {
+            // 何らかの原因で失敗した場合 
+            return 's登録できませんでした。管理者にお問い合わせください。';
+        }
+    }
+
+    // ユーザーのいいねリストに登録
+    public function Updategood_list($user_id,$article_id){
+        // $sql = "select good_list from users where user_id=?";
+        // $stmt = $this->query($sql,[$user_id]);
+        // $good_list = $stmt->fetch();
+
+        $sql = "update good_list set good concat('good_list','article_id=?') where user_id=?";
+        $result = $this->exec($sql,[$article_id,$user_id]);
+        if ($result) {
+            return ''; // ここも空文字を返すので「''」はシングルクォーテーションが２つ
+        } else {
+            // 何らかの原因で失敗した場合 
+            return '登録できませんでした。管理者にお問い合わせください。';
+        }
+    }
+
+    // いいねリストを取得
+    public function checkGood_list($user_id){
+        $sql = "select good_list from users where user_id=?";
+        $stmt = $this->query($sql, [$user_id]);
+        return $stmt->fetch();
+    }
+
+    // 投稿のいいねの数を取得するやつ
+    public function getGood($article_id)
+    {
+        $sql = "select good from article_list where article_id=? ";
+        $stmt = $this->query($sql, [$article_id]);
+        return $stmt->fetch();
+    }
+
+    public function checkGood_duplicate($user_id,$article_id){
+        $sql = "select * from good where user_id=? and article_id=?";
+        $stmt = $this->query($sql,[$user_id,$article_id]);
+        return $stmt->fetch();
+    }
+
+    public function delete_Good($user_id,$article_id){
+        $sql = "delete from good where user_id=? and article_id=?";
+        $stmt = $this->query($sql,[$user_id,$article_id]);
+        return $stmt;
+    }
+
+    public function insert_Good($user_id,$article_id){
+        $sql = "insert into good(user_id,article_id) values (?,?)";
+        $result = $this->exec($sql, [$user_id,$article_id]);
+
+        if ($result) {
+            return '';
+        } else {
+            // 何らかの原因で失敗した場合 
+            return '投稿できませんでした。管理者にお問い合わせください。';
+        }
+    }
+
+
+    public function get_Good($article_id){
+        $sql = "select count(*) as likeCount from good where article_id = ?";
+        $likeCount = $this->query($sql,[$article_id]);
+        return $likeCount->fetch();
+    }
+    // public function check_favolite_duplicate($user_id,$article_id){
+    //     $sql = "select * from good where user_id=? and article_id = ?";
+    //     $stmt = $dbh->prepare($sql);
+    //     $stmt->execute(array(':user_id' => $user_id ,
+    //                          ':post_id' => $post_id));
+    //     $favorite = $stmt->fetch();
+    //     return $favorite;
+    // }
+    
 }

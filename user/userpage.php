@@ -126,12 +126,31 @@ const sample3 = <?php echo $_label;?>;
 <input type="hidden" name="starttime" value="<?= $user_article['start_time']?>"> 
 <input type="hidden" name="endtime" value="<?= $user_article['end_time']?>"> 
 <input type="hidden" name="item" value="<?= $user_article['item_name']?>"> 
-<input type="hidden" name="color" value="<?= $friend_article['color']?>"> 
+<input type="hidden" name="color" value="<?= $user_article['color']?>"> 
 <div class="button-panel">
 <input type="submit" name="button" value="円グラフを表示" class="button">
 </div>
 <hr>
 </form>
+<form method="POST" action="../good/good.php">
+  <span><input type="submit" value="♡" class="good_button"></span>
+  <!-- <input type="hidden" name="good_count" value="<?=$user_article['good']?>"> -->
+  <input type="hidden" name="article_id" value="<?=$user_article['article_id']?>">
+  <!-- <span class="text"><?= $user_article['good'] ?></span> -->
+  <input type="hidden" name="article_id" value="<?=$user_article['article_id']?>">
+  <!-- <button type="button" name="good" class=""> -->
+  <!-- <?php
+    // $checkGood_duplicate = $article->checkGood_duplicate($user_article['article_id'],$user_id);
+    // if(!$checkGood_duplicate):?>
+      ♡
+  <?php
+    // else:?>
+      ♥
+  <?php
+    // endif;?> -->
+  </button>
+</form>
+
       <?php
       }
       ?>
