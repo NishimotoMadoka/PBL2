@@ -1,10 +1,10 @@
 <!-- 新規登録 -->
 <?php
 // へっだー
-require_once __DIR__ . '/../header.php';
+// require_once __DIR__ . '/../header.php';
 require_once __DIR__ . '/../pre.php';
 ?>
-<link rel="stylesheet" href="<?=$login_css?>">
+<link rel="stylesheet" href="<?=$signup_css?>">
 
 <main>
     <?php
@@ -24,50 +24,64 @@ require_once __DIR__ . '/../pre.php';
     }
 
     ?>
+    <head>
+    <!-- レスポンシブ -->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    
+    </head>
     <body>
-    <div class="form-wrapper">
-     <h1>新規登録</h1>
-
-     <form method="POST" action="./signup_db.php" enctype="multipart/form-data">
-        <div class="form-item">
-            <div class="inline">
-            <div class="icon-title">アイコン画像を選択<input type="file" name="icon" accept="image/*"></div>
-        </div>
-    </div>    
-
-    <form method="post" action="./signup_db.php">
-        <div class="form-item">
-         <label for="name"></label>
-         <input type="text" name="name" value="<?= $name ?>" required placeholder="名前"></input>
-        </div>
-        <div class="form-item">
-         <label for="password"></label>
-         <input type="email" name="mail" value="<?= $mail ?>" required placeholder="メールアドレス"></input>
-        </div>
-        <div class="form-item">
-         <label for="password"></label>
-         <input type="text" name="profile_comment"  value="<?= $profile_comment ?>"  placeholder="自己紹介"></input>
-        </div>
-        <div class="form-item">
-         <label for="password"></label>
-         <input type="password" name="password" required="required" placeholder="パスワード"></input>
-        </div>
-        <div class="form-item">
-         <label for="password_conf"></label>
-         <input type="password" name="password_conf" required="required" placeholder="もう一度入力してください"></input>
-        </div>
-
-        <div class="button-panel">
-         <input type="submit" class="button" title="Login" value="sign up"></input>
-        </div>
+        <div class="loginbox">
+            <div class="logo_img"><img src=<?php echo $logo_img ?>></div><br>
+                <div class="title">新規登録</div>
+                
+            <form method="POST" action="./signup_db.php" enctype="multipart/form-data">
+                <div class="icon-title">アイコン画像を選択<input type="file" name="icon" accept="image/*"></div>
+            <form method="post" action="./signup_db.php">
+                <table>
+                    <tr>
+                        <td>お名前</td>
+                        <label for="name"></label>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="formbox" name="name" value="<?= $name ?>" required placeholder="電子　太郎"></input></td>
+                    </tr>
+                    <tr>
+                        <td>メールアドレス</td>
+                        <label for="password"></label>
+                    </tr>
+                    <tr>
+                        <td><input type="email" class="formbox" name="mail" value="<?= $mail ?>" required placeholder="example@Jagaimo.com"></input></td>
+                    </tr>
+                    <tr>
+                        <td>自己紹介</td>
+                        <label for="password"></label>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="formbox" name="profile_comment"  value="<?= $profile_comment ?>"  placeholder="自己紹介"></input></td>
+                    </tr> 
+                    <tr>
+                        <td>パスワード</td>
+                        <label for="password"></label>
+                    </tr>
+                    <tr>
+                        <td><input type="password" class="formbox" name="password" required="required" placeholder="半角英数字6文字以上"></input></td>
+                            <label for="password_conf"></label>
+                    </tr>
+                    <tr>
+                    <td><input type="password" class="formbox" name="password_conf" required="required" placeholder="もう一度入力してください"></input></td>
+                    </tr>
+                </table>
+         <input type="submit" class="btn" title="Login" value="登録する"></input>
     </form>
-    </div>
     </body>
     </form>
-    </div>
 </main>
 
 <?php
 // ふったー
-require_once __DIR__ . '/../footer.php';
+// require_once __DIR__ . '/../footer.php';
 ?>

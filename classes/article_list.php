@@ -30,13 +30,30 @@ class Article extends DbData
         }
     }
 
-    public function getArticle($get_user_id,$post_date){
-        $sql = "select * from article_list join users on article_list.user_id = users.user_id where article_list.user_id = ? and article_list.post_date = ?";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$get_user_id,$post_date]);
-        $life_article = $stmt->fetchAll();
-        return $life_article;
+    // 投稿編集機能
+    public function editArticle($article_id,$user_id,$start_time,$end_time,$item_name,$color,$title,$diary,$post_date,$article_image){
+        $sql = "update article_list set start_time=?,end_time=?,item_name=?,color=?,title=?,diary=?,post_date=?,article_image=? where article_id=? and user_id";
+        $result = $this->exec($sql, [$start_time,$end_time,$item_name,$color,$title,$diary,$post_date,$article_image,$article_id,$user_id]);
+        if($result){
+            return'';
+        }else{
+            return'更新できませんでした。管理者にお問い合わせください。';
+        }
     }
+    // article_id、user_idで投稿の内容を取ってくる
+    public function getArticle($user_id,$article_id){
+        $sql="select * from article_list where user_id=? and article_id=?";
+        $stmt = $this->query($sql,[$user_id,$article_id]);
+        return $stmt->fetch();
+    }
+
+    // public function getArticle($get_user_id,$post_date){
+    //     $sql = "select * from article_list join users on article_list.user_id = users.user_id where article_list.user_id = ? and article_list.post_date = ?";
+    //     $stmt = $this->pdo->prepare($sql);
+    //     $stmt->execute([$get_user_id,$post_date]);
+    //     $life_article = $stmt->fetchAll();
+    //     return $life_article;
+    // }
 
     //  友達の投稿を取ってくるやつ
     public  function  friendsArticles($friend_user_id)

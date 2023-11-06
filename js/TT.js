@@ -142,6 +142,11 @@ function getdata(){
  console.log(chartcolor);
   }
   
+  function convertToTime(minutes) {
+    var hours = Math.floor(minutes / 60);
+    var remainingMinutes = minutes % 60;
+    return hours + "時間" + remainingMinutes + "分";
+  }
   
    
   
@@ -163,6 +168,16 @@ function getdata(){
         }],
       },
       options: {
+        tooltips: {
+          callbacks: {
+              label: function (tooltipItem, data) {
+                var dataset = data.datasets[tooltipItem.datasetIndex];
+                var currentValue = dataset.data[tooltipItem.index];
+                var timeValue = convertToTime(currentValue);
+                return "時間 : " + timeValue;
+              }
+          }
+      },
         responsive: false,
         maintainAspectRatio: false,
         plugins: {

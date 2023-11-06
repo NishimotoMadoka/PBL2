@@ -1,6 +1,6 @@
 <?php
 // へっだー
-require_once __DIR__ . '/../header.php'; 
+// require_once __DIR__ . '/../header.php'; 
 require_once __DIR__ . '/../pre.php';
 ?>
 
@@ -14,33 +14,48 @@ require_once __DIR__ . '/../pre.php';
         // echo '<p class="error_message">' . $_SESSION['login_error'] . '</p>';
         unset($_SESSION['login_error']);
     } else {
-        echo '<p class="user-form">利用するにはログインしてください。</p>';
+        // echo '<p>利用するにはログインしてください。</p>';
     }
     ?>
+    <haed>
+        <!-- レスポンシブ -->
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    </head>
     <body>
-    <div class="form-wrapper">
-     <h1>ログイン</h1>
-     <form method="post" action="./login_db.php">
-       <div class="form-item">
-         <label for="name"></label>
-         <input type="text" name="mail" required="required" placeholder="メールアドレス"></input>
-       </div>
-       <div class="form-item">
-         <label for="password"></label>
-         <input type="password" name="password" required="required" placeholder="パスワード"></input>
-       </div>
-       <div class="button-panel">
-         <input type="submit" class="button" title="Login" value="Login"></input>
-       </div>
-     </form>
-    </div>
+        <div class="loginbox">
+            <div class="logo_img"><img src=<?php echo $logo_img ?>></div><br>
+                <div class="title">ログイン</div>
+                    <form method="post" action="./login_db.php">
+                        <table>
+                            <tr>
+                                <label for="name"></label>
+                                <td>メールアドレス</td>
+                            </tr>
+                            <tr>
+                                <td></label><input type="text" class="formbox" name="mail" required="required" placeholder="example@Jagaimo.com"></input></td>
+                            </tr>
+                            <tr>
+                            <tr>
+                                <label for="password"></label>
+                                <td>パスワード</td>
+                            </tr>
+                            <tr>
+                                <td></label><input type="password" class="formbox" name="password" required="required" placeholder="半角英数字6文字以上"></input></td>
+                            </tr>
+                        </table>
+                        <input type="submit" class="btn" title="Login" value="ログイン"></input>
+                    </form>
+                    <hr>
+                <!-- 新規ユーザー登録ボタン -->
+                <div class="signup"><a href="signup.php">新規登録はこちら</a></div>
+        </div>
     </body>
-    </form>
-    <!-- 新規ユーザー登録ボタン -->
-    <div class="signup-p"><a href="signup.php">新規ユーザー登録</a></div>
-    </div>
 </main>
 <?php
 // ふったー
-require_once __DIR__ . '/../footer.php';
+// require_once __DIR__ . '/../footer.php';
 ?>

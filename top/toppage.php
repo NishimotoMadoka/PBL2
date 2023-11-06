@@ -71,23 +71,30 @@ require_once __DIR__ . '/../pre.php';
   <tr><?=$friend_article['post_date']?></tr><br>
   <tr><?=$friend_article['title']?></tr><br>
   <tr><?= $friend_article['diary'] ?></tr><br>
+  <?php
+    if ($friend_article['article_image'] != "") {
+  ?>
+    <img class="" src="../article_image/<?= $friend_article['article_image'] ?>" alt=""></a>
+  <?php
+    }
+  ?>
 </table>
+
+<!-- いいねボタン -->
 <?php
 $article_id=$friend_article['article_id'];
-
-
-//ユーザーIDと投稿IDを元にいいね値の重複チェックを行っています
+//ユーザーIDと投稿IDを元にいいね値の重複チェック（これいらんかも？？？）
 $favorite=$article->checkGood_duplicate($user_id,$article_id);
-
 ?>
+<!-- ボタン表示部分 -->
 <form class="favorite_count" action="#" method="post">
     <input type="hidden" name="article_id" value="<?php echo $article_id;?>">
     <input type="hidden" name="user_id" value="<?php echo $user_id;?>">
     <button type="button" name="favorite" class="favorite_btn" data-user_id="<?php echo $user_id;?>" data-article_id="<?php echo $article_id;?>">
         <?php if (!$favorite): ?>
-            いいね
+            🤍
         <?php else: ?>
-            いいね解除
+            💗
         <?php endif; ?>
     </button>
 </form>
@@ -169,12 +176,12 @@ foreach( $friends_articles_array as $value) {
             
           </article>
         </a> -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="./like.js?version=<?php echo time(); ?>"></script>
-  <!-- toppage.phpの適切な場所に以下のコードを追加してください -->
-<script>
-var user_id = <?php echo json_encode($_SESSION['user_id']); ?>;
-</script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./like.js?version=<?php echo time(); ?>"></script>
+    <script>
+      var user_id = <?php echo json_encode($_SESSION['user_id']); ?>;
+    </script>
 
     </article>
   </div>

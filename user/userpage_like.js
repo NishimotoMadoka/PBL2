@@ -22,7 +22,7 @@ $(document).on('click', '.favorite_btn', function (e) {
     // ajaxでlike.phpに処理を渡して非同期処理
     $.ajax({
         type: 'POST',
-        url: './like.php',
+        url: './userpage_like.php',
         dataType: 'json',
         data: {
             user_id: user_id,

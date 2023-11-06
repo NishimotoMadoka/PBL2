@@ -1,6 +1,15 @@
 <?php
 require_once __DIR__ . '/../header.php';
 require_once __DIR__ . '/../pre.php';
+require_once __DIR__ . '/../classes/article_list.php';
+
+// 遷移元からarticle_idをPOST送信する
+$article_id=$_POST['article_id'];
+
+$article=new Article();
+$article_deteils=$article->getArticle($user_id,$article_id);
+echo $article_deteils['start_time'];
+exit(0);
 ?>
 <main>
 <?php
@@ -116,34 +125,6 @@ function addform(){//form追加関数
   
  count++;
 }
-
-//ここまでkbkbが書きました。
-
-  // プラスボタンが押されたらフォームを追加
-  // document.querySelector('input[name="add_form"]').addEventListener('click', function (e) {
-  //   e.preventDefault();
-  //   var formCountInput = document.querySelector('input[name="form_count"]');
-  //   var formCount = parseInt(formCountInput.value);
-  //   formCount++;
-  //   formCountInput.value = formCount;
-
-  //   var container = document.querySelector('form');
-  //   var div = document.createElement('div');
-
-
-  //   div.innerHTML = `
-  //   <div class="form-item">
-  //   <div class="item">
-  //     <input type="text" name="items[]" placeholder="項目" required>
-  //   </div>
-  //   <div class="title">開始時間</div>
-  //     <input type="time" name="start_times[]" required>
-  //     <div class="title">終了時間</div>
-  //     <input type="time" name="end_times[]" required>
-  //   </div>
-  //   `;
-  //   container.insertBefore(div, document.querySelector('.button-panel'));
-  // });
 </script>
 <?php
 require_once __DIR__ . '/../footer.php';

@@ -1,5 +1,5 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="./like.js"></script>
+<script src="./userpage_like.js"></script>
 
 <?php
 error_log('like.php was executed');

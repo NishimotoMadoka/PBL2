@@ -187,6 +187,13 @@ const sample3 = <?php echo $_label;?>;
   <tr><?=$user_article['post_date']?></tr><br>
   <tr><?=$user_article['title']?></tr><br>
   <tr><?= $user_article['diary'] ?></tr><br>
+  <?php
+    if ($user_article['article_image'] != "") {
+  ?>
+    <img class="" src="../article_image/<?= $user_article['article_image'] ?>" alt=""></a>
+  <?php
+    }
+  ?>
 </table>
 </div>
 </div>
@@ -200,6 +207,14 @@ const sample3 = <?php echo $_label;?>;
 <hr>
 </div>
 </form>
+<form action="../article/post_edit.php" method="POST">
+<input type="hidden" name="article_id" value="<?=$user_article['article_id']?>">
+<div class="button-panel">
+<input type="submit" name="button" value="投稿内容編集" class="button">
+<hr>
+</div>
+</form>
+<!-- <button type="submit" neme="edit" onclick="location.href='./../article/post_edit.php'" value="<?=$user_article['article_id']?>">投稿内容編集</button> -->
       <?php
       }
       ?>

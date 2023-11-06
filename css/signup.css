@@ -14,7 +14,7 @@ body{
 
 
 img{
-    margin-top: 80px;
+    margin-top: 20px;
     width: 170px;
     height: 74px;
     margin-bottom: 0;
@@ -26,16 +26,16 @@ img{
     font-weight: 600;
 }
 
-table{
-    margin: auto;
-    font-weight: bold;
-}
-
 
 
 p{
     margin: 0;
     text-align: left;
+}
+
+table{
+    margin: auto;
+    font-weight: bold;
 }
 
 form{
@@ -48,13 +48,14 @@ form{
 }
 
 .btn{
-    margin: 37px;
+    
     background-color: rgb(219, 232, 255);
     width:250px;
     height: 40px;
     border: 1px;
     font-size: 15px;
     color: rgb(84, 90, 96);
+    margin-top: 20px;
 }
 
 .signup{
@@ -75,5 +76,8 @@ label{
     background-color: rgb(255, 255, 255);
     }
 
-
+    table{
+        margin: auto;
+        font-weight: bold;
+    }
 }

@@ -3,9 +3,17 @@
         $formCount = isset($_POST['form_count']) ? $_POST['form_count'] : 1;
     require_once __DIR__ .'/../pre.php';
     require_once __DIR__ . '/../header.php';
+    require_once __DIR__ . '/../classes/user.php';
     if(!isset($_SESSION)){
         session_start();
     }
+
+    // ログインユーザーの情報取り出し
+    $user=new User();
+    $user_plofile = $user->detailsUser($user_id);
+
+    $mail=$user_plofile['mail'];
+
     $item_name=array();
     $start_time=array();
     $end_time=array();
@@ -16,7 +24,6 @@
     $color = $_POST['color'];
     $user_id = $_SESSION['user_id'];
     
-    // $mail_num=$_SESSION['mail_num'];
     $title="";
     $diary="";
     // 日付
@@ -133,10 +140,6 @@
     $end_time = implode(',', $end_time);
     $color=implode(',',$color);
 
-    // echo $item_name;
-    // echo $start_time;
-    // echo $end_time;
-    // exit(0);
     // 画像の受け取り、加工
     $article_image = $_FILES['up_image']['name'];
 

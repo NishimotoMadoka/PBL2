@@ -41,6 +41,7 @@ $user_php = $http_host . '/' . $id . '/classes/user.php';
 
 $frame_css = $http_host . '/' . $id . '/css/frame.css';
 $login_css = $http_host . '/' . $id . '/css/login.css';
+$signup_css = $http_host . '/' . $id . '/css/signup.css';
 $post_css = $http_host . '/' . $id . '/css/post.css';
 $userpage_css = $http_host . '/' . $id . '/css/userpage.css';
 $friend_register_css= $http_host . '/' . $id . '/css/friend_register.css';
