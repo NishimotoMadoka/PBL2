@@ -15,9 +15,10 @@ $(document).on('click', '.favorite_btn', function (e) {
     var $form = $(this).closest('form');
     // var article_id = $form.find('input[name="article_id"]').val();
     var user_id = $(this).data('user_id'); // ボタンの data-user-id 属性から user_id を取得
-    var article_id = $(this).data('article_id'); // ボタンの data-user-id 属性から user_id を取得
+    var post_user_id = $(this).data('post_user_id'); // ボタンの data-post-user-id 属性から post_user_id を取得
+    var article_id = $(this).data('article_id'); // ボタンの data-article-id 属性から article_id を取得
 
-    console.log('Before AJAX - user_id:', user_id, 'article_id:', article_id);
+    console.log('Before AJAX - user_id:', user_id, 'post_user_id:', post_user_id, 'article_id:', article_id);
 
     // ajaxでlike.phpに処理を渡して非同期処理
     $.ajax({
@@ -26,6 +27,7 @@ $(document).on('click', '.favorite_btn', function (e) {
         dataType: 'json',
         data: {
             user_id: user_id,
+            post_user_id: post_user_id,
             article_id: article_id
         }
     }).done(function (data) {

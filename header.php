@@ -34,6 +34,7 @@ $url = $_SERVER['REQUEST_URI'];
             echo '<li class="nav-list-item"><a class="fa-solid fa-user-plus" href="' . $signup_php . '"> 新規登録</a></li>';
             echo '<li class="nav-list-item"><a class="fa-solid fa-right-to-bracket" href="' . $login_php . '"> ログイン</a></li>';
           } else {
+            echo '<li class="nav-list-item"><a class="fa-solid fa-address-card" href="' . $good_notification_php . '"> 🔔</a></li>';
             echo '<li class="nav-list-item"><a class="fa-solid fa-address-card" href="' . $mypage_php . '"> マイページ</a></li>';
             echo '<li class="nav-list-item"><a class="fa-solid fa-pen" href="' . $post_php . '"> 投稿</a></li>';
             echo '<li class="nav-list-item"><a class="fa-solid fa-right-from-bracket" href="' . $logout_php . '"> ログアウト</a></li>';

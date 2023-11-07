@@ -96,8 +96,9 @@ $user_articles = $article->userArticles($friend_user_id);
 <!-- いいねボタン -->
 <?php
 $article_id=$user_article['article_id'];
+$post_user_id=$user_article['user_id'];
 //ユーザーIDと投稿IDを元にいいね値の重複チェック（これいらんかも？？？）
-$favorite=$article->checkGood_duplicate($user_id,$article_id);
+$favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
 ?>
 <!-- ボタン表示部分 -->
 <form class="favorite_count" action="#" method="post">

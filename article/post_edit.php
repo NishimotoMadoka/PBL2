@@ -8,8 +8,6 @@ $article_id=$_POST['article_id'];
 
 $article=new Article();
 $article_deteils=$article->getArticle($user_id,$article_id);
-echo $article_deteils['start_time'];
-exit(0);
 ?>
 <main>
 <?php
@@ -35,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <?php for ($i = 0; $i < $formCount; $i++) { ?>
     <div class="form-item">
     <div class="title">日付</div> 
-    <input type="date" name="date" placeholder="日付" required><br>
+    <input type="date" name="date" placeholder="日付" value="$article_deteils['']" required><br>
     </div>
     <div class="form-item">
     <div class="item">

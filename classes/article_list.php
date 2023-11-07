@@ -145,21 +145,21 @@ class Article extends DbData
         return $stmt->fetch();
     }
 
-    public function checkGood_duplicate($user_id,$article_id){
-        $sql = "select * from good where user_id=? and article_id=?";
-        $stmt = $this->query($sql,[$user_id,$article_id]);
+    public function checkGood_duplicate($user_id,$post_user_id,$article_id){
+        $sql = "select * from good where user_id=? and post_user_id=? and article_id=?";
+        $stmt = $this->query($sql,[$user_id,$post_user_id,$article_id]);
         return $stmt->fetch();
     }
 
-    public function delete_Good($user_id,$article_id){
-        $sql = "delete from good where user_id=? and article_id=?";
-        $stmt = $this->query($sql,[$user_id,$article_id]);
+    public function delete_Good($user_id,$post_user_id,$article_id){
+        $sql = "delete from good where user_id=? and post_user_id=? and article_id=?";
+        $stmt = $this->query($sql,[$user_id,$post_user_id,$article_id]);
         return $stmt;
     }
 
-    public function insert_Good($user_id,$article_id){
-        $sql = "insert into good(user_id,article_id) values (?,?)";
-        $result = $this->exec($sql, [$user_id,$article_id]);
+    public function insert_Good($user_id,$post_user_id,$article_id){
+        $sql = "insert into good(user_id,post_user_id,article_id) values (?,?,?)";
+        $result = $this->exec($sql, [$user_id,$post_user_id,$article_id]);
 
         if ($result) {
             return '';
@@ -169,6 +169,11 @@ class Article extends DbData
         }
     }
 
+    public function good_Notification($post_user_id){
+        $sql = "select * from good where post_user_id=?";
+        $stmt = $this->query($sql, [$post_user_id]);
+        return $stmt->fetchAll();
+    }
 
     public function get_Good($article_id){
         $sql = "select count(*) as likeCount from good where article_id = ?";

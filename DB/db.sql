@@ -76,11 +76,13 @@ CREATE TABLE article_list(
 drop table if exists good; # 既にテーブルgoodがあれば削除する
 CREATE TABLE good(
     user_id INT NOT NULL,
+    post_user_id INT NOT NULL,
     article_id VARCHAR(20) NOT NULL, 
     -- flg INT NOT NULL DEFAULT 0,
     INDEX good_index(
         user_id,
-        article_id,
+        post_user_id,
+        article_id
         -- flg
     ),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
@@ -97,6 +99,7 @@ CREATE TABLE friends_list(
     )
     -- FOREIGN KEY (friend_user_id) REFERENCES users(user_id)
 );
+
 
 -- # テーブルchatの作成
 -- drop table if exists chat; # 既にテーブルchatがあれば削除する

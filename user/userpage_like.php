@@ -14,19 +14,20 @@ if (session_status() === PHP_SESSION_NONE) {
 $article = new Article();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  if (isset($_POST['article_id'], $_POST['user_id']) && !empty($_POST['article_id']) && !empty($_POST['user_id'])) {
+  if (isset($_POST['article_id'], $_POST['post_user_id'] ,$_POST['user_id']) && !empty($_POST['article_id']) && !empty($_POST['post_user_id']) && !empty($_POST['user_id'])) {
       $article_id = $_POST['article_id'];
+      $post_user_id = $_POST['post_user_id'];
       $user_id = $_POST['user_id'];
 
 
         //いいね処理
-        $favorite = $article->checkGood_duplicate($user_id, $article_id);
+        $favorite = $article->checkGood_duplicate($user_id, $post_user_id, $article_id);
         if ($favorite) {
             $action = '解除';
-            $delete = $article->delete_Good($user_id, $article_id);
+            $delete = $article->delete_Good($user_id, $post_user_id, $article_id);
         } else {
             $action = '登録';
-            $insert = $article->insert_Good($user_id, $article_id);
+            $insert = $article->insert_Good($user_id, $post_user_id, $article_id);
         }
 
         // ここでデータベースクエリがエラーを返す可能性があるため、エラーハンドリング

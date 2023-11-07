@@ -16,9 +16,31 @@ $user_id=$_SESSION['user_id'];
 
 $friends_users_id=$user->getFriends($user_id);
 
-
 require_once __DIR__ . '/../header.php';
 require_once __DIR__ . '/../pre.php';
+
+if($friends_users_id==null){
+  ?>
+    <!-- フレンド登録 -->
+  <link rel="stylesheet" href="<?=$friend_register_css?>">
+  <div class="button-panel">
+  <div class="form-item">
+    <form method="POST" action="../friend/friend_register_db.php">
+      <input type="text" name="friend_code" required="required" placeholder="フレンドコードを入力">
+        <div class="button-panel">
+        <!-- <input type="submit" value="追加" class="fbtn" class="button"></td> -->
+      <input type="submit" class="button" title="追加" value="追加"></input>
+      </tr>
+    </form>
+  </div>
+  <?php
+      if (isset($_SESSION['friend_register_error'])) {
+      $friend_register_error="<script type='text/javascript'>alert('". $_SESSION['friend_register_error'] ."');</script>";
+      echo $friend_register_error;
+      // echo  $_SESSION['friend_register_error'] ;
+      unset($_SESSION['friend_register_error']);
+  } 
+  }
 ?>
 <link rel="stylesheet" href="<?= $toppage_css ?>">
 <main class="">
@@ -28,12 +50,13 @@ require_once __DIR__ . '/../pre.php';
       <?php
       $i=0;
       if(!empty($friends_users_id)){
-        
         $friends_articles_array=array();
         foreach ($friends_users_id as $friend_user_id) {
             $friend_user_id=$friend_user_id['friend_user_id'];
             $friends_articles = $article->friendsArticles($friend_user_id);
-            
+            // これ入れる場所変えないとです
+            require_once __DIR__ . '/../paging/paging_controller.php';
+
             foreach ($friends_articles as $friend_article) {
               $friend_article_array = array();
               $friend_article_array = array();
@@ -83,14 +106,17 @@ require_once __DIR__ . '/../pre.php';
 <!-- いいねボタン -->
 <?php
 $article_id=$friend_article['article_id'];
+$post_user_id=$friend_article['user_id'];
+
 //ユーザーIDと投稿IDを元にいいね値の重複チェック（これいらんかも？？？）
-$favorite=$article->checkGood_duplicate($user_id,$article_id);
+$favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
 ?>
 <!-- ボタン表示部分 -->
 <form class="favorite_count" action="#" method="post">
     <input type="hidden" name="article_id" value="<?php echo $article_id;?>">
+    <input type="hidden" name="post_user_id" value="<?php echo $post_user_id;?>">
     <input type="hidden" name="user_id" value="<?php echo $user_id;?>">
-    <button type="button" name="favorite" class="favorite_btn" data-user_id="<?php echo $user_id;?>" data-article_id="<?php echo $article_id;?>">
+    <button type="button" name="favorite" class="favorite_btn" data-user_id="<?php echo $user_id;?>" data-post_user_id="<?php echo $post_user_id;?>" data-article_id="<?php echo $article_id;?>">
         <?php if (!$favorite): ?>
             🤍
         <?php else: ?>
@@ -113,69 +139,20 @@ $favorite=$article->checkGood_duplicate($user_id,$article_id);
 <input type="submit" name="button" value="円グラフを表示" class="button">
 </div>
 </form>
-              <br>
+<br>
 
-              <?php
+<?php
+  require_once __DIR__ . '/../paging/paging.php';
 
-            
-            // $friends_articles_array= array_merge_recursive($friends_articles_array,$friend_article_array);
-              // $friends_articles_array=array($friends_articles_array,$friend_article);
-              // array_push($friends_article_array,$friend_article);
-              // $friends_articles_array[]+=$friend_article;
-                // if(!empty($friends_articles)){
             }
         }
-       // var_dump($friends_articles_array);
       }
-    //   var_dump($friends_articles_array);
-      // array_multisort( array_map( "strtotime", array_column( $friends_articles_array, "A" ) ), SORT_ASC, $friends_articles_array ) ;
-     // array_multisort(array_column($friends_articles_array,'post_date'),SORT_DESC,$friends_articles_array);
-     //array_multisort(array_map("strtotime", array_column($friends_articles_array,"post_date")),SORT_DESC,$friends_articles_array);
-     //array_multisort(array_map("strtotime", array_column($friends_articles_array,"post_date")),SORT_DESC,$friends_articles_array);
-     // $sampleOutput = "";
 
-
-
-     $date_array = array();
-foreach( $friends_articles_array as $value) {
-  $date_array[] = array_keys($value, 'post_date');
-}
-
-// var_dump($date_array);
-
-// ソート実行
-// array_multisort( $date_array, SORT_ASC, $friends_articles_array);
-
-// var_dump ($friends_articles_array);
-
-      // foreach($friends_articles_array as  $key=>$vals){
-        //echo $key. '.' $vals[0].;
-
-      //echo '<br>';
-       //}
-      //for ( $indexA = 0; $indexA < is_countable( $friends_articles_array ); $indexA++ ) {
-       // for ( $indexB = 0; $indexB < is_countable( $friends_articles_array[$indexA] ); $indexB++ ) {
-            //$sampleOutput .= "{$friends_articles_array[$indexA][$indexB]},";
-            // if ( $indexB == count( $friends_articles_array[$indexA] ) - 1  ) {
-            //     $sampleOutput .= "<br />\n";
-            // }
-        //}
-      //}
-      ?>
-      
-        <!-- <a href="article/article_show.php?article_id=<?= $friend_article['article_id'] ?>">
-        
-        
-        <article class="article-one">
-        <p class="article-user"><object><a href=<?= $user_php ?>?user_id=<?= $friend_article['user_id'] ?>><?= $friend_article['name'] ?></a></object></p>
-        <h2 class="article-title"><object><a href="article/article_show.php?article_id=<?= $friend_article['article_id'] ?>"><?= $friend_article['title'] ?></a></object></h2>
-        <h2 class="diary"><object><?=$friend_article['diary']?></object></h2>
-        <p class="article-date"><?= date('Y年m月d日', strtotime($friend_article['date_time'])) ?></p>
-        <span class="heart">♥</span>
-        <span class="article-like"><?= $friend_article['good'] ?></span>
-            
-          </article>
-        </a> -->
+  $date_array = array();
+// foreach( $friends_articles_array as $value) {
+//   $date_array[] = array_keys($value, 'post_date');
+// }
+?>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./like.js?version=<?php echo time(); ?>"></script>

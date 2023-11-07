@@ -38,6 +38,8 @@ $update_php=$http_host . '/' . $id . '/user/update.php';
 $friend_register_php=$http_host . '/' . $id . '/friend/friend_register.php';
 $friend_list_php=$http_host . '/' . $id . '/friend/friend_list.php';
 $user_php = $http_host . '/' . $id . '/classes/user.php';
+$good_notification_php = $http_host . '/' . $id . '/notification/good_notification.php';
+
 
 $frame_css = $http_host . '/' . $id . '/css/frame.css';
 $login_css = $http_host . '/' . $id . '/css/login.css';
