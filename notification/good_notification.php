@@ -13,19 +13,28 @@ if (isset($_GET['user_id'])) {
 
 $article = new Article();
 $user = new User();
+$notification_user_array=array();
 
 $post_user_id=$user_id;
 $goods_notification=$article->good_Notification($post_user_id);
+array_multisort( array_map( "strtotime", array_column( $goods_notification, "good_time" ) ), SORT_ASC, $goods_notification );
+
 if($goods_notification!==null){
 foreach($goods_notification as $good_notification){
     $user_id=$good_notification['user_id'];
     $notification_user=$user->detailsUser($user_id);
-    echo "{$notification_user['name']}さんが投稿をいいねしました。";
+?>
+<!-- ここcssお願いします！！！！！！！！！ -->
+<div class="">
+  <table>
+  <tr><?=$notification_user['name']?>さんがいいねしました</tr><br>
+  </table>
+</div>
+<?php
 }
 }else{
     echo "通知はまだありません";
 }
-    
 
 require_once __DIR__ . '/../footer.php';
 ?>

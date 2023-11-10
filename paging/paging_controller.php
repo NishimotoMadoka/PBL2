@@ -1,6 +1,7 @@
 <?php
 define('MAX', '20');
-$count = count($friends_articles);
+// $count = count($article_count);
+$count = $article_count;
 $max_page = ceil($count / MAX);
 
 if (!isset($_GET['a_page_id'])) {
@@ -11,7 +12,7 @@ if (!isset($_GET['a_page_id'])) {
 
 $start_no = ($page - 1) * MAX;
 
-$article_data = array_slice($friends_articles, $start_no, MAX, true);
+// $article_data = array_slice($article_count, $start_no, MAX, true);
 
 if ($page == 1 || $page == $max_page) {
   $range = 4;

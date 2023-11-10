@@ -18,16 +18,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $article_id = $_POST['article_id'];
       $post_user_id = $_POST['post_user_id'];
       $user_id = $_POST['user_id'];
+      $good_time = $_POST['good_time'];
+      // いいねした時間の取得処理こっちでする
+      $good_time=date("Y-m-d H:i:s");
 
 
         //いいね処理
         $favorite = $article->checkGood_duplicate($user_id, $post_user_id, $article_id);
+
         if ($favorite) {
             $action = '解除';
             $delete = $article->delete_Good($user_id, $post_user_id, $article_id);
         } else {
             $action = '登録';
-            $insert = $article->insert_Good($user_id, $post_user_id, $article_id);
+            $insert = $article->insert_Good($user_id, $post_user_id, $article_id,$good_time);
         }
 
         // ここでデータベースクエリがエラーを返す可能性があるため、エラーハンドリング

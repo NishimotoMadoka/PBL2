@@ -78,11 +78,13 @@ CREATE TABLE good(
     user_id INT NOT NULL,
     post_user_id INT NOT NULL,
     article_id VARCHAR(20) NOT NULL, 
+    good_time DATETIME NOT NULL,
     -- flg INT NOT NULL DEFAULT 0,
     INDEX good_index(
         user_id,
         post_user_id,
-        article_id
+        article_id,
+        good_time
         -- flg
     ),
     FOREIGN KEY (user_id) REFERENCES users(user_id)

@@ -97,14 +97,16 @@ $user_articles = $article->userArticles($friend_user_id);
 <?php
 $article_id=$user_article['article_id'];
 $post_user_id=$user_article['user_id'];
+
 //ユーザーIDと投稿IDを元にいいね値の重複チェック（これいらんかも？？？）
-$favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
+$favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id,$good_time);
 ?>
 <!-- ボタン表示部分 -->
 <form class="favorite_count" action="#" method="post">
     <input type="hidden" name="article_id" value="<?php echo $article_id;?>">
+    <input type="hidden" name="post_user_id" value="<?php echo $post_user_id;?>">
     <input type="hidden" name="user_id" value="<?php echo $user_id;?>">
-    <button type="button" name="favorite" class="favorite_btn" data-user_id="<?php echo $user_id;?>" data-article_id="<?php echo $article_id;?>">
+    <button type="button" name="favorite" class="favorite_btn" data-user_id="<?php echo $user_id;?>" data-post_user_id="<?php echo $post_user_id;?>" data-article_id="<?php echo $article_id;?>">
         <?php if (!$favorite): ?>
             🤍
         <?php else: ?>
@@ -130,7 +132,7 @@ $favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
   }
 ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="./userpage_like.js?version=<?php echo time(); ?>"></script>
+<script src="../top/like.js?version=<?php echo time(); ?>"></script>
 <script>
   var user_id = <?php echo json_encode($_SESSION['user_id']); ?>;
 </script>

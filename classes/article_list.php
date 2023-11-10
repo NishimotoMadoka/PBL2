@@ -32,7 +32,7 @@ class Article extends DbData
 
     // 投稿編集機能
     public function editArticle($article_id,$user_id,$start_time,$end_time,$item_name,$color,$title,$diary,$post_date,$article_image){
-        $sql = "update article_list set start_time=?,end_time=?,item_name=?,color=?,title=?,diary=?,post_date=?,article_image=? where article_id=? and user_id";
+        $sql = "update article_list set start_time=?,end_time=?,item_name=?,color=?,title=?,diary=?,post_date=?,article_image=? where article_id=? and user_id=?";
         $result = $this->exec($sql, [$start_time,$end_time,$item_name,$color,$title,$diary,$post_date,$article_image,$article_id,$user_id]);
         if($result){
             return'';
@@ -56,14 +56,21 @@ class Article extends DbData
     // }
 
     //  友達の投稿を取ってくるやつ
+    // public  function  friendsArticles($friend_user_id)
+    // {
+    //     $sql = "select * from article_list join users on article_list.user_id = users.user_id where article_list.user_id = ? order by article_list.post_date desc";
+    //     $stmt = $this->pdo->prepare($sql);
+    //     $stmt->execute([$friend_user_id]);
+    //     $friends_articles = $stmt->fetchAll();
+    //     return $friends_articles;
+    // }
     public  function  friendsArticles($friend_user_id)
     {
-        $sql = "select * from article_list join users on article_list.user_id = users.user_id where article_list.user_id = ? order by article_list.post_date desc";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$friend_user_id]);
-        $friends_articles = $stmt->fetchAll();
-        return $friends_articles;
+        $sql = "select * from article_list where user_id=?";
+        $stmt = $this->query($sql, [$friend_user_id]);
+        return $stmt->fetch();
     }
+
     // 投稿を取ってくるやつ　変更するかも
     public function selectArticle($user_id,$title, $diary,$date_time){
         $sql = "select * from article_list where user_id=? and title=? and diary=? and date_time=?";
@@ -157,9 +164,9 @@ class Article extends DbData
         return $stmt;
     }
 
-    public function insert_Good($user_id,$post_user_id,$article_id){
-        $sql = "insert into good(user_id,post_user_id,article_id) values (?,?,?)";
-        $result = $this->exec($sql, [$user_id,$post_user_id,$article_id]);
+    public function insert_Good($user_id,$post_user_id,$article_id,$good_time){
+        $sql = "insert into good(user_id,post_user_id,article_id,good_time) values (?,?,?,?)";
+        $result = $this->exec($sql, [$user_id,$post_user_id,$article_id,$good_time]);
 
         if ($result) {
             return '';
@@ -180,13 +187,5 @@ class Article extends DbData
         $likeCount = $this->query($sql,[$article_id]);
         return $likeCount->fetch();
     }
-    // public function check_favolite_duplicate($user_id,$article_id){
-    //     $sql = "select * from good where user_id=? and article_id = ?";
-    //     $stmt = $dbh->prepare($sql);
-    //     $stmt->execute(array(':user_id' => $user_id ,
-    //                          ':post_id' => $post_id));
-    //     $favorite = $stmt->fetch();
-    //     return $favorite;
-    // }
-    
+ 
 }

@@ -1,7 +1,7 @@
 <p class="from_to"><?php echo $count; ?>件中 <?php echo $from_record; ?> - <?php echo $to_record; ?> 件目を表示</p>
 <div class="pagination">
   <?php if ($page > 1) : ?>
-    <a href="index.php?a_page_id=<?php echo ($page - 1); ?>&q_page_id=<?php echo ($q_page); ?>" class="page_feed">&laquo;</a>
+    <a href="toppage.php?a_page_id=<?php echo ($page - 1); ?>&q_page_id=<?php echo ($q_page); ?>" class="page_feed">&laquo;</a>
   <?php else :; ?>
     <span class="first_last_page">&laquo;</span>
   <?php endif; ?>
@@ -15,7 +15,7 @@
     <?php endif; ?>
   <?php endfor; ?>
   <?php if ($page < $max_page) : ?>
-    <a href="index.php?a_page_id=<?php echo ($page + 1); ?>&q_page_id=<?php echo ($q_page); ?>" class="page_feed">&raquo;</a>
+    <a href="toppage.php?a_page_id=<?php echo ($page + 1); ?>&q_page_id=<?php echo ($q_page); ?>" class="page_feed">&raquo;</a>
   <?php else : ?>
     <span class="first_last_page">&raquo;</span>
   <?php endif; ?>
