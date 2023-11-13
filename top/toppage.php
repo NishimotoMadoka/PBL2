@@ -46,69 +46,76 @@ if($friends_users_id==null){
 <main class="">
   <div class="">
     <article class="">
-      <!-- <h1>トップページ</h1> -->
       <?php
-      $i=0;
+    //   投稿の取得と配列化
+      $article_count=0; //友達全員の投稿の数
       if(!empty($friends_users_id)){
-        $friends_articles_array=array();
         foreach ($friends_users_id as $friend_user_id) {
             $friend_user_id=$friend_user_id['friend_user_id'];
             $friends_articles = $article->friendsArticles($friend_user_id);
-            
-            // これ入れる場所変えないとです
-            require_once __DIR__ . '/../paging/paging_controller.php';
+            $friend_article_count=count($friends_articles); //友達ごとの投稿の数
+            // echo $friend_article_count;exit(0);
+            // var_dump($friends_articles);exit(0);
+            for($h=0;$h<$friend_article_count;$h++){
 
-            foreach ($friends_articles as $friend_article) {
-              $friend_article_array = array();
-              $friend_article_array = array();
-              
-              // $friend_article.$i=$friend_article;
-              $friend_article_array=array("user_id"=>$friend_article['user_id'] ,
-                                        "user_icon"=>$friend_article['icon'],
-                                        "article_id"=>$friend_article['article_id'],
-                                        "post_date"=>$friend_article['post_date'],
-                                        "start_time"=>$friend_article['start_time'],
-                                        "end_time"=>$friend_article['end_time'],
-                                        "item_name"=>$friend_article['item_name'],
-                                        "color"=>$friend_article['color'],
-                                        "title"=>$friend_article['title'],
-                                        "diary"=>$friend_article['diary'],
-                                        // "good"=>$friend_article['good']
-                                      );
-                            
-                if($friend_article['icon']==""){
-                    $friend_article['icon']="default.jpg";
-                }
-                ?>
+            $friends_articles_array[$article_count]['article_id']=$friends_articles[$h]['article_id'];
+            $friends_articles_array[$article_count]['user_id']=$friends_articles[$h]['user_id'];
+            $friends_articles_array[$article_count]['start_time']=$friends_articles[$h]['start_time'];
+            $friends_articles_array[$article_count]['end_time']=$friends_articles[$h]['end_time'];
+            $friends_articles_array[$article_count]['item_name']=$friends_articles[$h]['item_name'];
+            $friends_articles_array[$article_count]['color']=$friends_articles[$h]['color'];
+            $friends_articles_array[$article_count]['title']=$friends_articles[$h]['title'];
+            $friends_articles_array[$article_count]['diary']=$friends_articles[$h]['diary'];
+            $friends_articles_array[$article_count]['post_date']=$friends_articles[$h]['post_date'];
+            $friends_articles_array[$article_count]['time_date']=$friends_articles[$h]['time_date'];
+            $friends_articles_array[$article_count]['article_image']=$friends_articles[$h]['article_image'];
+            $friends_articles_array[$article_count]['article_public']=$friends_articles[$h]['article_public'];
 
-                <br>
-  
-<div class="madop">
-<form method="POST" action="./../user/userpage.php">
-    <input type="hidden" name="user_id" value="<?=$friend_article['user_id']?>">
-    <input type="image" img class="user-icon" src="../icon_image/<?= $friend_article['icon'] ?>">
-</form>
-<div class="iti">
+            $article_count++;
+            }
+        }
+        // 投稿のソート
+        $keyArray = array_column($friends_articles_array, 'time_date');
+        array_multisort($keyArray, SORT_DESC, $friends_articles_array);
+
+      }
+    
+    // これ入れる場所変えないとです
+    require_once __DIR__ . '/../paging/paging_controller.php';
+    for($i=0;$i<$article_count;$i++){
+    $friend_user_id=$friends_articles_array[$i]['user_id'];
+    $friend_details=$user->detailsUser($friend_user_id);
+
+    if($friend_details['icon']==""){
+        $friend_details['icon']="default.jpg";
+    }
+?>
+  <div class="madop">
+  <form method="POST" action="./../user/userpage.php">
+    <input type="hidden" name="user_id" value="<?=$friend_user_id?>">
+    <input type="image" img class="user-icon" src="../icon_image/<?= $friend_details['icon'] ?>">
+  </form>
+  <div class="iti">
   <table>
-  <tr><?=$friend_article['name']?></tr><br>
-  <tr><?=$friend_article['time_date']?></tr><br><br>
-  <tr><?=$friend_article['post_date']?></tr><br>
-  <tr><?=$friend_article['title']?></tr><br>
-  <tr><?= $friend_article['diary'] ?></tr><br>
+  <tr><?=$friend_details['name']?></tr><br>
+  <tr><?=$friends_articles_array[$i]['time_date']?></tr><br><br>
+  <tr><?=$friends_articles_array[$i]['post_date']?></tr><br>
+  <tr><?=$friends_articles_array[$i]['title']?></tr><br>
+  <tr><?= $friends_articles_array[$i]['diary'] ?></tr><br>
   <?php
-    if ($friend_article['article_image'] != "") {
+    if ($friends_articles_array[$i]['article_image'] != "") {
   ?>
-    <img class="" src="../article_image/<?= $friend_article['article_image'] ?>" alt=""></a>
+    <img class="" src="../article_image/<?= $friends_articles_array[$i]['article_image'] ?>" alt=""></a>
   <?php
     }
   ?>
-</table>
+  </table>
 
 <!-- いいねボタン -->
 <?php
-$article_id=$friend_article['article_id'];
-$post_user_id=$friend_article['user_id'];
-// $good_time=date("Y-m-d H:i:s");
+$article_id=$friends_articles_array[$i]['article_id'];
+$post_user_id=$friend_user_id;
+
 //ユーザーIDと投稿IDを元にいいね値の重複チェック（これいらんかも？？？）
 $favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
 ?>
@@ -117,8 +124,7 @@ $favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
     <input type="hidden" name="article_id" value="<?php echo $article_id;?>">
     <input type="hidden" name="post_user_id" value="<?php echo $post_user_id;?>">
     <input type="hidden" name="user_id" value="<?php echo $user_id;?>">
-    <!-- <input type="hidden" name="good_time" value="<?php echo $good_time;?>"> -->
-    <button type="button" name="favorite" class="favorite_btn" data-user_id="<?php echo $user_id;?>" data-post_user_id="<?php echo $post_user_id;?>" data-article_id="<?php echo $article_id;?>"date-good_time="<?php echo $good_time?>">
+    <button type="button" name="favorite" class="favorite_btn" data-user_id="<?php echo $user_id;?>" data-post_user_id="<?php echo $post_user_id;?>" data-article_id="<?php echo $article_id;?>">
         <?php if (!$favorite): ?>
             🤍
         <?php else: ?>
@@ -126,9 +132,6 @@ $favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
         <?php endif; ?>
     </button>
 </form>
-
-
-        
 
 </div>
 </div>
@@ -144,17 +147,10 @@ $favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
 <br>
 
 <?php
-  require_once __DIR__ . '/../paging/paging.php';
-
-            }
-        }
-      }
-
-  $date_array = array();
-// foreach( $friends_articles_array as $value) {
-//   $date_array[] = array_keys($value, 'post_date');
-// }
+}   //for文ループここまで
+require_once __DIR__ . '/../paging/paging.php';
 ?>
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./like.js?version=<?php echo time(); ?>"></script>

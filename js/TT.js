@@ -7,20 +7,33 @@ var chartcolor = [];
 //    chartcolor.push(getRandomColor());
 //  }
 
+
+//ここから間を埋めたバージョン
+function getdata2(){
+  const start = sample1.split(":");//時間から：を抜いて配列に
+  const end = sample2.split(":");//
+  const label = sample3.split(",");//項目から、を抜いて配列に(項目の処理終わり)
+  const testcolor = color;//ここに灰色を足した版の色をいれる
+
+
+}
+//ここまで
+
  function getColor(){
   let a=color;
   let A = a.split(',');
   
   for(let count=0;count<=10;++count){
-    if( A[count]=='#'){
-      A[count] = '#0000';
+
+
+    
+    
       chartcolor.push(A[count]);
-    }else{
-      chartcolor.push(A[count]);
-    }
+    
   }
+}
   
- }
+ 
 
 //  function getRandomColor() {
 //    const letters = '0123456789ABCDEF';
@@ -142,12 +155,11 @@ function getdata(){
  console.log(chartcolor);
   }
   
-  function convertToTime(minutes) {
-    var hours = Math.floor(minutes / 60);
-    var remainingMinutes = minutes % 60;
-    return hours + "時間" + remainingMinutes + "分";
+  function convertToTime(minutes){
+    var hours=Math.floor(minutes/60);
+    var remainingMinute=minutes%60;
+    return hours+"時間"+remainingMinute+"分";
   }
-  
    
   
   // グラフ描画処理
@@ -170,14 +182,14 @@ function getdata(){
       options: {
         tooltips: {
           callbacks: {
-              label: function (tooltipItem, data) {
-                var dataset = data.datasets[tooltipItem.datasetIndex];
-                var currentValue = dataset.data[tooltipItem.index];
-                var timeValue = convertToTime(currentValue);
-                return "時間 : " + timeValue;
-              }
+            label: function(tooltipItem, data) {
+              var dataset = data.datasets[tooltipItem.datasetIndex];
+              var currentValue = dataset.data[tooltipItem.index];
+              var timeValue = convertToTime(currentValue);
+              return "時間："+timeValue;
+            }
           }
-      },
+        },
         responsive: false,
         maintainAspectRatio: false,
         plugins: {

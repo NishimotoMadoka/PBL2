@@ -207,7 +207,7 @@ const sample3 = <?php echo $_label;?>;
 <hr>
 </div>
 </form>
-<form action="../article/post_edit.php" method="POST">
+<form action="../article/edit.php" method="POST">
 <input type="hidden" name="article_id" value="<?=$user_article['article_id']?>">
 <div class="button-panel">
 <input type="submit" name="button" value="投稿内容編集" class="button">

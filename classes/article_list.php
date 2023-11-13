@@ -31,15 +31,16 @@ class Article extends DbData
     }
 
     // 投稿編集機能
-    public function editArticle($article_id,$user_id,$start_time,$end_time,$item_name,$color,$title,$diary,$post_date,$article_image){
-        $sql = "update article_list set start_time=?,end_time=?,item_name=?,color=?,title=?,diary=?,post_date=?,article_image=? where article_id=? and user_id=?";
-        $result = $this->exec($sql, [$start_time,$end_time,$item_name,$color,$title,$diary,$post_date,$article_image,$article_id,$user_id]);
+    public function editArticle($start_time,$end_time,$item_name,$color,$post_date,$article_image,$article_id,$user_id){
+        $sql = "update article_list set start_time=?,end_time=?,item_name=?,color=?,post_date=?,article_image=? where article_id=? and user_id=?";
+        $result = $this->exec($sql, [$start_time,$end_time,$item_name,$color,$post_date,$article_image,$article_id,$user_id]);
         if($result){
             return'';
         }else{
             return'更新できませんでした。管理者にお問い合わせください。';
         }
     }
+
     // article_id、user_idで投稿の内容を取ってくる
     public function getArticle($user_id,$article_id){
         $sql="select * from article_list where user_id=? and article_id=?";
@@ -64,11 +65,12 @@ class Article extends DbData
     //     $friends_articles = $stmt->fetchAll();
     //     return $friends_articles;
     // }
-    public  function  friendsArticles($friend_user_id)
+
+    public function friendsArticles($friend_user_id)
     {
         $sql = "select * from article_list where user_id=?";
         $stmt = $this->query($sql, [$friend_user_id]);
-        return $stmt->fetch();
+        return $stmt->fetchAll();
     }
 
     // 投稿を取ってくるやつ　変更するかも
