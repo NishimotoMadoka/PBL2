@@ -1,6 +1,6 @@
 <?php
-class  DbData
-{              // DbDataクラスの宣言
+class  DbData   // DbDataクラスの宣言
+{
 
     protected  $pdo;         // PDOオブジェクト用のプロパティ（メンバ変数）の宣言
 
