@@ -1,10 +1,9 @@
-body{
+/* body{
     background-color: rgb(219, 232, 255);
     margin: 0;
     font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
-/* Form Layout */
 .form-wrapper {
     background: #fafafa;
     margin: auto;
@@ -55,7 +54,6 @@ form {
 }
    
 .form-item input:focus {
-    /* border-bottom: 2px solid #c0c0c0;  */
     border-bottom: 2px solid #a3a3a3; 
     outline: none;
 }
@@ -131,4 +129,134 @@ th {
 .iti{
    
 }
+ */
 
+
+ h1{
+    font-size: 35px;
+}
+
+.user-icon{
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+}
+
+.box{
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    background-color: rgb(254, 250, 255);
+    padding: 10px 60px;
+    margin: 0px 100px 20px 100px;
+    color: rgb(76, 28, 131);
+}
+
+.box2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+body{
+    background: linear-gradient(rgb(214, 244, 255), rgb(252, 218, 255));
+    /* background: linear-gradient(rgb(186, 237, 255), rgb(250, 192, 255)); */
+    margin: 0px;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+  }
+
+
+.iconclass{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.name{
+    font-size: 35px;
+   padding-bottom: 20px;
+}
+
+.tableclass{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table {
+    border-collapse:collapse;
+    text-align: left;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.table_block > table > tbody > tr > th ,
+.table_block > table > tbody > tr > td {
+	padding: 0px 20px;
+}
+
+.inbtn{
+    padding: 0px;
+}
+
+.btn{
+    background-color: rgb(239, 232, 247);
+    color: rgb(76, 28, 131);
+    width: 150px;
+    height: 40px;
+    border-radius: 90px;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+.btn:hover{
+    background-color: rgb(218, 196, 244);
+}
+
+.yoko{
+    display: flex;
+    margin-top: 30px;
+}
+
+.yoko2{
+    padding-right: 70px;
+}
+
+.yoko3{
+    margin: 0 auto ;
+  }
+
+.yoko4{
+  text-align: right;
+  margin: 0 0 0 0;
+  padding: 0;
+}
+
+.yoko5{
+    margin: 10px;
+    padding: 40px;
+}
+
+.enbtn{
+    background-color: rgb(239, 232, 247);
+    color: rgb(76, 28, 131);
+    width: 150px;
+    height: 35px;
+    border-radius: 90px;
+    margin-bottom: 10px;
+}
+.enbtn:hover{
+    background-color: rgb(218, 196, 244);
+}
+
+form{
+    text-align: center;
+}
+
+.good{
+    margin-left: 10px;
+}
