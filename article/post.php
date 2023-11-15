@@ -21,14 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 <link rel="stylesheet" href="<?= $post_css ?>">
-<div  class="form-wrapper">
 <form  method="post" action="./post_db.php"  enctype="multipart/form-data">
   <?php for ($i = 0; $i < $formCount; $i++) { ?>
-    <div class="form-item">
     <div class="title">日付</div> 
     <input type="date" name="date" placeholder="日付" required><br>
     </div>
-    <div class="form-item">
     <div class="item">
       <input type="text" name="items[]" placeholder="項目" required>
     </div>
