@@ -8,8 +8,7 @@ $article_id=$_POST['article_id'];
 
 $article=new Article();
 $article_deteils=$article->getArticle($user_id,$article_id);
-// echo $article_deteils['start_time'];
-// exit(0);
+
 ?>
 <main>
 <?php
@@ -116,80 +115,90 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="title">終了時間</div>
       <input type="time" name="end_times[]" value="<?php echo $end_time[$i];?>" required>
     </div>
-    <div class="title">色</div>
-    <input type="checkbox" name="color[]" id="radio" value="#000000" require>
-    <input type="color" name="color[]" id="color" onchange="radioColor()">
     <?php
     if($color[$i]=="#FF0000"){
     ?>
-        <!-- 色変更ラジオボタン -->
-    <input type="radio" name="color[]" value="#FF0000" checked require>赤
-    <input type="radio" name="color[]" value="#0000FF" require>青
-    <input type="radio" name="color[]" value="#FFFF00" require>黄
-    <input type="radio" name="color[]" value="#008000" require>緑
-    <input type="radio" name="color[]" value="#FFFFFF" require>白
-    <input type="radio" name="color[]" value="#000000" require>黒
+    <div class="title">色</div>
+    <input type="checkbox" class="colorclass" name="color[]" id="radio" value="#000000" require>
+    <input type="color"  id="color" list="colors" onchange="radioColor()">
+    <input type="checkbox" class="colorclass" name="color[]" id="red" value="#FF0000" checked require>赤
+    <input type="checkbox" class="colorclass" name="color[]" id="bulue" value="#0000FF" require>青
+    <input type="checkbox" class="colorclass" name="color[]" id="yellow" value="#FFFF00" require>黄
+    <input type="checkbox" class="colorclass" name="color[]" id="green" value="#008000" require>緑
+    <input type="checkbox" class="colorclass" name="color[]" id="white" value="#FFFFFF" require>白
+    <input type="checkbox" class="colorclass" name="color[]" id="black" value="#000000" require>黒
     <?php
-    }
+    }else if($color[$i]=="#0000FF"){
     ?>
+    <div class="title">色</div>
+    <input type="checkbox" class="colorclass" name="color[]" id="radio" value="#000000" require>
+    <input type="color"  id="color" list="colors" onchange="radioColor()">
+    <input type="checkbox" class="colorclass" name="color[]" value="#FF0000" require>赤
+    <input type="checkbox" class="colorclass" name="color[]" value="#0000FF" checked require>青
+    <input type="checkbox" class="colorclass" name="color[]" value="#FFFF00" require>黄
+    <input type="checkbox" class="colorclass" name="color[]" value="#008000" require>緑
+    <input type="checkbox" class="colorclass" name="color[]" value="#FFFFFF" require>白
+    <input type="checkbox" class="colorclass" name="color[]" value="#000000" require>黒
     <?php
-    if($color[$i]=="#0000FF"){
+    }else if($color[$i]=="#FFFF00"){
     ?>
-        <!-- 色変更ラジオボタン -->
-    <input type="radio" name="color[]" value="#FF0000" require>赤
-    <input type="radio" name="color[]" value="#0000FF" checked require>青
-    <input type="radio" name="color[]" value="#FFFF00" require>黄
-    <input type="radio" name="color[]" value="#008000" require>緑
-    <input type="radio" name="color[]" value="#FFFFFF" require>白
-    <input type="radio" name="color[]" value="#000000" require>黒
+    <div class="title">色</div>
+    <input type="checkbox" class="colorclass" name="color[]" id="radio" value="#000000" require>
+    <input type="color"  id="color" list="colors" onchange="radioColor()">
+    <input type="checkbox" class="colorclass" name="color[]" value="#FF0000" require>赤
+    <input type="checkbox" class="colorclass" name="color[]" value="#0000FF" require>青
+    <input type="checkbox" class="colorclass" name="color[]" value="#FFFF00" checked require>黄
+    <input type="checkbox" class="colorclass" name="color[]" value="#008000" require>緑
+    <input type="checkbox" class="colorclass" name="color[]" value="#FFFFFF" require>白
+    <input type="checkbox" class="colorclass" name="color[]" value="#000000" require>黒
     <?php
-    }
-    ?><?php
-    if($color[$i]=="#FFFF00"){
+    }else if($color[$i]=="#008000"){
     ?>
-        <!-- 色変更ラジオボタン -->
-    <input type="radio" name="color[]" value="#FF0000" require>赤
-    <input type="radio" name="color[]" value="#0000FF" require>青
-    <input type="radio" name="color[]" value="#FFFF00" checked require>黄
-    <input type="radio" name="color[]" value="#008000" require>緑
-    <input type="radio" name="color[]" value="#FFFFFF" require>白
-    <input type="radio" name="color[]" value="#000000" require>黒
+    <div class="title">色</div>
+    <input type="checkbox" class="colorclass" name="color[]" id="radio" value="#000000" require>
+    <input type="color"  id="color" list="colors" onchange="radioColor()">
+    <input type="checkbox" class="colorclass" name="color[]" value="#FF0000" require>赤
+    <input type="checkbox" class="colorclass" name="color[]" value="#0000FF" require>青
+    <input type="checkbox" class="colorclass" name="color[]" value="#FFFF00" require>黄
+    <input type="checkbox" class="colorclass" name="color[]" value="#008000" checked require>緑
+    <input type="checkbox" class="colorclass" name="color[]" value="#FFFFFF" require>白
+    <input type="checkbox" class="colorclass" name="color[]" value="#000000" require>黒
     <?php
-    }
-    ?><?php
-    if($color[$i]=="#008000"){
+    }else if($color[$i]=="#FFFFFF"){
     ?>
-        <!-- 色変更ラジオボタン -->
-    <input type="radio" name="color[]" value="#FF0000" require>赤
-    <input type="radio" name="color[]" value="#0000FF" require>青
-    <input type="radio" name="color[]" value="#FFFF00" require>黄
-    <input type="radio" name="color[]" value="#008000" checked require>緑
-    <input type="radio" name="color[]" value="#FFFFFF" require>白
-    <input type="radio" name="color[]" value="#000000" require>黒
+    <div class="title">色</div>
+    <input type="checkbox" class="colorclass" name="color[]" id="radio" value="#000000" require>
+    <input type="color"  id="color" list="colors" onchange="radioColor()">
+    <input type="checkbox" class="colorclass" name="color[]" value="#FF0000" require>赤
+    <input type="checkbox" class="colorclass" name="color[]" value="#0000FF" require>青
+    <input type="checkbox" class="colorclass" name="color[]" value="#FFFF00" require>黄
+    <input type="checkbox" class="colorclass" name="color[]" value="#008000" require>緑
+    <input type="checkbox" class="colorclass" name="color[]" value="#FFFFFF" checked require>白
+    <input type="checkbox" class="colorclass" name="color[]" value="#000000" require>黒
     <?php
-    }
-    ?><?php
-    if($color[$i]=="#FFFFFF"){
+    }else if($color[$i]=="#000000"){
     ?>
-        <!-- 色変更ラジオボタン -->
-    <input type="radio" name="color[]" value="#FF0000" require>赤
-    <input type="radio" name="color[]" value="#0000FF" require>青
-    <input type="radio" name="color[]" value="#FFFF00" require>黄
-    <input type="radio" name="color[]" value="#008000" require>緑
-    <input type="radio" name="color[]" value="#FFFFFF" checked require>白
-    <input type="radio" name="color[]" value="#000000" require>黒
+    <div class="title">色</div>
+    <input type="checkbox" class="colorclass" name="color[]" id="radio" value="#000000" require>
+    <input type="color"  id="color" list="colors" onchange="radioColor()">
+    <input type="checkbox" class="colorclass" name="color[]" value="#FF0000" require>赤
+    <input type="checkbox" class="colorclass" name="color[]" value="#0000FF" require>青
+    <input type="checkbox" class="colorclass" name="color[]" value="#FFFF00" require>黄
+    <input type="checkbox" class="colorclass" name="color[]" value="#008000" require>緑
+    <input type="checkbox" class="colorclass" name="color[]" value="#FFFFFF" require>白
+    <input type="checkbox" class="colorclass" name="color[]" value="#000000" checked require>黒
     <?php
-    }
-    ?><?php
-    if($color[$i]=="#000000"){
+    }else{
     ?>
-        <!-- 色変更ラジオボタン -->
-    <input type="radio" name="color[]" value="#FF0000" require>赤
-    <input type="radio" name="color[]" value="#0000FF" require>青
-    <input type="radio" name="color[]" value="#FFFF00" require>黄
-    <input type="radio" name="color[]" value="#008000" require>緑
-    <input type="radio" name="color[]" value="#FFFFFF" require>白
-    <input type="radio" name="color[]" value="#000000" checked require>黒
+    <div class="title">色</div>
+    <input type="checkbox" class="colorclass" name="color[]" id="radio" value="#000000" checked require>
+    <input type="color"  id="color" list="colors" onchange="radioColor()">
+    <input type="checkbox" class="colorclass" name="color[]" value="#FF0000" require>赤
+    <input type="checkbox" class="colorclass" name="color[]" value="#0000FF" require>青
+    <input type="checkbox" class="colorclass" name="color[]" value="#FFFF00" require>黄
+    <input type="checkbox" class="colorclass" name="color[]" value="#008000" require>緑
+    <input type="checkbox" class="colorclass" name="color[]" value="#FFFFFF" require>白
+    <input type="checkbox" class="colorclass" name="color[]" value="#000000" require>黒
     <?php
     }
     ?>
@@ -208,19 +217,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="reset" class="button-r" value="リセット">
     </div>
 </form>
+<!-- echo $formCount;exit(0); -->
 
 </main>
 
 <script>
-//色を変更のradioとcolorを連動させる部分
+  
+//   const inputClass = document.getElementsByClassName("colorclass");
+// for(let i=0;i<inputClass.length;i++){
+//   inputClass[i].onclick = function(){
+//       for(let u=0;u<inputClass.length;u++){
+//         inputClass[u].checked = false;
+//         this.checked = true;
+//       }
+//     }
+// } 
+//   function chbx1(obj) {
+//   let that = obj;
+//   if (document.getElementById(that.id).checked == true) {
+//     let boxes = document.querySelectorAll('input[type="checkbox"]');
 
-function radioColor(){
+//     for (let i = 0; i < boxes.length; i++) {
+//       boxes[i].checked = false;
+//     }
+//     document.getElementById(that.id).checked = true;
+//   }
+// }
+  //色を変更のradioとcolorを連動させる部分
+
+  function radioColor(){
     var Color = document.getElementById("color");
     var radio = document.getElementById("radio");
-
+    
     radio.value=Color.value;
     console.log(count);
     console.log(radio.value);
+    
   }
 
   function radioColor1(){
@@ -229,7 +261,7 @@ function radioColor(){
 
     radio.value=Color.value;
     console.log(count);
-    console.log(radio.value);
+    console.log(radio.value);  
   }
 
   function radioColor2(){
@@ -303,9 +335,14 @@ function radioColor(){
     console.log(count);
     console.log(radio.value);
   }
+  //ここまで
 
 //kbkbが書いたフォーム追加するやつ
-let count=$formCount;//formの数を数える
+
+
+
+
+let count=1;//formの数を数える
 function addform(){//form追加関数
 
   let clickBtn = document.getElementById('kbkb');
@@ -588,6 +625,8 @@ function addform(){//form追加関数
 
  count++;
 }
+
+
 </script>
 <?php
 require_once __DIR__ . '/../footer.php';
