@@ -203,10 +203,19 @@ const sample3 = <?php echo $_label;?>;
 <input type="hidden" name="item" value="<?= $user_article['item_name']?>"> 
 <input type="hidden" name="color" value="<?= $user_article['color']?>"> 
 <input type="hidden" name="postdate" value="<?= $user_article['post_date']?>">
-<div class="button-panel">
+
+<label>
+  <span class="TTlabel" title="円グラフ表示" style="background-color: orange; color:white; border:2px solid orange; border-redius: 3em; padding: 12px 9px; display:inline-block;">
+    <img src="../img/12890.png" style="vertical-align: bottom;">
+    円グラフ
+  </span>
+  <input type="submit" name="TTbutton" value="円グラフを表示" class="TTbutton" style="display: none;">
+</label>
+
+<!-- <div class="button-panel">
 <input type="submit" name="button" value="円グラフを表示" class="button">
 <hr>
-</div>
+</div> -->
 </form>
 <form action="../article/edit.php" method="POST">
 <input type="hidden" name="article_id" value="<?=$user_article['article_id']?>">
