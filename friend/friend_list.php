@@ -16,9 +16,9 @@ if (isset($_SESSION['friend_register_error'])) {
 } 
 ?>
 <head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
 </head>
 <link rel="stylesheet" href="<?=$friendlist_css?>">
 <h1>フレンドリスト</h1>
@@ -50,7 +50,7 @@ foreach($friends_user_id as $friend_user_id){
         </form> -->
 
         <form method="POST" action="./../user/userpage.php">
-            <!-- <input type="hidden" img class="user-icon" name="user_id" value="<?=$friend_details['user_id']?>"> -->
+            <input type="hidden" img class="user-icon" name="user_id" value="<?=$friend_details['user_id']?>">
             <input type="image" img class="user-icon" src="../icon_image/<?= $friend_details['icon'] ?>">
              <!-- <a href="./../user/userpage.php"><input type="submit" value="アイコン変更"></a>  -->
         </form>
@@ -77,7 +77,6 @@ foreach($friends_user_id as $friend_user_id){
             <input type="hidden" img class="user-icon" name="user_id" value="<?=$friend_details['user_id']?>">
             <input type="image" img class="user-icon" src="<?= $default_icon ?>">
         </form>
-
             <div class="name">
         <?= $friend_details['name'] ?>
         </div>

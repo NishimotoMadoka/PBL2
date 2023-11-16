@@ -11,8 +11,10 @@ require_once __DIR__ . '/../classes/user.php';
 <head>
     <meta charset="UTF-8">
     <title>ユーザー情報変更</title>
-    <!-- <link rel="stylesheet" href="<?= $update_css ?>"> -->
     <link rel="stylesheet" href="<?= $up_css?>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
 </head>
 <?php
 $user_id=$_SESSION['user_id'];
@@ -32,43 +34,23 @@ $user_plofile = $user->detailsUser($user_id);
     }
 ?>
 <body>
-<div class="profile" align="center">
+<div class="box"> 
 <form method="POST" action="<?=$update_db_php?>">
-  <h3>プロフィール</h3>
+  <h1>プロフィール編集</h1>
+    <hr>
   <div>
-    <dl class="inline">
-      <dt>名前</dt>
-    </dl>
-    <dl class="hyou">
-      <dt>現在の名前</dt><dd><?= $name ?></dd>
-      <dt>新しい名前</dt><dd><input type="name" name="newname"></dd>
-    </dl>
-    <dl class="inline">
-      <dt>メールアドレス</dt>
-    </dl>
-    <dl class="hyou">
-      <dt>現在のメールアドレス</dt><dd><?= $mail ?></dd>
-      <dt>新しいメールアドレス</dt><dd><input type="mail" name="newmail"></dd>
-    </dl>
-    <dl class="inline">
-      <dt>ひとこと</dt>
-    </dl>
-    <dl class="hyou">
-      <dt>現在のひとこと</dt><dd><?= $profile_comment ?></dd>
-      <dt>新しいひとこと</dt><dd><input type="text" name="newprofile_comment"></dd>
-    </dl>
-    <dl class="inline">
-      <dt>パスワード</dt>  
-    </dl>
-    <dl class="hyou">
-      <dt>現在のパスワード</dt><dd><input type="password" name="password" required></dd>
-      <dt>新しいパスワード</dt><dd><input type="password" name="newpassword"></dd>
-      <dt>新しいパスワードの再入力</dt><dd><input type="password" name="newpassword_conf"></dd>
-    </dl>
+    <table>
+        <tr><th>名前</th><th><input value="<?= $name ?>" type="name" name="newname"></th></tr>
+        <tr><th>メールアドレス</th><th><input value="<?= $mail ?>" type="mail" name="newmail"></th></tr>
+        <tr><th>ひとこと</th><th><input value="<?= $profile_comment ?>" type="textarea" name="newprofile_comment"></th></tr>
+        <tr><th>現在のパスワード</th><th><input type="password" name="password" required></th></tr>
+        <tr><th>新しいパスワード</th><th><input type="password" name="newpassword"></th></tr>
+        <tr><th>新しいパスワードの再入力</th><th><input type="password" name="newpassword_conf"></th></tr>
+    </table>
     <br>
-    <div class="update">
-    <div class="button-panel">
-        <input type="submit"  value="変更" class="button">
+    <div>
+    <div>
+        <input type="submit"  value="変更" class="btn">
     </div>
     </div>
     <br>
@@ -76,5 +58,6 @@ $user_plofile = $user->detailsUser($user_id);
   </div>
 </form>
 </div>
+  </div>
 </body>
 </html>

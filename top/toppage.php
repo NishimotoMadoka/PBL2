@@ -34,6 +34,7 @@ if($friends_users_id==null){
 </main>
     </form>
   </div>
+
   <?php
       if (isset($_SESSION['friend_register_error'])) {
       $friend_register_error="<script type='text/javascript'>alert('". $_SESSION['friend_register_error'] ."');</script>";
@@ -44,7 +45,7 @@ if($friends_users_id==null){
   }
 ?>
 <link rel="stylesheet" href="<?= $toppage_css ?>">
-<div class="box">
+<!-- <div class="box"> -->
 <main class="">
   <div class="">
     <article class="">
@@ -56,10 +57,8 @@ if($friends_users_id==null){
             $friend_user_id=$friend_user_id['friend_user_id'];
             $friends_articles = $article->friendsArticles($friend_user_id);
             $friend_article_count=count($friends_articles); //友達ごとの投稿の数
-            // echo $friend_article_count;exit(0);
-            // var_dump($friends_articles);exit(0);
+           
             for($h=0;$h<$friend_article_count;$h++){
-
             $friends_articles_array[$article_count]['article_id']=$friends_articles[$h]['article_id'];
             $friends_articles_array[$article_count]['user_id']=$friends_articles[$h]['user_id'];
             $friends_articles_array[$article_count]['start_time']=$friends_articles[$h]['start_time'];
@@ -92,7 +91,7 @@ if($friends_users_id==null){
         $friend_details['icon']="default.jpg";
     }
 ?>
-
+<div class="box">
 <div class="yoko">
   <form method="POST" action="./../user/userpage.php">
     <input type="hidden" name="user_id" value="<?=$friend_user_id?>">
@@ -137,7 +136,7 @@ $favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
 
 </div>
 <div class="yoko5"><?= $friends_articles_array[$i]['diary'] ?></div>
-</div>
+<!-- </div> -->
 <form action="info.php" method="POST">
 <input type="hidden" name="starttime" value="<?= $friends_articles_array[$i]['start_time']?>"> 
 <input type="hidden" name="endtime" value="<?= $friends_articles_array[$i]['end_time']?>"> 

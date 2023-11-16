@@ -23,19 +23,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <link rel="stylesheet" href="<?= $post_css ?>">
 <form  method="post" action="./post_db.php"  enctype="multipart/form-data">
   <?php for ($i = 0; $i < $formCount; $i++) { ?>
-    <div class="title">日付</div> 
+    <div>日付</div> 
     <input type="date" name="date" placeholder="日付" required><br>
     </div>
-    <div class="item">
+    <div">
       <input type="text" name="items[]" placeholder="項目" required>
     </div>
-    <div class="title">開始時間</div>
+    <div>開始時間</div>
       <input type="time" name="start_times[]" required>
-      <div class="title">終了時間</div> 
+      <div>終了時間</div> 
       <input type="time" name="end_times[]" required>
     </div>
 
-    <div class="title">色</div>
+    <div>色</div>
     
     
     <input type="checkbox" name="color[]" id="radio" value="#000000" require>
@@ -51,14 +51,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- ここまで -->
   <?php } ?>
 
-    <div class="image_select" id ="kbkb">
+    <div id ="kbkb">
         今日の画像：<input type="file" name="up_image" accept="image/*">
     </div>
-    <div  class="button-panel">
     <input type="hidden" name="form_count" value="<?php echo $formCount; ?>">
-  <input type="submit" class="button" name="add_form" value="+　項目を追加" id="delete" onclick="addform()">
-        <input type="submit" class="button" value="送信">
-        <input type="reset" class="button-r" value="リセット">
+  <input type="submit" name="add_form" value="+　項目を追加" id="delete" onclick="addform()">
+        <input type="submit" value="送信">
+        <input type="reset" value="リセット">
     </div>
 </form>
 
