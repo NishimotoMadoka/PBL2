@@ -7,26 +7,68 @@ $user_id=$_SESSION['user_id'];
 // フレンドリストを最新から取得
 $friends_user_id = $user -> getFriends($user_id);
 
+
+if (isset($_SESSION['friend_register_error'])) {
+    $friend_register_error="<script type='text/javascript'>alert('". $_SESSION['friend_register_error'] ."');</script>";
+    echo $friend_register_error;
+    // echo  $_SESSION['friend_register_error'] ;
+    unset($_SESSION['friend_register_error']);
+} 
 ?>
-
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+</head>
 <link rel="stylesheet" href="<?=$friendlist_css?>">
-
 <h1>フレンドリスト</h1>
+
+<!-- <link rel="stylesheet" href="<?=$friend_register_css?>"> -->
+<main>
+    
+    <form  method="POST" action="./friend_register_db.php">
+    <div class="b">
+        <input class="fricode" type="text" name="friend_code" required="required" placeholder="フレンドコードを入力">
+        <input type="submit" class="btn" title="追加" value="追加">
+        </div>
+    </form>
+</main>
+
 <?php
 foreach($friends_user_id as $friend_user_id){
     $friend_user_id=$friend_user_id['friend_user_id'];
     $friend_details=$user->detailsUser($friend_user_id);
     ?>
-    <hr while="70%">
-    <main>
+<main>
     <div class="iti">
         <?php
         if ($friend_details['icon'] != "") {
         ?>
+        <!-- <form method="POST" action="./../user/userpage.php">
+            <input type="hidden" img class="user-icon" name="user_id" value="<?=$friend_details['user_id']?>">
+            <input type="image" img class="user-icon" src="../icon_image/<?= $friend_details['icon'] ?>">
+        </form> -->
+
         <form method="POST" action="./../user/userpage.php">
             <input type="hidden" img class="user-icon" name="user_id" value="<?=$friend_details['user_id']?>">
             <input type="image" img class="user-icon" src="../icon_image/<?= $friend_details['icon'] ?>">
+             <!-- <a href="./../user/userpage.php"><input type="submit" value="アイコン変更"></a>  -->
         </form>
+
+        <div class="name">      
+            <?= $friend_details['name'] ?>
+        </div>
+        <div class="mes">
+            <?= $friend_details['profile_comment'] ?>
+        </div>
+
+        <form class="syousai" method="POST" action="./../user/userpage.php">
+            <input type="hidden" img class="user-icon" name="user_id" value="<?=$friend_details['user_id']?>">
+            <!-- <input type="image" img class="user-icon" src="../icon_image/<?= $friend_details['icon'] ?>"> -->
+            <a href="./../user/userpage.php"><input class="btn" type="submit" value="投稿を見る"></a>
+        </form>
+
+
         <!-- <img class="user-icon" src="../icon_image/<?= $friend_details['icon'] ?>" alt=""> -->
         <?php
         } else {
@@ -35,26 +77,27 @@ foreach($friends_user_id as $friend_user_id){
             <input type="hidden" img class="user-icon" name="user_id" value="<?=$friend_details['user_id']?>">
             <input type="image" img class="user-icon" src="<?= $default_icon ?>">
         </form>
+            <div class="name">
+        <?= $friend_details['name'] ?>
+        </div>
+                <?= $friend_details['profile_comment'] ?>
+
+
         <!-- <img class="" src="<?=$default_icon?>" alt=""> -->
         <?php
         }
         ?>
-            <dl>
                 <!-- <dt>名前　　</dt> -->
                 <!-- <form method="POST" action="./../user/userpage.php">
                     <input type="hidden" name="user_id" value="<?=$friend_details['user_id']?>">
                     <input type="text" >
                 </form> -->
-                <h1><dd><?= $friend_details['name'] ?></dd></h1>
-                </dd>
-                <!-- <dt>ひとこと</dt> -->
-                <!-- <dd><?= $friend_details['profile_comment'] ?></dd> -->
-            </dl>
-
+                <!-- <?= $friend_details['name'] ?>
+                <?= $friend_details['profile_comment'] ?> -->
+       
     </div>
-    </main>
-
-<hr>
+  
+</main>
 <?php
 }
 require_once __DIR__.'/../footer.php';

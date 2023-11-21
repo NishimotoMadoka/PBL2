@@ -169,15 +169,17 @@ if ($result !== '') {
 <?php
 require_once __DIR__ . '/../header.php';
 ?>
-<link rel="stylesheet" href="<?= $post_db_css ?>">
-<form method="post" action="./diary.php">
-    <input type="hidden" name="date" value="<?=$post_date?>" readonly>
-    <input type="hidden" name="article_id" value="<?=$article_id?>" readonly>
-    <div class="button-panel">
-    <input class="button" type="submit" name="button" value="夢日記へ">
-    </div>
-</form>
+<!-- <link rel="stylesheet" href="<?= $post_db_css ?>"> -->
+<!-- <form method="post" action="./diary.php"> -->
+    <!-- <input type="hidden" name="date" value="<?=$post_date?>" readonly> -->
+    <!-- <input type="hidden" name="article_id" value="<?=$article_id?>" readonly> -->
+    <!-- <div class="button-panel"> -->
+    <!-- <input class="button" type="submit" name="button" value="夢日記へ"> -->
+    <!-- </div> -->
+<!-- </form> -->
 <?php
+// いらん画面挟まずに夢日記に遷移
+header('Location:./diary.php?date='.$post_date.'&article_id='.$article_id);
 require_once __DIR__ . '/../footer.php';
 }
 

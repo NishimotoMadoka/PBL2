@@ -26,6 +26,10 @@ foreach($goods_notification as $good_notification){
 ?>
 <!-- ここcssお願いします！！！！！！！！！ -->
 <div class="">
+  <form method="POST" action="./../user/userpage.php">
+    <input type="hidden" name="user_id" value="<?=$notification_user['user_id']?>">
+    <input type="image" img class="" src="../icon_image/<?=$notification_user['icon']?>">
+  </form>
   <table>
   <tr><?=$notification_user['name']?>さんがいいねしました</tr><br>
   </table>

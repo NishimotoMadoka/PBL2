@@ -31,25 +31,67 @@ $user_articles = $article->userArticles($friend_user_id);
   <script src="../js/test.js"></script>
 </head>
 <main>
- <div class="form-wrapper-icon">
-  <!-- <div class="icon">  -->
-    <?php
+<div class="box">
+  <h1>プロフィール</h1>
+  <hr>
+  <?php
     if ($user_plofile['icon'] != "") {
-    ?>
-      <a href="./icon_update.php"><img class="user-icon" src="../icon_image/<?= $user_plofile['icon'] ?>" alt=""></a>
-    <?php
-    } else {
-    ?>
-      <img class="user-icon" src="<?=$default_icon?>" alt="">
-    <?php
-    }
-    ?>
+  ?>
+  <div class="table_block">
+      <!-- <a href="./icon_update.php"><img class="user-icon" src="../icon_image/<?= $user_plofile['icon'] ?>" alt=""></a> -->
+    <table>
+	    <tbody>
+	      <tr>
+          <td>  
+            <a href="./icon_update.php"><img class="user-icon" src="../icon_image/<?= $user_plofile['icon'] ?>" alt=""></a>
+          </th>
+	        <td>
+            <table>
+              <tr><td class="name" colspan="2"><?= $user_plofile['name'] ?></td></tr>
+              <tr><th>メールアドレス　</th><td><?= $user_plofile['mail'] ?></td></tr>
+              <tr><th>ひとこと　</th><td><?= $user_plofile['profile_comment'] ?></td></tr>
+              <tr><th>フレンドコード</th><td><?= $user_plofile['friend_code'] ?></td></tr>
+            </table>
+          </td>
+	      </tr>
+	    </tbody>
+	  </table>
   </div>
-  <!-- ユーザー情報 -->
-  <div class="form-wrapper">
-  <div class="profile" align="center">
 
-    <h3>プロフィール</h3>
+
+  <?php
+    } else {
+  ?>
+      <!-- <img class="user-icon" src="<?=$default_icon?>" alt=""> -->
+
+  <div class="table_block">
+    <table>
+	    <tbody>
+	      <tr>
+          <th>  
+            <img class="user-icon" src="<?=$default_icon?>" alt="">
+          </th>
+	        <td>
+            <table>
+              <tr><td  class="name" colspan="2"><?= $user_plofile['name'] ?></td></tr>
+              <tr><th>メールアドレス</th><td><?= $user_plofile['mail'] ?></td></tr>
+              <tr><th>ひとこと</th><td><?= $user_plofile['profile_comment'] ?></td></tr>
+              <tr><th>フレンドコード</th><td><?= $user_plofile['friend_code'] ?></td></tr>
+            </table>
+          </td>
+	      </tr>
+	    </tbody>
+	  </table>
+  </div>
+
+  <?php
+    }
+  ?>
+</div>
+  <!-- ユーザー情報 -->
+  
+
+    <!-- <h3>プロフィール</h3>
     <div>
       <dl class="inline">
       <div class="form-item">
@@ -60,38 +102,24 @@ $user_articles = $article->userArticles($friend_user_id);
   </table>
       </dl>
     </div>
-  </div>
+  </div> -->
 
   <!-- 投稿記事 -->
-  <div class="index-style">
-   <article class="article-style">
+  <div class="box">
    <h1>投稿</h1>
    <hr>
 
       <?php
       foreach ($user_articles as $user_article) {
       ?>
-        <div class="madop">
 <form method="POST" action="./../user/userpage.php">
     <input type="hidden" name="user_id" value="<?=$user_article['user_id']?>">
 </form>
-<div class="iti">
-  <table>
-  <tr><?=$user_article['name']?></tr><br>
-  <tr><?=$user_article['time_date']?></tr><br><br>
-  <tr><?=$user_article['post_date']?></tr><br>
-  <tr><?=$user_article['title']?></tr><br>
-  <tr><?= $user_article['diary'] ?></tr><br>
-  <?php
-    if ($user_article['article_image'] != "") {
-  ?>
-    <img class="" src="../article_image/<?= $user_article['article_image'] ?>" alt=""></a>
-  <?php
-    }
-  ?>
-</table>
-</div>
-</div>
+<div class="yoko">  
+  <div class="yoko2"><?=$user_article['post_date']?></div>
+  <div class="yoko3"><?=$user_article['title']?></div>
+  <div class="yoko4"><?=$user_article['time_date']?></div>
+
 
 <!-- いいねボタン -->
 <?php
@@ -102,7 +130,7 @@ $post_user_id=$user_article['user_id'];
 $favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
 ?>
 <!-- ボタン表示部分 -->
-<form class="favorite_count" action="#" method="post">
+<form class="good" action="#" method="post">
     <input type="hidden" name="article_id" value="<?php echo $article_id;?>">
     <input type="hidden" name="post_user_id" value="<?php echo $post_user_id;?>">
     <input type="hidden" name="user_id" value="<?php echo $user_id;?>">
@@ -115,6 +143,39 @@ $favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
     </button>
 </form>
 
+</div>
+<div class="yoko5"><?= $user_article['diary'] ?></div>
+  <?php
+    if ($user_article['article_image'] != "") {
+  ?>
+    <img class="" src="../article_image/<?= $user_article['article_image'] ?>" alt=""></a>
+  <?php
+    }
+  ?>
+
+
+<!-- いいねボタン 
+<?php
+$article_id=$user_article['article_id'];
+$post_user_id=$user_article['user_id'];
+
+//ユーザーIDと投稿IDを元にいいね値の重複チェック（これいらんかも？？？）
+$favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
+?>
+//ボタン表示部分 
+<form class="favorite_count" action="#" method="post">
+    <input type="hidden" name="article_id" value="<?php echo $article_id;?>">
+    <input type="hidden" name="post_user_id" value="<?php echo $post_user_id;?>">
+    <input type="hidden" name="user_id" value="<?php echo $user_id;?>">
+    <button type="button" name="favorite" class="favorite_btn" data-user_id="<?php echo $user_id;?>" data-post_user_id="<?php echo $post_user_id;?>" data-article_id="<?php echo $article_id;?>">
+        <?php if (!$favorite): ?>
+            🤍
+        <?php else: ?>
+            💗
+        <?php endif; ?>
+    </button>
+</form>-->
+
 <form action="../top/info.php" method="POST">
 <input type="hidden" name="starttime" value="<?= $user_article['start_time']?>"> 
 <input type="hidden" name="endtime" value="<?= $user_article['end_time']?>"> 
@@ -122,12 +183,15 @@ $favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
 <input type="hidden" name="color" value="<?= $user_article['color']?>"> 
 <input type="hidden" name="postdate" value="<?= $user_article['post_date']?>">
 <div class="button-panel">
-<input type="submit" name="button" value="円グラフを表示" class="button">
+<input type="submit" name="button" value="円グラフを表示" class="enbtn">
 </div>
 <hr>
 </form>
 </button>
 </form>
+
+
+
 
 <?php
   }
@@ -138,9 +202,10 @@ $favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
   var user_id = <?php echo json_encode($_SESSION['user_id']); ?>;
 </script>
     </article>
-  </div>
-</main>
 
+</div>
+</main>
+</div>
 <?php
 require_once __DIR__ . '/../footer.php';
 ?>
