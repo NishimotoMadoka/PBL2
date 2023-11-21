@@ -44,32 +44,11 @@ foreach($friends_user_id as $friend_user_id){
         <?php
         if ($friend_details['icon'] != "") {
         ?>
-        <!-- <form method="POST" action="./../user/userpage.php">
-            <input type="hidden" img class="user-icon" name="user_id" value="<?=$friend_details['user_id']?>">
-            <input type="image" img class="user-icon" src="../icon_image/<?= $friend_details['icon'] ?>">
-        </form> -->
-
+        
         <form method="POST" action="./../user/userpage.php">
             <input type="hidden" img class="user-icon" name="user_id" value="<?=$friend_details['user_id']?>">
             <input type="image" img class="user-icon" src="../icon_image/<?= $friend_details['icon'] ?>">
-             <!-- <a href="./../user/userpage.php"><input type="submit" value="アイコン変更"></a>  -->
         </form>
-
-        <div class="name">      
-            <?= $friend_details['name'] ?>
-        </div>
-        <div class="mes">
-            <?= $friend_details['profile_comment'] ?>
-        </div>
-
-        <form class="syousai" method="POST" action="./../user/userpage.php">
-            <input type="hidden" img class="user-icon" name="user_id" value="<?=$friend_details['user_id']?>">
-            <!-- <input type="image" img class="user-icon" src="../icon_image/<?= $friend_details['icon'] ?>"> -->
-            <a href="./../user/userpage.php"><input class="btn" type="submit" value="投稿を見る"></a>
-        </form>
-
-
-        <!-- <img class="user-icon" src="../icon_image/<?= $friend_details['icon'] ?>" alt=""> -->
         <?php
         } else {
         ?>
@@ -77,23 +56,20 @@ foreach($friends_user_id as $friend_user_id){
             <input type="hidden" img class="user-icon" name="user_id" value="<?=$friend_details['user_id']?>">
             <input type="image" img class="user-icon" src="<?= $default_icon ?>">
         </form>
-            <div class="name">
-        <?= $friend_details['name'] ?>
-        </div>
-                <?= $friend_details['profile_comment'] ?>
-
-
-        <!-- <img class="" src="<?=$default_icon?>" alt=""> -->
         <?php
         }
         ?>
-                <!-- <dt>名前　　</dt> -->
-                <!-- <form method="POST" action="./../user/userpage.php">
-                    <input type="hidden" name="user_id" value="<?=$friend_details['user_id']?>">
-                    <input type="text" >
-                </form> -->
-                <!-- <?= $friend_details['name'] ?>
-                <?= $friend_details['profile_comment'] ?> -->
+                <div class="name">      
+            <?= $friend_details['name'] ?>
+        </div>
+        <div class="mes">
+            <?= $friend_details['profile_comment'] ?>
+        </div>
+        <form class="syousai" method="POST" action="./../user/userpage.php">
+            <input type="hidden" img class="user-icon" name="user_id" value="<?=$friend_details['user_id']?>">
+            <!-- <input type="image" img class="user-icon" src="../icon_image/<?= $friend_details['icon'] ?>"> -->
+            <a href="./../user/userpage.php"><input class="btn" type="submit" value="投稿を見る"></a>
+        </form>
        
     </div>
   
