@@ -23,16 +23,18 @@ if($friends_users_id==null){
   ?>
     <!-- フレンド登録 -->
   <link rel="stylesheet" href="<?=$friend_register_css?>">
-  <div class="button-panel">
-  <div class="form-item">
-    <form method="POST" action="../friend/friend_register_db.php">
-      <input type="text" name="friend_code" required="required" placeholder="フレンドコードを入力">
-        <div class="button-panel">
-        <!-- <input type="submit" value="追加" class="fbtn" class="button"></td> -->
-      <input type="submit" class="button" title="追加" value="追加"></input>
-      </tr>
+  <main>
+    
+    <form  method="POST" action="./friend_register_db.php">
+    <div class="b">
+        <input class="fricode" type="text" name="friend_code" required="required" placeholder="フレンドコードを入力">
+        <input type="submit" class="btn" title="追加" value="追加">
+        </div>
+    </form>
+</main>
     </form>
   </div>
+
   <?php
       if (isset($_SESSION['friend_register_error'])) {
       $friend_register_error="<script type='text/javascript'>alert('". $_SESSION['friend_register_error'] ."');</script>";
@@ -43,6 +45,7 @@ if($friends_users_id==null){
   }
 ?>
 <link rel="stylesheet" href="<?= $toppage_css ?>">
+<!-- <div class="box"> -->
 <main class="">
   <div class="">
     <article class="">
@@ -54,10 +57,8 @@ if($friends_users_id==null){
             $friend_user_id=$friend_user_id['friend_user_id'];
             $friends_articles = $article->friendsArticles($friend_user_id);
             $friend_article_count=count($friends_articles); //友達ごとの投稿の数
-            // echo $friend_article_count;exit(0);
-            // var_dump($friends_articles);exit(0);
+           
             for($h=0;$h<$friend_article_count;$h++){
-
             $friends_articles_array[$article_count]['article_id']=$friends_articles[$h]['article_id'];
             $friends_articles_array[$article_count]['user_id']=$friends_articles[$h]['user_id'];
             $friends_articles_array[$article_count]['start_time']=$friends_articles[$h]['start_time'];
@@ -90,18 +91,18 @@ if($friends_users_id==null){
         $friend_details['icon']="default.jpg";
     }
 ?>
-  <div class="madop">
+<div class="box">
+<div class="yoko">
   <form method="POST" action="./../user/userpage.php">
     <input type="hidden" name="user_id" value="<?=$friend_user_id?>">
     <input type="image" img class="user-icon" src="../icon_image/<?= $friend_details['icon'] ?>">
   </form>
-  <div class="iti">
-  <table>
-  <tr><?=$friend_details['name']?></tr><br>
-  <tr><?=$friends_articles_array[$i]['time_date']?></tr><br><br>
-  <tr><?=$friends_articles_array[$i]['post_date']?></tr><br>
-  <tr><?=$friends_articles_array[$i]['title']?></tr><br>
-  <tr><?= $friends_articles_array[$i]['diary'] ?></tr><br>
+  
+  <div class="yoko2"><?=$friend_details['name']?></div>
+  <div class="yoko3"><?=$friends_articles_array[$i]['title']?></div>
+  <div class="yoko4"><?=$friends_articles_array[$i]['time_date']?></div>
+  
+
   <?php
     if ($friends_articles_array[$i]['article_image'] != "") {
   ?>
@@ -109,7 +110,7 @@ if($friends_users_id==null){
   <?php
     }
   ?>
-  </table>
+  
 
 <!-- いいねボタン -->
 <?php
@@ -120,7 +121,7 @@ $post_user_id=$friend_user_id;
 $favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
 ?>
 <!-- ボタン表示部分 -->
-<form class="favorite_count" action="#" method="post">
+<form class="good" action="#" method="post">
     <input type="hidden" name="article_id" value="<?php echo $article_id;?>">
     <input type="hidden" name="post_user_id" value="<?php echo $post_user_id;?>">
     <input type="hidden" name="user_id" value="<?php echo $user_id;?>">
@@ -134,18 +135,23 @@ $favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
 </form>
 
 </div>
-</div>
+<div class="yoko5"><?= $friends_articles_array[$i]['diary'] ?></div>
+<!-- </div> -->
 <form action="info.php" method="POST">
 <input type="hidden" name="starttime" value="<?= $friends_articles_array[$i]['start_time']?>"> 
 <input type="hidden" name="endtime" value="<?= $friends_articles_array[$i]['end_time']?>"> 
 <input type="hidden" name="item" value="<?= $friends_articles_array[$i]['item_name']?>"> 
 <input type="hidden" name="color" value="<?= $friends_articles_array[$i]['color']?>"> 
+<input type="hidden" name="postdate" value="<?= $friends_articles_array[$i]['post_date']?>">
 <div class="button-panel">
-<input type="submit" name="button" value="円グラフを表示" class="button">
+<input type="submit" name="button" value="円グラフを表示" class="enbtn">
 </div>
 </form>
 <br>
 
+        </div>
+
+<div class="page">
 <?php
 }   //for文ループここまで
 require_once __DIR__ . '/../paging/paging.php';
@@ -160,6 +166,7 @@ require_once __DIR__ . '/../paging/paging.php';
 
     </article>
   </div>
+</div>
 </main>
 
 <?php

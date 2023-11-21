@@ -26,116 +26,129 @@ $user_articles = $article->userArticles($user_id);
   
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
   <script src="../js/test.js"></script>
-</head>
-<main>
-<body>
-<div class="form-wrapper-icon">
-  <!-- <div class="icon">  -->
-    <?php
-    if ($user_plofile['icon'] != "") {
-    ?>
-      <a href="./icon_update.php"><img class="user-icon" src="../icon_image/<?= $user_plofile['icon'] ?>" alt=""></a>
-    <?php
-    } else {
-    ?>
-      <img class="user-icon" src="<?=$default_icon?>" alt="">
-    <?php
-    }
-    ?>
-  </div>
-  <!-- ユーザー情報 -->
-  <div class="form-wrapper">
-  <div class="profile" align="center">
 
-    <h3>プロフィール</h3>
-    <div>
-      <dl class="inline">
-      <div class="form-item">
-        <table>
-        <tr><th>名前</th><td><?= $user_plofile['name'] ?></td></tr>
-        <tr><th>メールアドレス</th><td><?= $user_plofile['mail'] ?></td></tr>
-        <tr><th>ひとこと</th><td><?= $user_plofile['profile_comment'] ?></td></tr>
-        <tr><th>フレンドコード</th><td><?= $user_plofile['friend_code'] ?></td></tr>
-  </table>
-      </dl>
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+</head>
+<main>  
+  <!-- ユーザー情報 -->
+  <div class="box">
+    <h1>プロフィール</h1>
+    <hr>    
+      <?php
+        if ($user_plofile['icon'] != "") {
+      ?>
+    <div class="table_block">
+	    <table>
+	      <tbody>
+	        <tr>
+            <th>  
+              <a href="./icon_update.php"><img class="user-icon" src="../icon_image/<?= $user_plofile['icon'] ?>" alt=""></a>
+            </th>
+	          <td>
+              <table>
+                <tr><td class="name" colspan="2"><?= $user_plofile['name'] ?></td></tr>
+                <tr><th>メールアドレス　</th><td><?= $user_plofile['mail'] ?></td></tr>
+                <tr><th>ひとこと　</th><td><?= $user_plofile['profile_comment'] ?></td></tr>
+                <tr><th>フレンドコード　</th><td><?= $user_plofile['friend_code'] ?></td></tr>
+              </table>
+            </td>
+	        </tr>
+	        <tr>
+	          <th align="center">
+              <a href="./icon_update.php"><input class="btn" type="submit" value="アイコン変更"></a>
+            </th>
+	          <td align="center">
+              <a href="<?=$update_php?>"><input class="btn" type="submit" value="プロフィール編集"></a>
+            </td>
+	        </tr>
+	      </tbody>
+	    </table>
     </div>
+      <?php
+        } else {
+      ?> 
+    <div class="table_block">
+	    <table>
+	      <tbody>
+	        <tr>
+	          <th>
+              <img class="user-icon" src="<?=$default_icon?>" alt="">
+            </th>
+	          <td>
+              <table>
+                <tr><td class="name" colspan="2"><?= $user_plofile['name'] ?></td></tr>
+                <tr><th>メールアドレス　</th><td><?= $user_plofile['mail'] ?></td></tr>
+                <tr><th>ひとこと　</th><td><?= $user_plofile['profile_comment'] ?></td></tr>
+                <tr><th>フレンドコード　</th><td><?= $user_plofile['friend_code'] ?></td></tr>
+              </table>
+            </td>
+	        </tr>
+	        <tr>
+	          <th class="inbtn" align="center">
+              <a href="./icon_update.php"><input class="btn" type="submit" value="アイコン変更"></a>
+            </th>
+	          <td class="inbtn" align="center">
+              <a href="<?=$update_php?>"><input type="submit" value="プロフィール編集"></a>
+            </td>
+	        </tr>
+	      </tbody>
+	    </table>
+    </div>
+      <?php
+        }
+      ?>
   </div>
+
+
+          <!-- <img class="user-icon" src="<?=$default_icon?>" alt="">
+          <a href="./icon_update.php"><input type="submit" value="アイコン変更"></a>
+          <table>
+            <tr><th>名前　　　　　　　　</th><td><?= $user_plofile['name'] ?></td></tr>
+            <tr><th>メールアドレス　</th><td><?= $user_plofile['mail'] ?></td></tr>
+            <tr><th>ひとこと　 　</th><td><?= $user_plofile['profile_comment'] ?></td></tr>
+            <tr><th>フレンドコード　</th><td><?= $user_plofile['friend_code'] ?></td></tr>
+          </table>
+          <a href="<?=$update_php?>"><input type="submit" value="プロフィール編集"></a> -->
+
   <?php
   if (!isset($_GET['user_id'])) {
   ?>
-    <!-- <div class="update"> -->
-    <div class="button-panel">
-      <a href="<?=$update_php?>">
-        <input type="submit" value="プロフィール編集" class="button">
-      </a>
-    </div>
 
-    <!-- <div class="button-panel">
+  
+      <!-- <a href="<?=$update_php?>">
+        <input type="submit" value="プロフィール編集">
+      </a>
+
       <a href="./icon_update.php">
-        <input type="submit" value="アイコン変更" class="button">
+        <input type="submit" value="アイコン変更">
+      </a> -->
+  
+      <!-- <a href="<?=$friend_register_php?>">
+        <input type="submit" value="フレンドコードをいれる">
       </a>
-    </div> -->
 
-    <!-- <div class="friend"> -->
-    <!-- <div class="button-panel">
-      <a href="<?=$friend_register_php?>">
-        <input type="submit" value="フレンド登録" class="button">
-      </a>
-    </div> -->
-
-<!-- フレンド登録 -->
-<link rel="stylesheet" href="<?=$friend_register_css?>">
-<div class="button-panel">
-<div class="form-item">
-  <form method="POST" action="../friend/friend_register_db.php">
-    <input type="text" name="friend_code" required="required" placeholder="フレンドコードを入力">
-      <div class="button-panel">
-      <!-- <input type="submit" value="追加" class="fbtn" class="button"></td> -->
-    <input type="submit" class="button" title="追加" value="追加"></input>
-    </tr>
-  </form>
-</div>
-<?php
-    if (isset($_SESSION['friend_register_error'])) {
-    $friend_register_error="<script type='text/javascript'>alert('". $_SESSION['friend_register_error'] ."');</script>";
-    echo $friend_register_error;
-    // echo  $_SESSION['friend_register_error'] ;
-    unset($_SESSION['friend_register_error']);
-} 
-?>
-
-<!-- フレンドリスト -->
-<div class="button-panel">
-  <a href="<?=$friend_list_php?>">
-  <div class="button-panel">
-    <input type="submit" value="フレンドリスト" class="button">
-    </a>
-  </div>
-
-
-
-</body>
-</main>
-<?php
-require_once __DIR__ . '/../footer.php';
-?>
+      <a href="<?=$friend_list_php?>">
+        <input type="submit" value="フレンドリスト">
+      </a> -->
+   
 
   <?php
   }
   ?>
 
-</div>
-</div>
- </div><!--form-wrapper -->
-
 
 
   <!-- 投稿記事 -->
 
-  <div class="index-style">
+  <!-- <div class="index-style"> -->
    <article class="article-style">
+   <div class="box">
    <h1>投稿</h1>
-   <hr>
+
 <!--円グラフ-->
 <!-- <div style="width:100%">
   <canvas id="canvas"></canvas>
@@ -176,52 +189,38 @@ const sample3 = <?php echo $_label;?>;
       <?php
       foreach ($user_articles as $user_article) {
       ?>
-        <div class="madop">
 <form method="POST" action="./../user/userpage.php">
     <input type="hidden" name="user_id" value="<?=$user_article['user_id']?>">
 </form>
-<div class="iti">
-  <table>
-  <tr><?=$user_article['name']?></tr><br>
-  <tr><?=$user_article['time_date']?></tr><br><br>
-  <tr><?=$user_article['post_date']?></tr><br>
-  <tr><?=$user_article['title']?></tr><br>
-  <tr><?= $user_article['diary'] ?></tr><br>
-  <?php
-    if ($user_article['article_image'] != "") {
-  ?>
-    <img class="" src="../article_image/<?= $user_article['article_image'] ?>" alt=""></a>
-  <?php
-    }
-  ?>
-</table>
-</div>
-</div>
+ <hr>
+    <div class="yoko">
+      <!-- <div class="yoko1"><?=$user_article['name']?></div> -->
+      <div class="yoko2"><tr><?=$user_article['post_date']?></div>
+      <div class="yoko3"><?=$user_article['title']?></div>
+      <div class="yoko4"><?=$user_article['time_date']?></div>
+    </div>
+    <div class="yoko5"><?= $user_article['diary'] ?></div>
+
 <form action="../top/info.php" method="POST">
 <input type="hidden" name="starttime" value="<?= $user_article['start_time']?>"> 
 <input type="hidden" name="endtime" value="<?= $user_article['end_time']?>"> 
 <input type="hidden" name="item" value="<?= $user_article['item_name']?>"> 
 <input type="hidden" name="color" value="<?= $user_article['color']?>"> 
-<div class="button-panel">
-<input type="submit" name="button" value="円グラフを表示" class="button">
-<hr>
-</div>
-</form>
+<input type="hidden" name="postdate" value="<?= $user_article['post_date']?>">
 <form action="../article/edit.php" method="POST">
 <input type="hidden" name="article_id" value="<?=$user_article['article_id']?>">
 <div class="button-panel">
 <input type="submit" name="button" value="投稿内容編集" class="button">
 <hr>
 </div>
+<input type="submit" name="button" value="円グラフを表示" class="enbtn">
 </form>
-<!-- <button type="submit" neme="edit" onclick="location.href='./../article/post_edit.php'" value="<?=$user_article['article_id']?>">投稿内容編集</button> -->
       <?php
       }
       ?>
     </article>
-  </div>
 </main>
-
+</div>
 <?php
 require_once __DIR__ . '/../footer.php';
 ?>

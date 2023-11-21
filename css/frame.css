@@ -1,10 +1,10 @@
-header h1 {
-  font-size: 24px;
+header h1{
+  font-size: 24px ;
   font-weight: bold;
   color: #333;
 }
 
-/* header {
+ /* header {
   width: 100%;
   padding: 10px 0;
   margin: 0 auto;
@@ -42,7 +42,7 @@ header h1 {
 
 .nav-list {
   text-align: center;
-  padding: 10px 0;
+  padding: 0;
   margin: 0 auto;
   position: absolute;
   top: 8px;
@@ -78,32 +78,35 @@ header h1 {
 }
 
 footer {
-  width: 100%;
-  height: 60px;
   text-align: center;
   line-height: 60px;
-  background: linear-gradient(pink, blue);
+  /* background: linear-gradient(45deg,#dcc9ff, #c9edff); */
+  background-color: rgb(248, 199, 255);;
   margin-top: 40px;
+  width: 100%;
+  height: 30px;
 }
 
 .footer-text {
   color: #fff;
 }
 
-#topbtn {
+#page-top {
   position: fixed;
   right: 10px;
   bottom: 30px;
   z-index: 2;
+  /*はじめは非表示*/
   opacity: 0;
   transform: translateY(150px);
 }
 
-#topbtn.UpMove{
+/*　上に上がる動き　*/
+#page-top.UpMove {
   animation: UpAnime 0.5s forwards;
 }
 
-@keyframes UpAnime{
+@keyframes UpAnime {
   from {
     opacity: 0;
     transform: translateY(150px);
@@ -114,7 +117,8 @@ footer {
   }
 }
 
-#topbtn.DownMove{
+/*　下に下がる動き　*/
+#page-top.DownMove {
   animation: DownAnime 0.5s forwards;
 }
 
@@ -129,48 +133,67 @@ footer {
   }
 }
 
-#topbtn a {
+/*画像の切り替えと動き*/
+#page-top a {
+  /*aタグの形状*/
   display: block;
   width: 100px;
-  height: 130px;
+  height: 100px;
   color: #333;
   text-align: center;
   text-transform: uppercase;
   text-decoration: none;
   font-size: 0.6rem;
+  /*背景画像の指定*/
   background: url("../img/ushi.png") no-repeat center;
   background-size: contain;
 }
 
-#topbtn.floatAnime a{
-  width: 100px;
+#page-top.floatAnime a {
+  width: 130px;
   height: 130px;
+  /*背景画像の指定*/
   background: url("../img/ushiufo2.png") no-repeat center;
   background-size: contain;
-  animation: floatAnime 2s linear infinite;
+  /*アニメーションの指定*/
+  animation: floatAnime 1s linear infinite;
   opacity: 0;
 }
 
 @keyframes floatAnime {
-  0% {transform: translateX(0); opacity: 0;}
-  25% {transform: translateX(-6px);opacity: 1;}
-  50% {transform: translateX(0);}
-  100% {transform: translateX(6px);opacity: 1;}
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  25% {
+    transform: translateX(-10px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(10px);
+    opacity: 1;
+  }
 }
 
-#topbtn span{
+/*Page Topと書かれたテキストの位置*/
+#page-top span {
   position: absolute;
-  bottom: -20px;
-  right: 20px;
-  color: #15354b;
+  bottom: -30px;
+  right: 25px;
+  color: #666;
 }
 
-table{
+
+
+/* table{
   margin: auto;
-}
+} */
 
 table td{
-  margin-top: auto;
+  margin-top: auto; 
 }
 
 .fbtn{

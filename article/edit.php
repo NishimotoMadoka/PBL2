@@ -222,27 +222,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </main>
 
 <script>
-  
-//   const inputClass = document.getElementsByClassName("colorclass");
-// for(let i=0;i<inputClass.length;i++){
-//   inputClass[i].onclick = function(){
-//       for(let u=0;u<inputClass.length;u++){
-//         inputClass[u].checked = false;
-//         this.checked = true;
-//       }
-//     }
-// } 
-//   function chbx1(obj) {
-//   let that = obj;
-//   if (document.getElementById(that.id).checked == true) {
-//     let boxes = document.querySelectorAll('input[type="checkbox"]');
 
-//     for (let i = 0; i < boxes.length; i++) {
-//       boxes[i].checked = false;
-//     }
-//     document.getElementById(that.id).checked = true;
-//   }
-// }
   //色を変更のradioとcolorを連動させる部分
 
   function radioColor(){
