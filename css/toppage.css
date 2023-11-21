@@ -123,7 +123,7 @@ form{
     gap: 100px;
     background-color: rgb(254, 250, 255);
     padding: 10px 60px;
-    margin: 0px 100px 20px 100px;
+    margin: 20px 100px 20px 100px;
 }
 
 .box2{
@@ -232,7 +232,7 @@ table {
     width: 150px;
     height: 35px;
     border-radius: 90px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 }
 
 .enbtn:hover{
