@@ -55,7 +55,7 @@ foreach($friends_user_id as $friend_user_id){
              <!-- <a href="./../user/userpage.php"><input type="submit" value="アイコン変更"></a>  -->
         </form>
 
-        <div class="name">      
+        <div class="name2">      
             <?= $friend_details['name'] ?>
         </div>
         <div class="mes">
@@ -77,7 +77,7 @@ foreach($friends_user_id as $friend_user_id){
             <input type="hidden" img class="user-icon" name="user_id" value="<?=$friend_details['user_id']?>">
             <input type="image" img class="user-icon" src="<?= $default_icon ?>">
         </form>
-            <div class="name">
+            <div class="name2">
         <?= $friend_details['name'] ?>
         </div>
                 <?= $friend_details['profile_comment'] ?>

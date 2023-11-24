@@ -103,6 +103,7 @@ form{
     border-radius: 50%;
     overflow: hidden;
     position: relative;
+    margin-top: 20px;
   }
   
   .user-icon img{
@@ -150,8 +151,9 @@ body{
 
 
 .name{
-    font-size: 35px;
-   padding-bottom: 20px;
+    font-size: 20px;
+    padding-bottom: 20px;
+    font-weight: bold;
 }
 
 .tableclass{
@@ -202,7 +204,7 @@ table {
 }
 
 .yoko2{
-    padding-left: 10px;
+    padding-left: 15px;
     margin-top: auto;
     margin-bottom: auto;
 }
@@ -224,6 +226,7 @@ table {
 .yoko5{
     margin: 10px;
     padding: 0px 100px 20px 100px;
+    text-align: left;
 }
 
 .enbtn{
@@ -273,3 +276,4 @@ form{
     outline: none;
     font-size: 25px;
 }
+

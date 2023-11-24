@@ -8,10 +8,6 @@ if(!isset($_SESSION)){
     session_start();
 }
 
-
-
-
-
 $user_id=$_SESSION['user_id'];
 
 $friends_users_id=$user->getFriends($user_id);
@@ -44,6 +40,13 @@ if($friends_users_id==null){
   } 
   }
 ?>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+</head>
+
 <link rel="stylesheet" href="<?= $toppage_css ?>">
 <!-- <div class="box"> -->
 <main class="">
@@ -98,7 +101,7 @@ if($friends_users_id==null){
     <input type="image" img class="user-icon" src="../icon_image/<?= $friend_details['icon'] ?>">
   </form>
   
-  <div class="yoko2"><?=$friend_details['name']?></div>
+  <div class="yoko2"><span class="name"><?=$friend_details['name']?></span></div>
   <div class="yoko3"><?=$friends_articles_array[$i]['title']?></div>
   <div class="yoko4"><?=$friends_articles_array[$i]['time_date']?></div>
   
@@ -142,6 +145,7 @@ $favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
 <input type="hidden" name="endtime" value="<?= $friends_articles_array[$i]['end_time']?>"> 
 <input type="hidden" name="item" value="<?= $friends_articles_array[$i]['item_name']?>"> 
 <input type="hidden" name="color" value="<?= $friends_articles_array[$i]['color']?>"> 
+<input type="hidden" name="postdate" value="<?= $friends_articles_array[$i]['post_date']?>">
 <div class="button-panel">
 <input type="submit" name="button" value="円グラフを表示" class="enbtn">
 </div>

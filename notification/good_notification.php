@@ -24,15 +24,25 @@ foreach($goods_notification as $good_notification){
     $user_id=$good_notification['user_id'];
     $notification_user=$user->detailsUser($user_id);
 ?>
+
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="<?=$good_notification_css?>">
+</head>
+
 <!-- ここcssお願いします！！！！！！！！！ -->
-<div class="">
+<div class="iti">
   <form method="POST" action="./../user/userpage.php">
     <input type="hidden" name="user_id" value="<?=$notification_user['user_id']?>">
-    <input type="image" img class="" src="../icon_image/<?=$notification_user['icon']?>">
+    <input type="image" img class="user-icon" src="../icon_image/<?=$notification_user['icon']?>">
   </form>
-  <table>
-  <tr><?=$notification_user['name']?>さんがいいねしました</tr><br>
-  </table>
+  <div class="com">
+      <span class="name"><?=$notification_user['name']?></span>さんがあなたの投稿にいいねしました
+</div>
 </div>
 <?php
 }

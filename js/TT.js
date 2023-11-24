@@ -180,6 +180,11 @@ function getdata(){
         }],
       },
       options: {
+        title: {
+          display: true,
+          text: postdate,
+          fontSize: 30,
+        },
         tooltips: {
           callbacks: {
             label: function(tooltipItem, data) {
@@ -234,7 +239,7 @@ function getdata(){
   
           var radius = Math.min(width, height) /3.05;
           var centerX = width / 2;
-          var centerY = height / 2;
+          var centerY = height / 1.84;
   
           for (var i = 0; i < 24; i++) {
               var angle = Math.PI * 2 / 24 * i - Math.PI / 2;

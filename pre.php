@@ -54,11 +54,13 @@ $friendlist_css = $http_host . '/' . $id . '/css/friendlist.css';
 $diary_css = $http_host . '/' . $id . '/css/diary.css';
 $toppage_css = $http_host . '/' . $id . '/css/toppage.css';
 $post_db_css = $http_host . '/' . $id . '/css/post_db.css';
+$good_notification_css = $http_host . '/' . $id . '/css/good_notification.css';
 
 $default_icon=$http_host . '/' . $id . '/icon_image/default.jpg';
 $logo_img = $http_host . '/' . $id . '/img/logo2.png';
 $active_fas = $http_host . '/' . $id . '/img/active fas.svg';
 $fas = $http_host . '/' . $id . '/img/fas.svg';
+
 
 
 

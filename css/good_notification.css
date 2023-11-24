@@ -1,0 +1,43 @@
+body{
+    margin: 0px;
+    background: linear-gradient(rgb(214, 244, 255), rgb(252, 218, 255));
+}
+
+.user-icon{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .user-icon img{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: left;
+  }
+
+  .iti{
+    text-align: center;
+    display: flex;
+    padding: 10px 50px;
+    background-color: rgb(254, 250, 255);
+    border-radius: 90px;
+    margin: 10px 300px;
+  }  
+
+  .com{
+    margin: auto 0px auto 15px;
+    white-space: nowrap;
+  }
+
+  .name{
+    font-weight: bold;
+    white-space: nowrap;
+  }

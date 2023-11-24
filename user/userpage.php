@@ -43,7 +43,7 @@ $user_articles = $article->userArticles($friend_user_id);
 	    <tbody>
 	      <tr>
           <td>  
-            <a href="./icon_update.php"><img class="user-icon" src="../icon_image/<?= $user_plofile['icon'] ?>" alt=""></a>
+            <a href="./icon_update.php"><img class="user-icon-pro" src="../icon_image/<?= $user_plofile['icon'] ?>" alt=""></a>
           </th>
 	        <td>
             <table>
@@ -115,11 +115,12 @@ $user_articles = $article->userArticles($friend_user_id);
 <form method="POST" action="./../user/userpage.php">
     <input type="hidden" name="user_id" value="<?=$user_article['user_id']?>">
 </form>
-<div class="yoko">  
-  <div class="yoko2"><?=$user_article['post_date']?></div>
+<div class="yoko">
+  <input type="hidden" name="user_id" value="<?=$$user_article['user_id']?>">
+  <input type="image" img class="user-icon" src="../icon_image/<?=$user_article['icon']?>">
+  <div class="yoko2"><?=$user_article['name']?></div>
   <div class="yoko3"><?=$user_article['title']?></div>
   <div class="yoko4"><?=$user_article['time_date']?></div>
-
 
 <!-- いいねボタン -->
 <?php
@@ -181,6 +182,7 @@ $favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
 <input type="hidden" name="endtime" value="<?= $user_article['end_time']?>"> 
 <input type="hidden" name="item" value="<?= $user_article['item_name']?>"> 
 <input type="hidden" name="color" value="<?= $user_article['color']?>"> 
+<input type="hidden" name="postdate" value="<?= $user_article['post_date']?>">
 <div class="button-panel">
 <input type="submit" name="button" value="円グラフを表示" class="enbtn">
 </div>
