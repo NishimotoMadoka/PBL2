@@ -118,5 +118,22 @@ class User extends DbData
         return $friend_list->fetchAll();
     }
 
+    #自身のリスト一覧を取得
+    public function getToplist($user_id){
+        $sql = "select * from top_list where user_id=?";
+        $stmt = $this->query($sql,[$user_id]);
+        return $stmt->fetchAll();
+    }
     
+    #リストの新規作成
+    public function insertToplist($user_id,$list_id,$list_name,$member_user_id,$list_image){
+        $sql = "insert into top_list(user_id,list_id,list_name,member_user_id,list_image)values(?,?,?,?,?)";
+        $result = $this->exec($sql, [$user_id,$list_id,$list_name,$member_user_id,$list_image]);
+
+        if ($result) {
+            return '';
+        } else {
+            return 'リスト登録できませんでした。管理者にお問い合わせください。';
+        }
+    }
 }

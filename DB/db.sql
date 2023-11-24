@@ -102,6 +102,20 @@ CREATE TABLE friends_list(
     -- FOREIGN KEY (friend_user_id) REFERENCES users(user_id)
 );
 
+#テーブルtop_listの作成
+drop table if exists top_list; # 既にテーブルtop_listがあれば削除する
+CREATE TABLE top_list(
+    user_id INT NOT NULL,
+    list_id VARCHAR(20),
+    list_name VARCHAR(20) NOT NULL,
+    member_user_id VARCHAR(850),
+    list_image VARCHAR(70),
+    INDEX top_list_index(
+        user_id,
+        list_id,
+        list_name
+    )
+);
 
 -- # テーブルchatの作成
 -- drop table if exists chat; # 既にテーブルchatがあれば削除する
