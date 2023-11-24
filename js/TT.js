@@ -166,7 +166,7 @@ function getdata(){
   function drawChart() {
     var ctx = document.getElementById('canvas').getContext('2d');
     window.myChart = new Chart(ctx, { // インスタンスをグローバル変数で生成
-      type: 'pie',
+      type: 'doughnut',
       data: { // ラベルとデータセット
         labels: Labels,
         
@@ -198,6 +198,19 @@ function getdata(){
         responsive: false,
         maintainAspectRatio: false,
         plugins: {
+          // この辺また触るから置いといてほしい　トオトミ
+          // afterDraw: function(chart, easing, options) {
+          //   var img = new Image();
+          //   img.src = './img/btn.png';
+          //   img.onload = function() {
+          //   var centerX = chart.width / 2;
+          //   var centerY = chart.height / 2;
+          //   var imgWidth = 50;
+          //   var imgHeight = 50;
+
+          //   chart.ctx.drawImage(img, centerX - imgWidth / 2, centerY - imgHeight / 2, imgWidth, imgHeight);
+          //   };
+          // },
           outlabels: {
             text: '%l\n%p',
             color: '#000',
