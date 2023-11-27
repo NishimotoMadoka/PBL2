@@ -201,7 +201,7 @@ function getdata(){
           // この辺また触るから置いといてほしい　トオトミ
           // afterDraw: function(chart, easing, options) {
           //   var img = new Image();
-          //   img.src = './img/btn.png';
+          //   img.src = '../img/btn.png';
           //   img.onload = function() {
           //   var centerX = chart.width / 2;
           //   var centerY = chart.height / 2;
