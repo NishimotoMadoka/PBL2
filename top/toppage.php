@@ -25,7 +25,7 @@ if($friends_users_id==null){
   <link rel="stylesheet" href="<?=$friend_register_css?>">
   <main>
     
-    <form  method="POST" action="./friend_register_db.php">
+    <form  method="POST" action="./../friend/friend_register_db.php">
     <div class="b">
         <input class="fricode" type="text" name="friend_code" required="required" placeholder="フレンドコードを入力">
         <input type="submit" class="btn" title="追加" value="追加">
@@ -75,11 +75,15 @@ if($friends_users_id==null){
             $article_count++;
             }
         }
+        if(!empty($article_count)){
         // 投稿のソート
         $keyArray = array_column($friends_articles_array, 'time_date');
         array_multisort($keyArray, SORT_DESC, $friends_articles_array);
-
+        }else{
+          echo "まだ投稿がありません。";
+        }
       }
+
     
     // これ入れる場所変えないとです
     require_once __DIR__ . '/../paging/paging_controller.php';
