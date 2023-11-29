@@ -8,10 +8,6 @@ if(!isset($_SESSION)){
     session_start();
 }
 
-
-
-
-
 $user_id=$_SESSION['user_id'];
 
 $friends_users_id=$user->getFriends($user_id);
@@ -25,7 +21,7 @@ if($friends_users_id==null){
   <link rel="stylesheet" href="<?=$friend_register_css?>">
   <main>
     
-    <form  method="POST" action="./friend_register_db.php">
+    <form  method="POST" action="./../friend/friend_register_db.php">
     <div class="b">
         <input class="fricode" type="text" name="friend_code" required="required" placeholder="フレンドコードを入力">
         <input type="submit" class="btn" title="追加" value="追加">
@@ -44,6 +40,13 @@ if($friends_users_id==null){
   } 
   }
 ?>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+</head>
+
 <link rel="stylesheet" href="<?= $toppage_css ?>">
 <!-- <div class="box"> -->
 <main class="">
@@ -75,11 +78,15 @@ if($friends_users_id==null){
             $article_count++;
             }
         }
+        if(!empty($article_count)){
         // 投稿のソート
         $keyArray = array_column($friends_articles_array, 'time_date');
         array_multisort($keyArray, SORT_DESC, $friends_articles_array);
-
+        }else{
+          echo "まだ投稿がありません。";
+        }
       }
+
     
     // これ入れる場所変えないとです
     require_once __DIR__ . '/../paging/paging_controller.php';
@@ -98,7 +105,7 @@ if($friends_users_id==null){
     <input type="image" img class="user-icon" src="../icon_image/<?= $friend_details['icon'] ?>">
   </form>
   
-  <div class="yoko2"><?=$friend_details['name']?></div>
+  <div class="yoko2"><span class="name"><?=$friend_details['name']?></span></div>
   <div class="yoko3"><?=$friends_articles_array[$i]['title']?></div>
   <div class="yoko4"><?=$friends_articles_array[$i]['time_date']?></div>
   

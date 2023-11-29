@@ -43,7 +43,7 @@ $user_articles = $article->userArticles($friend_user_id);
 	    <tbody>
 	      <tr>
           <td>  
-            <a href="./icon_update.php"><img class="user-icon" src="../icon_image/<?= $user_plofile['icon'] ?>" alt=""></a>
+            <a href="./icon_update.php"><img class="user-icon-pro" src="../icon_image/<?= $user_plofile['icon'] ?>" alt=""></a>
           </th>
 	        <td>
             <table>
@@ -115,11 +115,12 @@ $user_articles = $article->userArticles($friend_user_id);
 <form method="POST" action="./../user/userpage.php">
     <input type="hidden" name="user_id" value="<?=$user_article['user_id']?>">
 </form>
-<div class="yoko">  
-  <div class="yoko2"><?=$user_article['post_date']?></div>
+<div class="yoko">
+  <input type="hidden" name="user_id" value="<?=$$user_article['user_id']?>">
+  <input type="image" img class="user-icon" src="../icon_image/<?=$user_article['icon']?>">
+  <div class="yoko2"><?=$user_article['name']?></div>
   <div class="yoko3"><?=$user_article['title']?></div>
   <div class="yoko4"><?=$user_article['time_date']?></div>
-
 
 <!-- いいねボタン -->
 <?php

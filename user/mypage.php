@@ -46,7 +46,7 @@ $user_articles = $article->userArticles($user_id);
 	      <tbody>
 	        <tr>
             <th>  
-              <a href="./icon_update.php"><img class="user-icon" src="../icon_image/<?= $user_plofile['icon'] ?>" alt=""></a>
+              <a href="./icon_update.php"><img class="user-icon-pro" src="../icon_image/<?= $user_plofile['icon'] ?>" alt=""></a>
             </th>
 	          <td>
               <table>
@@ -76,7 +76,7 @@ $user_articles = $article->userArticles($user_id);
 	      <tbody>
 	        <tr>
 	          <th>
-              <img class="user-icon" src="<?=$default_icon?>" alt="">
+              <img class="user-icon-pro" src="<?=$default_icon?>" alt="">
             </th>
 	          <td>
               <table>
@@ -194,27 +194,25 @@ const sample3 = <?php echo $_label;?>;
 </form>
  <hr>
     <div class="yoko">
-      <!-- <div class="yoko1"><?=$user_article['name']?></div> -->
       <div class="yoko2"><tr><?=$user_article['post_date']?></div>
       <div class="yoko3"><?=$user_article['title']?></div>
       <div class="yoko4"><?=$user_article['time_date']?></div>
     </div>
     <div class="yoko5"><?= $user_article['diary'] ?></div>
 
-<form action="../top/info.php" method="POST">
-<input type="hidden" name="starttime" value="<?= $user_article['start_time']?>"> 
-<input type="hidden" name="endtime" value="<?= $user_article['end_time']?>"> 
-<input type="hidden" name="item" value="<?= $user_article['item_name']?>"> 
-<input type="hidden" name="color" value="<?= $user_article['color']?>"> 
-<input type="hidden" name="postdate" value="<?= $user_article['post_date']?>">
-<form action="../article/edit.php" method="POST">
-<input type="hidden" name="article_id" value="<?=$user_article['article_id']?>">
-<div class="button-panel">
-<input type="submit" name="button" value="投稿内容編集" class="button">
-<hr>
-</div>
-<input type="submit" name="button" value="円グラフを表示" class="enbtn">
-</form>
+  <form action="../top/info.php" method="POST">
+    <input type="hidden" name="starttime" value="<?= $user_article['start_time']?>"> 
+    <input type="hidden" name="endtime" value="<?= $user_article['end_time']?>"> 
+    <input type="hidden" name="item" value="<?= $user_article['item_name']?>"> 
+    <input type="hidden" name="color" value="<?= $user_article['color']?>"> 
+    <input type="hidden" name="postdate" value="<?= $user_article['post_date']?>">
+    <input type="submit" name="button" value="円グラフを表示" class="enbtn">
+  </form>
+  <form action="../article/edit.php" method="POST">
+    <input type="hidden" name="article_id" value="<?=$user_article['article_id']?>">
+    <input type="submit" name="button" value="投稿内容編集" class="enbtn">
+  </form>
+
       <?php
       }
       ?>

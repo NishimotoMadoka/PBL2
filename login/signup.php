@@ -43,7 +43,7 @@ require_once __DIR__ . '/../pre.php';
             <form method="post" action="./signup_db.php">
                 <table>
                     <tr>
-                        <td>お名前</td>
+                        <td>名前</td>
                         <label for="name"></label>
                     </tr>
                     <tr>
