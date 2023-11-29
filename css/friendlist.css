@@ -1,57 +1,100 @@
 h1{
-    text-align: center;
+  text-align: center;
+  color: rgb(76, 28, 131);
 }
 
-
+body{
+background: linear-gradient(rgb(214, 244, 255), rgb(252, 218, 255));
+padding: 0px;
+margin: 0px;
+font-family: 'M PLUS Rounded 1c', sans-serif;
+}
 
 .user-icon{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    overflow: hidden;
-    position: relative;
-   
-  }
-  
-  .user-icon img{
-    width: 100%;
-    height: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin-right: 20px;
-  }
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+ 
+}
 
-  .form-wrapper {
-    background: #fafafa;
-    margin: auto;
-    padding: 1em ; 
-    max-width: 390px;
-    
+.user-icon img{
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-right: 20px;
+}
+
+.form-wrapper {
+  background: #fafafa;
+  margin: auto;
+  padding: 1em ; 
+  max-width: 390px;
+  
 }
 
 .form-wrapper-icon {
-    background: #fafafa;
-    margin: auto;
-    padding: 3em 1em 0em 1em; 
-    max-width: 390px;
-    margin-top: 30px;
-    
-}
-
-.iti{
-    text-align: center;
-    display: flex;
-    padding: 20px;
-    justify-content: center;
-}
-
-.name{
+  background: #fafafa;
+  margin: auto;
+  padding: 3em 1em 0em 1em; 
+  max-width: 390px;
+  margin-top: 30px;
   
 }
 
-.a{
-  background-color: aqua;
+.iti{
+  text-align: center;
+  display: flex;
+  padding: 10px 30px;
+  background-color: rgb(254, 250, 255);
+  border-radius: 90px;
+  margin: 10px 150px;
+}  
+
+.name2,.syousai{
+font-size: 25px;
+margin-top: auto;
+margin-bottom: auto;
+margin-left: 10px;
+color: rgb(76, 28, 131);
+}
+
+.mes{
+margin: auto;
+color: rgb(76, 28, 131);
+}
+
+form{
+display:flex;
+}
+
+.btn{
+background-color: rgb(239, 232, 247);
+color: rgb(76, 28, 131);
+width: 115px;
+height: 35px;
+border-radius: 90px;
+font-size: 15px;
+}
+
+.btn:hover{
+background-color: rgb(218, 196, 244);
+}
+
+
+.b{
+margin: 15px auto;
+padding: auto;
+border-radius: 90px;
+}
+
+.fricode{
+height: 35px;
+width: 300px;
+
 }

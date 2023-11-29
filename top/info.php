@@ -12,6 +12,7 @@ require_once __DIR__ . '/../header.php';
   $_label = $_POST['item'];//DBから来た値
   $_color = $_POST['color'];//色
   $_label = $_POST['item'];//DBから来た値
+  $_postdate = $_POST['postdate'];
   // $_color = $_POST['color'];
 
     
@@ -19,24 +20,27 @@ require_once __DIR__ . '/../header.php';
   $_end = json_encode($_end);
   $_label = json_encode($_label);//phpからきた、値をjavascriptに変換
   $_color = json_encode($_color);
+  $_postdate = json_encode($_postdate);
   // $_color = json_encode($_color);
 
 ?>
 <div style="width:100%">
-  <canvas id="canvas" style="display: block; height: 800px; width: 800px; margin:auto;" width="700px" height="700px"></canvas>
+  <canvas id="canvas" style="display: block; height: 700px; width: 700px; margin:auto;" width="700px" height="700px"></canvas>
 </div>
- <script src="../js/script.js"></script>
+ <!-- <script src="../js/script.js"></script> -->
 <script>
      console.log(<?php echo $_start;?>);
      console.log(<?php echo $_end;?>);
      console.log(<?php echo $_label;?>);
-     console.log(<?php echo$_color; ?>)
+     console.log(<?php echo$_color; ?>);
+     console.log(<?php echo $_postdate;?>);
     // exit(0);
 
 const sample1 = <?php echo $_start;?>;
 const sample2 = <?php echo $_end;?>;
 const sample3 = <?php echo $_label;?>;
 const color = <?php echo $_color;?>;
+const postdate = <?php echo $_postdate;?>;
 
 console.log(sample1);
 console.log(sample2);

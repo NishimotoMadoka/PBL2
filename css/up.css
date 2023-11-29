@@ -1,93 +1,43 @@
-dt,dd {
-    margin: 0;
-    padding: 0;
+body{
+    background: linear-gradient(rgb(214, 244, 255), rgb(252, 218, 255));
+    margin: auto;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
-.hyou {
-    width: 600px;
-    border-top: 1px solid #000000;
-    border-left: 1px solid #000000;
-    display: flex;
-    flex-wrap: wrap;
+h1{
+    text-align: left;
 }
 
-.hyou dt,
-.hyou dd {
-    border-bottom: 1px solid #000000;
-    border-right: 1px solid #000000;
-    box-sizing: border-box;
-    padding: 15px 30px;
-}
-
-.hyou dt {
-    font-size: 16px;
-    width: 300px;
-}
-
-.hyou dd {
-    width: calc(100% - 300px);
-}
-
-.inline {
-    width: 600px;
-    border-top: 1px solid #000000;
-    border-left: 1px solid #000000;
-    border-right: 1px solid #000000;
-    border-bottom: 1px solid #000000;
-    display: flex;
-    flex-wrap: wrap;
-    background: linear-gradient(#ffbe47,#ffffff);
-}
-
-.inline dt {
-    box-sizing: border-box;
-    padding: 15px 30px;
-    font-size: 20px;
-}
-
-.button-panel {
-    margin: 2em 0 0;
-    width: 50%;
-}
-   
-   
-.button-panel .button {
-    background: #f16262;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    height: 50px;
-    font-family: 'Open sans', sans-serif;
-    font-size: 1.2em;
-    letter-spacing: 0.05em;
+.box{
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    background-color: rgb(254, 250, 255);
+    padding: 10px 60px;
+    margin: 0px 100px 20px 100px;
+    color: rgb(76, 28, 131);
     text-align: center;
-    text-transform: uppercase;
-    transition: background 0.3s ease-in-out;
-    width: 300px;
-   }
-   
-.button:hover {
-    background: #ee3e52;
 }
 
-.back {
-    margin: 2em 0 0;
-    width: 50%;
-    background: #f16262;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    height: 50px;
-    font-family: 'Open sans', sans-serif;
-    font-size: 1.2em;
-    letter-spacing: 0.05em;
-    text-align: center;
-    text-transform: uppercase;
-    transition: background 0.3s ease-in-out;
-    width: 100%;
+.btn{
+    background-color: rgb(239, 232, 247);
+    width: 150px;
+    height: 40px;
+    border-radius: 90px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    color: rgb(76, 28, 131);
 }
 
-.back:hover {
-    background: #ee3e52;   
+.btn:hover{
+    background-color: rgb(218, 196, 244);
 }
 
+table{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th{
+    text-align: left;
+}
