@@ -198,19 +198,6 @@ function getdata(){
         responsive: false,
         maintainAspectRatio: false,
         plugins: {
-          // この辺また触るから置いといてほしい　トオトミ
-          // afterDraw: function(chart, easing, options) {
-          //   var img = new Image();
-          //   img.src = '../img/btn.png';
-          //   img.onload = function() {
-          //   var centerX = chart.width / 2;
-          //   var centerY = chart.height / 2;
-          //   var imgWidth = 50;
-          //   var imgHeight = 50;
-
-          //   chart.ctx.drawImage(img, centerX - imgWidth / 2, centerY - imgHeight / 2, imgWidth, imgHeight);
-          //   };
-          // },
           outlabels: {
             text: '%l\n%p',
             color: '#000',
@@ -219,8 +206,8 @@ function getdata(){
             stretch: 50,
             font: {
               resizable: false,
-              size: 20,
-            }
+              size: 30,
+            },
           }
         },
         layout: {
@@ -239,6 +226,24 @@ function getdata(){
     });
 
     Chart.plugins.register({
+      beforeDraw: function(chart) {
+        var ctx = chart.ctx;
+        var width = chart.width;
+        var height = chart.height;
+
+        var centerX = width / 2;
+        var centerY = height / 1.9;
+        var img = new Image();
+        img.src = '../img/ushi.png';
+        img.id = 'ushiImage';
+        img.style.position = 'absolute';
+
+        img.onload = function(){
+          var imgWidth = 200;
+          var imgHeight = 200;
+          ctx.drawImage(img, centerX - imgWidth / 2, centerY - imgHeight / 2, imgWidth, imgHeight);
+        }
+      },
       afterDraw: function(chart) {
           var ctx = chart.ctx;
           var width = chart.width;
@@ -252,7 +257,7 @@ function getdata(){
   
           var radius = Math.min(width, height) /3.05;
           var centerX = width / 2;
-          var centerY = height / 1.84;
+          var centerY = height / 1.85;
   
           for (var i = 0; i < 24; i++) {
               var angle = Math.PI * 2 / 24 * i - Math.PI / 2;
