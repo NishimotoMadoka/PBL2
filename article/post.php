@@ -19,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-
 <link rel="stylesheet" href="<?= $post_css ?>">
 <form  method="post" action="./post_db.php"  enctype="multipart/form-data">
   <?php for ($i = 0; $i < $formCount; $i++) { ?>
@@ -167,8 +166,6 @@ let count=1;//formの数を数える
 function addform(){//form追加関数
 
   let clickBtn = document.getElementById('kbkb');
-
-   
 
   if(count<10){
     

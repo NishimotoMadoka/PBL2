@@ -296,3 +296,13 @@ form{
 .mybton{
     display: flex;
 }
+
+.btnbox1{
+    display: flex;
+    margin: 0px auto;
+    justify-content: center;
+}
+
+.btnbox2{
+   padding-right:40px;
+}

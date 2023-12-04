@@ -206,12 +206,15 @@ const sample3 = <?php echo $_label;?>;
     <input type="hidden" name="item" value="<?= $user_article['item_name']?>"> 
     <input type="hidden" name="color" value="<?= $user_article['color']?>"> 
     <input type="hidden" name="postdate" value="<?= $user_article['post_date']?>">
-    <input type="submit" name="button" value="円グラフを表示" class="enbtn">
+    <div class="btnbox1">
+    <div class="btnbox2"><input type="submit" name="button" value="円グラフを表示" class="enbtn"></div>
   </form>
   <form action="../article/edit.php" method="POST">
     <input type="hidden" name="article_id" value="<?=$user_article['article_id']?>">
-    <input type="submit" name="button" value="投稿内容編集" class="enbtn">
+    <div class="btnbox2"><input type="submit" name="button" value="投稿内容編集" class="enbtn"></div>
+      </div>
   </form>
+
 
       <?php
       }
