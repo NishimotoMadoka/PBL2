@@ -206,6 +206,7 @@ const sample3 = <?php echo $_label;?>;
     <input type="hidden" name="item" value="<?= $user_article['item_name']?>"> 
     <input type="hidden" name="color" value="<?= $user_article['color']?>"> 
     <input type="hidden" name="postdate" value="<?= $user_article['post_date']?>">
+    <input type="hidden" name="article_image" value="<?=$user_article['article_image']?>">
     <div class="btnbox1">
     <div class="btnbox2"><input type="submit" name="button" value="円グラフを表示" class="enbtn"></div>
   </form>
