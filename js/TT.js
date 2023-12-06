@@ -77,7 +77,7 @@ console.log(LLabels);
   for(i = 0; i < STime.length; i++){//#を前後の数字と置き換える 12/04改造するよ
     if(STime[i]=="#"){
       STime[i] = ETime[i-1];
-      ETime[i] = '2400';
+      ETime[i] = '2359';
     }
     if(LLabels[i]=="#"){
       LLabels[i] = '???';
