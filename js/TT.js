@@ -2,10 +2,6 @@ var chartVal = []; // グラフデータ（描画するデータ）
 var Labels = [];//ここにデータベースから持ってくる
 var chartcolor = [];
 
-const STime=[];
-const ETime=[];
-const LLabels=[];
-const cchartcolor =[];
 
 //  for(let a=0 ;a<10 ;a++){
 //    chartcolor.push(getRandomColor());
@@ -14,163 +10,12 @@ const cchartcolor =[];
 
 //ここから間を埋めたバージョン
 function getdata2(){
-  chartVal = [];
-  Labels = [];//グラフのデータを初期化
-  chartcolor = [];
-  
-  getColor();
-  let i = 0;
-  let i2 = 0;//i はfor文で使うよ
-  const s1 = sample1.split(":");//時間から：を抜いて配列に
-  const s11 = sample2.split(":");//
-  const s2 = sample3.split(",");//項目から、を抜いて配列に(項目の処理終わり)
-  let s3='';//時間から：を抜いた文字列
-  let s33='';
-
-  console.log(s3);
-  console.log(s1);
-  
-  for(i = 0; i< s1.length; i++){
-    s3 = s3.concat(s1[i]);//s3に；抜きの時間をいれる
-    s33 = s33.concat(s11[i]);
-    console.log(s3);
-    console.log(s33);
-  }
-
-  const s4 = s3.split(",");//s3を配列に変更
-  const s44 = s33.split(",");
-
-  console.log(s4);
-  console.log(s44);
-
- // const STime=[];
- // const ETime=[]; //関数の外に用意した　12/5
- // const LLabels=[];
- // const cchartcolor =[];
- if(s4[0]!='0000'){
-  ETime[0] = s4[0];
-  STime[0] = '0000';
-  LLabels[0] = '???';
-  cchartcolor[0] = '#F0F0F0';
-
-  for (i=1; i<s4.length; i++){
-    STime[i] = s4[i-1];
-    ETime[i] = s44[i-1];
-    LLabels[i] = s2[i-1]; 
-    cchartcolor[i] = chartcolor[i-1];
-  }
- }else{
-  for (i=0; i<s4.length; i++){
-    STime[i] = s4[i];
-    ETime[i] = s44[i];
-    LLabels[i] = s2[i]; 
-    cchartcolor[i] = chartcolor[i];
-  }
- }
-
-  
- 
-console.log(LLabels);
+  const start = sample1.split(":");//時間から：を抜いて配列に
+  const end = sample2.split(":");//
+  const label = sample3.split(",");//項目から、を抜いて配列に(項目の処理終わり)
+  const testcolor = color;//ここに灰色を足した版の色をいれる
 
 
-
-  for(i = 0; i < STime.length; i++){//#を前後の数字と置き換える 12/04改造するよ
-    if(STime[i]=="#"){
-      STime[i] = ETime[i-1];
-      ETime[i] = '2400';
-    }
-    if(LLabels[i]=="#"){
-      LLabels[i] = '???';
-    }
-    if(cchartcolor[i]=="#"){
-      cchartcolor[i] = '#F0F0F0';
-      break;
-    }
-   console.log(STime);
-   console.log(ETime);
-   console.log(LLabels);
-}
-
-let SC=0;
-let EC=0;
-let CC=0;
-
-for(i = 0; i < STime.length; i++){//#消す
-  if(STime[i]=="#"){
-   SC++; 
-  }
-  if(LLabels[i]=="#"){
-    EC++;
-  }
-  if(cchartcolor[i]=="#"){
-    CC++;
-  }
-
-}
-for(i=SC; i>0; i--){
-  STime.pop();
-  ETime.pop();
-  LLabels.pop();
-  cchartcolor.pop();
-}
-
-
-//分単位変換
-for( i = 0; i<LLabels.length; i++){
-  let count =0;
-  let S = 0;
-    while(ETime[i]>=100){
-      
-      ETime[i]-=100;
-      count = count+100;
-    }
-    S = ETime[i]+count;
-
-    
-   ETime[i] += count*0.6;
-    
- }
-
- for( i = 0; i<LLabels.length; i++){
-  let count =0;
-  let S = 0;
-    while(STime[i]>=100){
-      
-      STime[i]-=100;
-      count = count+100;
-    }
-    S = STime[i]+count;
-
-    
-   STime[i] += count*0.6;
-    
- }
-//ここまで分単位変換
-
-var s5 =[];//最終的にcharvalに入れるデータ
-
- for(let i = 0; i<LLabels.length; i++){
-  s5[i] = ETime[i] -STime[i];
- }
-
- 
- for(let i = 0; i < LLabels.length; i++){
-
- 
-    chartVal.push(s5[i]);
-    Labels.push(LLabels[i]);
-    //chartcolor.push(getColor());
-  
-  //chartVal.push(s5[i]);
-  //Labels.push(s2[i]);
-}
-
-//chartcolor = A;
-
-//console.log(c1);
-console.log(chartVal);
-console.log(LLabels);
-console.log(cchartcolor);
 }
 //ここまで
 
@@ -328,7 +173,7 @@ function getdata(){
         afterLabel:["aaaa","bbbbb","cccc","dddd","eeee","ffff","gggg","hhhh"],
         datasets: [{
             data: chartVal, // グラフデータ
-            backgroundColor: cchartcolor, // 棒の塗りつぶし色
+            backgroundColor: chartcolor, // 棒の塗りつぶし色
             borderColor: '#000', // 棒の枠線の色
             borderWidth: 1, // 枠線の太さ
             // hoverBackgroundColor: chartcolor,

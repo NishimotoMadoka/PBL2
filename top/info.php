@@ -48,7 +48,7 @@ console.log(sample3);
 // ページ読み込み時にグラフを描画
  window.addEventListener('DOMContentLoaded', function() {
  
-  getdata2();
+  getdata();
   // ColorReset();
   drawChart(); // グラフを再描画
   
