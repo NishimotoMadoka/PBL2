@@ -121,8 +121,7 @@ $user_articles = $article->userArticles($friend_user_id);
 </form>
 <div class="yoko">
   <input type="hidden" name="user_id" value="<?=$$user_article['user_id']?>">
-  <!-- <input type="image" img class="user-icon" src="../icon_image/<?=$user_article['icon']?>"> -->
-  <img class="user-icon" src="<?=$default_icon?>" alt="">
+  <input type="image" img class="user-icon" src="../icon_image/<?=$user_article['icon']?>">
   <div class="yoko2"><?=$user_article['name']?></div>
   <div class="yoko3"><?=$user_article['title']?></div>
   <div class="yoko4"><?=$user_article['time_date']?></div>
