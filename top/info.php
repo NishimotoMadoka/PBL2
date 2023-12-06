@@ -24,8 +24,13 @@ require_once __DIR__ . '/../header.php';
   // $_color = json_encode($_color);
 
 ?>
-<div style="width:100%">
-  <canvas id="canvas" style="display: block; height: 600px; width: 600px; margin:auto;" width="700px" height="700px"></canvas>
+<div style="display: flex;">
+  <div style="width:100%; display:flex;">
+    <canvas id="canvas" style="display: block; height: 600px; width: 600px; margin:auto;" width="700px" height="700px"></canvas>
+  </div>
+  <div style="width:100%; display:flex;">
+    <img src="../img/ushi.png" style="height: 600px; width: 600px;">
+  </div>
 </div>
  <!-- <script src="../js/script.js"></script> -->
 <script>
