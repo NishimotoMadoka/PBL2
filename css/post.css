@@ -1,0 +1,12 @@
+body{
+    background: linear-gradient(rgb(214, 244, 255), rgb(252, 218, 255));
+    /* background: linear-gradient(rgb(186, 237, 255), rgb(250, 192, 255)); */
+    margin: 0px;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    color: rgb(76, 28, 131);
+}
+
+.box{
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+}

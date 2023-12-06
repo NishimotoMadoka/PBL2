@@ -106,15 +106,6 @@ if($friends_users_id==null){
   <div class="yoko4"><?=$friends_articles_array[$i]['time_date']?></div>
   
 
-  <?php
-    if ($friends_articles_array[$i]['article_image'] != "") {
-  ?>
-    <img class="" src="../article_image/<?= $friends_articles_array[$i]['article_image'] ?>" alt=""></a>
-  <?php
-    }
-  ?>
-  
-
 <!-- いいねボタン -->
 <?php
 $article_id=$friends_articles_array[$i]['article_id'];
@@ -147,6 +138,15 @@ $favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
 <input type="hidden" name="color" value="<?= $friends_articles_array[$i]['color']?>"> 
 <input type="hidden" name="postdate" value="<?= $friends_articles_array[$i]['post_date']?>">
 <div class="button-panel">
+
+<?php
+    if ($friends_articles_array[$i]['article_image'] != "") {
+  ?>
+    <img class="topimg" src="../article_image/<?= $friends_articles_array[$i]['article_image'] ?>" alt=""></a>
+  <?php
+    }
+  ?><br>
+
 <input type="submit" name="button" value="円グラフを表示" class="enbtn">
 </div>
 </form>

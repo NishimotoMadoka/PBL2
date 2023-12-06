@@ -77,15 +77,22 @@ foreach($friends_user_id as $friend_user_id){
             <input type="hidden" img class="user-icon" name="user_id" value="<?=$friend_details['user_id']?>">
             <input type="image" img class="user-icon" src="<?= $default_icon ?>">
         </form>
-            <div class="name2">
-        <?= $friend_details['name'] ?>
+        <div class="name2">      
+            <?= $friend_details['name'] ?>
         </div>
-                <?= $friend_details['profile_comment'] ?>
-
+        <div class="mes">
+            <?= $friend_details['profile_comment'] ?>
+        </div>
+        <form class="syousai" method="POST" action="./../user/userpage.php">
+            <input type="hidden" img class="user-icon" name="user_id" value="<?=$friend_details['user_id']?>">
+            <!-- <input type="image" img class="user-icon" src="../icon_image/<?= $friend_details['icon'] ?>"> -->
+            <a href="./../user/userpage.php"><input class="btn" type="submit" value="投稿を見る"></a>
+        </form>
 
         <!-- <img class="" src="<?=$default_icon?>" alt=""> -->
         <?php
         }
+        
         ?>
                 <!-- <dt>名前　　</dt> -->
                 <!-- <form method="POST" action="./../user/userpage.php">
@@ -94,7 +101,6 @@ foreach($friends_user_id as $friend_user_id){
                 </form> -->
                 <!-- <?= $friend_details['name'] ?>
                 <?= $friend_details['profile_comment'] ?> -->
-       
     </div>
   
 </main>

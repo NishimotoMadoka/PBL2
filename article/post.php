@@ -20,17 +20,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <link rel="stylesheet" href="<?= $post_css ?>">
+<div class="box">
 <form  method="post" action="./post_db.php"  enctype="multipart/form-data">
   <?php for ($i = 0; $i < $formCount; $i++) { ?>
-    <div>日付</div> 
+    <div>日付
     <input type="date" name="date" placeholder="日付" required><br>
     </div>
-    <div">
-      <input type="text" name="items[]" placeholder="項目" required>
+    <div>
+      項目<input type="text" name="items[]" placeholder="例:バイト" required>
     </div>
-    <div>開始時間</div>
+    <div>開始時間
       <input type="time" name="start_times[]" required>
-      <div>終了時間</div> 
+      ～
+      終了時間
       <input type="time" name="end_times[]" required>
     </div>
 
@@ -59,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="reset" value="リセット">
     </div>
 </form>
-
+  </div>
 </main>
 
 <script>
