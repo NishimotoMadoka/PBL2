@@ -53,7 +53,7 @@ console.log(sample3);
 // ページ読み込み時にグラフを描画
  window.addEventListener('DOMContentLoaded', function() {
  
-  getdata();
+  getdata2();
   // ColorReset();
   drawChart(); // グラフを再描画
   
