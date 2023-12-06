@@ -13,6 +13,7 @@ require_once __DIR__ . '/../header.php';
   $_color = $_POST['color'];//色
   $_label = $_POST['item'];//DBから来た値
   $_postdate = $_POST['postdate'];
+  $_articleimg = $_POST['article_image'];
   // $_color = $_POST['color'];
 
     
@@ -29,7 +30,7 @@ require_once __DIR__ . '/../header.php';
   <canvas id="canvas" style="display: block; height: 600px; width: 600px; margin:auto;" width="700px" height="700px"></canvas>
 </div>
 <div>
-  <img src="../img/ushi.png" style="height: 600px; width: 600px;">
+  <img src="../article_image/<?=$_articleimg?>" style="height: 600px; width: 600px;">
 </div>
 </div>
  <!-- <script src="../js/script.js"></script> -->
