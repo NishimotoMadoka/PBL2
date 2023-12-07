@@ -29,8 +29,19 @@ require_once __DIR__ . '/../header.php';
 <div style="width:100%">
   <canvas id="canvas" style="display: block; height: 600px; width: 600px; margin:auto;" width="700px" height="700px"></canvas>
 </div>
-<div>
-  <img src="../article_image/<?=$_articleimg?>" style="height: 600px; width: 600px;">
+<div style="width: 100%">
+  <h1 style="text-align:center;">今日の画像</h1>
+  <?php
+   if ($_POST['article_image'] != "") {
+  ?>
+  <img src="../article_image/<?=$_articleimg?>" style="display:block; margin: auto; height: 450px; width: 450px;">
+  <?php
+   } else {
+  ?>
+  <img src="../img/ushi.png" style="display:block; margin:auto; height: 450px; width: 450px;">
+  <?php
+   }
+  ?>
 </div>
 </div>
  <!-- <script src="../js/script.js"></script> -->
