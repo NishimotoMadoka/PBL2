@@ -55,7 +55,6 @@ console.log(sample3);
  window.addEventListener('DOMContentLoaded', function() {
  
   getdata2();
-  // ColorReset();
   drawChart(); // グラフを再描画
   
 });

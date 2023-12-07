@@ -7,9 +7,6 @@ const ETime=[];
 const LLabels=[];
 const cchartcolor =[];
 
-//  for(let a=0 ;a<10 ;a++){
-//    chartcolor.push(getRandomColor());
-//  }
 
 
 //ここから間を埋めたバージョン
@@ -43,10 +40,7 @@ function getdata2(){
   console.log(s4);
   console.log(s44);
 
- // const STime=[];
- // const ETime=[]; //関数の外に用意した　12/5
- // const LLabels=[];
- // const cchartcolor =[];
+
  if(s4[0]!='0000'){
   ETime[0] = s4[0];
   STime[0] = '0000';
@@ -159,10 +153,7 @@ var s5 =[];//最終的にcharvalに入れるデータ
  
     chartVal.push(s5[i]);
     Labels.push(LLabels[i]);
-    //chartcolor.push(getColor());
-  
-  //chartVal.push(s5[i]);
-  //Labels.push(s2[i]);
+    
 }
 
 //chartcolor = A;
@@ -190,25 +181,7 @@ console.log(cchartcolor);
   
  
 
-//  function getRandomColor() {
-//    const letters = '0123456789ABCDEF';
-//    let color = '#';
-//    for (let i = 0; i < 6; i++) {
-//       //  color += letters[Math.floor(Math.random() * 16)];
-//       const h = Math.random() * 360;
-//       color = `hsl(${h}, 80%, 60%)`;
-//    }
-//    return color;
-//  }
 
-//  function ColorReset(){//グラフにランダムで配色
-//   let chartcolor = [];
-//   var b = Labels.length;
-//   for(let a=0 ;a<b ;a++){
-//     chartcolor.push(color);
-//   }
-//   console.log(chartcolor);
-//  }
 
 //DBから持ってきたデータをグラフデータに入れる＆時間の処理
 function getdata(){
