@@ -8,16 +8,19 @@ if(!isset($_SESSION)){
     session_start();
 }
 
-
-
-
-
 $user_id=$_SESSION['user_id'];
 
 $friends_users_id=$user->getFriends($user_id);
 
-require_once __DIR__ . '/../header.php';
+require_once __DIR__ . '/top_header.php';
 require_once __DIR__ . '/../pre.php';
+
+// 最初にトップページに飛んだとき(dataがないとき)のゴリ押しエラー解消
+if(!isset($_GET['data'])){
+  $list_member_id="all";
+}else{
+  $list_member_id=$_GET['data'];
+}
 
 if($friends_users_id==null){
   ?>
@@ -44,6 +47,13 @@ if($friends_users_id==null){
   } 
   }
 ?>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+</head>
+
 <link rel="stylesheet" href="<?= $toppage_css ?>">
 <!-- <div class="box"> -->
 <main class="">
@@ -51,8 +61,10 @@ if($friends_users_id==null){
     <article class="">
       <?php
     //   投稿の取得と配列化
-      $article_count=0; //友達全員の投稿の数
+      $article_count=0; //友達の投稿の数
       if(!empty($friends_users_id)){
+        // フレンド全員
+        if($list_member_id=="all"){
         foreach ($friends_users_id as $friend_user_id) {
             $friend_user_id=$friend_user_id['friend_user_id'];
             $friends_articles = $article->friendsArticles($friend_user_id);
@@ -83,6 +95,65 @@ if($friends_users_id==null){
           echo "まだ投稿がありません。";
         }
       }
+      // リスト（メンバーが複数人いるリスト）
+      elseif(strpos($list_member_id,',') !== false){
+        $friends_users_id=explode(",",$list_member_id);
+        foreach ($friends_users_id as $friend_user_id) {
+            $friends_articles = $article->friendsArticles($friend_user_id);
+            $friend_article_count=count($friends_articles); //友達ごとの投稿の数
+           
+            for($h=0;$h<$friend_article_count;$h++){
+            $friends_articles_array[$article_count]['article_id']=$friends_articles[$h]['article_id'];
+            $friends_articles_array[$article_count]['user_id']=$friends_articles[$h]['user_id'];
+            $friends_articles_array[$article_count]['start_time']=$friends_articles[$h]['start_time'];
+            $friends_articles_array[$article_count]['end_time']=$friends_articles[$h]['end_time'];
+            $friends_articles_array[$article_count]['item_name']=$friends_articles[$h]['item_name'];
+            $friends_articles_array[$article_count]['color']=$friends_articles[$h]['color'];
+            $friends_articles_array[$article_count]['title']=$friends_articles[$h]['title'];
+            $friends_articles_array[$article_count]['diary']=$friends_articles[$h]['diary'];
+            $friends_articles_array[$article_count]['post_date']=$friends_articles[$h]['post_date'];
+            $friends_articles_array[$article_count]['time_date']=$friends_articles[$h]['time_date'];
+            $friends_articles_array[$article_count]['article_image']=$friends_articles[$h]['article_image'];
+            $friends_articles_array[$article_count]['article_public']=$friends_articles[$h]['article_public'];
+
+            $article_count++;
+            }
+        }
+        if(!empty($article_count)){
+        // 投稿のソート
+        $keyArray = array_column($friends_articles_array, 'time_date');
+        array_multisort($keyArray, SORT_DESC, $friends_articles_array);
+        }else{
+          echo "まだ投稿がありません。";
+        }
+    }
+    // リスト（メンバーが一人のリスト）
+    else{
+        $friend_user_id=$list_member_id;
+        $friends_articles = $article->friendsArticles($friend_user_id);
+        $friend_article_count=count($friends_articles); //友達ごとの投稿の数
+           
+        for($h=0;$h<$friend_article_count;$h++){
+            $friends_articles_array[$article_count]['article_id']=$friends_articles[$h]['article_id'];
+            $friends_articles_array[$article_count]['user_id']=$friends_articles[$h]['user_id'];
+            $friends_articles_array[$article_count]['start_time']=$friends_articles[$h]['start_time'];
+            $friends_articles_array[$article_count]['end_time']=$friends_articles[$h]['end_time'];
+            $friends_articles_array[$article_count]['item_name']=$friends_articles[$h]['item_name'];
+            $friends_articles_array[$article_count]['color']=$friends_articles[$h]['color'];
+            $friends_articles_array[$article_count]['title']=$friends_articles[$h]['title'];
+            $friends_articles_array[$article_count]['diary']=$friends_articles[$h]['diary'];
+            $friends_articles_array[$article_count]['post_date']=$friends_articles[$h]['post_date'];
+            $friends_articles_array[$article_count]['time_date']=$friends_articles[$h]['time_date'];
+            $friends_articles_array[$article_count]['article_image']=$friends_articles[$h]['article_image'];
+            $friends_articles_array[$article_count]['article_public']=$friends_articles[$h]['article_public'];
+
+            $article_count++;
+        }
+        if($friends_articles==null){
+          echo "まだ投稿がありません。";
+        }
+    }
+}
 
     
     // これ入れる場所変えないとです
@@ -102,7 +173,7 @@ if($friends_users_id==null){
     <input type="image" img class="user-icon" src="../icon_image/<?= $friend_details['icon'] ?>">
   </form>
   
-  <div class="yoko2"><?=$friend_details['name']?></div>
+  <div class="yoko2"><span class="name"><?=$friend_details['name']?></span></div>
   <div class="yoko3"><?=$friends_articles_array[$i]['title']?></div>
   <div class="yoko4"><?=$friends_articles_array[$i]['time_date']?></div>
   
