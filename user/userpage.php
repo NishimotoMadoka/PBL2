@@ -183,6 +183,7 @@ $favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
 <input type="hidden" name="item" value="<?= $user_article['item_name']?>"> 
 <input type="hidden" name="color" value="<?= $user_article['color']?>"> 
 <input type="hidden" name="postdate" value="<?= $user_article['post_date']?>">
+<input type="hidden" name="article_image" value="<?=$user_article['article_image']?>">
 <div class="button-panel">
 <input type="submit" name="button" value="円グラフを表示" class="enbtn">
 </div>

@@ -386,7 +386,7 @@ function getdata(){
   
           var radius = Math.min(width, height) /3.05;
           var centerX = width / 2;
-          var centerY = height / 1.84;
+          var centerY = height / 1.85;
   
           for (var i = 0; i < 24; i++) {
               var angle = Math.PI * 2 / 24 * i - Math.PI / 2;
