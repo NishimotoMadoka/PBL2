@@ -20,48 +20,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <link rel="stylesheet" href="<?= $post_css ?>">
+<div class="box">
 <form  method="post" action="./post_db.php"  enctype="multipart/form-data">
   <?php for ($i = 0; $i < $formCount; $i++) { ?>
-    <div>日付</div> 
-    <input type="date" name="date" placeholder="日付" required><br>
-    </div>
-    <div">
-      <input type="text" name="items[]" placeholder="項目" required>
-    </div>
-    <div>開始時間</div>
-      <input type="time" name="start_times[]" required>
-      <div>終了時間</div> 
-      <input type="time" name="end_times[]" required>
-    </div>
 
-    <div>色</div>
-    
-    
-    <input type="checkbox" name="color[]" id="radio" value="#000000" require>
-    <input type="color"  id="color" list="colors" onchange="radioColor()">
-    
-    <!-- 色変更ラジオボタン -->
-    <input type="checkbox" name="color[]" value="#FF0000" require>赤
-    <input type="checkbox" name="color[]" value="#0000FF" require>青
-    <input type="checkbox" name="color[]" value="#FFFF00" require>黄
-    <input type="checkbox" name="color[]" value="#008000" require>緑
-    <input type="checkbox" name="color[]" value="#FFFFFF" require>白
-    <input type="checkbox" name="color[]" value="#000000" require>黒
-    <!-- ここまで -->
-  <?php } ?>
+    <div class="post">
+     <table>
+      <tr><td>日付</td><td><input type="date" name="date" placeholder="日付" required></td></tr>
+      <tr><td>項目</td><td><input type="text" name="items[]" placeholder="例:バイト" required></td></tr>
+      <tr><td>開始時間</td><td><input type="time" name="start_times[]" required> ～ 終了時間　<input type="time" name="end_times[]" required></td></tr>
+      <tr><td class="colre" colspan="2">色</td></tr>
+      <tr><td colspan="2">
+      <input type="checkbox" name="color[]" id="radio" value="#000000" require>
+      <input type="color"  id="color" list="colors" onchange="radioColor()">
+      <input type="checkbox" name="color[]" value="#FF0000" require>赤
+      <input type="checkbox" name="color[]" value="#0000FF" require>青
+      <input type="checkbox" name="color[]" value="#FFFF00" require>黄
+      <input type="checkbox" name="color[]" value="#008000" require>緑
+      <input type="checkbox" name="color[]" value="#FFFFFF" require>白
+      <input type="checkbox" name="color[]" value="#000000" require>黒
+      </td></tr>
+     </table>
+      <!-- <input type="checkbox" name="color[]" id="radio" value="#000000" require>
+      <input type="color"  id="color" list="colors" onchange="radioColor()"> -->
+      <!-- 色変更ラジオボタン -->
+      <!-- <input type="checkbox" name="color[]" value="#FF0000" require>赤
+      <input type="checkbox" name="color[]" value="#0000FF" require>青
+      <input type="checkbox" name="color[]" value="#FFFF00" require>黄
+      <input type="checkbox" name="color[]" value="#008000" require>緑
+      <input type="checkbox" name="color[]" value="#FFFFFF" require>白
+      <input type="checkbox" name="color[]" value="#000000" require>黒 -->
+      <!-- ここまで -->
+  
+      <?php } ?>
 
-    <div id ="kbkb">
+      <div id ="kbkb">
         今日の画像：<input type="file" name="up_image" accept="image/*">
-    </div>
-    <input type="hidden" name="form_count" value="<?php echo $formCount; ?>">
-  <input type="submit" name="add_form" value="+　項目を追加" id="delete" onclick="addform()">
+      </div>
+
+
+      
+      <input type="hidden" name="form_count" value="<?php echo $formCount; ?>">
+      <input type="submit" name="add_form" value="+　項目を追加" id="delete" onclick="addform()">
         <input type="submit" value="送信">
         <input type="reset" value="リセット">
-    </div>
+      </div> 
+  </div>
 </form>
-
+  </div>
 </main>
-
 <script>
 
   //色を変更のradioとcolorを連動させる部分
@@ -182,226 +189,190 @@ function addform(){//form追加関数
     switch(count){
       case 1:
           clickBtn.insertAdjacentHTML('beforebegin',`
-    <div class="form-item">
-    <div class="item">
-      <input type="text" name="items[]" placeholder="項目" required>
-    </div>
-    <div class="title">開始時間</div>
-      <input type="time" name="start_times[]" required>
-      <div class="title">終了時間</div>
-      <input type="time" name="end_times[]" required>
-    </div>
-    <div class="title">色</div>
-    <input type="checkbox" name="color[]" id="radio1"  value="#" require>
-    <input type="color" id="color1" list="colors" onchange="radioColor1()">
-
-    <input type="checkbox" name="color[]" value="#FF0000" require>赤
-    <input type="checkbox" name="color[]" value="#0000FF" require>青
-    <input type="checkbox" name="color[]" value="#FFFF00" require>黄
-    <input type="checkbox" name="color[]" value="#008000" require>緑
-    <input type="checkbox" name="color[]" value="#FFFFFF" require>白
-    <input type="checkbox" name="color[]" value="#000000" require>黒
-    `);
+          
+     <table>
+      <tr><td>項目</td><td><input type="text" name="items[]" placeholder="例:バイト" required></td></tr>
+      <tr><td>開始時間</td><td><input type="time" name="start_times[]" required> ～ 終了時間　<input type="time" name="end_times[]" required></td></tr>
+      <tr><td class="colre" colspan="2">色</td></tr>
+      <tr><td colspan="2">
+      <input type="checkbox" name="color[]" id="radio" value="#000000" require>
+      <input type="color"  id="color" list="colors" onchange="radioColor()">
+      <input type="checkbox" name="color[]" value="#FF0000" require>赤
+      <input type="checkbox" name="color[]" value="#0000FF" require>青
+      <input type="checkbox" name="color[]" value="#FFFF00" require>黄
+      <input type="checkbox" name="color[]" value="#008000" require>緑
+      <input type="checkbox" name="color[]" value="#FFFFFF" require>白
+      <input type="checkbox" name="color[]" value="#000000" require>黒
+      </td></tr>
+     </table>
+          `);
     console.log(count);
         break;
       
       case 2:
         clickBtn.insertAdjacentHTML('beforebegin',`
-    <div class="form-item">
-    <div class="item">
-      <input type="text" name="items[]" placeholder="項目" required>
-    </div>
-    <div class="title">開始時間</div>
-      <input type="time" name="start_times[]" required>
-      <div class="title">終了時間</div>
-      <input type="time" name="end_times[]" required>
-    </div>
-    <div class="title">色</div>
-    <input type="checkbox" name="color[]" id="radio2"  value="#" require>
-    <input type="color" id="color2" list="colors" onchange="radioColor2()">
-
-    <input type="checkbox" name="color[]" value="#FF0000" require>赤
-    <input type="checkbox" name="color[]" value="#0000FF" require>青
-    <input type="checkbox" name="color[]" value="#FFFF00" require>黄
-    <input type="checkbox" name="color[]" value="#008000" require>緑
-    <input type="checkbox" name="color[]" value="#FFFFFF" require>白
-    <input type="checkbox" name="color[]" value="#000000" require>黒
+     <table>
+      <tr><td>項目</td><td><input type="text" name="items[]" placeholder="例:バイト" required></td></tr>
+      <tr><td>開始時間</td><td><input type="time" name="start_times[]" required> ～ 終了時間　<input type="time" name="end_times[]" required></td></tr>
+      <tr><td class="colre" colspan="2">色</td></tr>
+      <tr><td colspan="2">
+      <input type="checkbox" name="color[]" id="radio" value="#000000" require>
+      <input type="color"  id="color" list="colors" onchange="radioColor()">
+      <input type="checkbox" name="color[]" value="#FF0000" require>赤
+      <input type="checkbox" name="color[]" value="#0000FF" require>青
+      <input type="checkbox" name="color[]" value="#FFFF00" require>黄
+      <input type="checkbox" name="color[]" value="#008000" require>緑
+      <input type="checkbox" name="color[]" value="#FFFFFF" require>白
+      <input type="checkbox" name="color[]" value="#000000" require>黒
+      </td></tr>
+     </table>
     `);
     console.log(count);
         break;
       
       case 3:
         clickBtn.insertAdjacentHTML('beforebegin',`
-    <div class="form-item">
-    <div class="item">
-      <input type="text" name="items[]" placeholder="項目" required>
-    </div>
-    <div class="title">開始時間</div>
-      <input type="time" name="start_times[]" required>
-      <div class="title">終了時間</div>
-      <input type="time" name="end_times[]" required>
-    </div>
-    <div class="title">色</div>
-    <input type="checkbox" name="color[]" id="radio3"  value="#" require>
-    <input type="color" id="color3" list="colors" onchange="radioColor3()">
-
-    <input type="checkbox" name="color[]" value="#FF0000" require>赤
-    <input type="checkbox" name="color[]" value="#0000FF" require>青
-    <input type="checkbox" name="color[]" value="#FFFF00" require>黄
-    <input type="checkbox" name="color[]" value="#008000" require>緑
-    <input type="checkbox" name="color[]" value="#FFFFFF" require>白
-    <input type="checkbox" name="color[]" value="#000000" require>黒
-    `);
+        <table>
+      <tr><td>項目</td><td><input type="text" name="items[]" placeholder="例:バイト" required></td></tr>
+      <tr><td>開始時間</td><td><input type="time" name="start_times[]" required> ～ 終了時間　<input type="time" name="end_times[]" required></td></tr>
+      <tr><td class="colre" colspan="2">色</td></tr>
+      <tr><td colspan="2">
+      <input type="checkbox" name="color[]" id="radio" value="#000000" require>
+      <input type="color"  id="color" list="colors" onchange="radioColor()">
+      <input type="checkbox" name="color[]" value="#FF0000" require>赤
+      <input type="checkbox" name="color[]" value="#0000FF" require>青
+      <input type="checkbox" name="color[]" value="#FFFF00" require>黄
+      <input type="checkbox" name="color[]" value="#008000" require>緑
+      <input type="checkbox" name="color[]" value="#FFFFFF" require>白
+      <input type="checkbox" name="color[]" value="#000000" require>黒
+      </td></tr>
+     </table>`);
     console.log(count);
         break;
       
       case 4:
         clickBtn.insertAdjacentHTML('beforebegin',`
-    <div class="form-item">
-    <div class="item">
-      <input type="text" name="items[]" placeholder="項目" required>
-    </div>
-    <div class="title">開始時間</div>
-      <input type="time" name="start_times[]" required>
-      <div class="title">終了時間</div>
-      <input type="time" name="end_times[]" required>
-    </div>
-    <div class="title">色</div>
-    <input type="checkbox" name="color[]" id="radio4"  value="#" require>
-    <input type="color" id="color4" list="colors" onchange="radioColor4()">
-
-    <input type="checkbox" name="color[]" value="#FF0000" require>赤
-    <input type="checkbox" name="color[]" value="#0000FF" require>青
-    <input type="checkbox" name="color[]" value="#FFFF00" require>黄
-    <input type="checkbox" name="color[]" value="#008000" require>緑
-    <input type="checkbox" name="color[]" value="#FFFFFF" require>白
-    <input type="checkbox" name="color[]" value="#000000" require>黒
-    `);
+        <table>
+      <tr><td>日付</td><td><input type="date" name="date" placeholder="日付" required></td></tr>
+      <tr><td>項目</td><td><input type="text" name="items[]" placeholder="例:バイト" required></td></tr>
+      <tr><td>開始時間</td><td><input type="time" name="start_times[]" required> ～ 終了時間　<input type="time" name="end_times[]" required></td></tr>
+      <tr><td class="colre" colspan="2">色</td></tr>
+      <tr><td colspan="2">
+      <input type="checkbox" name="color[]" id="radio" value="#000000" require>
+      <input type="color"  id="color" list="colors" onchange="radioColor()">
+      <input type="checkbox" name="color[]" value="#FF0000" require>赤
+      <input type="checkbox" name="color[]" value="#0000FF" require>青
+      <input type="checkbox" name="color[]" value="#FFFF00" require>黄
+      <input type="checkbox" name="color[]" value="#008000" require>緑
+      <input type="checkbox" name="color[]" value="#FFFFFF" require>白
+      <input type="checkbox" name="color[]" value="#000000" require>黒
+      </td></tr>
+     </table>`);
     console.log(count);
         break;
       
       case 5:
         clickBtn.insertAdjacentHTML('beforebegin',`
-    <div class="form-item">
-    <div class="item">
-      <input type="text" name="items[]" placeholder="項目" required>
-    </div>
-    <div class="title">開始時間</div>
-      <input type="time" name="start_times[]" required>
-      <div class="title">終了時間</div>
-      <input type="time" name="end_times[]" required>
-    </div>
-    <div class="title">色</div>
-    <input type="checkbox" name="color[]" id="radio5"  value="#" require>
-    <input type="color" id="color5" list="colors" onchange="radioColor5()">
-
-    <input type="checkbox" name="color[]" value="#FF0000" require>赤
-    <input type="checkbox" name="color[]" value="#0000FF" require>青
-    <input type="checkbox" name="color[]" value="#FFFF00" require>黄
-    <input type="checkbox" name="color[]" value="#008000" require>緑
-    <input type="checkbox" name="color[]" value="#FFFFFF" require>白
-    <input type="checkbox" name="color[]" value="#000000" require>黒
-    `);
+        <table>
+      <tr><td>日付</td><td><input type="date" name="date" placeholder="日付" required></td></tr>
+      <tr><td>項目</td><td><input type="text" name="items[]" placeholder="例:バイト" required></td></tr>
+      <tr><td>開始時間</td><td><input type="time" name="start_times[]" required> ～ 終了時間　<input type="time" name="end_times[]" required></td></tr>
+      <tr><td class="colre" colspan="2">色</td></tr>
+      <tr><td colspan="2">
+      <input type="checkbox" name="color[]" id="radio" value="#000000" require>
+      <input type="color"  id="color" list="colors" onchange="radioColor()">
+      <input type="checkbox" name="color[]" value="#FF0000" require>赤
+      <input type="checkbox" name="color[]" value="#0000FF" require>青
+      <input type="checkbox" name="color[]" value="#FFFF00" require>黄
+      <input type="checkbox" name="color[]" value="#008000" require>緑
+      <input type="checkbox" name="color[]" value="#FFFFFF" require>白
+      <input type="checkbox" name="color[]" value="#000000" require>黒
+      </td></tr>
+     </table>`);
     console.log(count);
         break;
       
       case 6:
         clickBtn.insertAdjacentHTML('beforebegin',`
-    <div class="form-item">
-    <div class="item">
-      <input type="text" name="items[]" placeholder="項目" required>
-    </div>
-    <div class="title">開始時間</div>
-      <input type="time" name="start_times[]" required>
-      <div class="title">終了時間</div>
-      <input type="time" name="end_times[]" required>
-    </div>
-    <div class="title">色</div>
-    <input type="checkbox" name="color[]" id="radio6"  value="#" require>
-    <input type="color" id="color6" list="colors" onchange="radioColor6()">
-
-    <input type="checkbox" name="color[]" value="#FF0000" require>赤
-    <input type="checkbox" name="color[]" value="#0000FF" require>青
-    <input type="checkbox" name="color[]" value="#FFFF00" require>黄
-    <input type="checkbox" name="color[]" value="#008000" require>緑
-    <input type="checkbox" name="color[]" value="#FFFFFF" require>白
-    <input type="checkbox" name="color[]" value="#000000" require>黒
-    `);
+        <table>
+      <tr><td>日付</td><td><input type="date" name="date" placeholder="日付" required></td></tr>
+      <tr><td>項目</td><td><input type="text" name="items[]" placeholder="例:バイト" required></td></tr>
+      <tr><td>開始時間</td><td><input type="time" name="start_times[]" required> ～ 終了時間　<input type="time" name="end_times[]" required></td></tr>
+      <tr><td class="colre" colspan="2">色</td></tr>
+      <tr><td colspan="2">
+      <input type="checkbox" name="color[]" id="radio" value="#000000" require>
+      <input type="color"  id="color" list="colors" onchange="radioColor()">
+      <input type="checkbox" name="color[]" value="#FF0000" require>赤
+      <input type="checkbox" name="color[]" value="#0000FF" require>青
+      <input type="checkbox" name="color[]" value="#FFFF00" require>黄
+      <input type="checkbox" name="color[]" value="#008000" require>緑
+      <input type="checkbox" name="color[]" value="#FFFFFF" require>白
+      <input type="checkbox" name="color[]" value="#000000" require>黒
+      </td></tr>
+     </table>`);
     console.log(count);
         break;
       
       case 7:
         clickBtn.insertAdjacentHTML('beforebegin',`
-    <div class="form-item">
-    <div class="item">
-      <input type="text" name="items[]" placeholder="項目" required>
-    </div>
-    <div class="title">開始時間</div>
-      <input type="time" name="start_times[]" required>
-      <div class="title">終了時間</div>
-      <input type="time" name="end_times[]" required>
-    </div>
-    <div class="title">色</div>
-    <input type="checkbox" name="color[]" id="radio7"  value="#" require>
-    <input type="color" id="color7" list="colors" onchange="radioColor7()">
-
-    <input type="checkbox" name="color[]" value="#FF0000" require>赤
-    <input type="checkbox" name="color[]" value="#0000FF" require>青
-    <input type="checkbox" name="color[]" value="#FFFF00" require>黄
-    <input type="checkbox" name="color[]" value="#008000" require>緑
-    <input type="checkbox" name="color[]" value="#FFFFFF" require>白
-    <input type="checkbox" name="color[]" value="#000000" require>黒
-    `);
+        <table>
+      <tr><td>日付</td><td><input type="date" name="date" placeholder="日付" required></td></tr>
+      <tr><td>項目</td><td><input type="text" name="items[]" placeholder="例:バイト" required></td></tr>
+      <tr><td>開始時間</td><td><input type="time" name="start_times[]" required> ～ 終了時間　<input type="time" name="end_times[]" required></td></tr>
+      <tr><td class="colre" colspan="2">色</td></tr>
+      <tr><td colspan="2">
+      <input type="checkbox" name="color[]" id="radio" value="#000000" require>
+      <input type="color"  id="color" list="colors" onchange="radioColor()">
+      <input type="checkbox" name="color[]" value="#FF0000" require>赤
+      <input type="checkbox" name="color[]" value="#0000FF" require>青
+      <input type="checkbox" name="color[]" value="#FFFF00" require>黄
+      <input type="checkbox" name="color[]" value="#008000" require>緑
+      <input type="checkbox" name="color[]" value="#FFFFFF" require>白
+      <input type="checkbox" name="color[]" value="#000000" require>黒
+      </td></tr>
+     </table>`);
     console.log(count);
         break;
       
       case 8:
         clickBtn.insertAdjacentHTML('beforebegin',`
-    <div class="form-item">
-    <div class="item">
-      <input type="text" name="items[]" placeholder="項目" required>
-    </div>
-    <div class="title">開始時間</div>
-      <input type="time" name="start_times[]" required>
-      <div class="title">終了時間</div>
-      <input type="time" name="end_times[]" required>
-    </div>
-    <div class="title">色</div>
-    <input type="checkbox" name="color[]" id="radio8"  value="#" require>
-    <input type="color" id="color8" list="colors" onchange="radioColor8()">
-
-    <input type="checkbox" name="color[]" value="#FF0000" require>赤
-    <input type="checkbox" name="color[]" value="#0000FF" require>青
-    <input type="checkbox" name="color[]" value="#FFFF00" require>黄
-    <input type="checkbox" name="color[]" value="#008000" require>緑
-    <input type="checkbox" name="color[]" value="#FFFFFF" require>白
-    <input type="checkbox" name="color[]" value="#000000" require>黒
-    `);
+        <table>
+      <tr><td>日付</td><td><input type="date" name="date" placeholder="日付" required></td></tr>
+      <tr><td>項目</td><td><input type="text" name="items[]" placeholder="例:バイト" required></td></tr>
+      <tr><td>開始時間</td><td><input type="time" name="start_times[]" required> ～ 終了時間　<input type="time" name="end_times[]" required></td></tr>
+      <tr><td class="colre" colspan="2">色</td></tr>
+      <tr><td colspan="2">
+      <input type="checkbox" name="color[]" id="radio" value="#000000" require>
+      <input type="color"  id="color" list="colors" onchange="radioColor()">
+      <input type="checkbox" name="color[]" value="#FF0000" require>赤
+      <input type="checkbox" name="color[]" value="#0000FF" require>青
+      <input type="checkbox" name="color[]" value="#FFFF00" require>黄
+      <input type="checkbox" name="color[]" value="#008000" require>緑
+      <input type="checkbox" name="color[]" value="#FFFFFF" require>白
+      <input type="checkbox" name="color[]" value="#000000" require>黒
+      </td></tr>
+     </table>`);
     console.log(count);
         break;
 
       case 9:
         clickBtn.insertAdjacentHTML('beforebegin',`
-    <div class="form-item">
-    <div class="item">
-      <input type="text" name="items[]" placeholder="項目" required>
-    </div>
-    <div class="title">開始時間</div>
-      <input type="time" name="start_times[]" required>
-      <div class="title">終了時間</div>
-      <input type="time" name="end_times[]" required>
-    </div>
-    <div class="title">色</div>
-    <input type="checkbox" name="color[]" id="radio9"  value="#" require>
-    <input type="color" id="color9" list="colors" onchange="radioColor9()">
-
-    <input type="checkbox" name="color[]" value="#FF0000" require>赤
-    <input type="checkbox" name="color[]" value="#0000FF" require>青
-    <input type="checkbox" name="color[]" value="#FFFF00" require>黄
-    <input type="checkbox" name="color[]" value="#008000" require>緑
-    <input type="checkbox" name="color[]" value="#FFFFFF" require>白
-    <input type="checkbox" name="color[]" value="#000000" require>黒
-    `);
+        <table>
+      <tr><td>日付</td><td><input type="date" name="date" placeholder="日付" required></td></tr>
+      <tr><td>項目</td><td><input type="text" name="items[]" placeholder="例:バイト" required></td></tr>
+      <tr><td>開始時間</td><td><input type="time" name="start_times[]" required> ～ 終了時間　<input type="time" name="end_times[]" required></td></tr>
+      <tr><td class="colre" colspan="2">色</td></tr>
+      <tr><td colspan="2">
+      <input type="checkbox" name="color[]" id="radio" value="#000000" require>
+      <input type="color"  id="color" list="colors" onchange="radioColor()">
+      <input type="checkbox" name="color[]" value="#FF0000" require>赤
+      <input type="checkbox" name="color[]" value="#0000FF" require>青
+      <input type="checkbox" name="color[]" value="#FFFF00" require>黄
+      <input type="checkbox" name="color[]" value="#008000" require>緑
+      <input type="checkbox" name="color[]" value="#FFFFFF" require>白
+      <input type="checkbox" name="color[]" value="#000000" require>黒
+      </td></tr>
+     </table>`);
     console.log(count);
         break;
 
@@ -409,26 +380,22 @@ function addform(){//form追加関数
       
       default:
         clickBtn.insertAdjacentHTML('beforebegin',`
-    <div class="form-item">
-    <div class="item">
-      <input type="text" name="items[]" placeholder="項目" required>
-    </div>
-    <div class="title">開始時間</div>
-      <input type="time" name="start_times[]" required>
-      <div class="title">終了時間</div>
-      <input type="time" name="end_times[]" required>
-    </div>
-    <div class="title">色</div>
-    <input type="checkbox" name="color[]" id="radio"  value="#" require>
-    <input type="color" id="color" list="colors" onchange="radioColor()">
-
-    <input type="checkbox" name="color[]" value="#FF0000" require>赤
-    <input type="checkbox" name="color[]" value="#0000FF" require>青
-    <input type="checkbox" name="color[]" value="#FFFF00" require>黄
-    <input type="checkbox" name="color[]" value="#008000" require>緑
-    <input type="checkbox" name="color[]" value="#FFFFFF" require>白
-    <input type="checkbox" name="color[]" value="#000000" require>黒
-    `);
+        <table>
+      <tr><td>日付</td><td><input type="date" name="date" placeholder="日付" required></td></tr>
+      <tr><td>項目</td><td><input type="text" name="items[]" placeholder="例:バイト" required></td></tr>
+      <tr><td>開始時間</td><td><input type="time" name="start_times[]" required> ～ 終了時間　<input type="time" name="end_times[]" required></td></tr>
+      <tr><td class="colre" colspan="2">色</td></tr>
+      <tr><td colspan="2">
+      <input type="checkbox" name="color[]" id="radio" value="#000000" require>
+      <input type="color"  id="color" list="colors" onchange="radioColor()">
+      <input type="checkbox" name="color[]" value="#FF0000" require>赤
+      <input type="checkbox" name="color[]" value="#0000FF" require>青
+      <input type="checkbox" name="color[]" value="#FFFF00" require>黄
+      <input type="checkbox" name="color[]" value="#008000" require>緑
+      <input type="checkbox" name="color[]" value="#FFFFFF" require>白
+      <input type="checkbox" name="color[]" value="#000000" require>黒
+      </td></tr>
+     </table>`);
     
     console.log('default');
     console.log(count);
@@ -443,6 +410,7 @@ function addform(){//form追加関数
 
  count++;
 }
+
 
 
 

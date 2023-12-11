@@ -239,10 +239,11 @@ table {
 }
 
 .yoko5{
-    margin-top: auto;
-    margin-bottom: auto;
-    padding: 40px;
+    margin: 0px 0px 0px 15px;
+    padding: 0px 100px 20px 100px;
+    text-align: left;
 }
+
 
 .enbtn{
     background-color: rgb(239, 232, 247);
@@ -251,6 +252,7 @@ table {
     height: 35px;
     border-radius: 90px;
     margin-bottom: 10px;
+    margin-top: 15px;
 }
 .enbtn:hover{
     background-color: rgb(218, 196, 244);
@@ -305,4 +307,13 @@ form{
 
 .btnbox2{
    padding-right:40px;
+}
+
+.userimg{
+    width: 350px;
+    height: 200px;
+    
+
+    margin: auto;
+  display: block;
 }

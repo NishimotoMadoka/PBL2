@@ -1,0 +1,26 @@
+body{
+    background: linear-gradient(rgb(214, 244, 255), rgb(252, 218, 255));
+    margin: 0px;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    color: rgb(76, 28, 131);
+}
+
+.box{
+    background-color: rgb(254, 250, 255);
+    /* text-align: center; */
+    padding: 15px;
+}
+
+.post{
+   margin-left: auto;
+   margin-right: auto;
+   margin: 0px;
+   width: 375px;
+   margin-left: auto;
+   margin-right: auto;
+   background-color: rgb(254, 250, 255);
+}
+
+.colre{
+    text-align: center;
+}

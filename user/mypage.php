@@ -214,6 +214,7 @@ const sample3 = <?php echo $_label;?>;
     <input type="hidden" name="article_id" value="<?=$user_article['article_id']?>">
     <div class="btnbox2"><input type="submit" name="button" value="投稿内容編集" class="enbtn"></div>
       </div>
+      
   </form>
 
 
