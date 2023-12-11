@@ -1,4 +1,4 @@
-/* .user-icon{
+.user-icon{
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -276,4 +276,9 @@ form{
     outline: none;
     font-size: 25px;
 }
+
+#tabpage1, #tabpage2, #tabpage3, #tabpage4, #tabpage5{
+    display: block;
+}
+
 
