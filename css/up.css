@@ -41,3 +41,8 @@ table{
 th{
     text-align: left;
 }
+
+input{
+    width: 200px;
+    height: 22px;
+}

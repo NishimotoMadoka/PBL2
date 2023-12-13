@@ -3,24 +3,82 @@ body{
     margin: 0px;
     font-family: 'M PLUS Rounded 1c', sans-serif;
     color: rgb(76, 28, 131);
+    font-size: 18px;
 }
+
+.c0{
+    accent-color: grey;
+}
+
+.c1{
+    accent-color: red;
+}
+
+.c2{
+    accent-color: blue;
+}
+
+.c3{
+    accent-color: yellow;
+}
+
+.c4{
+    accent-color: green;
+}
+
+.c5{
+    accent-color: white;
+}
+
+.c6{
+    accent-color: black;
+}
+
+.btn{
+    background-color: rgb(239, 232, 247);
+    color: rgb(76, 28, 131);
+    width: 150px;
+    height: 40px;
+    border-radius: 90px;
+    font-size: 15px;
+}
+.btn:hover{
+    background-color: rgb(218, 196, 244);
+}
+
 
 .box{
+    color: rgb(76, 28, 131);
+    filter:drop-shadow(3px 3px 3px #848484);
     background-color: rgb(254, 250, 255);
-    /* text-align: center; */
-    padding: 15px;
+    padding: 20px 100px;
+    width: 430px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.post{
-   margin-left: auto;
-   margin-right: auto;
-   margin: 0px;
-   width: 375px;
-   margin-left: auto;
-   margin-right: auto;
-   background-color: rgb(254, 250, 255);
+.line{
+    margin: 30px 0px;
 }
 
-.colre{
+.color{
+    margin: 30px 0px;
+}
+
+#kbkb{
+    text-align: center;
+    margin: 0px 0px 30px 30px;
+}
+
+.tablesbm{
     text-align: center;
 }
+
+table{
+    margin-left: 65px;
+}
+
+table td{
+   padding-top: 10px;
+}
+

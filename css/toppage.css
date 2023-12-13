@@ -123,8 +123,9 @@ form{
     align-items: center;
     gap: 100px;
     background-color: rgb(254, 250, 255);
-    padding: 0px 60px;
+    padding: 30px 60px 0px 60px;
     margin: 20px 100px 20px 100px;
+    filter:drop-shadow(3px 3px 3px #848484);
 }
 
 .box2{
@@ -193,8 +194,6 @@ table {
 
 .yoko{
     display: flex;
-    /* margin-top: 30px; */
-    
 }
 
 .yoko1{
@@ -225,7 +224,7 @@ table {
 
 .yoko5{
     margin: 0px 0px 0px 15px;
-    padding: 0px 100px 20px 100px;
+    padding: 0px 100px 0px 100px;
     text-align: left;
 }
 
@@ -235,7 +234,7 @@ table {
     width: 150px;
     height: 35px;
     border-radius: 90px;
-    margin-top: 15px;
+    
 }
 
 .enbtn:hover{
@@ -244,6 +243,7 @@ table {
 
 form{
     text-align: center;
+    margin: 0px;
 }
 
 .b{
@@ -282,7 +282,10 @@ form{
 }
 
 
-.topimg{
-    width: 350px;
+
+.example img{
+    width: 600px;
     height: 200px;
-}
+    object-fit: contain;
+    background-color: rgb(254, 250, 255);
+ }

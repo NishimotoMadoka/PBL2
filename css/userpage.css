@@ -150,6 +150,7 @@ th {
     padding: 10px 60px;
     margin: 0px 100px 20px 100px;
     color: rgb(76, 28, 131);
+    filter:drop-shadow(3px 3px 3px #848484);
 }
 
 .box2{
