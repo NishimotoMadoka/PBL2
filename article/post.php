@@ -19,6 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+</head>
+
 <link rel="stylesheet" href="<?= $post_css ?>">
 <form  method="post" action="./post_db.php"  enctype="multipart/form-data">
   <?php for ($i = 0; $i < $formCount; $i++) { ?>
@@ -49,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <input type="hidden" name="form_count" value="<?php echo $formCount; ?>">
         <table>
-          <tr><td><input type="submit" class="btn" name="add_form" value="＋　項目を追加" id="delete" onclick="addform()"></td><td><input class="btn" type="reset" value="リセット"></td></tr>
+          <tr><td><input type="submit" class="btn-p" name="add_form" value="＋　項目を追加" id="delete" onclick="addform()"></td><td><input class="btn-r" type="reset" value="リセット"></td></tr>
           <td colspan="2" class="tablesbm"><input class="btn" type="submit" value="送信　→"></td>
       </table>
       </div>

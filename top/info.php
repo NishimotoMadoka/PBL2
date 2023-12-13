@@ -34,7 +34,10 @@ require_once __DIR__ . '/../header.php';
   <?php
    if ($_POST['article_image'] != "") {
   ?>
-  <img src="../article_image/<?=$_articleimg?>" style="display:block; margin: auto; height: 450px; width: 450px;">
+   <link rel="stylesheet" href="<?=$info_css?>">
+  <div class="example">
+    <img src="../article_image/<?=$_articleimg?>" style="display:block; margin: auto; height: 450px; width: 450px;">
+  </div>
   <?php
    } else {
   ?>

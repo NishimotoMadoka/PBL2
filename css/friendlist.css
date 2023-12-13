@@ -8,6 +8,7 @@ background: linear-gradient(rgb(214, 244, 255), rgb(252, 218, 255));
 padding: 0px;
 margin: 0px;
 font-family: 'M PLUS Rounded 1c', sans-serif;
+min-height: 100vh;
 }
 
 .user-icon{

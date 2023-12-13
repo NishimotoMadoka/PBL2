@@ -1,0 +1,12 @@
+body{
+    background: linear-gradient(rgb(214, 244, 255), rgb(252, 218, 255));
+    margin: 0px;
+    min-height: 100vh;
+}
+
+.example img{
+    width: 600px;
+    height: 200px;
+    object-fit: contain;
+    background-color: transparent;
+}

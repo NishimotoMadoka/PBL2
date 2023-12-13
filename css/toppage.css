@@ -27,10 +27,6 @@ tr{
     display: block;
 }
 
-.madop{
-    display:flex;
-}
-
 .nisi{
     margin-top: 20px;
     margin-left: 60px;
@@ -40,26 +36,7 @@ tr{
     margin: 2em 0 0;
     width: 100%;
 }
-   
-   
-.button-panel .button {
-    background: #f16262;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    height: 50px;
-    font-family: 'Open sans', sans-serif;
-    font-size: 1.2em;
-    letter-spacing: 0.05em;
-    text-align: center;
-    text-transform: uppercase;
-    transition: background 0.3s ease-in-out;
-    width: 55%;
-   }
-   
-.button:hover {
-    background: #ee3e52;
-}
+
 
 form{
     margin-left: 350px;
@@ -141,6 +118,7 @@ body{
     margin: 0px;
     font-family: 'M PLUS Rounded 1c', sans-serif;
     color: rgb(76, 28, 131);
+    min-height: 100vh;
   }
 
 
@@ -288,4 +266,4 @@ form{
     height: 200px;
     object-fit: contain;
     background-color: rgb(254, 250, 255);
- }
+}

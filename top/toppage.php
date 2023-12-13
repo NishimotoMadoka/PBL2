@@ -216,8 +216,8 @@ $favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
     if ($friends_articles_array[$i]['article_image'] != "") {
   ?>
 
-<div class="example">
-    <img src="../article_image/<?= $friends_articles_array[$i]['article_image'] ?>" alt=""></a>
+    <div class="example">
+      <img src="../article_image/<?= $friends_articles_array[$i]['article_image'] ?>" alt=""></a>
     </div>
 
   <?php

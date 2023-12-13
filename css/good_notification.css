@@ -1,6 +1,7 @@
 body{
     margin: 0px;
     background: linear-gradient(rgb(214, 244, 255), rgb(252, 218, 255));
+    min-height: 100vh;
 }
 
 .user-icon{
