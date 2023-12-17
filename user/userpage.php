@@ -65,15 +65,16 @@ $user_articles = $article->userArticles($friend_user_id);
 
   <?php
     } else {
+      $user_plofile['icon']=$default_icon;
   ?>
-      <!-- <img class="user-icon" src="<?=$default_icon?>" alt=""> -->
+      <!-- <img class="user-icon-pro" src="<?=$default_icon?>" alt=""> -->
 
   <div class="table_block">
     <table>
 	    <tbody>
 	      <tr>
           <th>  
-            <img class="user-icon-pro" src="<?=$default_icon?>" alt="">
+            <img class="user-icon-pro" src="<?=$user_plofile['icon']?>" alt="">
           </th>
 	        <td>
             <table>
@@ -115,13 +116,14 @@ $user_articles = $article->userArticles($friend_user_id);
 
       <?php
       foreach ($user_articles as $user_article) {
+        // var_dump($user_article['icon']);exit(0);
       ?>
 <form method="POST" action="./../user/userpage.php">
     <input type="hidden" name="user_id" value="<?=$user_article['user_id']?>">
 </form>
 <div class="yoko">
   <input type="hidden" name="user_id" value="<?=$$user_article['user_id']?>">
-  <input type="image" img class="user-icon" src="../icon_image/<?=$user_article['icon']?>">
+  <input type="image" img class="user-icon" src="<?=$user_plofile['icon']?>">
   <div class="yoko2"><?=$user_article['name']?></div>
   <div class="yoko3"><?=$user_article['title']?></div>
   <div class="yoko4"><?=$user_article['time_date']?></div>

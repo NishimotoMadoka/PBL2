@@ -45,10 +45,10 @@ $url = $_SERVER['REQUEST_URI'];
         
       </ul>
     </nav>
-  </header>
+  <!-- </header> -->
 
   <!-- リスト -->
-  <header>
+  <!-- <header> -->
     <?php
     $user = new User();
     if(!isset($_SESSION)){
