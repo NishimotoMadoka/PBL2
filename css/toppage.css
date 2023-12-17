@@ -1,4 +1,4 @@
-/* .user-icon{
+.user-icon{
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -123,7 +123,7 @@ form{
     align-items: center;
     gap: 100px;
     background-color: rgb(254, 250, 255);
-    padding: 10px 60px;
+    padding: 0px 60px;
     margin: 20px 100px 20px 100px;
 }
 
@@ -224,7 +224,7 @@ table {
 }
 
 .yoko5{
-    margin: 10px;
+    margin: 0px 0px 0px 15px;
     padding: 0px 100px 20px 100px;
     text-align: left;
 }
@@ -235,7 +235,7 @@ table {
     width: 150px;
     height: 35px;
     border-radius: 90px;
-    /* margin-bottom: 10px; */
+    margin-top: 15px;
 }
 
 .enbtn:hover{
@@ -277,3 +277,12 @@ form{
     font-size: 25px;
 }
 
+#tabpage1, #tabpage2, #tabpage3, #tabpage4, #tabpage5{
+    display: block;
+}
+
+
+.topimg{
+    width: 350px;
+    height: 200px;
+}

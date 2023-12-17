@@ -29,6 +29,10 @@ $user_articles = $article->userArticles($friend_user_id);
   <link rel="stylesheet" href="<?= $userpage_css ?>">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
   <script src="../js/test.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
 </head>
 <main>
 <div class="box">
@@ -69,13 +73,13 @@ $user_articles = $article->userArticles($friend_user_id);
 	    <tbody>
 	      <tr>
           <th>  
-            <img class="user-icon" src="<?=$default_icon?>" alt="">
+            <img class="user-icon-pro" src="<?=$default_icon?>" alt="">
           </th>
 	        <td>
             <table>
               <tr><td  class="name" colspan="2"><?= $user_plofile['name'] ?></td></tr>
-              <tr><th>メールアドレス</th><td><?= $user_plofile['mail'] ?></td></tr>
-              <tr><th>ひとこと</th><td><?= $user_plofile['profile_comment'] ?></td></tr>
+              <tr><th>メールアドレス　</th><td><?= $user_plofile['mail'] ?></td></tr>
+              <tr><th>ひとこと　</th><td><?= $user_plofile['profile_comment'] ?></td></tr>
               <tr><th>フレンドコード</th><td><?= $user_plofile['friend_code'] ?></td></tr>
             </table>
           </td>
@@ -146,14 +150,14 @@ $favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
 
 </div>
 <div class="yoko5"><?= $user_article['diary'] ?></div>
+
   <?php
     if ($user_article['article_image'] != "") {
   ?>
-    <img class="" src="../article_image/<?= $user_article['article_image'] ?>" alt=""></a>
+    <img class="userimg" src="../article_image/<?= $user_article['article_image'] ?>" alt=""></a>
   <?php
     }
   ?>
-
 
 <!-- いいねボタン 
 <?php
@@ -183,6 +187,7 @@ $favorite=$article->checkGood_duplicate($user_id,$post_user_id,$article_id);
 <input type="hidden" name="item" value="<?= $user_article['item_name']?>"> 
 <input type="hidden" name="color" value="<?= $user_article['color']?>"> 
 <input type="hidden" name="postdate" value="<?= $user_article['post_date']?>">
+<input type="hidden" name="article_image" value="<?=$user_article['article_image']?>">
 <div class="button-panel">
 <input type="submit" name="button" value="円グラフを表示" class="enbtn">
 </div>

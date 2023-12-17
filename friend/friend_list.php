@@ -58,8 +58,9 @@ foreach($friends_user_id as $friend_user_id){
         </form>
         <?php
         }
+        
         ?>
-                <div class="name">      
+                <div class="name2">      
             <?= $friend_details['name'] ?>
         </div>
         <div class="mes">

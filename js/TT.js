@@ -2,20 +2,166 @@ var chartVal = []; // グラフデータ（描画するデータ）
 var Labels = [];//ここにデータベースから持ってくる
 var chartcolor = [];
 
+const STime=[];
+const ETime=[];
+const LLabels=[];
+const cchartcolor =[];
 
-//  for(let a=0 ;a<10 ;a++){
-//    chartcolor.push(getRandomColor());
-//  }
 
 
 //ここから間を埋めたバージョン
 function getdata2(){
-  const start = sample1.split(":");//時間から：を抜いて配列に
-  const end = sample2.split(":");//
-  const label = sample3.split(",");//項目から、を抜いて配列に(項目の処理終わり)
-  const testcolor = color;//ここに灰色を足した版の色をいれる
+  chartVal = [];
+  Labels = [];//グラフのデータを初期化
+  chartcolor = [];
+  
+  getColor();
+  let i = 0;
+  let i2 = 0;//i はfor文で使うよ
+  const s1 = sample1.split(":");//時間から：を抜いて配列に
+  const s11 = sample2.split(":");//
+  const s2 = sample3.split(",");//項目から、を抜いて配列に(項目の処理終わり)
+  let s3='';//時間から：を抜いた文字列
+  let s33='';
+
+  console.log(s3);
+  console.log(s1);
+  
+  for(i = 0; i< s1.length; i++){
+    s3 = s3.concat(s1[i]);//s3に；抜きの時間をいれる
+    s33 = s33.concat(s11[i]);
+    console.log(s3);
+    console.log(s33);
+  }
+
+  const s4 = s3.split(",");//s3を配列に変更
+  const s44 = s33.split(",");
+
+  console.log(s4);
+  console.log(s44);
 
 
+ if(s4[0]!='0000'){
+  ETime[0] = s4[0];
+  STime[0] = '0000';
+  LLabels[0] = '???';
+  cchartcolor[0] = '#F0F0F0';
+
+  for (i=1; i<s4.length; i++){
+    STime[i] = s4[i-1];
+    ETime[i] = s44[i-1];
+    LLabels[i] = s2[i-1]; 
+    cchartcolor[i] = chartcolor[i-1];
+  }
+ }else{
+  for (i=0; i<s4.length; i++){
+    STime[i] = s4[i];
+    ETime[i] = s44[i];
+    LLabels[i] = s2[i]; 
+    cchartcolor[i] = chartcolor[i];
+  }
+ }
+
+  
+ 
+console.log(LLabels);
+
+
+
+  for(i = 0; i < STime.length; i++){//#を前後の数字と置き換える 12/04改造するよ
+    if(STime[i]=="#"){
+      STime[i] = ETime[i-1];
+      ETime[i] = '2359';
+    }
+    if(LLabels[i]=="#"){
+      LLabels[i] = '???';
+    }
+    if(cchartcolor[i]=="#"){
+      cchartcolor[i] = '#F0F0F0';
+      break;
+    }
+   console.log(STime);
+   console.log(ETime);
+   console.log(LLabels);
+}
+
+let SC=0;
+let EC=0;
+let CC=0;
+
+for(i = 0; i < STime.length; i++){//#消す
+  if(STime[i]=="#"){
+   SC++; 
+  }
+  if(LLabels[i]=="#"){
+    EC++;
+  }
+  if(cchartcolor[i]=="#"){
+    CC++;
+  }
+
+}
+for(i=SC; i>0; i--){
+  STime.pop();
+  ETime.pop();
+  LLabels.pop();
+  cchartcolor.pop();
+}
+
+
+//分単位変換
+for( i = 0; i<LLabels.length; i++){
+  let count =0;
+  let S = 0;
+    while(ETime[i]>=100){
+      
+      ETime[i]-=100;
+      count = count+100;
+    }
+    S = ETime[i]+count;
+
+    
+   ETime[i] += count*0.6;
+    
+ }
+
+ for( i = 0; i<LLabels.length; i++){
+  let count =0;
+  let S = 0;
+    while(STime[i]>=100){
+      
+      STime[i]-=100;
+      count = count+100;
+    }
+    S = STime[i]+count;
+
+    
+   STime[i] += count*0.6;
+    
+ }
+//ここまで分単位変換
+
+var s5 =[];//最終的にcharvalに入れるデータ
+
+ for(let i = 0; i<LLabels.length; i++){
+  s5[i] = ETime[i] -STime[i];
+ }
+
+ 
+ for(let i = 0; i < LLabels.length; i++){
+
+ 
+    chartVal.push(s5[i]);
+    Labels.push(LLabels[i]);
+    
+}
+
+//chartcolor = A;
+
+//console.log(c1);
+console.log(chartVal);
+console.log(LLabels);
+console.log(cchartcolor);
 }
 //ここまで
 
@@ -35,25 +181,7 @@ function getdata2(){
   
  
 
-//  function getRandomColor() {
-//    const letters = '0123456789ABCDEF';
-//    let color = '#';
-//    for (let i = 0; i < 6; i++) {
-//       //  color += letters[Math.floor(Math.random() * 16)];
-//       const h = Math.random() * 360;
-//       color = `hsl(${h}, 80%, 60%)`;
-//    }
-//    return color;
-//  }
 
-//  function ColorReset(){//グラフにランダムで配色
-//   let chartcolor = [];
-//   var b = Labels.length;
-//   for(let a=0 ;a<b ;a++){
-//     chartcolor.push(color);
-//   }
-//   console.log(chartcolor);
-//  }
 
 //DBから持ってきたデータをグラフデータに入れる＆時間の処理
 function getdata(){
@@ -173,7 +301,7 @@ function getdata(){
         afterLabel:["aaaa","bbbbb","cccc","dddd","eeee","ffff","gggg","hhhh"],
         datasets: [{
             data: chartVal, // グラフデータ
-            backgroundColor: chartcolor, // 棒の塗りつぶし色
+            backgroundColor: cchartcolor, // 棒の塗りつぶし色
             borderColor: '#000', // 棒の枠線の色
             borderWidth: 1, // 枠線の太さ
             // hoverBackgroundColor: chartcolor,
@@ -198,19 +326,6 @@ function getdata(){
         responsive: false,
         maintainAspectRatio: false,
         plugins: {
-          // この辺また触るから置いといてほしい　トオトミ
-          // afterDraw: function(chart, easing, options) {
-          //   var img = new Image();
-          //   img.src = '../img/btn.png';
-          //   img.onload = function() {
-          //   var centerX = chart.width / 2;
-          //   var centerY = chart.height / 2;
-          //   var imgWidth = 50;
-          //   var imgHeight = 50;
-
-          //   chart.ctx.drawImage(img, centerX - imgWidth / 2, centerY - imgHeight / 2, imgWidth, imgHeight);
-          //   };
-          // },
           outlabels: {
             text: '%l\n%p',
             color: '#000',
@@ -219,7 +334,7 @@ function getdata(){
             stretch: 50,
             font: {
               resizable: false,
-              size: 20,
+              size: 30,
             }
           }
         },
@@ -239,6 +354,25 @@ function getdata(){
     });
 
     Chart.plugins.register({
+      beforeDraw: function(chart) {
+        var ctx = chart.ctx;
+        var width = chart.width;
+        var height = chart.height;
+
+        var centerX = width / 2;
+        var centerY = height / 1.9;
+        var img = new Image();
+        img.src = '../img/ushi.png';
+        img.id = 'ushiImage';
+        img.style.position = 'absolute';
+
+        img.onload = function(){
+          var imgWidth = 200;
+          var imgHeight = 200;
+          ctx.drawImage(img, centerX - imgWidth / 2, centerY - imgHeight / 2, imgWidth, imgHeight);
+        }
+      },
+
       afterDraw: function(chart) {
           var ctx = chart.ctx;
           var width = chart.width;
@@ -252,7 +386,7 @@ function getdata(){
   
           var radius = Math.min(width, height) /3.05;
           var centerX = width / 2;
-          var centerY = height / 1.84;
+          var centerY = height / 1.85;
   
           for (var i = 0; i < 24; i++) {
               var angle = Math.PI * 2 / 24 * i - Math.PI / 2;
@@ -285,3 +419,4 @@ function getdata(){
   });
 
   }
+

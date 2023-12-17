@@ -13,6 +13,7 @@ require_once __DIR__ . '/../header.php';
   $_color = $_POST['color'];//色
   $_label = $_POST['item'];//DBから来た値
   $_postdate = $_POST['postdate'];
+  $_articleimg = $_POST['article_image'];
   // $_color = $_POST['color'];
 
     
@@ -24,8 +25,24 @@ require_once __DIR__ . '/../header.php';
   // $_color = json_encode($_color);
 
 ?>
+<div style="display: flex;">
 <div style="width:100%">
-  <canvas id="canvas" style="display: block; height: 700px; width: 700px; margin:auto;" width="700px" height="700px"></canvas>
+  <canvas id="canvas" style="display: block; height: 600px; width: 600px; margin:auto;" width="700px" height="700px"></canvas>
+</div>
+<div style="width: 100%">
+  <h1 style="text-align:center;">今日の画像</h1>
+  <?php
+   if ($_POST['article_image'] != "") {
+  ?>
+  <img src="../article_image/<?=$_articleimg?>" style="display:block; margin: auto; height: 450px; width: 450px;">
+  <?php
+   } else {
+  ?>
+  <img src="../img/ushi.png" style="display:block; margin:auto; height: 450px; width: 450px;">
+  <?php
+   }
+  ?>
+</div>
 </div>
  <!-- <script src="../js/script.js"></script> -->
 <script>
@@ -48,8 +65,7 @@ console.log(sample3);
 // ページ読み込み時にグラフを描画
  window.addEventListener('DOMContentLoaded', function() {
  
-  getdata();
-  // ColorReset();
+  getdata2();
   drawChart(); // グラフを再描画
   
 });
