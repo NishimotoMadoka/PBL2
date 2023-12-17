@@ -1,16 +1,18 @@
 /*ログイン、新規登録用css*/
 
 body {
-    /* background: #e9e9e9;  */
-    color: #5e5e5e;
-    font: 400 87.5%/1.5em sans-serif;
+    background: linear-gradient(rgb(214, 244, 255), rgb(252, 218, 255));
     text-align: center;
+    margin: 0px;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    color: rgb(76, 28, 131);
+    min-height: 100vh;
    }
 
 
 /* Form Layout */
 .form-wrapper {
-    background: #fafafa;
+    background-color: rgb(254, 250, 255);
     margin: 3em auto;
     padding: 3em 1em;
     max-width: 600px;
@@ -39,47 +41,20 @@ form {
     background: #fafafa;
     border: none;
     border-bottom: 2px solid #e9e9e9; 
-    color: #666;
+    color: rgb(76, 28, 131);
     font-family: sans-serif;
     font-size: 1em;
     height: 50px;
     transition: border-color 0.3s;
     width: 100%;
     text-align: center;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
 }
    
 .form-item input:focus {
     /*border-bottom: 2px solid #c0c0c0;  */
     border-bottom: 2px solid #a3a3a3; 
     outline: none;
-}
-   
-.button-panel {
-    /* margin: 2em 0 0; */
-    margin: 0px auto;
-    width: 50%;
-    text-align: center;
-}
-   
-   
-.button-panel .button {
-    background: #f16262;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    height: 50px;
-    font-family: 'Open sans', sans-serif;
-    font-size: 1.2em;
-    letter-spacing: 0.05em;
-    text-align: center;
-    text-transform: uppercase;
-    transition: background 0.3s ease-in-out;
-    width: 100%;
-   
-   }
-   
-.button:hover {
-    background: #ee3e52;
 }
    
 
@@ -92,16 +67,16 @@ input{
 }
 
 .date-item input{
-    background: #fafafa;
+     background-color: transparent;
     border: none;
     /* border-bottom: 2px solid #e9e9e9; */
-    color: #666;
-    font-family: 'Open sans', sans-serif;
-    font-size: 25px;
+    color: rgb(76, 28, 131);
+    font-size: 30px;
     height: 50px;
-    transition: border-color 0.3s;
+    /* transition: border-color 0.3s; */
     width: 100%;
     text-align: center;
+   
 }
 
 textarea{
@@ -118,21 +93,31 @@ textarea{
     height: 250px;
 }
 
-.button-panel .button-r {
-    background: #62b5f1;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    height: 50px;
-    font-family: 'Open sans', sans-serif;
-    font-size: 1.2em;
-    letter-spacing: 0.05em;
-    text-align: center;
-    text-transform: uppercase;
-    transition: background 0.3s ease-in-out;
-    width: 100%;
-  }
-  
-  .button-r:hover {
-    background: #3e90ee;
-  }
+
+.form-text-date{
+    margin-right: 0px;
+}
+
+.btn{
+    background-color: rgb(239, 232, 247);
+    color: rgb(76, 28, 131);
+    width: 150px;
+    height: 40px;
+    border-radius: 90px;
+    font-size: 15px;
+}
+.btn:hover{
+    background-color: rgb(218, 196, 244);
+}
+
+.btn-r{
+    background-color: rgb(247, 232, 232);
+    color: rgb(131, 28, 28);
+    width: 150px;
+    height: 40px;
+    border-radius: 90px;
+    font-size: 15px;
+}
+.btn-r:hover{
+    background-color: rgb(244, 196, 196);
+}

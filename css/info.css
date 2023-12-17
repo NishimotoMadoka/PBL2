@@ -1,0 +1,18 @@
+body{
+    background: linear-gradient(rgb(214, 244, 255), rgb(252, 218, 255));
+    margin: 0px;
+    min-height: 100vh;
+    color: rgb(76, 28, 131);
+}
+
+.example img{
+    width: 600px;
+    height: 200px;
+    object-fit: contain;
+    background-color: transparent;
+}
+
+h1{
+    font-size: 22px;
+    color: rgb(81, 81, 81);
+}

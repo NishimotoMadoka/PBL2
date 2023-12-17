@@ -1,14 +1,16 @@
 .loginbox{
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(254, 250, 255);
     max-width: 480px;
     margin: 0 auto;
     height: 100%;
     text-align: center;
+    filter:drop-shadow(3px 3px 3px #848484);
 }
 
 body{
     background: linear-gradient(rgb(214, 244, 255), rgb(252, 218, 255));
     font-family: 'M PLUS Rounded 1c', sans-serif;
+    min-height: 100vh;
 }
 
 

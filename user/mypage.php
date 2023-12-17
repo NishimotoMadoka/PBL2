@@ -92,7 +92,7 @@ $user_articles = $article->userArticles($user_id);
               <a href="./icon_update.php"><input class="btn" type="submit" value="アイコン変更"></a>
             </th>
 	          <td class="inbtn" align="center">
-              <a href="<?=$update_php?>"><input type="submit" value="プロフィール編集"></a>
+              <a href="<?=$update_php?>"><input class="btn" type="submit" value="プロフィール編集"></a>
             </td>
 	        </tr>
 	      </tbody>

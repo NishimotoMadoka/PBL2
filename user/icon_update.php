@@ -11,7 +11,7 @@ require_once __DIR__ . '/../header.php';
     <link rel="stylesheet" href="<?= $update_css ?>">
 </head>
 
-<div class="profile" align="center">
+<div class="box" align="center">
 <form method="POST" action="./icon_update_db.php" enctype="multipart/form-data">
   <h3>アイコン変更</h3>
   <div>
@@ -21,7 +21,7 @@ require_once __DIR__ . '/../header.php';
     <br>
     <div class="form-wrapper">
     <div class="button-panel">
-       <input type="submit" value="変更" class="button"></input>
+       <input type="submit" class="btn" value="変更" class="button"></input>
     </div>
     <br>
     <a href="../user/user_show.php">ユーザー詳細へ戻る</a>

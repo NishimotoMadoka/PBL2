@@ -8,6 +8,7 @@ background: linear-gradient(rgb(214, 244, 255), rgb(252, 218, 255));
 padding: 0px;
 margin: 0px;
 font-family: 'M PLUS Rounded 1c', sans-serif;
+min-height: 100vh;
 }
 
 .user-icon{
@@ -54,6 +55,7 @@ font-family: 'M PLUS Rounded 1c', sans-serif;
   background-color: rgb(254, 250, 255);
   border-radius: 90px;
   margin: 10px 150px;
+  filter:drop-shadow(2px 2px 2px #848484);
 }  
 
 .name2,.syousai{

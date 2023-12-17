@@ -1,23 +1,23 @@
 body{
     background: linear-gradient(rgb(214, 244, 255), rgb(252, 218, 255));
-    margin: auto;
+    /* background: linear-gradient(rgb(186, 237, 255), rgb(250, 192, 255)); */
+    margin: 0px;
     font-family: 'M PLUS Rounded 1c', sans-serif;
+    color: rgb(76, 28, 131);
     min-height: 100vh;
-}
-
-h1{
-    text-align: left;
 }
 
 .box{
     justify-content: center;
     align-items: center;
-    gap: 100px;
     background-color: rgb(254, 250, 255);
-    padding: 10px 60px;
-    margin: 0px 100px 20px 100px;
-    color: rgb(76, 28, 131);
+    filter:drop-shadow(3px 3px 3px #848484);
     text-align: center;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    padding-top: 20px;
 }
 
 .btn{
@@ -25,25 +25,15 @@ h1{
     width: 150px;
     height: 40px;
     border-radius: 90px;
-    margin-bottom: 15px;
+    margin: 15px 
+    0px;
     font-size: 15px;
-    color: rgb(76, 28, 131);
 }
 
 .btn:hover{
     background-color: rgb(218, 196, 244);
 }
 
-table{
-    margin-left: auto;
-    margin-right: auto;
-}
 
-th{
-    text-align: left;
-}
 
-input{
-    width: 200px;
-    height: 22px;
-}
+

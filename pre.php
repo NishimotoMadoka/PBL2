@@ -55,6 +55,10 @@ $diary_css = $http_host . '/' . $id . '/css/diary.css';
 $toppage_css = $http_host . '/' . $id . '/css/toppage.css';
 $post_db_css = $http_host . '/' . $id . '/css/post_db.css';
 $good_notification_css = $http_host . '/' . $id . '/css/good_notification.css';
+$info_css = $http_host . '/' . $id . '/css/info.css';
+$edit_css = $http_host . '/' . $id . '/css/edit.css';
+$list_css = $http_host . '/' . $id . '/css/list.css';
+$member_register_css = $http_host . '/' . $id . '/css/member_register.css';
 
 $default_icon=$http_host . '/' . $id . '/icon_image/default.jpg';
 $logo_img = $http_host . '/' . $id . '/img/logo2.png';
