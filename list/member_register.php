@@ -6,6 +6,7 @@ require_once __DIR__ . '/../classes/user.php';
 $user_id=$_SESSION['user_id'];
 $list_name = $_POST['list_name'];
 $list_image = $_FILES['list_image']['name'];
+ 
 
 $user = new User();
 // フレンドリストを最新から取得
@@ -32,25 +33,29 @@ if($list_image!==""){
 
 if($friends!==null){
 ?>
-    <link rel="stylesheet" href="">
+<link rel="stylesheet"  href="<?= $member_register_css ?>">
+<div class="box">
     <form  method="post" action="./list_register_db.php"  enctype="multipart/form-data">
 <?php
     foreach($friends as $friend){
         $friend_details=$user->detailsUser($friend['friend_user_id']);
 ?>
-    <div>
-        <label for="checkbox1"><?=$friend_details['name']?></label> 
-        <input type="checkbox" name="member_user_id[]" value="<?=$friend_details['user_id']?>"> 
-    </div> 
+    
+        <label for="checkbox1"><?=$friend_details['name']?></label>
+        <input type="checkbox" name="member_user_id[]" value="<?=$friend_details['user_id']?>"> <br>
+     
 <?php
         // echo $mylist_id['list_name'];
     }
 ?>
     <input type="hidden" name="list_name" value="<?=$list_name?>">
     <input type="hidden" name="list_image" value="<?=$list_image?>">
-    <input type="submit" value="登録">
+    <input type="submit" class="btn value="登録">
+
+    </div>
 <?php
 }
+
 
 require_once __DIR__.'/../footer.php';
 

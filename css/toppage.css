@@ -95,7 +95,7 @@ form{
     text-align: left;
   }
 
-  .box{
+.box{
     justify-content: center;
     align-items: center;
     gap: 100px;

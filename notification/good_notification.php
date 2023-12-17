@@ -47,6 +47,7 @@ foreach($goods_notification as $good_notification){
 <?php
 }
 }else{
+  
     echo "通知はまだありません";
 }
 
