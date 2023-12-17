@@ -6,6 +6,9 @@ require_once __DIR__ . '/../header.php';
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-piechart-outlabels"></script>
   <script src="../js/TT.js"></script>
 </head>
+
+<link rel="stylesheet" href="<?=$info_css?>">
+
 <?php 
   $_start = $_POST['starttime'];//$_POST で受け取る
   $_end = $_POST['endtime'];
@@ -25,6 +28,8 @@ require_once __DIR__ . '/../header.php';
   // $_color = json_encode($_color);
 
 ?>
+
+
 <div style="display: flex;">
 <div style="width:100%">
   <canvas id="canvas" style="display: block; height: 600px; width: 600px; margin:auto;" width="700px" height="700px"></canvas>
@@ -34,7 +39,7 @@ require_once __DIR__ . '/../header.php';
   <?php
    if ($_POST['article_image'] != "") {
   ?>
-   <link rel="stylesheet" href="<?=$info_css?>">
+
   <div class="example">
     <img src="../article_image/<?=$_articleimg?>" style="display:block; margin: auto; height: 450px; width: 450px;">
   </div>

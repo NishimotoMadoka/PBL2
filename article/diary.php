@@ -6,8 +6,8 @@ require_once __DIR__ . '/../pre.php';
 <main>
 
 <?php
-$post_date=$_GET['date'];
-$article_id=$_GET['article_id'];
+$post_date=$_POST['date'];
+$article_id=$_POST['article_id'];
 
 if (isset($_SESSION['diary_error'])) {
     $diary_error="<script type='text/javascript'>alert('". $_SESSION['diary_error'] ."');</script>";
