@@ -73,16 +73,21 @@ label{
     .btn:hover{
     background-color: rgb(218, 196, 244);
     }
-
-@media screen and (max-width: 479px) { 
-.loginbox{
+    
+    
+    
+    
+@media (max-width: 450px){ 
+/* .loginbox{
     background-color: rgb(255, 255, 255);
     max-width: 480px;
     margin: 0 auto;
     height: 100%;
     text-align: center;
    
-}
+} */
+
+
 
 
 }

@@ -15,6 +15,7 @@ $url = $_SERVER['REQUEST_URI'];
   <title>FACT</title>
   <link rel="stylesheet" href="<?= $frame_css ?>">
   <link rel="stylesheet" href="<?= $anime_css ?>">
+  
 </head>
 
 <body>
